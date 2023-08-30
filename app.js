@@ -119,6 +119,10 @@ let priceElementForm26 = document.querySelector(".price26");
 
 const backButton = Telegram.WebApp.BackButton;
 
+tgkanal.addEventListener("click", () => {
+    window.open("https://t.me/casepuff", "_blank");
+});
+
 const allSection = document.getElementById("all");
 const pufferSection = document.getElementById("puffer");
 const soapSection = document.getElementById("soap");

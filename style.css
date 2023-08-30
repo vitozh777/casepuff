@@ -667,3 +667,57 @@ form {
     height: 30px; /* Автоматическая высота для сохранения пропорций */
     vertical-align: middle; /* Выравнивание картинки по центру относительно текста */
 }
+
+.navigation {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    gap: 4px;
+    color: white
+    user-select: none; /* Предотвращает выделение текста */
+    -webkit-user-select: none;
+}
+
+.tgkanal {
+    align-items: center;
+    z-index: 1000;
+    background-color: rgb(230, 230, 230);
+
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+}
+
+.telegram-logo {
+    width: 26px;
+    height: 26px;
+    margin-right: 1px;
+}
+
+.textlogo {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#kanal {
+    font-size: 16px;
+    color: black;
+    display: block;
+    width: 100%;
+    letter-spacing: 0,5px;
+    margin-bottom: 4px;
+}
+
+#kanal2 {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 120%;
+    color: rgb(110, 110, 110);
+}
