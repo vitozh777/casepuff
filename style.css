@@ -676,8 +676,6 @@ form {
     margin-bottom: 5px;
     gap: 4px;
     color: white
-    user-select: none; /* Предотвращает выделение текста */
-    -webkit-user-select: none;
 }
 
 .tgkanal {
