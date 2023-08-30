@@ -4,6 +4,8 @@ let model1 = document.querySelectorAll(".model1");
 let model2 = document.querySelectorAll(".model2");
 let model3 = document.querySelectorAll(".model3");
 let model4 = document.querySelectorAll(".model4");
+let modelcompl = document.querySelectorAll(".modelcompl");
+let modelcomplair = document.querySelectorAll(".modelcomplair");
 let priceElement = document.querySelector(".price");
 let form1 = document.getElementById("form1");
 let form2 = document.getElementById("form2");
@@ -628,15 +630,15 @@ btn5.addEventListener("click", () => {
 });
 
 
-model1.forEach(model => {
+modelcompl.forEach(model => {
     model.addEventListener("click", (event) => {
         event.preventDefault(); // Предотвращаем действие по умолчанию (например, переход по ссылке)
                     
         selectedModel = model.textContent;
-        selectedPrice = modelInfo1[selectedModel];
+        selectedPrice = modelcomplInfo5[selectedModel];
 
         // Удаляем границу у всех кнопок
-        model1.forEach(btn => {
+        modelcompl.forEach(btn => {
             btn.classList.remove("selected");
             btn.style.border = "none";
         });
@@ -657,15 +659,15 @@ model1.forEach(model => {
 });
 
 
-model4.forEach(model => {
+modelcomplair.forEach(model => {
     model.addEventListener("click", (event) => {
         event.preventDefault(); // Предотвращаем действие по умолчанию (например, переход по ссылке)
                     
         selectedModelAir = model.textContent;
-        selectedPrice = modelInfo4[selectedModelAir];
+        selectedPrice = modelcomplairInfo6[selectedModelAir];
 
         // Удаляем границу у всех кнопок
-        model4.forEach(btn => {
+        modelcomplair.forEach(btn => {
             btn.classList.remove("selected");
             btn.style.border = "none";
         });
@@ -703,10 +705,10 @@ order5.addEventListener("click", (event) => {
         event.preventDefault();
         
         // Получаем выбранную модель и цену
-        const selectedModel = document.querySelector(".model1.selected").textContent;
-        const selectedModelAir = document.querySelector(".model4.selected").textContent;
-        const selectedPrice = modelInfo1[selectedModel];
-        const selectedPriceAir = modelInfo4[selectedModelAir];
+        const selectedModel = document.querySelector(".modelcompl.selected").textContent;
+        const selectedModelAir = document.querySelector(".modelcomplair.selected").textContent;
+        const selectedPrice = modelcomplInfo5[selectedModel];
+        const selectedPriceAir = modelcomplairInfo6[selectedModelAir];
 
         // Вычисляем общую цену
         const deliveryPrice = "250₽";
@@ -722,9 +724,9 @@ order5.addEventListener("click", (event) => {
         const message = `
             Заказ: ${itemName}
             Модель телефона: ${selectedModel}
-            Цена: ${selectedPrice}
+            Цена со скидкой: ${selectedPrice}
             Модель наушников: ${selectedModelAir}
-            Цена: ${selectedPriceAir}
+            Цена со скидкой: ${selectedPriceAir}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPriceCompl}
         `;
@@ -2606,62 +2608,91 @@ order26.addEventListener("click", (event) => {
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
 const modelInfo1 = {
-    "iPhone 14 Pro Max": "2099₽",
-    "iPhone 14 Pro": "1899₽",
-    "iPhone 14 Plus": "2099₽",
-    "iPhone 14": "1899₽",
-    "iPhone 13 Pro Max": "2099₽",
-    "iPhone 13 Pro": "1899₽",
-    "iPhone 13": "1899₽",
-    "iPhone 13 mini": "1899₽",
-    "iPhone 12 Pro Max": "2099₽",
-    "iPhone 12/12 Pro": "1899₽",
-    "iPhone 12 mini": "1899₽",
-    "iPhone 11 Pro Max": "2099₽",
-    "iPhone 11 Pro": "1899₽",
-    "iPhone 11": "1899₽",
-    "iPhone Xs Max": "2099₽",
-    "iPhone Xr": "1899₽",
-    "iPhone X/Xs": "1899₽",
-    "iPhone 8 Plus/7 Plus": "1699₽",
-    "iPhone 6/7/8/SE20": "1699₽",
+    "iPhone 14 Pro Max": "1680₽",
+    "iPhone 14 Pro": "1520₽",
+    "iPhone 14 Plus": "1680₽",
+    "iPhone 14": "1520₽",
+    "iPhone 13 Pro Max": "1680₽",
+    "iPhone 13 Pro": "1520₽",
+    "iPhone 13": "1520₽",
+    "iPhone 13 mini": "1520₽",
+    "iPhone 12 Pro Max": "1680₽",
+    "iPhone 12/12 Pro": "1520₽",
+    "iPhone 12 mini": "1520₽",
+    "iPhone 11 Pro Max": "1680₽",
+    "iPhone 11 Pro": "1520₽",
+    "iPhone 11": "1520₽",
+    "iPhone Xs Max": "1680₽",
+    "iPhone Xr": "1520₽",
+    "iPhone X/Xs": "1520₽",
+    "iPhone 8 Plus/7 Plus": "1360₽",
+    "iPhone 6/7/8/SE20": "1360₽",
 };
 
 
 const modelInfo2 = {
-    "iPhone 14 Pro Max": "1099₽",
-    "iPhone 14 Pro": "999₽",
-    "iPhone 14 Plus": "1099₽",
-    "iPhone 14": "999₽",
-    "iPhone 13 Pro Max": "1099₽",
-    "iPhone 13 Pro": "999₽",
-    "iPhone 13": "999₽",
-    "iPhone 12 Pro Max": "1099₽",
-    "iPhone 12/12 Pro": "999₽",
-    "iPhone 11 Pro Max": "1099₽",
-    "iPhone 11 Pro": "999₽",
-    "iPhone 11": "999₽",
-    "iPhone Xs Max": "1099₽",
-    "iPhone Xr": "999₽",
-    "iPhone X/Xs": "999₽",
+    "iPhone 14 Pro Max": "880₽",
+    "iPhone 14 Pro": "800₽",
+    "iPhone 14 Plus": "880₽",
+    "iPhone 14": "800₽",
+    "iPhone 13 Pro Max": "880₽",
+    "iPhone 13 Pro": "800₽",
+    "iPhone 13": "800₽",
+    "iPhone 12 Pro Max": "880₽",
+    "iPhone 12/12 Pro": "800₽",
+    "iPhone 11 Pro Max": "880₽",
+    "iPhone 11 Pro": "800₽",
+    "iPhone 11": "800₽",
+    "iPhone Xs Max": "880₽",
+    "iPhone Xr": "800₽",
+    "iPhone X/Xs": "800₽",
 };
 
 
 const modelInfo3 = {
-    "iPhone 13 Pro Max": "1899₽",
-    "iPhone 13 Pro": "1699₽",
-    "iPhone 13": "1699₽",
-    "iPhone 12 Pro Max": "1899₽",
-    "iPhone 12/12 Pro": "1699₽",
-    "iPhone 11": "1699₽",
+    "iPhone 13 Pro Max": "1520₽",
+    "iPhone 13 Pro": "1360₽",
+    "iPhone 13": "1360₽",
+    "iPhone 12 Pro Max": "1520₽",
+    "iPhone 12/12 Pro": "1360₽",
+    "iPhone 11": "1360₽",
 };
 
 
 const modelInfo4 = {
-    "AirPods 1/2": "999₽",
-    "AirPods Pro/Pro(2)": "999₽",
-    "AirPods 3": "999₽",
+    "AirPods 1/2": "800₽",
+    "AirPods Pro/Pro(2)": "800₽",
+    "AirPods 3": "800₽",
 };
+
+
+const modelcomplInfo5 = {
+    "iPhone 14 Pro Max": "1680₽",
+    "iPhone 14 Pro": "1520₽",
+    "iPhone 14 Plus": "1680₽",
+    "iPhone 14": "1520₽",
+    "iPhone 13 Pro Max": "1680₽",
+    "iPhone 13 Pro": "1520₽",
+    "iPhone 13": "1520₽",
+    "iPhone 13 mini": "1520₽",
+    "iPhone 12 Pro Max": "1680₽",
+    "iPhone 12/12 Pro": "1520₽",
+    "iPhone 12 mini": "1520₽",
+    "iPhone 11 Pro Max": "1680₽",
+    "iPhone 11 Pro": "1520₽",
+    "iPhone 11": "1520₽",
+    "iPhone Xs Max": "1680₽",
+    "iPhone Xr": "1520₽",
+    "iPhone X/Xs": "1520₽",
+    "iPhone 8 Plus/7 Plus": "1360₽",
+    "iPhone 6/7/8/SE20": "1360₽",
+};
+const modelcomplairInfo6 = {
+    "AirPods 1/2": "799₽",
+    "AirPods Pro/Pro(2)": "799₽",
+    "AirPods 3": "799₽",
+};
+
 
 
 
