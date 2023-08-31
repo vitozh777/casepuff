@@ -119,9 +119,33 @@ let priceElementForm26 = document.querySelector(".price26");
 
 const backButton = Telegram.WebApp.BackButton;
 
+const tgkanal = document.getElementById("tgkanal");
+
 tgkanal.addEventListener("click", () => {
-    window.open("https://t.me/casepuff", "_blank");
+    window.open("https://t.me/casepuff");
 });
+
+// Получаем ссылку на элементы пользовательской информации
+const userAvatarElement = document.querySelector(".user-avatar");
+const userNicknameElement = document.querySelector(".user-nickname");
+
+// Получаем информацию о пользователе из Telegram Bot API
+async function getUserInfo() {
+    const response = await fetch('https://api.telegram.org/bot<6311077393:AAGEGc7ByWsP1KewwprCK8zWxwUCzN6tYEg>/getMe');
+    const data = await response.json();
+    return data;
+}
+
+// Обновляем информацию о пользователе на странице
+async function updateUserInfo() {
+    const userInfo = await getUserInfo();
+    userAvatarElement.src = userInfo.result.profile_photo_url;
+    userNicknameElement.textContent = userInfo.result.username;
+}
+
+// Вызываем функцию для обновления информации о пользователе
+updateUserInfo();
+
 
 const allSection = document.getElementById("all");
 const pufferSection = document.getElementById("puffer");
