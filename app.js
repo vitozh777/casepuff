@@ -125,6 +125,12 @@ tgkanal.addEventListener("click", () => {
     window.open("https://t.me/casepuff");
 });
 
+const instkanal = document.getElementById("instkanal");
+
+instkanal.addEventListener("click", () => {
+    window.open("https://instagram.com/casepuff?igshid=MzRlODBiNWFlZA==");
+});
+
 
 const allSection = document.getElementById("all");
 const pufferSection = document.getElementById("puffer");
