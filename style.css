@@ -695,6 +695,20 @@ form {
     line-height: 100%;
 }
 
+.instkanal {
+    align-items: center;
+    z-index: 1000;
+    background-color: rgb(230, 230, 230);
+
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+}
+
 .telegram-logo {
     width: 26px;
     height: 26px;
