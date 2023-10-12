@@ -1,0 +1,1013 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+    color: white;
+    background-color: #353334;
+    min-height: 100vh;
+    font-weight: 370px;
+    display: flex;
+    justify-content: center; /* Выравнивание по горизонтали */
+    align-items: center; /* Выравнивание по вертикали */
+    align-items: flex-start;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+@font-face {
+    font-family: 'nanum-pen-regular';
+    src: url('fonts/nanum-pen-regular.ttf') format('ttf');
+}
+
+.background-contain {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 400px; /* Максимальная ширина контейнера */
+    width: 100%; /* Ширина контейнера 100% видимой области экрана */
+}
+
+.background-image {
+    width: 100%;
+    height: 100vh;
+    background: url('фон.png') center/cover no-repeat;
+    background-size: cover;
+}
+
+
+/* Стили для контейнера, содержащего кнопки */
+.contain {
+    max-width: 400px; /* Максимальная ширина контейнера */
+    overflow: hidden; /* Обрезаем содержимое, если оно выходит за границы */
+    display: flex; /* Используем flex-контейнер */
+    justify-content: center; /* Выравнивание по горизонтали по центру */
+    align-items: center; /* Выравнивание по вертикали по центру */
+    flex-direction: column; /* Добавлено для вертикального выравнивания */
+    overflow: hidden;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center; /* Выравнивание по горизонтали по центру */
+    align-items: center;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    gap: 10px;
+}
+
+.navigationcase {
+    display: flex;
+    justify-content: center; /* Выравнивание по горизонтали по центру */
+    width: 100%;
+    margin-bottom: 5px;
+    gap: 5px;
+
+    
+    background: url('POSTER.PNG') center/cover no-repeat; /* Замените 'your-background-image.jpg' на путь к вашему изображению */
+    height: 450px; 
+}
+
+.tgoper {
+    align-items: center;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+    /* From https://css.glass */
+    background: rgba(95, 95, 95, 0.52);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.7px);
+    -webkit-backdrop-filter: blur(4.7px);
+    border: 1px solid rgba(255, 255, 255, 0.29);
+}
+
+.tgkanal {
+    align-items: center;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+    /* From https://css.glass */
+    background: rgba(95, 95, 95, 0.52);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.7px);
+    -webkit-backdrop-filter: blur(4.7px);
+    border: 1px solid rgba(255, 255, 255, 0.29);
+}
+
+.tginst {
+    align-items: center;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+    /* From https://css.glass */
+    background: rgba(95, 95, 95, 0.52);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.7px);
+    -webkit-backdrop-filter: blur(4.7px);
+    border: 1px solid rgba(255, 255, 255, 0.29);
+}
+
+.tgoper1 {
+    align-items: center;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+    /* From https://css.glass */
+    background: rgba(95, 95, 95, 0.52);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.7px);
+    -webkit-backdrop-filter: blur(4.7px);
+    border: 1px solid rgba(255, 255, 255, 0.29);
+}
+
+.tgkanal1 {
+    align-items: center;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+    /* From https://css.glass */
+    background: rgba(95, 95, 95, 0.52);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.7px);
+    -webkit-backdrop-filter: blur(4.7px);
+    border: 1px solid rgba(255, 255, 255, 0.29);
+}
+
+.tginst1 {
+    align-items: center;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+    /* From https://css.glass */
+    background: rgba(95, 95, 95, 0.52);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.7px);
+    -webkit-backdrop-filter: blur(4.7px);
+    border: 1px solid rgba(255, 255, 255, 0.29);
+}
+
+.tgoper2 {
+    align-items: center;
+    margin-top: 5px;
+    height: 26px;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+    /* From https://css.glass */
+    background: rgba(95, 95, 95, 0.52);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.7px);
+    -webkit-backdrop-filter: blur(4.7px);
+    border: 1px solid rgba(255, 255, 255, 0.29);
+}
+
+.tgkanal2 {
+    align-items: center;
+    margin-top: 5px;
+    height: 26px;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+    /* From https://css.glass */
+    background: rgba(95, 95, 95, 0.52);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.7px);
+    -webkit-backdrop-filter: blur(4.7px);
+    border: 1px solid rgba(255, 255, 255, 0.29);
+}
+
+.tginst2 {
+    align-items: center;
+    margin-top: 5px;
+    height: 26px;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+    columns: 2;
+    display: flex;
+    flex-direction: row;
+    line-height: 100%;
+    /* From https://css.glass */
+    background: rgba(95, 95, 95, 0.52);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.7px);
+    -webkit-backdrop-filter: blur(4.7px);
+    border: 1px solid rgba(255, 255, 255, 0.29);
+}
+
+
+
+
+.telegram-logo {
+    width: 26px;
+    height: 26px;
+    margin-right: 1px;
+}
+
+.textlogo {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#kanal {
+    font-size: 16px;
+    color: rgb(200, 200, 200);
+    display: block;
+    width: 100%;
+    letter-spacing: 0,5px;
+    margin-bottom: 4px;
+}
+
+#kanalcase {
+    font-size: 14px;
+    color: rgb(200, 200, 200);
+    display: block;
+    width: 100%;
+    letter-spacing: 0,5px;
+    margin-bottom: 4px;
+}
+
+#kanal2 {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 120%;
+    color: rgb(160, 160, 160);
+}
+
+
+.choice {
+    display: grid;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+/* Стили для кнопок */
+.button {
+    margin-top: 55px;
+    display: block; /* Блочный элемент, чтобы задать ширину и высоту */
+    width: 180px; /* Ширина кнопки */
+    padding: 10px; /* Внутренние отступы кнопки */
+    color: #bababa; /* Цвет текста кнопки */
+    border: none; /* Убираем границы кнопки */
+    border-radius: 40px; /* Скругленные углы кнопки */
+    cursor: pointer; /* Изменение вида курсора при наведении на кнопку */
+    /* From https://css.glass */
+    background: rgba(95, 95, 95, 0.52);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.7px);
+    -webkit-backdrop-filter: blur(4.7px);
+    border: 1px solid rgba(255, 255, 255, 0.29);
+}
+
+/* Стили для изображений внутри кнопок */
+.button img {
+    max-width: 100%; /* Изображение не должно выходить за границы кнопки */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+}
+
+.button div {
+    font-weight: bold; /* Делаем текст под кнопкой жирным */
+}
+
+
+
+
+
+
+
+
+
+.contplanet {
+    max-width: 370px;
+    display: none;
+    justify-content: center; /* Выравнивание по горизонтали */
+    align-items: center;
+    background: #353334;
+    min-height: 100vh;
+    margin: 0;
+}
+
+
+
+.clothes {
+    
+    margin-top: 30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.cloth {
+    
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%;
+    border-radius: 40px; /* Скругленные углы кнопки */
+
+    background: rgba(95, 95, 95, 0.52);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.7px);
+    -webkit-backdrop-filter: blur(4.7px);
+    border: 1px solid rgba(255, 255, 255, 0.29);
+}
+
+.imgclothes {
+    width: 70%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.купить {
+    width: 100%;
+    height: 60px;
+    padding: 10px 10px;
+    margin-top: 10px;
+    background-color:#353334;
+    color: white;
+
+
+    
+    border-radius: 16px;
+    border: 1px solid #353334;
+    transition: all .3s;
+    box-shadow: inset 4px 4px 12px #3a3a3a, inset -4px -4px 12px #1e1e1e;
+}
+
+.купить:active {
+    color: #666;
+    box-shadow: 3px 3px 12px #3a3a3a, -6px -6px 12px #1e1e1e;
+}
+
+input[type = "checkbox"] {
+    display: none;
+    visibility: hidden;
+}
+
+
+
+.купить2 {
+    width: 120px;
+    height: 60px;
+    padding: 10px 10px;
+    margin-top: 10px;
+    background-color:#ffffff;
+    color: rgb(0, 0, 0);
+    box-shadow: -4px -4px 6px 0 #ffffff, 4px 4px 6px 0 #aeaec0 20%;
+}
+
+
+
+
+
+
+
+
+
+.цена {
+    color: rgb(200, 200, 200);
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 15px; /* Отступ сверху */
+    margin-bottom: 10px; /* Отступ снизу */
+    justify-content: center;
+    align-items: center;
+}
+
+.nameclothes {
+    margin-bottom: 20px;
+    font-size: 12px;
+    color: rgb(160, 160, 160);
+    word-wrap: break-word; /* Обрыв длинных слов */
+    box-sizing: border-box;
+    flex-shrink: 0;
+    overflow-wrap: break-word;
+    font-weight: 400;
+    line-height: 140%;
+    min-height: 0;
+    height: auto;
+    overflow: hidden; /* Скрытие избыточного текста */
+    width: 100%; /* Занимать всю доступную ширину */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container {
+    max-width: 370px;
+    overflow: hidden;
+    display: none;
+    justify-content: center; /* Выравнивание по горизонтали */
+    align-items: center;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px 20px;
+    margin: 20px 10px;
+    overflow: hidden;
+}
+
+.img {
+    width: 100%;
+
+}
+
+.item {
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    width: 100%;
+    height: 30px;
+    margin: 0;
+    background-color:black;
+    border-radius: 0 0 5px 5px;
+    color: white;
+}
+
+.price {
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 11px; /* Отступ сверху */
+    margin-bottom: 3px; /* Отступ снизу */
+    text-align: left;
+}
+
+.skidprice {
+    color:rgb(255, 54, 54);
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 9px; /* Отступ сверху */
+    margin-bottom: 0; /* Отступ снизу */
+    text-align: left;
+}
+
+.pricecompl {
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 0; /* Отступ сверху */
+    margin-bottom: 3px; /* Отступ снизу */
+    text-align: left;
+    text-decoration: line-through;
+}
+
+.namecase {
+    font-size: 12px;
+    color: rgb(110, 110, 110);
+    text-align: left;
+    word-wrap: break-word; /* Обрыв длинных слов */
+    box-sizing: border-box;
+    flex-shrink: 0;
+    overflow-wrap: break-word;
+    font-weight: 400;
+    line-height: 140%;
+    min-height: 0;
+    display: -webkit-box;
+    height: auto;
+    overflow: hidden; /* Скрытие избыточного текста */
+    width: 100%; /* Занимать всю доступную ширину */
+}
+
+form {
+    display: none;
+    text-align: center;
+    width: 370px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    padding: 10px;
+}
+
+.img2 {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.namecase2 {
+    color: black;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px; /* Отступ сверху */
+}
+
+.price1 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price2 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price3 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price4 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.pricecompl-container {
+    display: flex;
+}
+
+.price5 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.plus {
+    color: rgb(110, 110, 110);
+    font-size: 14px;
+    margin: 0 10px; /* Добавьте отступы с обеих сторон знака "+" */
+}
+
+.price50 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price6 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price7 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price8 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price9 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price10 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price11 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price12 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price13 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price14 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price15 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price16 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price17 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price18 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price19 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price20 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price21 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price22 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price23 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price24 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price25 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price26 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.zakaz {
+    color: rgb(255, 54, 54);
+    font-size: 14px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.p {
+    color: black;
+    font-size: 14px;
+    text-align: left;
+    margin-top: 20px; /* Отступ сверху */
+}
+
+.models {
+    display: flex;
+    gap: 4px;
+    padding: 0 15px;
+    margin: 10px -15px 0;
+    overflow-x: scroll;
+    color: white;
+}
+
+.model1 {
+    color: black;
+    font-size: 14px;
+    background-color:rgb(230, 230, 230);
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    min-width: 60px;
+    border: 1px solid var(--background-secondary);
+    border-radius: 15px;
+    flex-shrink: 0;
+}
+
+.model2 {
+    color: black;
+    font-size: 14px;
+    background-color:rgb(230, 230, 230);
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    min-width: 60px;
+    border: 1px solid var(--background-secondary);
+    border-radius: 15px;
+    flex-shrink: 0;
+}
+
+.model3 {
+    color: black;
+    font-size: 14px;
+    background-color:rgb(230, 230, 230);
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    min-width: 60px;
+    border: 1px solid var(--background-secondary);
+    border-radius: 15px;
+    flex-shrink: 0;
+}
+
+.model4 {
+    color: black;
+    font-size: 14px;
+    background-color:rgb(230, 230, 230);
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    min-width: 60px;
+    border: 1px solid var(--background-secondary);
+    border-radius: 15px;
+    flex-shrink: 0;
+}
+
+.modelcompl {
+    color: black;
+    font-size: 14px;
+    background-color:rgb(230, 230, 230);
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    min-width: 60px;
+    border: 1px solid var(--background-secondary);
+    border-radius: 15px;
+    flex-shrink: 0;
+}
+
+.modelcomplair {
+    color: black;
+    font-size: 14px;
+    background-color:rgb(230, 230, 230);
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    min-width: 60px;
+    border: 1px solid var(--background-secondary);
+    border-radius: 15px;
+    flex-shrink: 0;
+}
+
+.m {
+    color: black;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.pricem {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 130%;
+    letter-spacing: -.01em;
+    color:black;
+}
+
+.swiper-container {
+    width: 100%;
+}
+
+.swiper-scrollbar {
+    position: absolute;
+    width: 4px; /* Ширина полосы прокрутки */
+    height: 100%; /* Высота полосы прокрутки */
+    background-color: rgba(0, 0, 0, 0.3); /* Цвет полосы прокрутки */
+    top: 0;
+    right: 0;
+    z-index: 1;
+    opacity: 0; /* Скрыть полосу прокрутки изначально */
+    transition: opacity 0.2s ease-in-out;
+}
+
+.y {
+    border-radius: 5px;
+    background: #000;
+    color: #fff;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 140%;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    align-items: center;
+    padding: 0 5px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+}
+
+.order {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    padding: 10px 10px;
+    margin-top: 10px;
+    background-color:black;
+    border-radius: 10px;
+    color: white;
+}
+
+
+
+
+
+
+.information {
+    background-color:rgb(230, 230, 230);
+    color: black;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    margin-top: 30px;
+}
+
+.card1 {
+    border-bottom: 3px solid white;
+}
+
+.order-card {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.TPC {
+    display: flex;
+    margin-left: 10px;
+    margin-top: 5px;
+    align-items: center;
+    gap: 5px;
+    font-weight:bold;
+    font-size: 18px;
+    line-height: 130%;
+    letter-spacing: -.01em
+}
+
+.info {
+    font-size: 15px;
+    text-align: left; /* Текст начинается слева */
+    white-space: normal; /* Перенос слов на следующую строку */
+    margin: 5px 10px;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.sections {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 5px;
+
+    gap: 4px;
+    padding: 0 15px;
+    overflow-x: scroll;
+    color: white;
+}
+
+.section {
+    cursor: pointer;
+    height: 25px;
+    padding: 4px 8px;
+    color: black;
+    font-size: 14px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 60px;
+    border-radius: 5px;
+    flex-shrink: 0;
+    text-align: center;
+    transition: background-color 0.3s; /* Добавляем анимацию смены цвета фона */
+    /* From https://css.glass */
+    background: rgba(95, 95, 95, 0.52);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.7px);
+    -webkit-backdrop-filter: blur(4.7px);
+    border: 1px solid rgba(255, 255, 255, 0.29);
+}
+
+.section.active {
+    background-color: rgb(204, 204, 204); /* Изменяем цвет фона для активного раздела */
+}
+
