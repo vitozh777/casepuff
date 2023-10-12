@@ -389,7 +389,7 @@ async function sendMessageToBot(instructionMessage) {
 
 // Функция для отправки сообщения в бота
 async function sendMessageToBotWithKeyboard(message, keyboard) {
-    const botToken = "6311077393:AAGEGc7ByWsP1KewwprCK8zWxwUCzN6tYEg"; // Замените на ваш токен бота
+    const botToken = "6495400315:AAGyff-CnLkYdKdfQJyTv_iIboJzJPvvnhA"; // Замените на ваш токен бота
     const chatId = tg.initDataUnsafe.user.id; // Замените на ваш ID чата
                 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
