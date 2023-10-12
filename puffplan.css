@@ -5,11 +5,12 @@ body {
     color: white;
     background-color: #353334;
     min-height: 100vh;
-    font-weight: 370px;
+    font-weight: 400px;
     display: flex;
     justify-content: center; /* Выравнивание по горизонтали */
     align-items: center; /* Выравнивание по вертикали */
     align-items: flex-start;
+    overflow: hidden;
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -133,11 +134,15 @@ body {
     flex-direction: row;
     line-height: 100%;
     /* From https://css.glass */
-    background: rgba(95, 95, 95, 0.52);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(4.7px);
-    -webkit-backdrop-filter: blur(4.7px);
-    border: 1px solid rgba(255, 255, 255, 0.29);
+    background: #353334;
+    border: none;
+    box-shadow: inset -1px -1px 12px #1e1e1e, inset -1px -1px 12px #1e1e1e, 1px 1px 12px #1e1e1e,  1px 1px 12px #1e1e1e;
+}
+
+.tgoper1:active {
+    color: #666;
+    box-shadow: 3px 3px 12px #3a3a3a, -1px -1px 12px #353434;
+    transform: translateY(2px);
 }
 
 .tgkanal1 {
@@ -151,11 +156,15 @@ body {
     flex-direction: row;
     line-height: 100%;
     /* From https://css.glass */
-    background: rgba(95, 95, 95, 0.52);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(4.7px);
-    -webkit-backdrop-filter: blur(4.7px);
-    border: 1px solid rgba(255, 255, 255, 0.29);
+    background: #353334;
+    border: none;
+    box-shadow: inset -1px -1px 12px #1e1e1e, inset -1px -1px 12px #1e1e1e, 1px 1px 12px #1e1e1e,  1px 1px 12px #1e1e1e;
+}
+
+.tgkanal1:active {
+    color: #666;
+    box-shadow: 3px 3px 12px #3a3a3a, -1px -1px 12px #353434;
+    transform: translateY(2px);
 }
 
 .tginst1 {
@@ -169,11 +178,15 @@ body {
     flex-direction: row;
     line-height: 100%;
     /* From https://css.glass */
-    background: rgba(95, 95, 95, 0.52);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(4.7px);
-    -webkit-backdrop-filter: blur(4.7px);
-    border: 1px solid rgba(255, 255, 255, 0.29);
+    background: #353334;
+    border: none;
+    box-shadow: inset -1px -1px 12px #1e1e1e, inset -1px -1px 12px #1e1e1e, 1px 1px 12px #1e1e1e,  1px 1px 12px #1e1e1e;
+}
+
+.tginst1:active {
+    color: #666;
+    box-shadow: 3px 3px 12px #3a3a3a, -1px -1px 12px #353434;
+    transform: translateY(2px);
 }
 
 .tgoper2 {
@@ -240,9 +253,10 @@ body {
 
 
 .telegram-logo {
-    width: 26px;
-    height: 26px;
-    margin-right: 1px;
+    width: 22px;
+    height: 22px;
+    margin-right: 2px;
+    margin-left: 5px;
 }
 
 .textlogo {
@@ -320,34 +334,26 @@ body {
 
 
 .contplanet {
-    max-width: 370px;
+    max-width: 400px;
     display: none;
     justify-content: center; /* Выравнивание по горизонтали */
     align-items: center;
     background: #353334;
     min-height: 100vh;
-    margin: 0;
 }
-
-
 
 .clothes {
-    
-    margin-top: 30px;
     text-align: center;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
 }
 
-.cloth {
-    
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    
-    width: 100%;
-    border-radius: 40px; /* Скругленные углы кнопки */
 
+.ячейка {
+    justify-content: center;
+    border-radius: 20px; /* Скругленные углы кнопки */
+    margin-top: 30px;
+    padding-top: 1px;
+    /* From https://css.glass */
     background: rgba(95, 95, 95, 0.52);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(4.7px);
@@ -355,52 +361,38 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.29);
 }
 
+.рамка {
+    width: auto;
+    border-radius: 20px; /* Скругленные углы кнопки */
+    background: #dadada;
+    margin: 10px;
+    padding: 10px;
+}
+
 .imgclothes {
-    width: 70%;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    width: 100%;
 }
 
 .купить {
     width: 100%;
     height: 60px;
     padding: 10px 10px;
-    margin-top: 10px;
     background-color:#353334;
     color: white;
+    margin-top: 10px;
 
 
+    border-radius: 20px;
+    border: none;
     
-    border-radius: 16px;
-    border: 1px solid #353334;
-    transition: all .3s;
-    box-shadow: inset 4px 4px 12px #3a3a3a, inset -4px -4px 12px #1e1e1e;
+    box-shadow: inset -1px -1px 12px #1e1e1e, inset -1px -1px 12px #1e1e1e, 1px 1px 12px #1e1e1e,  1px 1px 12px #1e1e1e;
 }
 
 .купить:active {
     color: #666;
-    box-shadow: 3px 3px 12px #3a3a3a, -6px -6px 12px #1e1e1e;
+    box-shadow: 3px 3px 12px #3a3a3a, -1px -1px 12px #353434;
+    transform: translateY(2px);
 }
-
-input[type = "checkbox"] {
-    display: none;
-    visibility: hidden;
-}
-
-
-
-.купить2 {
-    width: 120px;
-    height: 60px;
-    padding: 10px 10px;
-    margin-top: 10px;
-    background-color:#ffffff;
-    color: rgb(0, 0, 0);
-    box-shadow: -4px -4px 6px 0 #ffffff, 4px 4px 6px 0 #aeaec0 20%;
-}
-
-
-
 
 
 
@@ -411,14 +403,14 @@ input[type = "checkbox"] {
     color: rgb(200, 200, 200);
     font-size: 14px;
     font-weight: bold;
-    margin-top: 15px; /* Отступ сверху */
-    margin-bottom: 10px; /* Отступ снизу */
+    margin-top: 5px; /* Отступ сверху */
+    margin-bottom: 5px; /* Отступ снизу */
     justify-content: center;
     align-items: center;
 }
 
 .nameclothes {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     font-size: 12px;
     color: rgb(160, 160, 160);
     word-wrap: break-word; /* Обрыв длинных слов */

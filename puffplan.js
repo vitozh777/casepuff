@@ -119,6 +119,8 @@ let priceElementForm26 = document.querySelector(".price26");
 const backButton = Telegram.WebApp.BackButton;
 
 
+
+
 const tgoper = document.getElementById("tgoper");
 tgoper.addEventListener("click", () => {
     window.open("https://t.me/operpuff", "_blank");
@@ -173,6 +175,14 @@ const thepuffercaseContainer = document.getElementById("thepuffercase");
 casepuffButton.addEventListener("click", () => {
     homeContainer.style.display = "none";
     thepuffercaseContainer.style.display = "block";
+
+    backButton.show();
+
+    backButton.onClick(() => {
+        homeContainer.style.display = "block";
+        thepuffercaseContainer.style.display = "none";
+        backButton.hide();
+    });
 });
 
 const pufferplanetButton = document.getElementById("puffplanet");
@@ -181,6 +191,14 @@ const pufferplanetContainer = document.getElementById("pufferplanet");
 pufferplanetButton.addEventListener("click", () => {
     homeContainer.style.display = "none";
     pufferplanetContainer.style.display = "block";
+
+    backButton.show();
+
+    backButton.onClick(() => {
+        homeContainer.style.display = "block";
+        pufferplanetContainer.style.display = "none";
+        backButton.hide();
+    });
 });
 
 
