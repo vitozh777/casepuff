@@ -365,7 +365,7 @@ function calculateTotalPrice(price1, price2) {
 }
 
 async function sendMessageToBot(instructionMessage) {
-    const botToken = "6311077393:AAGEGc7ByWsP1KewwprCK8zWxwUCzN6tYEg";
+    const botToken = "6495400315:AAGyff-CnLkYdKdfQJyTv_iIboJzJPvvnhA";
     const chatId = tg.initDataUnsafe.user.id;
 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
