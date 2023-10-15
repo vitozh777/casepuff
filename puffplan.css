@@ -427,6 +427,23 @@ body {
 
 
 
+.window {
+    display: none;
+    text-align: center;
+    width: 400px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
 
 
 

@@ -169,34 +169,31 @@ tginst2.addEventListener("click", () => {
 
 
 const casepuffButton = document.getElementById("casepuff");
-const homeContainer = document.getElementById("home");
-const thepuffercaseContainer = document.getElementById("thepuffercase");
 
 casepuffButton.addEventListener("click", () => {
-    homeContainer.style.display = "none";
-    thepuffercaseContainer.style.display = "block";
+    document.getElementById("home").style.display = "none";
+    document.getElementById("thepuffercase").style.display = "block";
 
     backButton.show();
 
     backButton.onClick(() => {
-        homeContainer.style.display = "block";
-        thepuffercaseContainer.style.display = "none";
+        document.getElementById("home").style.display = "block";
+        document.getElementById("thepuffercase").style.display = "none";
         backButton.hide();
     });
 });
 
 const pufferplanetButton = document.getElementById("puffplanet");
-const pufferplanetContainer = document.getElementById("pufferplanet");
 
 pufferplanetButton.addEventListener("click", () => {
-    homeContainer.style.display = "none";
-    pufferplanetContainer.style.display = "block";
+    document.getElementById("home").style.display = "none";
+    document.getElementById("pufferplanet").style.display = "block";
 
     backButton.show();
 
     backButton.onClick(() => {
-        homeContainer.style.display = "block";
-        pufferplanetContainer.style.display = "none";
+        document.getElementById("home").style.display = "block";
+        document.getElementById("pufferplanet").style.display = "none";
         backButton.hide();
     });
 });
@@ -289,7 +286,6 @@ btn1.addEventListener("click", () => {
     // Делаем кнопку "order1" неактивной
     order1.disabled = true;
     order1.classList.add("disabled");
-
     backButton.show();
 
     backButton.onClick(() => {
