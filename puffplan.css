@@ -427,14 +427,108 @@ body {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 .window {
     display: none;
     text-align: center;
     width: 400px;
-    overflow: hidden;
     justify-content: center;
     align-items: center;
 }
+
+.pufforder {
+    width: 100%;
+    height: 60px;
+    padding: 10px 10px;
+    background-color:#353334;
+    color: white;
+    margin-top: 10px;
+
+
+    border-radius: 20px;
+    border: none;
+    
+    box-shadow: inset -1px -1px 12px #1e1e1e, inset -1px -1px 12px #1e1e1e, 1px 1px 12px #1e1e1e,  1px 1px 12px #1e1e1e;
+}
+
+.pufforder:active {
+    color: #666;
+    box-shadow: 3px 3px 12px #3a3a3a, -1px -1px 12px #353434;
+    transform: translateY(2px);
+}
+
+.pufforderinactive {
+    color: #666;
+    box-shadow: 3px 3px 12px #3a3a3a, -1px -1px 12px #353434;
+    transform: translateY(2px);
+    opacity: 0.5;
+}
+
+.nameclothes2 {
+    color: rgb(160, 160, 160);
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px; /* Отступ сверху */
+}
+
+.цена1 {
+    color: rgb(200, 200, 200);
+    text-align: left;
+    font-size: 14px;
+    margin-top: 1px;
+}
+
+.v {
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    text-align: left;
+    margin-top: 10px; /* Отступ сверху */
+}
+
+.razmers {
+    display: flex;
+    gap: 20px;
+    padding: 0 15px;
+    margin: 5px -15px 0;
+}
+
+.razmer1 {
+    width: 60px;
+    height: 30px;
+    padding: 5px 5px;
+    background-color:#353334;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 15px;
+
+
+    border-radius: 10px;
+    border: none;
+    
+    box-shadow: inset -1px -1px 12px #1e1e1e, inset -1px -1px 12px #1e1e1e, 1px 1px 12px #1e1e1e,  1px 1px 12px #1e1e1e;
+}
+
+.razmer1active {
+    color: #666;
+    box-shadow: 3px 3px 12px #3a3a3a, -1px -1px 12px #353434;
+    transform: translateY(2px);
+    opacity: 0.5;
+}
+
+
 
 
 
@@ -880,6 +974,21 @@ form {
 
 .swiper-container {
     width: 100%;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+.img3 {
+    width: 90%;
+}
+
+.swiper-wrapper {
+    margin-top: 10px;
+}
+
+.swiper-slide {
+    background-color: #ffffff;
+    border-radius: 20px;
 }
 
 .swiper-scrollbar {
@@ -908,9 +1017,8 @@ form {
     gap: 3px;
     align-items: center;
     padding: 0 5px;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
     width: fit-content;
+    margin-top: 5px;
 }
 
 .order {

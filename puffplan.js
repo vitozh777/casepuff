@@ -202,6 +202,93 @@ pufferplanetButton.addEventListener("click", () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+const купить1 = document.getElementById("купить1");
+const pufforder1 = document.getElementById("pufforder1");
+let razmer1 = document.querySelectorAll(".razmer1");
+
+купить1.addEventListener("click", () => {
+    document.getElementById("pufferplanet").style.display = "none"
+    document.getElementById("formplanet1").style.display = "block"
+
+    // Делаем кнопку "pufforder1" неактивной
+    pufforder1.pufforderinactive = true;
+    pufforder1.classList.add("pufforderinactive");
+    backButton.show();
+
+    backButton.onClick(() => {
+        document.getElementById("pufferplanet").style.display = "block";
+        document.getElementById("formplanet1").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
+});
+
+razmer1.forEach(razmer => {
+    razmer.addEventListener("click", (event) => {
+        event.preventDefault(); // Предотвращаем действие по умолчанию (например, переход по ссылке)
+
+
+        selectedRazmer = razmer.textContent;
+        selectedPrice = razmerInfo1[selectedRazmer];
+
+        // Удаляем границу у всех кнопок
+        razmer1.forEach(pufforder => {
+            pufforder.classList.remove("pufforder");
+        });
+
+        // Добавляем класс selected к выбранной кнопке
+        razmer.classList.add("razmer1active");
+
+
+        pufforder1.pufforderinactive = false;
+        pufforder1.classList.remove("pufforderinactive");
+
+        priceElement.textContent = selectedPrice;
+        priceElementForm1.textContent = selectedPrice;
+                    
+        selectedRazmer = razmer.textContent;
+    });
+});
+
+const razmerInfo1 = {
+    "S": "2800₽",
+    "M": "2800₽",
+    "L": "2800₽",
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const allSection = document.getElementById("all");
 const pufferSection = document.getElementById("puffer");
 const soapSection = document.getElementById("soap");
