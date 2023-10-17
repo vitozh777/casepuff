@@ -531,14 +531,14 @@ body {
     z-index: 999;
 }
 
-.sale-window {
-    width: 380px;
-    height: 500px;
+.setka {
+    width: 400px;
+    
     border-radius: 14px;
     display: flex;
     align-items: center;
     position: fixed;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     
@@ -547,6 +547,11 @@ body {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.29);
+}
+
+.imgsetka {
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .close-button {

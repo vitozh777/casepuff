@@ -218,14 +218,14 @@ const pufforder1 = document.getElementById("pufforder1");
 let razmer1 = document.querySelectorAll(".razmer1");
 let priceElementFormplan = document.querySelector(".цена1");
 
-function openNewWindow() {
-    document.getElementById("saleOverlay").style.display = "block"
+function openSetkaWindow() {
+    document.getElementById("setkaOverlay").style.display = "block"
 }
 
 // Закрыть окошко sale
-function closeSale() {
-    const saleOverlay = document.getElementById("saleOverlay");
-    saleOverlay.style.display = "none";
+function closeSetka() {
+    const setkaOverlay = document.getElementById("setkaOverlay");
+    setkaOverlay.style.display = "none";
 }
 
 купить1.addEventListener("click", () => {
