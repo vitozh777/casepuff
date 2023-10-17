@@ -492,10 +492,22 @@ body {
     margin-top: 1px;
 }
 
+.rr {
+    display: flex;
+    justify-content: space-between;
+}
+
+.s {
+    color: rgb(194, 71, 196);
+    font-size: 14px;
+    margin-top: 10px; /* Отступ сверху */
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 .v {
     color: rgb(255, 255, 255);
     font-size: 14px;
-    text-align: left;
     margin-top: 10px; /* Отступ сверху */
 }
 
