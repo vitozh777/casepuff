@@ -87,6 +87,7 @@ let order24 = document.getElementById("order24");
 let order25 = document.getElementById("order25");
 let order26 = document.getElementById("order26");
 let selectedModel = ""; // Для хранения выбранной модели
+let selectedRazmer = ""; // Для хранения выбранной модели
 let selectedPrice = ""; // Для хранения выбранной цены
 let priceElementForm1 = document.querySelector(".price1");
 let priceElementForm2 = document.querySelector(".price2");
@@ -215,6 +216,7 @@ pufferplanetButton.addEventListener("click", () => {
 const купить1 = document.getElementById("купить1");
 const pufforder1 = document.getElementById("pufforder1");
 let razmer1 = document.querySelectorAll(".razmer1");
+let priceElementFormplan = document.querySelector(".цена1");
 
 купить1.addEventListener("click", () => {
     document.getElementById("pufferplanet").style.display = "none"
@@ -242,8 +244,8 @@ razmer1.forEach(razmer => {
         selectedPrice = razmerInfo1[selectedRazmer];
 
         // Удаляем границу у всех кнопок
-        razmer1.forEach(pufforder => {
-            pufforder.classList.remove("pufforder");
+        razmer1.forEach(btn => {
+            btn.classList.remove("razmer1active");
         });
 
         // Добавляем класс selected к выбранной кнопке
@@ -254,16 +256,55 @@ razmer1.forEach(razmer => {
         pufforder1.classList.remove("pufforderinactive");
 
         priceElement.textContent = selectedPrice;
-        priceElementForm1.textContent = selectedPrice;
+        priceElementFormplan.textContent = selectedPrice;
                     
         selectedRazmer = razmer.textContent;
     });
 });
 
+console.log(tg)
+// Добавьте обработчик события click для кнопки "Add"
+pufforder1.disabled = false;
+pufforder1.addEventListener("click", (event) => {
+    if (!pufforder1.disabled) {
+        event.preventDefault();
+        
+        // Получаем выбранную модель и цену
+        const selectedRazmer = document.querySelector(".razmer1.razmer1active").textContent;
+        const selectedPrice = razmerInfo1[selectedRazmer];
+
+        // Вычисляем общую цену
+        const deliveryPrice = "250₽";
+        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
+        
+        // Обновляем текст и видимость кнопки MainButton
+        tg.MainButton.text = "Оплатить через оператора";
+        tg.MainButton.show();
+        
+        // Сохраняем выбранные данные для передачи боту
+        const itemName = "THE OVERSIZE T-SHIRT - MIDNIGHT";
+        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
+        const message = `
+            Заказ: ${itemName}
+            Размер: ${selectedRazmer}
+            Цена: ${selectedPrice}
+            Доставка: ${deliveryPrice}
+            Общая цена: ${totalPrice}
+        `;
+        // Добавьте обработчик для кнопки MainButton
+        tg.MainButton.onClick(async () => {
+            await sendMessageToBot(instructionMessage);
+            await sendMessageToBotWithKeyboard(message, keyboard);
+            
+            tg.close();
+        });
+    }   
+});
+
 const razmerInfo1 = {
-    "S": "2800₽",
+    "S": "1800₽",
     "M": "2800₽",
-    "L": "2800₽",
+    "L": "3800₽",
 };
 
 
