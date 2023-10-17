@@ -218,6 +218,16 @@ const pufforder1 = document.getElementById("pufforder1");
 let razmer1 = document.querySelectorAll(".razmer1");
 let priceElementFormplan = document.querySelector(".цена1");
 
+function openNewWindow() {
+    document.getElementById("saleOverlay").style.display = "block"
+}
+
+// Закрыть окошко sale
+function closeSale() {
+    const saleOverlay = document.getElementById("saleOverlay");
+    saleOverlay.style.display = "none";
+}
+
 купить1.addEventListener("click", () => {
     document.getElementById("pufferplanet").style.display = "none"
     document.getElementById("formplanet1").style.display = "block"
@@ -302,9 +312,9 @@ pufforder1.addEventListener("click", (event) => {
 });
 
 const razmerInfo1 = {
-    "S": "1800₽",
+    "S": "2800₽",
     "M": "2800₽",
-    "L": "3800₽",
+    "L": "2800₽",
 };
 
 
