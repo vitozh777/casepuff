@@ -180,6 +180,7 @@ casepuffButton.addEventListener("click", () => {
     backButton.onClick(() => {
         document.getElementById("home").style.display = "block";
         document.getElementById("thepuffercase").style.display = "none";
+        tg.MainButton.hide();
         backButton.hide();
     });
 });
@@ -195,6 +196,7 @@ pufferplanetButton.addEventListener("click", () => {
     backButton.onClick(() => {
         document.getElementById("home").style.display = "block";
         document.getElementById("pufferplanet").style.display = "none";
+        tg.MainButton.hide();
         backButton.hide();
     });
 });
@@ -267,7 +269,7 @@ razmer1.forEach(razmer => {
 
         priceElement.textContent = selectedPrice;
         priceElementFormplan.textContent = selectedPrice;
-                    
+
         selectedRazmer = razmer.textContent;
     });
 });
