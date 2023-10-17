@@ -561,7 +561,7 @@ body {
 
 
 .container {
-    max-width: 370px;
+    max-width: 400px;
     overflow: hidden;
     display: none;
     justify-content: center; /* Выравнивание по горизонтали */
@@ -649,7 +649,7 @@ body {
 form {
     display: none;
     text-align: center;
-    width: 370px;
+    width: 400px;
     overflow: hidden;
     justify-content: center;
     align-items: center;
