@@ -497,16 +497,6 @@ body {
     justify-content: space-between;
 }
 
-
-
-
-
-
-
-
-
-
-
 .s {
     color: rgb(194, 71, 196);
     font-size: 14px;
@@ -552,6 +542,10 @@ body {
 .imgsetka {
     width: 100%;
     margin-bottom: 20px;
+}
+
+.imgl {
+    width: 100%;
 }
 
 .close-button {
@@ -1060,15 +1054,15 @@ form {
     width: 100%;
     background-color: #ffffff;
     border-radius: 20px;
+    overflow: hidden;
 }
 
 .img3 {
-    width: 90%;
+    width: 95%;
+    margin-top: 70px;
 }
 
-.swiper-wrapper {
-    margin-top: 10px;
-}
+
 
 .swiper-slide {
     background-color: #ffffff;
@@ -1103,6 +1097,8 @@ form {
     padding: 0 5px;
     width: fit-content;
     margin-top: 5px;
+    margin-left: 15px;
+    margin-bottom: 5px;
 }
 
 .order {

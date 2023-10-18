@@ -129,12 +129,12 @@ tgoper.addEventListener("click", () => {
 
 const tgkanal = document.getElementById("tgkanal");
 tgkanal.addEventListener("click", () => {
-    window.open("https://t.me/casepuff", "_blank");
+    window.open("https://t.me/pufferplanet", "_blank");
 });
 
 const tginst = document.getElementById("tginst");
 tginst.addEventListener("click", () => {
-    window.open("https://www.instagram.com/casepuff/", "_blank");
+    window.open("https://www.instagram.com/pufferplanet/", "_blank");
 });
 
 const tgoper1 = document.getElementById("tgoper1");
@@ -144,12 +144,12 @@ tgoper1.addEventListener("click", () => {
 
 const tgkanal1 = document.getElementById("tgkanal1");
 tgkanal1.addEventListener("click", () => {
-    window.open("https://t.me/casepuff", "_blank");
+    window.open("https://t.me/pufferplanet", "_blank");
 });
 
 const tginst1 = document.getElementById("tginst1");
 tginst1.addEventListener("click", () => {
-    window.open("https://www.instagram.com/casepuff/", "_blank");
+    window.open("https://www.instagram.com/pufferplanet/", "_blank");
 });
 
 const tgoper2 = document.getElementById("tgoper2");
@@ -159,12 +159,12 @@ tgoper2.addEventListener("click", () => {
 
 const tgkanal2 = document.getElementById("tgkanal2");
 tgkanal2.addEventListener("click", () => {
-    window.open("https://t.me/casepuff", "_blank");
+    window.open("https://t.me/pufferplanet", "_blank");
 });
 
 const tginst2 = document.getElementById("tginst2");
 tginst2.addEventListener("click", () => {
-    window.open("https://www.instagram.com/casepuff/", "_blank");
+    window.open("https://www.instagram.com/pufferplanet/", "_blank");
 });
 
 
