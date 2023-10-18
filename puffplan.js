@@ -175,14 +175,7 @@ casepuffButton.addEventListener("click", () => {
     document.getElementById("home").style.display = "none";
     document.getElementById("thepuffercase").style.display = "block";
 
-    backButton.show();
 
-    backButton.onClick(() => {
-        document.getElementById("home").style.display = "block";
-        document.getElementById("thepuffercase").style.display = "none";
-        tg.MainButton.hide();
-        backButton.hide();
-    });
 });
 
 const pufferplanetButton = document.getElementById("puffplanet");
@@ -191,14 +184,7 @@ pufferplanetButton.addEventListener("click", () => {
     document.getElementById("home").style.display = "none";
     document.getElementById("pufferplanet").style.display = "block";
 
-    backButton.show();
-
-    backButton.onClick(() => {
-        document.getElementById("home").style.display = "block";
-        document.getElementById("pufferplanet").style.display = "none";
-        tg.MainButton.hide();
-        backButton.hide();
-    });
+    
 });
 
 
@@ -286,7 +272,7 @@ pufforder1.addEventListener("click", (event) => {
         const selectedPrice = razmerInfo1[selectedRazmer];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "300₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
