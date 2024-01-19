@@ -192,9 +192,10 @@ pufferplanetButton.addEventListener("click", () => {
 
 document.addEventListener('DOMContentLoaded', function() {
     var video = document.getElementById('myVideo');
+    var secondVideo = document.getElementById('myVideo2');
     var isVideoPlayed = false;
 
-    // Задержка в 2 секунды перед воспроизведением видео
+    // Задержка в 2 секунды перед воспроизведением первого видео
     setTimeout(function() {
         // Проверяем, что видео не было воспроизведено ранее
         if (!isVideoPlayed) {
@@ -206,14 +207,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Игнорируем эту ошибку.
             });
         }
-    }, 1000);
-});
+    }, 2000);
 
-document.addEventListener("DOMContentLoaded", function() {
-    var video = document.getElementById("myVideo2");
-
-    video.addEventListener("canplaythrough", function() {
-        video.play();
+    // Обработчик события beforeunload для воспроизведения второго видео при закрытии страницы
+    window.addEventListener('beforeunload', function() {
+        secondVideo.play().catch(function(error) {
+            // Воспроизведение может вызвать ошибку, если видео уже воспроизводится.
+            // Игнорируем эту ошибку.
+        });
     });
 });
 
