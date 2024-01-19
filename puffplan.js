@@ -190,6 +190,14 @@ pufferplanetButton.addEventListener("click", () => {
 
 
 
+var video = document.getElementById("myVideo");
+
+  // Воспроизводим видео при загрузке страницы
+window.onload = function() {
+    video.play();
+};
+
+
 
 
 
@@ -300,9 +308,9 @@ pufforder1.addEventListener("click", (event) => {
 });
 
 const razmerInfo1 = {
-    "S": "2800₽",
-    "M": "2800₽",
-    "L": "2800₽",
+    "S": "2290₽",
+    "M": "2290₽",
+    "L": "2290₽",
 };
 
 
@@ -410,8 +418,8 @@ btn1.addEventListener("click", () => {
 
 
     // Делаем кнопку "order1" неактивной
-    order1.disabled = true;
-    order1.classList.add("disabled");
+    order1.orderinactive = true;
+    order1.classList.add("orderinactive");
     backButton.show();
 
     backButton.onClick(() => {
@@ -436,21 +444,18 @@ model1.forEach(model => {
         // Удаляем границу у всех кнопок
         model1.forEach(btn => {
             btn.classList.remove("selected");
-            btn.style.border = "none";
         });
 
         // Добавляем класс selected к выбранной кнопке
         model.classList.add("selected");
-                    
-        // Обновляем стиль выбранной кнопки
-        model.style.border = "1px solid black";
 
-        order1.disabled = false;
-        order1.classList.remove("disabled");
+
+        order1.orderinactive = false;
+        order1.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm1.textContent = selectedPrice;
-                    
+        
         selectedModel = model.textContent;
     });
 });
@@ -557,8 +562,8 @@ btn2.addEventListener("click", () => {
     document.getElementById("form2").style.display = "block";
 
     // Делаем кнопку "order2" неактивной
-    order2.disabled = true;
-    order2.classList.add("disabled");
+    order2.orderinactive = true;
+    order2.classList.add("orderinactive");
 
     backButton.show();
 
@@ -581,17 +586,14 @@ model2.forEach(model => {
         // Удаляем границу у всех кнопок
         model2.forEach(btn => {
             btn.classList.remove("selected");
-            btn.style.border = "none";
         });
 
         // Добавляем класс selected к выбранной кнопке
         model.classList.add("selected");
-                    
-        // Обновляем стиль выбранной кнопки
-        model.style.border = "1px solid black";
 
-        order2.disabled = false;
-        order2.classList.remove("disabled");
+
+        order2.orderinactive = false;
+        order2.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm2.textContent = selectedPrice;
@@ -646,8 +648,8 @@ btn3.addEventListener("click", () => {
     document.getElementById("form3").style.display = "block";
 
     // Делаем кнопку "order3" неактивной
-    order3.disabled = true;
-    order3.classList.add("disabled");
+    order3.orderinactive = true;
+    order3.classList.add("orderinactive");
 
     backButton.show();
 
@@ -679,8 +681,8 @@ model1.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order3.disabled = false;
-        order3.classList.remove("disabled");
+        order3.orderinactive = false;
+        order3.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm3.textContent = selectedPrice;
@@ -734,8 +736,8 @@ btn4.addEventListener("click", () => {
     document.getElementById("form4").style.display = "block";
 
     // Делаем кнопку "order4" неактивной
-    order4.disabled = true;
-    order4.classList.add("disabled");
+    order4.orderinactive = true;
+    order4.classList.add("orderinactive");
 
     backButton.show();
 
@@ -767,8 +769,8 @@ model2.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order4.disabled = false;
-        order4.classList.remove("disabled");
+        order4.orderinactive = false;
+        order4.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm4.textContent = selectedPrice;
@@ -823,8 +825,8 @@ btn5.addEventListener("click", () => {
     document.getElementById("form5").style.display = "block";
 
     // Делаем кнопку "order3" неактивной
-    order5.disabled = true;
-    order5.classList.add("disabled");
+    order5.orderinactive = true;
+    order5.classList.add("orderinactive");
 
     backButton.show();
 
@@ -897,11 +899,11 @@ modelcomplair.forEach(model => {
 
 function updateOrder5ButtonState() {
     if (selectedModel && selectedModelAir) {
-        order5.disabled = false;
-        order5.classList.remove("disabled");
+        order5.orderinactive = false;
+        order5.classList.remove("orderinactive");
     } else {
-        order5.disabled = true;
-        order5.classList.add("disabled");
+        order5.orderinactive = true;
+        order5.classList.add("orderinactive");
     }
 }
 
@@ -961,8 +963,8 @@ btn6.addEventListener("click", () => {
     document.getElementById("form6").style.display = "block";
 
     // Делаем кнопку "order3" неактивной
-    order6.disabled = true;
-    order6.classList.add("disabled");
+    order6.orderinactive = true;
+    order6.classList.add("orderinactive");
 
     backButton.show();
 
@@ -994,8 +996,8 @@ model1.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order6.disabled = false;
-        order6.classList.remove("disabled");
+        order6.orderinactive = false;
+        order6.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm6.textContent = selectedPrice;
@@ -1049,8 +1051,8 @@ btn7.addEventListener("click", () => {
     document.getElementById("form7").style.display = "block";
 
     // Делаем кнопку "order2" неактивной
-    order7.disabled = true;
-    order7.classList.add("disabled");
+    order7.orderinactive = true;
+    order7.classList.add("orderinactive");
 
     backButton.show();
 
@@ -1082,8 +1084,8 @@ model3.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order7.disabled = false;
-        order7.classList.remove("disabled");
+        order7.orderinactive = false;
+        order7.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm7.textContent = selectedPrice;
@@ -1138,8 +1140,8 @@ btn8.addEventListener("click", () => {
     document.getElementById("form8").style.display = "block";
 
     // Делаем кнопку "order3" неактивной
-    order8.disabled = true;
-    order8.classList.add("disabled");
+    order8.orderinactive = true;
+    order8.classList.add("orderinactive");
 
     backButton.show();
 
@@ -1171,8 +1173,8 @@ model1.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order8.disabled = false;
-        order8.classList.remove("disabled");
+        order8.orderinactive = false;
+        order8.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm8.textContent = selectedPrice;
@@ -1226,8 +1228,8 @@ btn9.addEventListener("click", () => {
     document.getElementById("form9").style.display = "block";
 
     // Делаем кнопку "order3" неактивной
-    order9.disabled = true;
-    order9.classList.add("disabled");
+    order9.orderinactive = true;
+    order9.classList.add("orderinactive");
 
     backButton.show();
 
@@ -1259,8 +1261,8 @@ model1.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order9.disabled = false;
-        order9.classList.remove("disabled");
+        order9.orderinactive = false;
+        order9.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm9.textContent = selectedPrice;
@@ -1314,8 +1316,8 @@ btn10.addEventListener("click", () => {
     document.getElementById("form10").style.display = "block";
 
     // Делаем кнопку "order2" неактивной
-    order10.disabled = true;
-    order10.classList.add("disabled");
+    order10.orderinactive = true;
+    order10.classList.add("orderinactive");
 
     backButton.show();
 
@@ -1347,8 +1349,8 @@ model3.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order10.disabled = false;
-        order10.classList.remove("disabled");
+        order10.orderinactive = false;
+        order10.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm10.textContent = selectedPrice;
@@ -1403,8 +1405,8 @@ btn11.addEventListener("click", () => {
     document.getElementById("form11").style.display = "block";
 
     // Делаем кнопку "order3" неактивной
-    order11.disabled = true;
-    order11.classList.add("disabled");
+    order11.orderinactive = true;
+    order11.classList.add("orderinactive");
 
     backButton.show();
 
@@ -1436,8 +1438,8 @@ model1.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order11.disabled = false;
-        order11.classList.remove("disabled");
+        order11.orderinactive = false;
+        order11.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm11.textContent = selectedPrice;
@@ -1491,8 +1493,8 @@ btn12.addEventListener("click", () => {
     document.getElementById("form12").style.display = "block";
 
     // Делаем кнопку "order3" неактивной
-    order12.disabled = true;
-    order12.classList.add("disabled");
+    order12.orderinactive = true;
+    order12.classList.add("orderinactive");
 
     backButton.show();
 
@@ -1524,8 +1526,8 @@ model1.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order12.disabled = false;
-        order12.classList.remove("disabled");
+        order12.orderinactive = false;
+        order12.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm12.textContent = selectedPrice;
@@ -1579,8 +1581,8 @@ btn13.addEventListener("click", () => {
     document.getElementById("form13").style.display = "block";
 
     // Делаем кнопку "order2" неактивной
-    order13.disabled = true;
-    order13.classList.add("disabled");
+    order13.orderinactive = true;
+    order13.classList.add("orderinactive");
 
     backButton.show();
 
@@ -1612,8 +1614,8 @@ model4.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order13.disabled = false;
-        order13.classList.remove("disabled");
+        order13.orderinactive = false;
+        order13.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm13.textContent = selectedPrice;
@@ -1668,8 +1670,8 @@ btn14.addEventListener("click", () => {
     document.getElementById("form14").style.display = "block";
 
     // Делаем кнопку "order2" неактивной
-    order14.disabled = true;
-    order14.classList.add("disabled");
+    order14.orderinactive = true;
+    order14.classList.add("orderinactive");
 
     backButton.show();
 
@@ -1701,8 +1703,8 @@ model4.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order14.disabled = false;
-        order14.classList.remove("disabled");
+        order14.orderinactive = false;
+        order14.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm14.textContent = selectedPrice;
@@ -1757,8 +1759,8 @@ btn15.addEventListener("click", () => {
     document.getElementById("form15").style.display = "block";
 
     // Делаем кнопку "order3" неактивной
-    order15.disabled = true;
-    order15.classList.add("disabled");
+    order15.orderinactive = true;
+    order15.classList.add("orderinactive");
 
     backButton.show();
 
@@ -1790,8 +1792,8 @@ model1.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order15.disabled = false;
-        order15.classList.remove("disabled");
+        order15.orderinactive = false;
+        order15.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm15.textContent = selectedPrice;
@@ -1845,8 +1847,8 @@ btn16.addEventListener("click", () => {
     document.getElementById("form16").style.display = "block";
 
     // Делаем кнопку "order3" неактивной
-    order16.disabled = true;
-    order16.classList.add("disabled");
+    order16.orderinactive = true;
+    order16.classList.add("orderinactive");
 
     backButton.show();
 
@@ -1878,8 +1880,8 @@ model1.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order16.disabled = false;
-        order16.classList.remove("disabled");
+        order16.orderinactive = false;
+        order16.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm16.textContent = selectedPrice;
@@ -1933,8 +1935,8 @@ btn17.addEventListener("click", () => {
     document.getElementById("form17").style.display = "block";
 
     // Делаем кнопку "order3" неактивной
-    order17.disabled = true;
-    order17.classList.add("disabled");
+    order17.orderinactive = true;
+    order17.classList.add("orderinactive");
 
     backButton.show();
 
@@ -1966,8 +1968,8 @@ model1.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order17.disabled = false;
-        order17.classList.remove("disabled");
+        order17.orderinactive = false;
+        order17.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm17.textContent = selectedPrice;
@@ -2021,8 +2023,8 @@ btn18.addEventListener("click", () => {
     document.getElementById("form18").style.display = "block";
 
     // Делаем кнопку "order3" неактивной
-    order18.disabled = true;
-    order18.classList.add("disabled");
+    order18.orderinactive = true;
+    order18.classList.add("orderinactive");
 
     backButton.show();
 
@@ -2054,8 +2056,8 @@ model1.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order18.disabled = false;
-        order18.classList.remove("disabled");
+        order18.orderinactive = false;
+        order18.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm18.textContent = selectedPrice;
@@ -2109,8 +2111,8 @@ btn19.addEventListener("click", () => {
     document.getElementById("form19").style.display = "block";
 
     // Делаем кнопку "order3" неактивной
-    order19.disabled = true;
-    order19.classList.add("disabled");
+    order19.orderinactive = true;
+    order19.classList.add("orderinactive");
 
     backButton.show();
 
@@ -2142,8 +2144,8 @@ model1.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order19.disabled = false;
-        order19.classList.remove("disabled");
+        order19.orderinactive = false;
+        order19.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm19.textContent = selectedPrice;
@@ -2197,8 +2199,8 @@ btn20.addEventListener("click", () => {
     document.getElementById("form20").style.display = "block";
 
     // Делаем кнопку "order3" неактивной
-    order20.disabled = true;
-    order20.classList.add("disabled");
+    order20.orderinactive = true;
+    order20.classList.add("orderinactive");
 
     backButton.show();
 
@@ -2230,8 +2232,8 @@ model1.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order20.disabled = false;
-        order20.classList.remove("disabled");
+        order20.orderinactive = false;
+        order20.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm20.textContent = selectedPrice;
@@ -2285,8 +2287,8 @@ btn21.addEventListener("click", () => {
     document.getElementById("form21").style.display = "block";
 
     // Делаем кнопку "order2" неактивной
-    order21.disabled = true;
-    order21.classList.add("disabled");
+    order21.orderinactive = true;
+    order21.classList.add("orderinactive");
 
     backButton.show();
 
@@ -2318,8 +2320,8 @@ model3.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order21.disabled = false;
-        order21.classList.remove("disabled");
+        order21.orderinactive = false;
+        order21.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm21.textContent = selectedPrice;
@@ -2374,8 +2376,8 @@ btn22.addEventListener("click", () => {
     document.getElementById("form22").style.display = "block";
 
     // Делаем кнопку "order3" неактивной
-    order22.disabled = true;
-    order22.classList.add("disabled");
+    order22.orderinactive = true;
+    order22.classList.add("orderinactive");
 
     backButton.show();
 
@@ -2407,8 +2409,8 @@ model1.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order22.disabled = false;
-        order22.classList.remove("disabled");
+        order22.orderinactive = false;
+        order22.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm22.textContent = selectedPrice;
@@ -2462,8 +2464,8 @@ btn23.addEventListener("click", () => {
     document.getElementById("form23").style.display = "block";
 
     // Делаем кнопку "order2" неактивной
-    order23.disabled = true;
-    order23.classList.add("disabled");
+    order23.orderinactive = true;
+    order23.classList.add("orderinactive");
 
     backButton.show();
 
@@ -2495,8 +2497,8 @@ model3.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order23.disabled = false;
-        order23.classList.remove("disabled");
+        order23.orderinactive = false;
+        order23.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm23.textContent = selectedPrice;
@@ -2551,8 +2553,8 @@ btn24.addEventListener("click", () => {
     document.getElementById("form24").style.display = "block";
 
     // Делаем кнопку "order2" неактивной
-    order24.disabled = true;
-    order24.classList.add("disabled");
+    order24.orderinactive = true;
+    order24.classList.add("orderinactive");
 
     backButton.show();
 
@@ -2584,8 +2586,8 @@ model3.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order24.disabled = false;
-        order24.classList.remove("disabled");
+        order24.orderinactive = false;
+        order24.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm24.textContent = selectedPrice;
@@ -2640,8 +2642,8 @@ btn25.addEventListener("click", () => {
     document.getElementById("form25").style.display = "block";
 
     // Делаем кнопку "order2" неактивной
-    order25.disabled = true;
-    order25.classList.add("disabled");
+    order25.orderinactive = true;
+    order25.classList.add("orderinactive");
 
     backButton.show();
 
@@ -2673,8 +2675,8 @@ model3.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order25.disabled = false;
-        order25.classList.remove("disabled");
+        order25.orderinactive = false;
+        order25.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm25.textContent = selectedPrice;
@@ -2729,8 +2731,8 @@ btn26.addEventListener("click", () => {
     document.getElementById("form26").style.display = "block";
 
     // Делаем кнопку "order2" неактивной
-    order26.disabled = true;
-    order26.classList.add("disabled");
+    order26.orderinactive = true;
+    order26.classList.add("orderinactive");
 
     backButton.show();
 
@@ -2762,8 +2764,8 @@ model3.forEach(model => {
         // Обновляем стиль выбранной кнопки
         model.style.border = "1px solid black";
 
-        order26.disabled = false;
-        order26.classList.remove("disabled");
+        order26.orderinactive = false;
+        order26.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm26.textContent = selectedPrice;
@@ -2815,6 +2817,10 @@ order26.addEventListener("click", (event) => {
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
 const modelInfo1 = {
+    "iPhone 15 Pro Max": "2099₽",
+    "iPhone 15 Pro": "1899₽",
+    "iPhone 15 Plus": "2099₽",
+    "iPhone 15": "1899₽",
     "iPhone 14 Pro Max": "2099₽",
     "iPhone 14 Pro": "1899₽",
     "iPhone 14 Plus": "2099₽",
@@ -2829,9 +2835,9 @@ const modelInfo1 = {
     "iPhone 11 Pro Max": "2099₽",
     "iPhone 11 Pro": "1899₽",
     "iPhone 11": "1899₽",
-    "iPhone Xs Max": "2099₽",
-    "iPhone Xr": "1899₽",
-    "iPhone X/Xs": "1899₽",
+    "iPhone Xs Max": "1899₽",
+    "iPhone Xr": "1699₽",
+    "iPhone X/Xs": "1699₽",
     "iPhone 8 Plus/7 Plus": "1699₽",
     "iPhone 6/7/8/SE20": "1699₽",
 };
@@ -2846,7 +2852,8 @@ const modelInfo2 = {
     "iPhone 13 Pro": "999₽",
     "iPhone 13": "999₽",
     "iPhone 12 Pro Max": "1099₽",
-    "iPhone 12/12 Pro": "999₽",
+    "iPhone 12 Pro": "999₽",
+    "iPhone 12": "999₽",
     "iPhone 11 Pro Max": "1099₽",
     "iPhone 11 Pro": "999₽",
     "iPhone 11": "999₽",
@@ -2874,6 +2881,10 @@ const modelInfo4 = {
 
 
 const modelcomplInfo5 = {
+    "iPhone 15 Pro Max": "1890₽",
+    "iPhone 15 Pro": "1710₽",
+    "iPhone 15 Plus": "1890₽",
+    "iPhone 15": "1710₽",
     "iPhone 14 Pro Max": "1890₽",
     "iPhone 14 Pro": "1710₽",
     "iPhone 14 Plus": "1890₽",
@@ -2888,9 +2899,9 @@ const modelcomplInfo5 = {
     "iPhone 11 Pro Max": "1890₽",
     "iPhone 11 Pro": "1710₽",
     "iPhone 11": "1710₽",
-    "iPhone Xs Max": "1890₽",
-    "iPhone Xr": "1710₽",
-    "iPhone X/Xs": "1710₽",
+    "iPhone Xs Max": "1710₽",
+    "iPhone Xr": "1530₽",
+    "iPhone X/Xs": "1530₽",
     "iPhone 8 Plus/7 Plus": "1530₽",
     "iPhone 6/7/8/SE20": "1530₽",
 };
@@ -2918,6 +2929,11 @@ const keyboard = {
         ]
     ]
 };
+
+
+
+
+
 
 
 tg.expand();

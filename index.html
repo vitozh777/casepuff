@@ -7,13 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover">
         <meta name="MobileOptimized" content="176">
         <meta name="robots" content="noindex, nofollow">
+        <title>Автоматическое воспроизведение видео без контролов</title>
 
     </head>
     <body>
         <div class="contain" id="home">
-            <div class="background-contain">
-                <div class="background-image"></div>
-            </div>
             <div class="navigation">
                 <div class="tgoper" id="tgoper">
                     <img src="operpuff.png" alt="Telegram Logo" class="telegram-logo">
@@ -36,25 +34,20 @@
                     </a>
                 </div>
             </div>
+            <img class="ph1" src="ph1.PNG" id="ph1" width="100%">
+            <button class="button" id="puffplanet"><span>ОДЕЖДА</span></button>
 
+            <video class="video" id="myVideo" width="110%" height="360" autoplay muted>
+                <source src="0001-0080.mov" type="video/quicktime">
+                Ваш браузер не поддерживает тег video.
+            </video>
 
-            <div class="choice">
-                <button class="button" id="puffplanet">
-                    <img src="логосайт7.png" alt="puffplanet">
-                    <div>ОДЕЖДА</div>
-                </button>
-    
-                <button class="button" id="casepuff">
-                    <img src="логосайт8.png" alt="Casepuff">
-                    <div>ЧЕХЛЫ</div>
-                </button>
-            </div>
+            <button class="button" id="casepuff"><span>ЧЕХЛЫ</span></button>
         </div>
 
 
 
         <div class="contplanet" id="pufferplanet">
-            <img src="PUFFERPLANETLOGO.PNG" alt="PPLOGO" width="100%">
             <div class="navigation">
                 <div class="tgoper1" id="tgoper1">
                     <img src="operpuff.png" alt="Telegram Logo" class="telegram-logo">
@@ -79,13 +72,9 @@
             </div>
             <div class="clothes">
                 <div class="cloth" id="shirt">
-                    <div class="ячейка">
-                        <div class="рамка">
-                            <img src="MIDNIGHT1.PNG" alt="" class="imgclothes">
-                        </div>
-                        <div class="цена">2800₽</div>
+                        <img src="MIDNIGHT1.PNG" alt="" class="imgclothes">
+                        <div class="price">2290₽</div>
                         <div class="nameclothes">THE OVERSIZE T-SHIRT - MIDNIGHT</div>
-                    </div>
                     <button class="купить" id="купить1">КУПИТЬ</button>
                 </div>
             </div>
@@ -125,7 +114,7 @@
                     <div class="y">4 ФОТО</div>
                 </div>
                 <div class="nameclothes2">THE OVERSIZE T-SHIRT - MIDNIGHT</div>
-                <div class="цена1" id="цена1">2800₽</div>
+                <div class="цена1" id="цена1">2290₽</div>
                 <div class="rr">
                     <div class="v">Выберите размер:</div>
                     <div class="s" onclick="openSetkaWindow()">Размерная сетка</div>
@@ -169,7 +158,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (300 рублей по РФ) или СДЭК (около 1200 рублей).<br>Сроки доставки: примерно 3-5 дней.</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (300 рублей по РФ) или СДЭК (около 500 рублей).<br>Сроки доставки: примерно 3-5 дней.</div>
                 </div>
             </div>
         </div>
@@ -229,6 +218,12 @@
                     </a>
                 </div>
             </div>
+
+            <video class="video2" id="myVideo2" width="110%" autoplay muted>
+                <source src="0001-0050.mp4" type="video/quicktime">
+                Ваш браузер не поддерживает тег video.
+            </video>
+
             <div class="sections">
                 <a class="section" id="all">All</a>
                 <a class="section" id="puffer">THE PUFFER CASE</a>
@@ -239,153 +234,153 @@
             <div class="inner">
                 <div class="item" id="TPC">
                     <img src="BLACKPUFF.PNG" alt="" class="img">
-                    <button class="btn" id="btn1">+Quick Add</button>
                     <div class="price">1699₽-2099₽</div>
                     <div class="namecase">THE PUFFER CASE-BLACK</div>
+                    <button class="btn" id="btn1">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="PUFFTINTEDAIR.PNG" alt="" class="img">
-                    <button class="btn" id="btn2">+Quick Add</button>
                     <div class="price">999₽-1099₽</div>
                     <div class="namecase">THE PUFFER CASE-TINTED AIR</div>
+                    <button class="btn" id="btn2">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="CERULEAN.PNG" alt="" class="img">
-                    <button class="btn" id="btn3">+Quick Add</button>
                     <div class="price">1699₽-2099₽</div>
                     <div class="namecase">THE PUFFER CASE-CERULEAN</div>
+                    <button class="btn" id="btn3">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="PUFFAIR.PNG" alt="" class="img">
-                    <button class="btn" id="btn4">+Quick Add</button>
                     <div class="price">999₽-1099₽</div>
                     <div class="namecase">THE PUFFER CASE-AIR</div>
+                    <button class="btn" id="btn4">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="COMPL.PNG" alt="" class="img">
-                    <button class="btn" id="btn5">+Quick Add</button>
                     <div class="skidprice">2429₽-2789₽  (10%)</div>
                     <div class="pricecompl">2698₽-3098₽</div>
                     <div class="namecase">THE PUFFER CASE-КОМПЛЕКТ</div>
+                    <button class="btn" id="btn5">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="MARSHMALLOW.PNG" alt="" class="img">
-                    <button class="btn" id="btn6">+Quick Add</button>
                     <div class="price">1699₽-2099₽</div>
                     <div class="namecase">THE PUFFER CASE-MARSHMALLOW</div>
+                    <button class="btn" id="btn6">купить</button>
                 </div>
                 <div class="item" id="TSC">
                     <img src="BLACKMANHATTAN.PNG" alt="" class="img">
-                    <button class="btn" id="btn7">+Quick Add</button>
                     <div class="price">1699₽-1899₽</div>
                     <div class="namecase">THE SOAP CASE-BLACK MANHATTAN</div>
+                    <button class="btn" id="btn7">купить</button>
                 </div><div class="item" id="TPC">
                     <img src="LAVENDER.PNG" alt="" class="img">
-                    <button class="btn" id="btn8">+Quick Add</button>
                     <div class="price">1699₽-2099₽</div>
                     <div class="namecase">THE PUFFER CASE-LAVENDER</div>
+                    <button class="btn" id="btn8">купить</button>
                 </div><div class="item" id="TPC">
                     <img src="RED.PNG" alt="" class="img">
-                    <button class="btn" id="btn9">+Quick Add</button>
                     <div class="price">1699₽-2099₽</div>
                     <div class="namecase">THE PUFFER CASE-RED</div>
+                    <button class="btn" id="btn9">купить</button>
                 </div><div class="item" id="TSC">
                     <img src="MILK.PNG" alt="" class="img">
-                    <button class="btn" id="btn10">+Quick Add</button>
                     <div class="price">1699₽-1899₽</div>
                     <div class="namecase">THE SOAP CASE-MILK</div>
+                    <button class="btn" id="btn10">купить</button>
                 </div><div class="item" id="TPC">
                     <img src="REDHEARTS.PNG" alt="" class="img">
-                    <button class="btn" id="btn11">+Quick Add</button>
                     <div class="price">1699₽-2099₽</div>
                     <div class="namecase">THE PUFFER CASE-RED HEARTS</div>
+                    <button class="btn" id="btn11">купить</button>
                 </div><div class="item" id="TPC">
                     <img src="GREEN.PNG" alt="" class="img">
-                    <button class="btn" id="btn12">+Quick Add</button>
                     <div class="price">1699₽-2099₽</div>
                     <div class="namecase">THE PUFFER CASE-GREEN</div>
+                    <button class="btn" id="btn12">купить</button>
                 </div><div class="item" id="TAC">
                     <img src="AIRBLACK.PNG" alt="" class="img">
-                    <button class="btn" id="btn13">+Quick Add</button>
                     <div class="price">999₽</div>
                     <div class="namecase">THE AIRPODS CASE-BLACK</div>
+                    <button class="btn" id="btn13">купить</button>
                 </div><div class="item" id="TAC">
                     <img src="AIRGREY.PNG" alt="" class="img">
-                    <button class="btn" id="btn14">+Quick Add</button>
                     <div class="price">999₽</div>
                     <div class="namecase">THE AIRPODS CASE-GREY</div>
+                    <button class="btn" id="btn14">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="COFFEE.PNG" alt="" class="img">
-                    <button class="btn" id="btn15">+Quick Add</button>
                     <div class="price">1699₽-2099₽</div>
                     <div class="namecase">THE PUFFER CASE-COFFEE</div>
+                    <button class="btn" id="btn15">купить</button>
                 </div>
                 <div class="item" id="TDC">
                     <img src="PINKHEARTS.PNG" alt="" class="img">
-                    <button class="btn" id="btn16">+Quick Add</button>
                     <div class="price">1699₽-2099₽</div>
                     <div class="namecase">THE DOUGH CASE-PINK HEARTS</div>
+                    <button class="btn" id="btn16">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="YELLOW.PNG" alt="" class="img">
-                    <button class="btn" id="btn17">+Quick Add</button>
                     <div class="price">1699₽-2099₽</div>
                     <div class="namecase">THE PUFFER CASE-YELLOW</div>
+                    <button class="btn" id="btn17">купить</button>
                 </div>
                 <div class="item" id="TDC">
                     <img src="LAVENDERBUTTERFLIES.PNG" alt="" class="img">
-                    <button class="btn" id="btn18">+Quick Add</button>
                     <div class="price">1699₽-2099₽</div>
                     <div class="namecase">THE DOUGH CASE-LAVENDER BUTTERFLIES</div>
+                    <button class="btn" id="btn18">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="BLUEHEARTS.PNG" alt="" class="img">
-                    <button class="btn" id="btn19">+Quick Add</button>
                     <div class="price">1699₽-2099₽</div>
                     <div class="namecase">THE PUFFER CASE-BLUE HEARTS</div>
+                    <button class="btn" id="btn19">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="PINK.PNG" alt="" class="img">
-                    <button class="btn" id="btn20">+Quick Add</button>
                     <div class="price">1699₽-2099₽</div>
                     <div class="namecase">THE PUFFER CASE-PINK</div>
+                    <button class="btn" id="btn20">купить</button>
                 </div>
                 <div class="item" id="TSC">
                     <img src="GLAZEDSTRAWBERRY.PNG" alt="" class="img">
-                    <button class="btn" id="btn21">+Quick Add</button>
                     <div class="price">1699₽-1899₽</div>
                     <div class="namecase">THE SOAP CASE-GLAZED STRAWBERRY</div>
+                    <button class="btn" id="btn21">купить</button>
                 </div>
                 <div class="item" id="TDC">
                     <img src="CERULEANBUTTERFLIES.PNG" alt="" class="img">
-                    <button class="btn" id="btn22">+Quick Add</button>
                     <div class="price">1699₽-2099₽</div>
                     <div class="namecase">THE DOUGH CASE-CERULEAN BUTTERFLIES</div>
+                    <button class="btn" id="btn22">купить</button>
                 </div>
                 <div class="item" id="TSC">
                     <img src="GLAZEDDONUT.PNG" alt="" class="img">
-                    <button class="btn" id="btn23">+Quick Add</button>
                     <div class="price">1699₽-1899₽</div>
                     <div class="namecase">THE SOAP CASE-GLAZED DONUT</div>
+                    <button class="btn" id="btn23">купить</button>
                 </div>
                 <div class="item" id="TSC">
                     <img src="WATERMELON.PNG" alt="" class="img">
-                    <button class="btn" id="btn24">+Quick Add</button>
                     <div class="price">1699₽-1899₽</div>
                     <div class="namecase">THE SOAP CASE-WATERMELON</div>
+                    <button class="btn" id="btn24">купить</button>
                 </div>
                 <div class="item" id="TSC">
                     <img src="BUTTER.PNG" alt="" class="img">
-                    <button class="btn" id="btn25">+Quick Add</button>
                     <div class="price">1699₽-1899₽</div>
                     <div class="namecase">THE SOAP CASE-BUTTER</div>
+                    <button class="btn" id="btn25">купить</button>
                 </div>
                 <div class="item" id="TSC">
                     <img src="SUGARCOATED.PNG" alt="" class="img">
-                    <button class="btn" id="btn26">+Quick Add</button>
                     <div class="price">1699₽-1899₽</div>
                     <div class="namecase">THE SOAP CASE-SUGAR COATED</div>
+                    <button class="btn" id="btn26">купить</button>
                 </div>
             </div>
         </div>
@@ -414,6 +409,10 @@
                 <div class="price1">1699₽-2099₽</div>
                 <div class="p">Выберите модель телефона:</div>
                 <div class="models">
+                    <button class="model1">iPhone 15 Pro Max</button>
+                    <button class="model1">iPhone 15 Pro</button>
+                    <button class="model1">iPhone 15 Plus</button>
+                    <button class="model1">iPhone 15</button>
                     <button class="model1">iPhone 14 Pro Max</button>
                     <button class="model1">iPhone 14 Pro</button>
                     <button class="model1">iPhone 14 Plus</button>
@@ -435,7 +434,7 @@
                     <button class="model1">iPhone 6/7/8/SE20</button>
                 </div>
             </div>
-            <button class="order" id="order1">Add</button>
+            <button class="order" id="order1">КУПИТЬ</button>
 
 
 
@@ -457,7 +456,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -499,7 +498,8 @@
                     <button class="model2">iPhone 13 Pro</button>
                     <button class="model2">iPhone 13</button>
                     <button class="model2">iPhone 12 Pro Max</button>
-                    <button class="model2">iPhone 12/12 Pro</button>
+                    <button class="model2">iPhone 12 Pro</button>
+                    <button class="model2">iPhone 12</button>
                     <button class="model2">iPhone 11 Pro Max</button>
                     <button class="model2">iPhone 11 Pro</button>
                     <button class="model2">iPhone 11</button>
@@ -508,7 +508,7 @@
                     <button class="model2">iPhone X/Xs</button>
                 </div>
             </div>
-            <button class="order" id="order2">Add</button>
+            <button class="order" id="order2">КУПИТЬ</button>
 
 
 
@@ -530,7 +530,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -557,6 +557,10 @@
                 <div class="zakaz">только под заказ (примерно 3 недели)</div>
                 <div class="p">Выберите модель телефона:</div>
                 <div class="models">
+                    <button class="model1">iPhone 15 Pro Max</button>
+                    <button class="model1">iPhone 15 Pro</button>
+                    <button class="model1">iPhone 15 Plus</button>
+                    <button class="model1">iPhone 15</button>
                     <button class="model1">iPhone 14 Pro Max</button>
                     <button class="model1">iPhone 14 Pro</button>
                     <button class="model1">iPhone 14 Plus</button>
@@ -578,7 +582,7 @@
                     <button class="model1">iPhone 6/7/8/SE20</button>
                 </div>
             </div>
-            <button class="order" id="order3">Add</button>
+            <button class="order" id="order3">КУПИТЬ</button>
 
 
 
@@ -600,7 +604,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -638,7 +642,8 @@
                     <button class="model2">iPhone 13 Pro</button>
                     <button class="model2">iPhone 13</button>
                     <button class="model2">iPhone 12 Pro Max</button>
-                    <button class="model2">iPhone 12/12 Pro</button>
+                    <button class="model2">iPhone 12 Pro</button>
+                    <button class="model2">iPhone 12</button>
                     <button class="model2">iPhone 11 Pro Max</button>
                     <button class="model2">iPhone 11 Pro</button>
                     <button class="model2">iPhone 11</button>
@@ -647,7 +652,7 @@
                     <button class="model2">iPhone X/Xs</button>
                 </div>
             </div>
-            <button class="order" id="order4">Add</button>
+            <button class="order" id="order4">КУПИТЬ</button>
 
 
 
@@ -669,7 +674,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -699,6 +704,10 @@
                 </div>                
                 <div class="p">Выберите модель телефона:</div>
                 <div class="models">
+                    <button class="modelcompl">iPhone 15 Pro Max</button>
+                    <button class="modelcompl">iPhone 15 Pro</button>
+                    <button class="modelcompl">iPhone 15 Plus</button>
+                    <button class="modelcompl">iPhone 15</button>
                     <button class="modelcompl">iPhone 14 Pro Max</button>
                     <button class="modelcompl">iPhone 14 Pro</button>
                     <button class="modelcompl">iPhone 14 Plus</button>
@@ -726,7 +735,7 @@
                     <button class="modelcomplair">AirPods 3</button>
                 </div>
             </div>
-            <button class="order" id="order5">Add</button>
+            <button class="order" id="order5">КУПИТЬ</button>
 
 
 
@@ -748,7 +757,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -766,15 +775,22 @@
                         <div class="swiper-slide">
                             <img src="MARSHMALLOW.PNG" alt="" class="img2">
                         </div>
+                        <div class="swiper-slide">
+                            <img src="MARSHMALLOW2.PNG" alt="" class="img2">
+                        </div>
                         <!-- Добавьте дополнительные слайды с изображениями по аналогии -->
                     </div>
-
                 </div>
+                <div class="y">2 ФОТО</div>
                 <div class="namecase2">THE PUFFER CASE-MARSHMALLOW</div>
                 <div class="price6">1699₽-2099₽</div>
                 <div class="zakaz">только под заказ (примерно 3 недели)</div>
                 <div class="p">Выберите модель телефона:</div>
                 <div class="models">
+                    <button class="model1">iPhone 15 Pro Max</button>
+                    <button class="model1">iPhone 15 Pro</button>
+                    <button class="model1">iPhone 15 Plus</button>
+                    <button class="model1">iPhone 15</button>
                     <button class="model1">iPhone 14 Pro Max</button>
                     <button class="model1">iPhone 14 Pro</button>
                     <button class="model1">iPhone 14 Plus</button>
@@ -796,7 +812,7 @@
                     <button class="model1">iPhone 6/7/8/SE20</button>
                 </div>
             </div>
-            <button class="order" id="order6">Add</button>
+            <button class="order" id="order6">КУПИТЬ</button>
 
 
 
@@ -818,7 +834,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -863,7 +879,7 @@
                     <button class="model3">iPhone 11</button>
                 </div>
             </div>
-            <button class="order" id="order7">Add</button>
+            <button class="order" id="order7">КУПИТЬ</button>
 
 
 
@@ -885,7 +901,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -912,6 +928,10 @@
                 <div class="zakaz">только под заказ (примерно 3 недели)</div>
                 <div class="p">Выберите модель телефона:</div>
                 <div class="models">
+                    <button class="model1">iPhone 15 Pro Max</button>
+                    <button class="model1">iPhone 15 Pro</button>
+                    <button class="model1">iPhone 15 Plus</button>
+                    <button class="model1">iPhone 15</button>
                     <button class="model1">iPhone 14 Pro Max</button>
                     <button class="model1">iPhone 14 Pro</button>
                     <button class="model1">iPhone 14 Plus</button>
@@ -933,7 +953,7 @@
                     <button class="model1">iPhone 6/7/8/SE20</button>
                 </div>
             </div>
-            <button class="order" id="order8">Add</button>
+            <button class="order" id="order8">КУПИТЬ</button>
 
 
 
@@ -955,7 +975,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -982,6 +1002,10 @@
                 <div class="zakaz">только под заказ (примерно 3 недели)</div>
                 <div class="p">Выберите модель телефона:</div>
                 <div class="models">
+                    <button class="model1">iPhone 15 Pro Max</button>
+                    <button class="model1">iPhone 15 Pro</button>
+                    <button class="model1">iPhone 15 Plus</button>
+                    <button class="model1">iPhone 15</button>
                     <button class="model1">iPhone 14 Pro Max</button>
                     <button class="model1">iPhone 14 Pro</button>
                     <button class="model1">iPhone 14 Plus</button>
@@ -1003,7 +1027,7 @@
                     <button class="model1">iPhone 6/7/8/SE20</button>
                 </div>
             </div>
-            <button class="order" id="order9">Add</button>
+            <button class="order" id="order9">КУПИТЬ</button>
 
 
 
@@ -1025,7 +1049,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -1070,7 +1094,7 @@
                     <button class="model3">iPhone 11</button>
                 </div>
             </div>
-            <button class="order" id="order10">Add</button>
+            <button class="order" id="order10">КУПИТЬ</button>
 
 
 
@@ -1092,7 +1116,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -1119,6 +1143,10 @@
                 <div class="zakaz">только под заказ (примерно 3 недели)</div>
                 <div class="p">Выберите модель телефона:</div>
                 <div class="models">
+                    <button class="model1">iPhone 15 Pro Max</button>
+                    <button class="model1">iPhone 15 Pro</button>
+                    <button class="model1">iPhone 15 Plus</button>
+                    <button class="model1">iPhone 15</button>
                     <button class="model1">iPhone 14 Pro Max</button>
                     <button class="model1">iPhone 14 Pro</button>
                     <button class="model1">iPhone 14 Plus</button>
@@ -1140,7 +1168,7 @@
                     <button class="model1">iPhone 6/7/8/SE20</button>
                 </div>
             </div>
-            <button class="order" id="order11">Add</button>
+            <button class="order" id="order11">КУПИТЬ</button>
 
 
 
@@ -1162,7 +1190,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -1189,6 +1217,10 @@
                 <div class="zakaz">только под заказ (примерно 3 недели)</div>
                 <div class="p">Выберите модель телефона:</div>
                 <div class="models">
+                    <button class="model1">iPhone 15 Pro Max</button>
+                    <button class="model1">iPhone 15 Pro</button>
+                    <button class="model1">iPhone 15 Plus</button>
+                    <button class="model1">iPhone 15</button>
                     <button class="model1">iPhone 14 Pro Max</button>
                     <button class="model1">iPhone 14 Pro</button>
                     <button class="model1">iPhone 14 Plus</button>
@@ -1210,7 +1242,7 @@
                     <button class="model1">iPhone 6/7/8/SE20</button>
                 </div>
             </div>
-            <button class="order" id="order12">Add</button>
+            <button class="order" id="order12">КУПИТЬ</button>
 
 
 
@@ -1232,7 +1264,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -1263,7 +1295,7 @@
                     <button class="model4">AirPods 3</button>
                 </div>
             </div>
-            <button class="order" id="order13">Add</button>
+            <button class="order" id="order13">КУПИТЬ</button>
 
 
 
@@ -1285,7 +1317,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -1316,7 +1348,7 @@
                     <button class="model4">AirPods 3</button>
                 </div>
             </div>
-            <button class="order" id="order14">Add</button>
+            <button class="order" id="order14">КУПИТЬ</button>
 
 
 
@@ -1338,7 +1370,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -1365,6 +1397,10 @@
                 <div class="zakaz">только под заказ (примерно 3 недели)</div>
                 <div class="p">Выберите модель телефона:</div>
                 <div class="models">
+                    <button class="model1">iPhone 15 Pro Max</button>
+                    <button class="model1">iPhone 15 Pro</button>
+                    <button class="model1">iPhone 15 Plus</button>
+                    <button class="model1">iPhone 15</button>
                     <button class="model1">iPhone 14 Pro Max</button>
                     <button class="model1">iPhone 14 Pro</button>
                     <button class="model1">iPhone 14 Plus</button>
@@ -1386,7 +1422,7 @@
                     <button class="model1">iPhone 6/7/8/SE20</button>
                 </div>
             </div>
-            <button class="order" id="order15">Add</button>
+            <button class="order" id="order15">КУПИТЬ</button>
 
 
 
@@ -1408,7 +1444,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -1435,6 +1471,10 @@
                 <div class="zakaz">только под заказ (примерно 3 недели)</div>
                 <div class="p">Выберите модель телефона:</div>
                 <div class="models">
+                    <button class="model1">iPhone 15 Pro Max</button>
+                    <button class="model1">iPhone 15 Pro</button>
+                    <button class="model1">iPhone 15 Plus</button>
+                    <button class="model1">iPhone 15</button>
                     <button class="model1">iPhone 14 Pro Max</button>
                     <button class="model1">iPhone 14 Pro</button>
                     <button class="model1">iPhone 14 Plus</button>
@@ -1456,7 +1496,7 @@
                     <button class="model1">iPhone 6/7/8/SE20</button>
                 </div>
             </div>
-            <button class="order" id="order16">Add</button>
+            <button class="order" id="order16">КУПИТЬ</button>
 
 
 
@@ -1478,7 +1518,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -1505,6 +1545,10 @@
                 <div class="zakaz">только под заказ (примерно 3 недели)</div>
                 <div class="p">Выберите модель телефона:</div>
                 <div class="models">
+                    <button class="model1">iPhone 15 Pro Max</button>
+                    <button class="model1">iPhone 15 Pro</button>
+                    <button class="model1">iPhone 15 Plus</button>
+                    <button class="model1">iPhone 15</button>
                     <button class="model1">iPhone 14 Pro Max</button>
                     <button class="model1">iPhone 14 Pro</button>
                     <button class="model1">iPhone 14 Plus</button>
@@ -1526,7 +1570,7 @@
                     <button class="model1">iPhone 6/7/8/SE20</button>
                 </div>
             </div>
-            <button class="order" id="order17">Add</button>
+            <button class="order" id="order17">КУПИТЬ</button>
 
 
 
@@ -1548,7 +1592,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -1575,6 +1619,10 @@
                 <div class="zakaz">только под заказ (примерно 3 недели)</div>
                 <div class="p">Выберите модель телефона:</div>
                 <div class="models">
+                    <button class="model1">iPhone 15 Pro Max</button>
+                    <button class="model1">iPhone 15 Pro</button>
+                    <button class="model1">iPhone 15 Plus</button>
+                    <button class="model1">iPhone 15</button>
                     <button class="model1">iPhone 14 Pro Max</button>
                     <button class="model1">iPhone 14 Pro</button>
                     <button class="model1">iPhone 14 Plus</button>
@@ -1596,7 +1644,7 @@
                     <button class="model1">iPhone 6/7/8/SE20</button>
                 </div>
             </div>
-            <button class="order" id="order18">Add</button>
+            <button class="order" id="order18">КУПИТЬ</button>
 
 
 
@@ -1618,7 +1666,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -1645,6 +1693,10 @@
                 <div class="zakaz">только под заказ (примерно 3 недели)</div>
                 <div class="p">Выберите модель телефона:</div>
                 <div class="models">
+                    <button class="model1">iPhone 15 Pro Max</button>
+                    <button class="model1">iPhone 15 Pro</button>
+                    <button class="model1">iPhone 15 Plus</button>
+                    <button class="model1">iPhone 15</button>
                     <button class="model1">iPhone 14 Pro Max</button>
                     <button class="model1">iPhone 14 Pro</button>
                     <button class="model1">iPhone 14 Plus</button>
@@ -1666,7 +1718,7 @@
                     <button class="model1">iPhone 6/7/8/SE20</button>
                 </div>
             </div>
-            <button class="order" id="order19">Add</button>
+            <button class="order" id="order19">КУПИТЬ</button>
 
 
 
@@ -1688,7 +1740,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -1715,6 +1767,10 @@
                 <div class="zakaz">только под заказ (примерно 3 недели)</div>
                 <div class="p">Выберите модель телефона:</div>
                 <div class="models">
+                    <button class="model1">iPhone 15 Pro Max</button>
+                    <button class="model1">iPhone 15 Pro</button>
+                    <button class="model1">iPhone 15 Plus</button>
+                    <button class="model1">iPhone 15</button>
                     <button class="model1">iPhone 14 Pro Max</button>
                     <button class="model1">iPhone 14 Pro</button>
                     <button class="model1">iPhone 14 Plus</button>
@@ -1736,7 +1792,7 @@
                     <button class="model1">iPhone 6/7/8/SE20</button>
                 </div>
             </div>
-            <button class="order" id="order20">Add</button>
+            <button class="order" id="order20">КУПИТЬ</button>
 
 
 
@@ -1758,7 +1814,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -1803,7 +1859,7 @@
                     <button class="model3">iPhone 11</button>
                 </div>
             </div>
-            <button class="order" id="order21">Add</button>
+            <button class="order" id="order21">КУПИТЬ</button>
 
 
 
@@ -1825,7 +1881,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -1852,6 +1908,10 @@
                 <div class="zakaz">только под заказ (примерно 3 недели)</div>
                 <div class="p">Выберите модель телефона:</div>
                 <div class="models">
+                    <button class="model1">iPhone 15 Pro Max</button>
+                    <button class="model1">iPhone 15 Pro</button>
+                    <button class="model1">iPhone 15 Plus</button>
+                    <button class="model1">iPhone 15</button>
                     <button class="model1">iPhone 14 Pro Max</button>
                     <button class="model1">iPhone 14 Pro</button>
                     <button class="model1">iPhone 14 Plus</button>
@@ -1873,7 +1933,7 @@
                     <button class="model1">iPhone 6/7/8/SE20</button>
                 </div>
             </div>
-            <button class="order" id="order22">Add</button>
+            <button class="order" id="order22">КУПИТЬ</button>
 
 
 
@@ -1895,7 +1955,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -1940,7 +2000,7 @@
                     <button class="model3">iPhone 11</button>
                 </div>
             </div>
-            <button class="order" id="order23">Add</button>
+            <button class="order" id="order23">КУПИТЬ</button>
 
 
 
@@ -1962,7 +2022,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -2007,7 +2067,7 @@
                     <button class="model3">iPhone 11</button>
                 </div>
             </div>
-            <button class="order" id="order24">Add</button>
+            <button class="order" id="order24">КУПИТЬ</button>
 
 
 
@@ -2029,7 +2089,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -2074,7 +2134,7 @@
                     <button class="model3">iPhone 11</button>
                 </div>
             </div>
-            <button class="order" id="order25">Add</button>
+            <button class="order" id="order25">КУПИТЬ</button>
 
 
 
@@ -2096,7 +2156,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
@@ -2135,7 +2195,7 @@
                     <button class="model3">iPhone 11</button>
                 </div>
             </div>
-            <button class="order" id="order26">Add</button>
+            <button class="order" id="order26">КУПИТЬ</button>
 
 
 
@@ -2157,7 +2217,7 @@
                             <div class="TPC">Доставка</div>
                         </div>
                     </div>
-                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 1200 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
                 </div>
             </div>
 
