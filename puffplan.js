@@ -190,12 +190,23 @@ pufferplanetButton.addEventListener("click", () => {
 
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    var video = document.getElementById("myVideo");
+document.addEventListener('DOMContentLoaded', function() {
+    var video = document.getElementById('myVideo');
+    var isVideoPlayed = false;
 
-    video.addEventListener("canplaythrough", function() {
-        video.play();
-    });
+    // Задержка в 2 секунды перед воспроизведением видео
+    setTimeout(function() {
+        // Проверяем, что видео не было воспроизведено ранее
+        if (!isVideoPlayed) {
+            video.play().then(function() {
+                // Видео успешно воспроизведено
+                isVideoPlayed = true;
+            }).catch(function(error) {
+                // Воспроизведение может вызвать ошибку, если видео уже воспроизводится.
+                // Игнорируем эту ошибку.
+            });
+        }
+    }, 1000);
 });
 
 document.addEventListener("DOMContentLoaded", function() {
