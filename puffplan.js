@@ -190,16 +190,21 @@ pufferplanetButton.addEventListener("click", () => {
 
 
 
-var video = document.getElementById("myVideo");
+document.addEventListener("DOMContentLoaded", function() {
+    var video = document.getElementById("myVideo");
 
-  // Воспроизводим видео при загрузке страницы
-window.onload = function() {
-    video.play();
-};
+    video.addEventListener("canplaythrough", function() {
+        video.play();
+    });
+});
 
+document.addEventListener("DOMContentLoaded", function() {
+    var video = document.getElementById("myVideo2");
 
-
-
+    video.addEventListener("canplaythrough", function() {
+        video.play();
+    });
+});
 
 
 
