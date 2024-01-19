@@ -195,6 +195,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var secondVideo = document.getElementById('myVideo2');
     var isVideoPlayed = false;
 
+    // Показываем первое видео сразу
+    video.style.display = 'block';
+
     // Задержка в 2 секунды перед воспроизведением первого видео
     setTimeout(function() {
         // Проверяем, что видео не было воспроизведено ранее
@@ -207,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Игнорируем эту ошибку.
             });
         }
-    }, 2000);
+    },1000);
 
     // Обработчик события beforeunload для воспроизведения второго видео при закрытии страницы
     window.addEventListener('beforeunload', function() {
@@ -216,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Игнорируем эту ошибку.
         });
     });
-});
+})
 
 
 
