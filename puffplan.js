@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         });
-    }); // Используем порог в 0.5, чтобы событие сработало, когда 50% контейнера видимо
+    });
     observer.observe(document.getElementById('thepuffercase'));
 });
 
