@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Показываем первое видео сразу
     video.style.display = 'block';
 
-    // Задержка в 2 секунды перед воспроизведением первого видео
+    // Задержка в 1 секунду перед воспроизведением первого видео
     setTimeout(function() {
         // Проверяем, что видео не было воспроизведено ранее
         if (!isVideoPlayed) {
@@ -210,16 +210,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Игнорируем эту ошибку.
             });
         }
-    },1000);
+    }, 1000);
 
-    // Обработчик события beforeunload для воспроизведения второго видео при закрытии страницы
-    window.addEventListener('beforeunload', function() {
-        secondVideo.play().catch(function(error) {
-            // Воспроизведение может вызвать ошибку, если видео уже воспроизводится.
-            // Игнорируем эту ошибку.
+    // Обработчик события при появлении контейнера
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                // Воспроизводим второе видео, когда контейнер становится видимым
+                secondVideo.play().catch(function(error) {
+                    // Воспроизведение может вызвать ошибку, если видео уже воспроизводится.
+                    // Игнорируем эту ошибку.
+                });
+            }
         });
-    });
-})
+    }); // Используем порог в 0.5, чтобы событие сработало, когда 50% контейнера видимо
+    observer.observe(document.getElementById('thepuffercase'));
+});
 
 
 
