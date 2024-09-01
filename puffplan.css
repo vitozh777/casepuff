@@ -5,19 +5,18 @@ body {
     color: white;
     background-color: #ffffff;
     min-height: 100vh;
-    font-weight: 400px;
+    font-weight: 400;
     display: flex;
     justify-content: center; /* Выравнивание по горизонтали */
-    align-items: center; /* Выравнивание по вертикали */
     align-items: flex-start;
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+
 @font-face {
     font-family: 'nanum-pen-regular';
-    src: url('fonts/nanum-pen-regular.ttf') format('ttf');
+    src: url('fonts/nanum-pen-regular.ttf') format('truetype');
 }
-
 
 /* Стили для контейнера, содержащего кнопки */
 .contain {
@@ -379,49 +378,43 @@ body {
     display: none;
     justify-content: center; /* Выравнивание по горизонтали */
     align-items: center;
+    text-align: center;
     background: #ffffff;
-    min-height: 100vh;
 }
 
 .clothes {
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: minmax(100px, 1fr);
     width: 100%;
-    margin-top: 40px;
+    margin-top: 10px;
 }
 
-
-.ячейка {
-    justify-content: center;
-    border-radius: 20px; /* Скругленные углы кнопки */
-    margin-top: 30px;
-    padding-top: 1px;
-    /* From https://css.glass */
-    background: rgba(95, 95, 95, 0.52);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(4.7px);
-    -webkit-backdrop-filter: blur(4.7px);
-    border: 1px solid rgba(255, 255, 255, 0.29);
-}
-
-.рамка {
-    width: auto;
-    border-radius: 20px; /* Скругленные углы кнопки */
-    background: #dadada;
-    margin: 10px;
-    padding: 10px;
+.cloth {
+    width: 100%;
 }
 
 .imgclothes {
-    width: 100%;
+    width: 90%;
+}
+
+.прайс {
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    
+    margin-bottom: 3px; /* Отступ снизу */
+    text-align: center;
 }
 
 .купить {
-    width: 100%;
-    height: 60px;
+    width: 90%;
+    height: 40px;
     padding: 10px 10px;
     background-color:#ffffff;
     color: rgb(0, 0, 0);
-    margin-top: 15px;
+    margin-top: 10px;
+    margin-bottom: 20px;
     font-weight: bold; /* Делаем текст жирным */
 
 
@@ -453,7 +446,7 @@ body {
 }
 
 .nameclothes {
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     font-size: 12px;
     color: rgb(160, 160, 160);
     word-wrap: break-word; /* Обрыв длинных слов */
@@ -490,6 +483,31 @@ body {
     width: 400px;
     justify-content: center;
     align-items: center;
+}
+.img3 {
+    width: 100%;
+}
+.img4 {
+    width: 100%;
+    border-radius: 20px;
+}
+.y {
+    border-radius: 5px;
+    background: #000;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 140%;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    align-items: center;
+    padding: 0 5px;
+    width: fit-content;
+    margin-top: 2px;
+    margin-left: 15px;
+    margin-bottom: 5px;
 }
 
 .pufforder {
@@ -539,11 +557,26 @@ body {
     font-weight: bold;
 }
 
+.цена2 {
+    color: rgb(5, 5, 5);
+    text-align: left;
+    font-size: 14px;
+    margin-top: 1px;
+    font-weight: bold;
+}
+
+.цена3 {
+    color: rgb(5, 5, 5);
+    text-align: left;
+    font-size: 14px;
+    margin-top: 1px;
+    font-weight: bold;
+}
+
 .rr {
     display: flex;
     justify-content: space-between;
 }
-
 .s {
     color: rgb(194, 71, 196);
     font-size: 14px;
@@ -607,17 +640,8 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-
 .v {
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-size: 14px;
     margin-top: 10px; /* Отступ сверху */
 }
@@ -655,27 +679,95 @@ body {
     opacity: 0.5;
 }
 
-.купить {
-    width: 100%;
-    height: 60px;
-    padding: 10px 10px;
+.razmer2 {
+    width: 60px;
+    height: 30px;
+    padding: 5px 5px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+
     background-color:#ffffff;
     color: rgb(0, 0, 0);
-    margin-top: 15px;
     font-weight: bold; /* Делаем текст жирным */
 
 
-    border-radius: 20px;
     border: none;
     
     box-shadow: inset -1px -1px 20px #d4d4d4, inset -1px -1px 10px #d4d4d4, 1px 1px 12px #d4d4d4,  1px 1px 12px #d4d4d4;
 }
 
-.купить:active {
+.razmer2active {
     color: #666;
     box-shadow: inset 1px 1px 5px #e1e1e1, inset 1px 1px #e9e9e9;
     transform: translateY(2px);
+    opacity: 0.5;
 }
+
+.razmer3 {
+    width: 60px;
+    height: 30px;
+    padding: 5px 5px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+
+    background-color:#ffffff;
+    color: rgb(0, 0, 0);
+    font-weight: bold; /* Делаем текст жирным */
+
+
+    border: none;
+    
+    box-shadow: inset -1px -1px 20px #d4d4d4, inset -1px -1px 10px #d4d4d4, 1px 1px 12px #d4d4d4,  1px 1px 12px #d4d4d4;
+}
+
+.razmer3active {
+    color: #666;
+    box-shadow: inset 1px 1px 5px #e1e1e1, inset 1px 1px #e9e9e9;
+    transform: translateY(2px);
+    opacity: 0.5;
+}
+
+#gallery {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    height: 200px;
+    margin-bottom: 10px;
+    border-radius: 20px 0 0 20px;
+}
+
+.photo {
+    display: inline-block;
+    cursor: pointer;
+}
+
+#overlayPP {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#overlayPP img {
+    width: 400px;
+    border-radius: 20px;
+}
+
+
+
+
+
+
 
 
 
@@ -1013,6 +1105,34 @@ form {
 
 }
 
+.price27 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price28 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price29 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
+.price30 {
+    color: rgb(110, 110, 110);
+    text-align: left;
+    font-size: 14px;
+
+}
+
 .zakaz {
     color: rgb(255, 54, 54);
     font-size: 14px;
@@ -1134,51 +1254,14 @@ form {
     background-color: #ffffff;
     border-radius: 20px;
     overflow: hidden;
+    margin-top: 5px;
 }
-
-.img3 {
-    width: 95%;
-    margin-top: 70px;
-}
-
-
 
 .swiper-slide {
     background-color: #ffffff;
     border-radius: 20px;
 }
 
-.swiper-scrollbar {
-    position: absolute;
-    width: 4px; /* Ширина полосы прокрутки */
-    height: 100%; /* Высота полосы прокрутки */
-    background-color: rgba(0, 0, 0, 0.3); /* Цвет полосы прокрутки */
-    top: 0;
-    right: 0;
-    z-index: 1;
-    opacity: 0; /* Скрыть полосу прокрутки изначально */
-    transition: opacity 0.2s ease-in-out;
-}
-
-.y {
-    border-radius: 5px;
-    background: #000;
-    color: #fff;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 140%;
-    text-transform: uppercase;
-    display: flex;
-    flex-direction: row;
-    gap: 3px;
-    align-items: center;
-    padding: 0 5px;
-    width: fit-content;
-    margin-top: 5px;
-    margin-left: 15px;
-    margin-bottom: 5px;
-}
 
 .order {
     display: flex;
@@ -1226,6 +1309,7 @@ form {
     flex-direction: column;
     border-radius: 20px;
     margin-top: 30px;
+    margin-bottom: 10px;
 }
 
 .card1 {

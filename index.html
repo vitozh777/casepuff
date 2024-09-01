@@ -71,15 +71,38 @@
                 </div>
             </div>
             <div class="clothes">
+                <div class="cloth" id="hoodie">
+                    <img src="hoodblack.PNG" alt="" class="imgclothes">
+                    <div class="прайс">4990₽</div>
+                    <div class="nameclothes">ZIP HOODIE - BLACK</div>
+                    <button class="купить" id="купить2">КУПИТЬ</button>
+                </div>
+                <div class="cloth" id="hoodie">
+                    <img src="hoodwhite.PNG" alt="" class="imgclothes">
+                    <div class="прайс">4990₽</div>
+                    <div class="nameclothes">ZIP HOODIE - WHITE</div>
+                    <button class="купить" id="купить3">КУПИТЬ</button>
+                </div>
+                <div class="cloth" id="niz">
+                    <img src="nizblack.PNG" alt="" class="imgclothes">
+                    <div class="прайс">3990₽</div>
+                    <div class="nameclothes">PANTS - BLACK</div>
+                    <button class="купить" id="купить4">КУПИТЬ</button>
+                </div>
+                <div class="cloth" id="niz">
+                    <img src="nizwhite.PNG" alt="" class="imgclothes">
+                    <div class="прайс">3990₽</div>
+                    <div class="nameclothes">PANTS - WHITE</div>
+                    <button class="купить" id="купить5">КУПИТЬ</button>
+                </div>
                 <div class="cloth" id="shirt">
-                        <img src="MIDNIGHT1.PNG" alt="" class="imgclothes">
-                        <div class="price">2290₽</div>
-                        <div class="nameclothes">THE OVERSIZE T-SHIRT - MIDNIGHT</div>
+                    <img src="MIDNIGHT1.PNG" alt="" class="imgclothes">
+                    <div class="прайс">2290₽</div>
+                    <div class="nameclothes">OVERSIZE T-SHIRT - MIDNIGHT</div>
                     <button class="купить" id="купить1">КУПИТЬ</button>
                 </div>
             </div>
         </div>
-
 
 
 
@@ -105,14 +128,23 @@
                             <img src="MIDNIGHT2.PNG" alt="" class="img3">
                         </div>
                         <div class="swiper-slide">
-                            <img src="MIDNIGHT3.PNG" alt="" class="imgl">
+                            <img src="MIDNIGHT3.PNG" alt="" class="img4">
                         </div>
                         <div class="swiper-slide">
-                            <img src="MIDNIGHT4.PNG" alt="" class="imgl">
+                            <img src="MIDNIGHT4.PNG" alt="" class="img4">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="MIDNIGHT5.PNG" alt="" class="img4">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="MIDNIGHT6.PNG" alt="" class="img4">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="MIDNIGHT7.PNG" alt="" class="img4">
                         </div>
                     </div>
-                    <div class="y">4 ФОТО</div>
                 </div>
+                <div class="y">7 ФОТО</div>
                 <div class="nameclothes2">THE OVERSIZE T-SHIRT - MIDNIGHT</div>
                 <div class="цена1" id="цена1">2290₽</div>
                 <div class="rr">
@@ -161,10 +193,20 @@
                     <div class="info">Мы отправляем по всей России. Можем отправить почтой России (300 рублей по РФ) или СДЭК (около 500 рублей).<br>Сроки доставки: примерно 3-5 дней.</div>
                 </div>
             </div>
+
+            <div id="gallery">
+                <img class="photo" src="MIDNIGHTR1.PNG" onclick="openOverlayPP('MIDNIGHTR1.PNG')">
+                <img class="photo" src="MIDNIGHTR2.PNG" onclick="openOverlayPP('MIDNIGHTR2.PNG')">
+                <img class="photo" src="MIDNIGHTR3.PNG" onclick="openOverlayPP('MIDNIGHTR3.PNG')">
+                <img class="photo" src="MIDNIGHTR4.PNG" onclick="openOverlayPP('MIDNIGHTR4.PNG')">
+                <img class="photo" src="MIDNIGHTR5.PNG" onclick="openOverlayPP('MIDNIGHTR5.PNG')">
+                <!-- Добавьте другие изображения по аналогии -->
+            </div>
+
+            <div id="overlayPP" onclick="closeOverlayPP()">
+                <img id="overlayPPImage" src="" alt="OverlayPP Image">
+            </div>
         </div>
-
-
-
         <div class="overlay" id="setkaOverlay">
             <div class="setka">
                 <span class="close-button" onclick="closeSetka()">&times;</span>
@@ -172,6 +214,238 @@
             </div>
         </div>
 
+
+
+
+
+        <div class="window" id="formplanet2">
+            <div class="product-details">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="hoodblack.PNG" alt="" class="img3">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="hoodblack2.PNG" alt="" class="img3">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="hoodblack3.PNG" alt="" class="img3">
+                        </div>
+                    </div>
+                </div>
+                <div class="y">3 ФОТО</div>
+                <div class="nameclothes2">THE ZIP HOODIE - BLACK</div>
+                <div class="цена2" id="цена2">4990₽</div>
+                <div class="rr">
+                    <div class="v">Выберите размер:</div>
+                </div>
+                <div class="razmers">
+                    <button class="razmer2">S</button>
+                    <button class="razmer2">M</button>
+                    <button class="razmer2">L</button>
+                    <button class="razmer2">XL</button>
+                </div>
+            </div>
+            <button class="pufforder" id="pufforder2">КУПИТЬ</button>
+
+
+
+
+
+
+            <div class="information">
+                <div class="card1">
+                    <div class="card" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Описание</div>
+                        </div>
+                    </div>
+                    <div class="info">Классическая Hoodie на молнии — идеальный выбор для тех, кто ценит комфорт и стиль. Выполнена из мягкого хлопкового материала с добавлением полиэстера для долговечности и удобства в носке. Модель оснащена удобной молнией по всей длине, глубоким капюшоном и вместительными карманами «кенгуру». Эта универсальная худи станет отличным дополнением к любому гардеробу, сочетаясь как со спортивными, так и с повседневными образами.</div>
+                    <div class="card" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Состав:</div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        • Хлопок (80%)<br>
+                        • Полиэстер (20%)<br>
+                        • Молния<br>
+                        • Шелкография<br>
+                        • Вышитая надпись</div>
+                </div>
+                <div class="cards">
+                    <div class="card2" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Доставка</div>
+                        </div>
+                    </div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (300 рублей по РФ) или СДЭК (около 500 рублей).<br>Сроки доставки: примерно 3-5 дней.</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="window" id="formplanet3">
+            <div class="product-details">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="hoodwhite.PNG" alt="" class="img3">
+                        </div>
+                    </div>
+                </div>
+                <div class="y">1 ФОТО</div>
+                <div class="nameclothes2">THE ZIP HOODIE - WHITE</div>
+                <div class="цена2" id="цена2">4990₽</div>
+                <div class="rr">
+                    <div class="v">Выберите размер:</div>
+                </div>
+                <div class="razmers">
+                    <button class="razmer2">S</button>
+                    <button class="razmer2">M</button>
+                    <button class="razmer2">L</button>
+                    <button class="razmer2">XL</button>
+                </div>
+            </div>
+            <button class="pufforder" id="pufforder3">КУПИТЬ</button>
+
+            <div class="information">
+                <div class="card1">
+                    <div class="card" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Описание</div>
+                        </div>
+                    </div>
+                    <div class="info">Классическая Hoodie на молнии — идеальный выбор для тех, кто ценит комфорт и стиль. Выполнена из мягкого хлопкового материала с добавлением полиэстера для долговечности и удобства в носке. Модель оснащена удобной молнией по всей длине, глубоким капюшоном и вместительными карманами «кенгуру». Эта универсальная худи станет отличным дополнением к любому гардеробу, сочетаясь как со спортивными, так и с повседневными образами.</div>
+                    <div class="card" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Состав:</div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        • Хлопок (80%)<br>
+                        • Полиэстер (20%)<br>
+                        • Молния<br>
+                        • Шелкография<br>
+                        • Вышитая надпись</div>
+                </div>
+                <div class="cards">
+                    <div class="card2" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Доставка</div>
+                        </div>
+                    </div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (300 рублей по РФ) или СДЭК (около 500 рублей).<br>Сроки доставки: примерно 3-5 дней.</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="window" id="formplanet4">
+            <div class="product-details">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="nizblack.PNG" alt="" class="img3">
+                        </div>
+                    </div>
+                </div>
+                <div class="y">1 ФОТО</div>
+                <div class="nameclothes2">PANTS - BLACK</div>
+                <div class="цена3" id="цена3">3990₽</div>
+                <div class="rr">
+                    <div class="v">Выберите размер:</div>
+                </div>
+                <div class="razmers">
+                    <button class="razmer3">S</button>
+                    <button class="razmer3">M</button>
+                    <button class="razmer3">L</button>
+                    <button class="razmer3">XL</button>
+                </div>
+            </div>
+            <button class="pufforder" id="pufforder4">КУПИТЬ</button>
+
+            <div class="information">
+                <div class="card1">
+                    <div class="card" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Описание</div>
+                        </div>
+                    </div>
+                    <div class="info">Классические штаны выполнены из мягкого и прочного материала, они обеспечивают комфорт и свободу движений. Эластичные манжеты на штанинах создают стильный силуэт и плотно прилегают к ногам, что добавляет функциональности и защищает от ветра. Свободный крой и эластичный пояс позволяют штанам удобно сидеть на любой фигуре, а два боковых кармана добавляют практичности. Эти штаны станут универсальным элементом гардероба, подходящим как для спорта, так и для повседневной носки.</div>
+                    <div class="card" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Состав:</div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        • Хлопок (80%)<br>
+                        • Полиэстер (20%)<br>
+                        • Шелкография</div>
+                </div>
+                <div class="cards">
+                    <div class="card2" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Доставка</div>
+                        </div>
+                    </div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (300 рублей по РФ) или СДЭК (около 500 рублей).<br>Сроки доставки: примерно 3-5 дней.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="window" id="formplanet5">
+            <div class="product-details">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="nizwhite.PNG" alt="" class="img3">
+                        </div>
+                    </div>
+                </div>
+                <div class="y">1 ФОТО</div>
+                <div class="nameclothes2">PANTS - WHITE</div>
+                <div class="цена3" id="цена3">3990₽</div>
+                <div class="rr">
+                    <div class="v">Выберите размер:</div>
+                </div>
+                <div class="razmers">
+                    <button class="razmer3">S</button>
+                    <button class="razmer3">M</button>
+                    <button class="razmer3">L</button>
+                    <button class="razmer3">XL</button>
+                </div>
+            </div>
+            <button class="pufforder" id="pufforder5">КУПИТЬ</button>
+
+            <div class="information">
+                <div class="card1">
+                    <div class="card" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Описание</div>
+                        </div>
+                    </div>
+                    <div class="info">Классические штаны выполнены из мягкого и прочного материала, они обеспечивают комфорт и свободу движений. Эластичные манжеты на штанинах создают стильный силуэт и плотно прилегают к ногам, что добавляет функциональности и защищает от ветра. Свободный крой и эластичный пояс позволяют штанам удобно сидеть на любой фигуре, а два боковых кармана добавляют практичности. Эти штаны станут универсальным элементом гардероба, подходящим как для спорта, так и для повседневной носки.</div>
+                    <div class="card" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Состав:</div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        • Хлопок (80%)<br>
+                        • Полиэстер (20%)<br>
+                        • Шелкография</div>
+                </div>
+                <div class="cards">
+                    <div class="card2" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Доставка</div>
+                        </div>
+                    </div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (300 рублей по РФ) или СДЭК (около 500 рублей).<br>Сроки доставки: примерно 3-5 дней.</div>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -243,6 +517,30 @@
                     <div class="price">999₽-1099₽</div>
                     <div class="namecase">THE PUFFER CASE-TINTED AIR</div>
                     <button class="btn" id="btn2">купить</button>
+                </div>
+                <div class="item" id="TPC">
+                    <img src="BM.PNG" alt="" class="img">
+                    <div class="price">1899₽-2099₽</div>
+                    <div class="namecase">THE PUFFER CASE-BLACK MANHATTAN</div>
+                    <button class="btn" id="btn27">купить</button>
+                </div>
+                <div class="item" id="TPC">
+                    <img src="MIRROR.PNG" alt="" class="img">
+                    <div class="price">1899₽-2099₽</div>
+                    <div class="namecase">THE PUFFER CASE-MIRROR</div>
+                    <button class="btn" id="btn28">купить</button>
+                </div>
+                <div class="item" id="TPC">
+                    <img src="DRAMA.png" alt="" class="img">
+                    <div class="price">1899₽-2099₽</div>
+                    <div class="namecase">THE PUFFER CASE-DRAMA</div>
+                    <button class="btn" id="btn29">купить</button>
+                </div>
+                <div class="item" id="TPC">
+                    <img src="DEMON.png" alt="" class="img">
+                    <div class="price">1899₽-2099₽</div>
+                    <div class="namecase">THE PUFFER CASE-DEMON</div>
+                    <button class="btn" id="btn30">купить</button>
                 </div>
                 <div class="item" id="TPC">
                     <img src="CERULEAN.PNG" alt="" class="img">
@@ -482,7 +780,6 @@
                         </div>
                         <!-- Добавьте дополнительные слайды с изображениями по аналогии -->
                     </div>
-
                 </div>
                 <div class="y">3 ФОТО</div>
                 <div class="namecase2">THE PUFFER CASE-TINTED AIR</div>
@@ -509,6 +806,278 @@
                 </div>
             </div>
             <button class="order" id="order2">КУПИТЬ</button>
+
+
+
+
+
+
+            <div class="information">
+                <div class="card1">
+                    <div class="card" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Описание чехла</div>
+                        </div>
+                    </div>
+                    <div class="info">The Puffer Case - это незаменимый элемент гардероба для любого телефона. Он мягкий, но защитный, пухлый, но не громоздкий, поэтому помещается в любой карман. Его элегантный минималистичный дизайн сделал его абсолютным фаворитом.</div>
+                </div>
+                <div class="cards">
+                    <div class="card2" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Доставка</div>
+                        </div>
+                    </div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                </div>
+            </div>
+
+
+
+
+
+
+        </form>
+
+        <form id="form27" class="hidden">
+            <div class="product-details">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="BM.PNG" alt="" class="img2">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="BM2.PNG" alt="" class="img2">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="BM3.PNG" alt="" class="img2">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="BM4.PNG" alt="" class="img2">
+                        </div>
+                        <!-- Добавьте дополнительные слайды с изображениями по аналогии -->
+                    </div>
+
+                </div>
+                <div class="y">4 ФОТО</div>
+                <div class="namecase2">THE PUFFER CASE-BLACK MANHATTAN</div>
+                <div class="price27">1899₽-2099₽</div>
+                <div class="p">Выберите модель телефона:</div>
+                <div class="models">
+                    <button class="model1">iPhone 15 Pro Max</button>
+                    <button class="model1">iPhone 15 Pro</button>
+                    <button class="model1">iPhone 15 Plus</button>
+                    <button class="model1">iPhone 15</button>
+                    <button class="model1">iPhone 14 Pro Max</button>
+                    <button class="model1">iPhone 14 Pro</button>
+                    <button class="model1">iPhone 14</button>
+                    <button class="model1">iPhone 13 Pro Max</button>
+                    <button class="model1">iPhone 13 Pro</button>
+                    <button class="model1">iPhone 13</button>
+                    <button class="model1">iPhone 12 Pro Max</button>
+                    <button class="model1">iPhone 12/12 Pro</button>
+                    <button class="model1">iPhone 11</button>
+                </div>
+            </div>
+            <button class="order" id="order27">КУПИТЬ</button>
+
+
+
+
+
+
+            <div class="information">
+                <div class="card1">
+                    <div class="card" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Описание чехла</div>
+                        </div>
+                    </div>
+                    <div class="info">The Puffer Case - это незаменимый элемент гардероба для любого телефона. Он мягкий, но защитный, пухлый, но не громоздкий, поэтому помещается в любой карман. Его элегантный минималистичный дизайн сделал его абсолютным фаворитом.</div>
+                </div>
+                <div class="cards">
+                    <div class="card2" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Доставка</div>
+                        </div>
+                    </div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                </div>
+            </div>
+
+
+
+
+
+
+        </form>
+
+        <form id="form28" class="hidden">
+            <div class="product-details">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="MIRROR.PNG" alt="" class="img2">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="MIRROR2.PNG" alt="" class="img2">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="MIRROR3.PNG" alt="" class="img2">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="MIRROR4.PNG" alt="" class="img2">
+                        </div>
+                        <!-- Добавьте дополнительные слайды с изображениями по аналогии -->
+                    </div>
+
+                </div>
+                <div class="y">4 ФОТО</div>
+                <div class="namecase2">THE PUFFER CASE-MIRROR</div>
+                <div class="price28">1899₽-2099₽</div>
+                <div class="p">Выберите модель телефона:</div>
+                <div class="models">
+                    <button class="model1">iPhone 15 Pro Max</button>
+                    <button class="model1">iPhone 15 Pro</button>
+                    <button class="model1">iPhone 15 Plus</button>
+                    <button class="model1">iPhone 15</button>
+                    <button class="model1">iPhone 14 Pro Max</button>
+                    <button class="model1">iPhone 14 Pro</button>
+                    <button class="model1">iPhone 14</button>
+                    <button class="model1">iPhone 13 Pro Max</button>
+                    <button class="model1">iPhone 13 Pro</button>
+                    <button class="model1">iPhone 13</button>
+                    <button class="model1">iPhone 12 Pro Max</button>
+                    <button class="model1">iPhone 12/12 Pro</button>
+                    <button class="model1">iPhone 11</button>
+                </div>
+            </div>
+            <button class="order" id="order28">КУПИТЬ</button>
+
+
+
+
+
+
+            <div class="information">
+                <div class="card1">
+                    <div class="card" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Описание чехла</div>
+                        </div>
+                    </div>
+                    <div class="info">The Puffer Case - это незаменимый элемент гардероба для любого телефона. Он мягкий, но защитный, пухлый, но не громоздкий, поэтому помещается в любой карман. Его элегантный минималистичный дизайн сделал его абсолютным фаворитом.</div>
+                </div>
+                <div class="cards">
+                    <div class="card2" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Доставка</div>
+                        </div>
+                    </div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                </div>
+            </div>
+
+
+
+
+
+
+        </form>
+
+        <form id="form29" class="hidden">
+            <div class="product-details">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="DRAMA.png" alt="" class="img2">
+                        </div>
+
+                        <!-- Добавьте дополнительные слайды с изображениями по аналогии -->
+                    </div>
+
+                </div>
+                <div class="y">1 ФОТО</div>
+                <div class="namecase2">THE PUFFER CASE-DRAMA</div>
+                <div class="price29">1899₽-2099₽</div>
+                <div class="p">Выберите модель телефона:</div>
+                <div class="models">
+                    <button class="model1">iPhone 15 Pro Max</button>
+                    <button class="model1">iPhone 15 Pro</button>
+                    <button class="model1">iPhone 15</button>
+                    <button class="model1">iPhone 14 Pro Max</button>
+                    <button class="model1">iPhone 14 Pro</button>
+                    <button class="model1">iPhone 14</button>
+                    <button class="model1">iPhone 13 Pro Max</button>
+                    <button class="model1">iPhone 13 Pro</button>
+                    <button class="model1">iPhone 13</button>
+                    <button class="model1">iPhone 12 Pro Max</button>
+                    <button class="model1">iPhone 12/12 Pro</button>
+                </div>
+            </div>
+            <button class="order" id="order29">КУПИТЬ</button>
+
+
+
+
+
+
+            <div class="information">
+                <div class="card1">
+                    <div class="card" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Описание чехла</div>
+                        </div>
+                    </div>
+                    <div class="info">The Puffer Case - это незаменимый элемент гардероба для любого телефона. Он мягкий, но защитный, пухлый, но не громоздкий, поэтому помещается в любой карман. Его элегантный минималистичный дизайн сделал его абсолютным фаворитом.</div>
+                </div>
+                <div class="cards">
+                    <div class="card2" data-open="true">
+                        <div class="order-card">
+                            <div class="TPC">Доставка</div>
+                        </div>
+                    </div>
+                    <div class="info">Мы отправляем по всей России. Можем отправить почтой России (250 рублей по РФ) или СДЭК (около 500 рублей)<br>Сроки доставки:<br>• примерно 3-5 дней, если чехол на вашу модель и цвет есть в наличии<br>• примерно 16-21 дней, если на вашу модель и цвет нет в наличии</div>
+                </div>
+            </div>
+
+
+
+
+
+
+        </form>
+
+        <form id="form30" class="hidden">
+            <div class="product-details">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="DEMON.png" alt="" class="img2">
+                        </div>
+                        
+                        <!-- Добавьте дополнительные слайды с изображениями по аналогии -->
+                    </div>
+
+                </div>
+                <div class="y">1 ФОТО</div>
+                <div class="namecase2">THE PUFFER CASE-DEMON</div>
+                <div class="price30">1899₽-2099₽</div>
+                <div class="p">Выберите модель телефона:</div>
+                <div class="models">
+                    <button class="model1">iPhone 15 Pro Max</button>
+                    <button class="model1">iPhone 15 Pro</button>
+                    <button class="model1">iPhone 15</button>
+                    <button class="model1">iPhone 14 Pro Max</button>
+                    <button class="model1">iPhone 14 Pro</button>
+                    <button class="model1">iPhone 14</button>
+                    <button class="model1">iPhone 13 Pro Max</button>
+                    <button class="model1">iPhone 13 Pro</button>
+                    <button class="model1">iPhone 13</button>
+                    <button class="model1">iPhone 12 Pro Max</button>
+                    <button class="model1">iPhone 12/12 Pro</button>
+                </div>
+            </div>
+            <button class="order" id="order30">КУПИТЬ</button>
 
 
 
