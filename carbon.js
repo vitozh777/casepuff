@@ -297,6 +297,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+
+
 function calculateTotalPrice(selectedPrice, deliveryPrice) {
     // Логика вычисления общей цены
     return parseFloat(selectedPrice) + parseFloat(deliveryPrice);
@@ -934,6 +936,10 @@ model1.forEach(model => {
 
         // Добавляем класс selected к выбранной кнопке
         model.classList.add("selected");
+
+
+        order1.orderinactive = false;
+        order1.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementForm1.textContent = selectedPrice;
