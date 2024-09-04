@@ -7,7 +7,7 @@ let model4 = document.querySelectorAll(".model4");
 let modelcompl = document.querySelectorAll(".modelcompl");
 let modelcomplair = document.querySelectorAll(".modelcomplair");
 let priceElement = document.querySelector(".price");
-
+let form1 = document.getElementById("form1");
 let form2 = document.getElementById("form2");
 let form3 = document.getElementById("form3");
 let form4 = document.getElementById("form4");
@@ -37,7 +37,7 @@ let form27 = document.getElementById("form27");
 let form28 = document.getElementById("form28");
 let form29 = document.getElementById("form29");
 let form30 = document.getElementById("form30");
-
+let btn1 = document.getElementById("btn1");
 let btn2 = document.getElementById("btn2");
 let btn3 = document.getElementById("btn3");
 let btn4 = document.getElementById("btn4");
@@ -68,7 +68,7 @@ let btn28 = document.getElementById("btn28");
 let btn29 = document.getElementById("btn29");
 let btn30 = document.getElementById("btn30");
 let homeContent = document.getElementById("thepuffercase");
-
+let order1 = document.getElementById("order1");
 let order2 = document.getElementById("order2");
 let order3 = document.getElementById("order3");
 let order4 = document.getElementById("order4");
@@ -246,81 +246,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Переменные
-    const order1 = document.getElementById('order1');
-    const dropdownContent = document.getElementById('myDropdown');
-    const dropdownBtn = document.querySelector('.dropdown-btn');
-    const btn1 = document.getElementById('btn1');
-    const form1 = document.getElementById('form1');
-    const thepuffercase = document.getElementById('TPC');
-    const backButton = document.getElementById('backButton'); // Необходимо добавить HTML элемент для backButton
-
-    // Изначально кнопка "КУПИТЬ" в форме неактивна
-    order1.disabled = true;
-    order1.classList.add('orderinactive');
-
-    // Обработчик клика для открытия и закрытия выпадающего меню
-    dropdownBtn.addEventListener('click', function(event) {
-        event.preventDefault();
-        dropdownContent.classList.toggle('show');
-    });
-
-    // Закрыть выпадающее меню при клике вне его
-    window.addEventListener('click', function(event) {
-        if (!event.target.matches('.dropdown-btn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            for (var i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    });
-
-    // Обработчики кликов для выбора модели
-    document.querySelectorAll('.dropdown-content button').forEach(function(button) {
-        button.addEventListener('click', function(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            var model = this.getAttribute('data-model');
-            dropdownBtn.innerText = `Size: ${model}`;
-            dropdownContent.classList.remove('show');
-
-            // Активируем кнопку "КУПИТЬ"
-            order1.disabled = false;
-            order1.classList.remove('orderinactive');
-        });
-    });
-
-    // Обработчик клика для кнопки "КУПИТЬ"
-    order1.addEventListener('click', function(event) {
-        event.preventDefault();
-        console.log('Кнопка "КУПИТЬ" нажата');
-        // Дополнительные действия при нажатии кнопки
-    });
-
-    // Обработчик клика для кнопки "купить" на главной странице
-    btn1.addEventListener('click', function() {
-        thepuffercase.style.display = 'none';
-        form1.style.display = 'block';
-
-        // Делаем кнопку "order1" неактивной при открытии формы
-        order1.disabled = true;
-        order1.classList.add('orderinactive');
-
-        // Включаем кнопку "Назад" (если есть)
-        if (backButton) {
-            backButton.style.display = 'block';
-            backButton.addEventListener('click', function() {
-                thepuffercase.style.display = 'block';
-                form1.style.display = 'none';
-                backButton.style.display = 'none';
-            });
-        }
-    });
-});
 
 
 
