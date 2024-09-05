@@ -1175,18 +1175,7 @@ form {
     color: white;
 }
 
-.model1 {
-    color: black;
-    font-size: 14px;
-    background-color:rgb(230, 230, 230);
-    padding: 4px 8px;
-    display: flex;
-    align-items: center;
-    min-width: 60px;
-    border: 1px solid var(--background-secondary);
-    border-radius: 15px;
-    flex-shrink: 0;
-}
+
 
 .model2 {
     color: black;
@@ -1350,6 +1339,39 @@ form {
     color: grey; /* Серый цвет стрелки */
     font-size: 14px; /* Размер шрифта для стрелки */
     margin-right: 10px;
+}
+
+#iphoneModelsWindow {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 200px; /* Ширина окна */
+    max-height: 200px; /* Максимальная высота окна */
+    background-color: rgba(255, 255, 255, 0.9); /* Прозрачный белый фон */
+    border: 1px solid grey; /* Серая граница */
+    border-radius: 8px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 1000; /* Поверх всех элементов */
+    padding: 10px; /* Внутренние отступы */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 410px;
+}
+
+.model1 {
+    font-size: 12px; /* Размер шрифта для моделей iPhone */
+    padding: 8px; /* Отступы для каждой модели */
+    cursor: pointer; /* Курсор в виде руки при наведении */
+    color: black; /* Цвет текста */
+    text-align: left; /* Текст выравнивается по левому краю */
+}
+
+.model1:hover {
+    background-color: rgba(0, 0, 0, 0.05); /* Подсветка при наведении */
+}
+
+.model1 + .model1 {
+    border-top: 1px solid black; /* Черная линия между моделями */
 }
 
 
