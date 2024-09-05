@@ -874,6 +874,46 @@ btn1.addEventListener("click", () => {
 
 
 
+
+
+// Получаем элементы кнопки "SIZE" и окна выбора моделей iPhone
+const sizeButton = document.getElementById("sizeButton");
+const iphoneModelsWindow = document.getElementById("iphoneModelsWindow");
+
+// Обработчик события для кнопки "SIZE"
+sizeButton.addEventListener("click", (event) => {
+    event.preventDefault(); // Предотвращаем действие по умолчанию (обновление страницы)
+    
+    // Показываем окно выбора модели iPhone
+    iphoneModelsWindow.style.display = "block";
+});
+
+// Добавляем обработчик события на каждую модель iPhone
+document.querySelectorAll(".model1").forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        // Сохраняем выбранную модель
+        selectedModel = model.textContent;
+        
+        // Скрываем окно после выбора модели
+        iphoneModelsWindow.style.display = "none";
+
+        // Изменяем текст кнопки "SIZE" на выбранную модель
+        sizeButton.textContent = `Размер: ${selectedModel}`;
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
 model1.forEach(model => {
     model.addEventListener("click", (event) => {
         event.preventDefault(); // Предотвращаем действие по умолчанию (например, переход по ссылке)

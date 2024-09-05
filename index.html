@@ -701,18 +701,20 @@
                 <div class="y">3 ФОТО</div>
                 <div class="namecase2">FORGED GLOSSY-BLACK</div>
                 <div class="price1">3699₽</div>
-                <div class="p">Выберите модель телефона:</div>
-                <div class="models">
-                    <button class="model1">iPhone 15 Pro Max</button>
-                    <button class="model1">iPhone 15 Pro</button>
-                    <button class="model1">iPhone 15 Plus</button>
-                    <button class="model1">iPhone 15</button>
-                    <button class="model1">iPhone 14 Pro Max</button>
-                    <button class="model1">iPhone 14 Pro</button>
-                    <button class="model1">iPhone 14</button>
-                    <button class="model1">iPhone 13 Pro Max</button>
-                    <button class="model1">iPhone 13 Pro</button>
-                    <button class="model1">iPhone 13</button>
+                <button id="sizeButton" type="button" class="size-button">
+                    <div class="size-text">Выберите размер</div>
+                    <span class="arrow">&#x276F;</span>
+                </button>
+    
+                 <!-- Новое скрытое окно для выбора модели iPhone -->
+                <div id="iphoneModelsWindow" style="display: none;">
+                    <!-- Здесь элементы для model1 -->
+                    <div class="model1">iPhone 15 Pro Max</div>
+                    <div class="model1">iPhone 15 Pro</div>
+                    <div class="model1">iPhone 15 Plus</div>
+                    <div class="model1">iPhone 15</div>
+                    <div class="model1">iPhone 14 Pro Max</div>
+                    <!-- Добавьте остальные модели iPhone по аналогии -->
                 </div>
             </div>
             <button class="order" id="order1">КУПИТЬ</button>

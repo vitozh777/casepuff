@@ -1268,6 +1268,7 @@ form {
     color:black;
 }
 
+
 .swiper-container {
     width: 100%;
     background-color: #ffffff;
@@ -1286,7 +1287,7 @@ form {
 .order { 
     justify-content: center;
     font-weight: bold;
-    width: 95%;
+    width: 100%;
     height: 50px;
     border-radius: 20px;
     border: none;
@@ -1318,7 +1319,38 @@ form {
 
 
 
+.size-button {
+    width: 100%; /* Ширина 100% */
+    height: 50px; /* Высота 30px */
+    border: 1px solid grey; /* Серая граница */
+    background-color: white; /* Белый фон */
+    color: black; /* Цвет текста */
+    display: flex; /* Flexbox для выравнивания контента */
+    flex-direction: column; /* Вертикальное размещение контента */
+    align-items: flex-start; /* Выравнивание текста по левому краю */
+    justify-content: center; /* Центрирование по вертикали */
+    position: relative; /* Для стрелки */
+    padding: 5px; /* Отступы */
+    cursor: pointer; /* Курсор при наведении */
+    border-radius: 20px;
+    margin-top: 10px;
+}
 
+.size-text {
+    font-size: 12px; /* Размер шрифта для текста SIZE */
+    margin: 0; /* Убираем отступы */
+    color: grey;
+}
+
+.arrow {
+    position: absolute; /* Абсолютное позиционирование стрелки */
+    right: 5px; /* Отступ справа */
+    top: 50%; /* Центрирование по вертикали */
+    transform: translateY(-50%) rotate(90deg); /* Поворот на 90 градусов для галочки */
+    color: grey; /* Серый цвет стрелки */
+    font-size: 14px; /* Размер шрифта для стрелки */
+    margin-right: 10px;
+}
 
 
 
