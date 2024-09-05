@@ -906,7 +906,7 @@ form {
 }
 
 .img2 {
-    width: 100%;
+    width: 90%;
     margin-top: 10px;
 }
 
@@ -1359,7 +1359,7 @@ form {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
-    margin-top: 410px;
+    margin-top: 350px;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);

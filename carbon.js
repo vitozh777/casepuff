@@ -904,6 +904,13 @@ document.querySelectorAll(".model1").forEach(model => {
     });
 });
 
+var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
+});
 
 
 
