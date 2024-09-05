@@ -886,7 +886,7 @@ body {
     overflow-wrap: break-word;
     font-weight: 400;
     line-height: 140%;
-    overflow: hidden; /* Скрытие избыточного текста */
+    
     width: 100%; /* Занимать всю доступную ширину */
 }
 
@@ -894,11 +894,15 @@ form {
     display: none;
     text-align: center;
     width: 400px;
-    overflow: hidden;
+    
     justify-content: center;
     align-items: center;
     background: #ffffff;
     padding: 10px;
+}
+
+.product-details {
+    overflow: hidden;
 }
 
 .img2 {
@@ -1262,7 +1266,7 @@ form {
     width: 100%;
     background-color: #ffffff;
     border-radius: 20px;
-    overflow: hidden;
+    
     margin-top: 5px;
 }
 
@@ -1314,15 +1318,18 @@ form {
     border: 1px solid grey; /* Серая граница */
     background-color: white; /* Белый фон */
     color: black; /* Цвет текста */
-    display: flex; /* Flexbox для выравнивания контента */
-    flex-direction: column; /* Вертикальное размещение контента */
+    text-align: center;
+    text-align: left;
+    font-size: 12px;
     align-items: flex-start; /* Выравнивание текста по левому краю */
-    justify-content: center; /* Центрирование по вертикали */
+    
     position: relative; /* Для стрелки */
     padding: 5px; /* Отступы */
+    padding-left: 15px;
     cursor: pointer; /* Курсор при наведении */
     border-radius: 20px;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .size-text {
@@ -1346,24 +1353,30 @@ form {
     top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
     left: 50%; /* Выравнивание по центру по горизонтали */
     transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
-    width: 200px; /* Ширина окна */
+    width: 300px; /* Ширина окна */
     max-height: 200px; /* Максимальная высота окна */
-    background-color: rgba(255, 255, 255, 0.9); /* Прозрачный белый фон */
-    border: 1px solid grey; /* Серая граница */
-    border-radius: 8px; /* Радиус границы для закругления углов */
+    border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
-    z-index: 1000; /* Поверх всех элементов */
-    padding: 10px; /* Внутренние отступы */
+    z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
     margin-top: 410px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }
 
 .model1 {
-    font-size: 12px; /* Размер шрифта для моделей iPhone */
+    font-size: 14px; /* Размер шрифта для моделей iPhone */
     padding: 8px; /* Отступы для каждой модели */
     cursor: pointer; /* Курсор в виде руки при наведении */
-    color: black; /* Цвет текста */
+    color: rgb(193, 193, 193); /* Цвет текста */
     text-align: left; /* Текст выравнивается по левому краю */
+    padding: 10px; /* Внутренние отступы */
+    padding-left: 30px;
 }
 
 .model1:hover {
@@ -1371,7 +1384,7 @@ form {
 }
 
 .model1 + .model1 {
-    border-top: 1px solid black; /* Черная линия между моделями */
+    border-top: 1px solid rgb(88, 88, 88); /* Черная линия между моделями */
 }
 
 
@@ -1380,7 +1393,7 @@ form {
     width: 100%;
     height: 1px; /* Высота полоски */
     background-color: #cdcdcd; /* Цвет полоски */
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 
