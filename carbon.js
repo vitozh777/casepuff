@@ -336,9 +336,9 @@ const modelInfo3 = {
 
 
 const modelInfo4 = {
-    "AirPods 1/2": "999₽",
-    "AirPods Pro/Pro(2)": "999₽",
-    "AirPods 3": "999₽",
+    "AirPods 1/2": "2299₽",
+    "AirPods Pro/Pro(2)": "2299₽",
+    "AirPods 3": "2299₽",
 };
 
 
@@ -430,34 +430,65 @@ function closeSetka() {
     });
 });
 
-razmer1.forEach(razmer => {
-    razmer.addEventListener("click", (event) => {
+// Получаем элементы кнопки "SIZE" и окна выбора моделей iPhone
+const sizeButtonAir1 = document.getElementById("sizeButtonAir1");
+const iphoneModelsWindowAir1 = document.getElementById("iphoneModelsWindowAir1");
+
+// Обработчик события для кнопки "SIZE"
+sizeButtonAir1.addEventListener("click", (event) => {
+    event.preventDefault(); // Предотвращаем действие по умолчанию (обновление страницы)
+    
+    // Показываем окно выбора модели iPhone
+    iphoneModelsWindowAir1.style.display = "block";
+});
+
+// Добавляем обработчик события на каждую модель iPhone
+document.querySelectorAll(".model4").forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        // Сохраняем выбранную модель
+        selectedModel = model.textContent;
+        
+        // Скрываем окно после выбора модели
+        iphoneModelsWindowAir1.style.display = "none";
+
+        // Изменяем текст кнопки "SIZE" на выбранную модель
+        sizeButtonAir1.textContent = `Размер: ${selectedModel}`;
+    });
+});
+
+model4.forEach(model => {
+    model.addEventListener("click", (event) => {
         event.preventDefault(); // Предотвращаем действие по умолчанию (например, переход по ссылке)
-
-
-        selectedRazmer = razmer.textContent;
-        selectedPrice = razmerInfo1[selectedRazmer];
+                    
+        selectedModel = model.textContent;
+        selectedPrice = modelInfo4[selectedModel];
 
         // Удаляем границу у всех кнопок
-        razmer1.forEach(btn => {
-            btn.classList.remove("razmer1active");
+        model4.forEach(btn => {
+            btn.classList.remove("selected");
+            btn.style.border = "none";
         });
 
         // Добавляем класс selected к выбранной кнопке
-        razmer.classList.add("razmer1active");
+        model.classList.add("selected");
+                    
+        // Обновляем стиль выбранной кнопки
+        model.style.border = "1px solid black";
 
-
-        pufforder1.pufforderinactive = false;
+        pufforder1.orderinactive = false;
         pufforder1.classList.remove("pufforderinactive");
 
         priceElement.textContent = selectedPrice;
         priceElementFormplan1.textContent = selectedPrice;
-
-        selectedRazmer = razmer.textContent;
+                    
+        selectedModel = model.textContent;
     });
 });
 
 console.log(tg)
+// Добавьте обработчик события click для кнопки "Add"
 // Добавьте обработчик события click для кнопки "Add"
 pufforder1.disabled = false;
 pufforder1.addEventListener("click", (event) => {
@@ -465,11 +496,11 @@ pufforder1.addEventListener("click", (event) => {
         event.preventDefault();
         
         // Получаем выбранную модель и цену
-        const selectedRazmer = document.querySelector(".razmer1.razmer1active").textContent;
-        const selectedPrice = razmerInfo1[selectedRazmer];
+        const selectedModel = document.querySelector(".model4.selected").textContent;
+        const selectedPrice = modelInfo4[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "300₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -477,15 +508,16 @@ pufforder1.addEventListener("click", (event) => {
         tg.MainButton.show();
         
         // Сохраняем выбранные данные для передачи боту
-        const itemName = "THE OVERSIZE T-SHIRT - MIDNIGHT";
+        const itemName = "FORGED GLOSSY-OBSIDIAN";
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Размер: ${selectedRazmer}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
         `;
+        
         // Добавьте обработчик для кнопки MainButton
         tg.MainButton.onClick(async () => {
             await sendMessageToBot(instructionMessage);
@@ -970,7 +1002,7 @@ order1.addEventListener("click", (event) => {
         const selectedPrice = modelInfo1[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -978,11 +1010,11 @@ order1.addEventListener("click", (event) => {
         tg.MainButton.show();
         
         // Сохраняем выбранные данные для передачи боту
-        const itemName = "THE PUFFER CASE-BLACK";
+        const itemName = "FORGED GLOSSY-OBSIDIAN-";
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -1111,7 +1143,7 @@ order2.addEventListener("click", (event) => {
         const selectedPrice = modelInfo2[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -1123,7 +1155,7 @@ order2.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -1199,7 +1231,7 @@ order3.addEventListener("click", (event) => {
         const selectedPrice = modelInfo1[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -1211,7 +1243,7 @@ order3.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -1288,7 +1320,7 @@ order4.addEventListener("click", (event) => {
         const selectedPrice = modelInfo2[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -1300,7 +1332,7 @@ order4.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -1416,7 +1448,7 @@ order5.addEventListener("click", (event) => {
         const selectedPriceAir = modelcomplairInfo6[selectedModelAir];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPriceCompl = calculateTotalComplPrice(selectedPrice, selectedPriceAir, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -1428,9 +1460,9 @@ order5.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена со скидкой: ${selectedPrice}
-            Модель наушников: ${selectedModelAir}
+            Размер: ${selectedModelAir}
             Цена со скидкой: ${selectedPriceAir}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPriceCompl}
@@ -1514,7 +1546,7 @@ order6.addEventListener("click", (event) => {
         const selectedPrice = modelInfo1[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -1526,7 +1558,7 @@ order6.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -1603,7 +1635,7 @@ order7.addEventListener("click", (event) => {
         const selectedPrice = modelInfo3[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -1615,7 +1647,7 @@ order7.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -1691,7 +1723,7 @@ order8.addEventListener("click", (event) => {
         const selectedPrice = modelInfo1[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -1703,7 +1735,7 @@ order8.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -1779,7 +1811,7 @@ order9.addEventListener("click", (event) => {
         const selectedPrice = modelInfo1[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -1791,7 +1823,7 @@ order9.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -1868,7 +1900,7 @@ order10.addEventListener("click", (event) => {
         const selectedPrice = modelInfo3[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -1880,7 +1912,7 @@ order10.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -1956,7 +1988,7 @@ order11.addEventListener("click", (event) => {
         const selectedPrice = modelInfo1[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -1968,7 +2000,7 @@ order11.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -2044,7 +2076,7 @@ order12.addEventListener("click", (event) => {
         const selectedPrice = modelInfo1[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -2056,7 +2088,7 @@ order12.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -2133,7 +2165,7 @@ order13.addEventListener("click", (event) => {
         const selectedPrice = modelInfo4[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -2145,7 +2177,7 @@ order13.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель наушников: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -2222,7 +2254,7 @@ order14.addEventListener("click", (event) => {
         const selectedPrice = modelInfo4[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -2234,7 +2266,7 @@ order14.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель наушников: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -2310,7 +2342,7 @@ order15.addEventListener("click", (event) => {
         const selectedPrice = modelInfo1[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -2322,7 +2354,7 @@ order15.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -2398,7 +2430,7 @@ order16.addEventListener("click", (event) => {
         const selectedPrice = modelInfo1[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -2410,7 +2442,7 @@ order16.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -2486,7 +2518,7 @@ order17.addEventListener("click", (event) => {
         const selectedPrice = modelInfo1[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -2498,7 +2530,7 @@ order17.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -2574,7 +2606,7 @@ order18.addEventListener("click", (event) => {
         const selectedPrice = modelInfo1[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -2586,7 +2618,7 @@ order18.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -2662,7 +2694,7 @@ order19.addEventListener("click", (event) => {
         const selectedPrice = modelInfo1[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -2674,7 +2706,7 @@ order19.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -2750,7 +2782,7 @@ order20.addEventListener("click", (event) => {
         const selectedPrice = modelInfo1[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -2762,7 +2794,7 @@ order20.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -2839,7 +2871,7 @@ order21.addEventListener("click", (event) => {
         const selectedPrice = modelInfo3[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -2851,7 +2883,7 @@ order21.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -2927,7 +2959,7 @@ order22.addEventListener("click", (event) => {
         const selectedPrice = modelInfo1[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -2939,7 +2971,7 @@ order22.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -3016,7 +3048,7 @@ order23.addEventListener("click", (event) => {
         const selectedPrice = modelInfo3[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -3028,7 +3060,7 @@ order23.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -3105,7 +3137,7 @@ order24.addEventListener("click", (event) => {
         const selectedPrice = modelInfo3[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -3117,7 +3149,7 @@ order24.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -3194,7 +3226,7 @@ order25.addEventListener("click", (event) => {
         const selectedPrice = modelInfo3[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -3206,7 +3238,7 @@ order25.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -3283,7 +3315,7 @@ order26.addEventListener("click", (event) => {
         const selectedPrice = modelInfo3[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -3295,7 +3327,7 @@ order26.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -3374,7 +3406,7 @@ order27.addEventListener("click", (event) => {
         const selectedPrice = modelInfo1[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -3386,7 +3418,7 @@ order27.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -3465,7 +3497,7 @@ order28.addEventListener("click", (event) => {
         const selectedPrice = modelInfo1[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -3477,7 +3509,7 @@ order28.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -3556,7 +3588,7 @@ order29.addEventListener("click", (event) => {
         const selectedPrice = modelInfo1[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -3568,7 +3600,7 @@ order29.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
@@ -3648,7 +3680,7 @@ order30.addEventListener("click", (event) => {
         const selectedPrice = modelInfo1[selectedModel];
 
         // Вычисляем общую цену
-        const deliveryPrice = "250₽";
+        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -3660,7 +3692,7 @@ order30.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
         const message = `
             Заказ: ${itemName}
-            Модель телефона: ${selectedModel}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}
             Доставка: ${deliveryPrice}
             Общая цена: ${totalPrice}
