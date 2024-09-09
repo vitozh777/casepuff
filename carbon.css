@@ -377,7 +377,7 @@ body {
       #a8a6a4 1.5px 1.5px 1px 0px inset, #545251 -3.2px -3.2px 8px 0px inset;
     cursor: pointer;
     transition: 0.1s ease-in-out;
-    margin-top: -9px;
+    margin-top: 0px;
     margin-bottom: 30px;
     color: #ffffff;
     z-index: 999;
