@@ -528,6 +528,62 @@ pufforder1.addEventListener("click", (event) => {
     }   
 });
 
+// Функция для вычисления общей цены
+function calculateTotalPrice(price1, price2) {
+    const price1Numeric = parseInt(price1.replace("₽", "").replace(",", ""));
+    const price2Numeric = parseInt(price2.replace("₽", "").replace(",", ""));
+    const total = price1Numeric + price2Numeric;
+    return total + "₽";
+}
+
+async function sendMessageToBot(instructionMessage) {
+    const botToken = "6307642779:AAG5aXORiZ8gaVAK9bFtwrVBlZQPln2Lbd8";
+    const chatId = tg.initDataUnsafe.user.id;
+
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    const data = new URLSearchParams({
+        chat_id: chatId,
+        text: instructionMessage,
+    });
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            body: data,
+        });
+
+        const result = await response.json();
+        console.log('Message sent:', result);
+    } catch (error) {
+        console.error('Error sending message:', error);
+    }
+}
+
+// Функция для отправки сообщения в бота
+async function sendMessageToBotWithKeyboard(message, keyboard) {
+    const botToken = "6307642779:AAG5aXORiZ8gaVAK9bFtwrVBlZQPln2Lbd8"; // Замените на ваш токен бота
+    const chatId = tg.initDataUnsafe.user.id; // Замените на ваш ID чата
+                
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    const data = new URLSearchParams({
+        chat_id: chatId,
+        text: message,
+        reply_markup: JSON.stringify(keyboard),
+    });
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            body: data,
+        });
+                    
+        const result = await response.json();
+        console.log('Message sent with keyboard:', result);
+    } catch (error) {
+        console.error('Error sending message:', error);
+    }
+}
+
 
 
 
@@ -1029,61 +1085,7 @@ order1.addEventListener("click", (event) => {
     }   
 });
 
-// Функция для вычисления общей цены
-function calculateTotalPrice(price1, price2) {
-    const price1Numeric = parseInt(price1.replace("₽", "").replace(",", ""));
-    const price2Numeric = parseInt(price2.replace("₽", "").replace(",", ""));
-    const total = price1Numeric + price2Numeric;
-    return total + "₽";
-}
 
-async function sendMessageToBot(instructionMessage) {
-    const botToken = "6307642779:AAG5aXORiZ8gaVAK9bFtwrVBlZQPln2Lbd8";
-    const chatId = tg.initDataUnsafe.user.id;
-
-    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-    const data = new URLSearchParams({
-        chat_id: chatId,
-        text: instructionMessage,
-    });
-
-    try {
-        const response = await fetch(url, {
-            method: 'POST',
-            body: data,
-        });
-
-        const result = await response.json();
-        console.log('Message sent:', result);
-    } catch (error) {
-        console.error('Error sending message:', error);
-    }
-}
-
-// Функция для отправки сообщения в бота
-async function sendMessageToBotWithKeyboard(message, keyboard) {
-    const botToken = "6307642779:AAG5aXORiZ8gaVAK9bFtwrVBlZQPln2Lbd8"; // Замените на ваш токен бота
-    const chatId = tg.initDataUnsafe.user.id; // Замените на ваш ID чата
-                
-    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-    const data = new URLSearchParams({
-        chat_id: chatId,
-        text: message,
-        reply_markup: JSON.stringify(keyboard),
-    });
-
-    try {
-        const response = await fetch(url, {
-            method: 'POST',
-            body: data,
-        });
-                    
-        const result = await response.json();
-        console.log('Message sent with keyboard:', result);
-    } catch (error) {
-        console.error('Error sending message:', error);
-    }
-}
 //товар2zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 btn2.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none";
