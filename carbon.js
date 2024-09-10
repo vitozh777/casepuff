@@ -41,51 +41,63 @@ let priceElementForm6 = document.querySelector(".price6");
 
 document.addEventListener('DOMContentLoaded', function() {
     const loadingScreen = document.getElementById('loading-screen');
-    const videos = document.querySelectorAll('video');
-    let imagesLoaded = 0;
-    const images = document.images;
-    const totalImages = images.length;
+    const video1 = document.getElementById('myVideo');
+    const video2 = document.getElementById('myVideo3');
+    const videos = [video1, video2];
+    let resourcesLoaded = 0;
+    const totalResources = videos.length + document.images.length;
 
-    // Функция для проверки полной загрузки всех изображений
-    function checkImagesLoaded() {
-        imagesLoaded++;
-        if (imagesLoaded === totalImages) {
+    // Функция для проверки состояния загрузки
+    function checkAllResourcesLoaded() {
+        resourcesLoaded++;
+        console.log(`Загружено ресурсов: ${resourcesLoaded}/${totalResources}`);
+
+        if (resourcesLoaded >= totalResources) {
             hideLoadingScreen();
         }
     }
 
-    // Добавляем обработчики загрузки для всех изображений
-    for (let i = 0; i < totalImages; i++) {
-        if (images[i].complete) {
-            checkImagesLoaded();
+    // Обработка загрузки всех изображений
+    for (let i = 0; i < document.images.length; i++) {
+        if (document.images[i].complete) {
+            checkAllResourcesLoaded();
         } else {
-            images[i].addEventListener('load', checkImagesLoaded);
-            images[i].addEventListener('error', checkImagesLoaded);
+            document.images[i].addEventListener('load', checkAllResourcesLoaded);
+            document.images[i].addEventListener('error', checkAllResourcesLoaded); // В случае ошибки все равно учитываем как загруженное
         }
     }
 
+    // Обработка загрузки видео
+    videos.forEach((video) => {
+        video.onloadeddata = () => {
+            checkAllResourcesLoaded();
+        };
+        video.onerror = () => {
+            console.error(`Ошибка загрузки видео: ${video.src}`);
+            checkAllResourcesLoaded();
+        };
+    });
+
+    // Таймаут на случай зависания загрузки
+    setTimeout(() => {
+        if (resourcesLoaded < totalResources) {
+            console.warn('Загрузка заняла слишком много времени. Скрываем загрузочный экран принудительно.');
+            hideLoadingScreen();
+        }
+    }, 10000); // Таймаут в 10 секунд (можно настроить)
+
     // Функция для скрытия загрузочного экрана и воспроизведения видео
     function hideLoadingScreen() {
+        console.log('Все ресурсы загружены или истек таймаут. Скрываем загрузочный экран.');
         loadingScreen.style.display = 'none'; // Скрыть загрузочный экран
 
-        // Воспроизвести видео после загрузки страницы
+        // Воспроизвести оба видео после загрузки страницы
         videos.forEach((video) => {
             video.play().catch((error) => {
                 console.error('Ошибка воспроизведения видео:', error);
             });
         });
     }
-
-    // Проверка загрузки видео
-    let videosLoaded = 0;
-    videos.forEach((video) => {
-        video.onloadeddata = () => {
-            videosLoaded++;
-            if (videosLoaded === videos.length && imagesLoaded === totalImages) {
-                hideLoadingScreen();
-            }
-        };
-    });
 });
 
 const backButton = Telegram.WebApp.BackButton;
