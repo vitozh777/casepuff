@@ -39,6 +39,55 @@ let priceElementForm4 = document.querySelector(".price4");
 let priceElementForm5 = document.querySelector(".price5");
 let priceElementForm6 = document.querySelector(".price6");
 
+document.addEventListener('DOMContentLoaded', function() {
+    const loadingScreen = document.getElementById('loading-screen');
+    const videos = document.querySelectorAll('video');
+    let imagesLoaded = 0;
+    const images = document.images;
+    const totalImages = images.length;
+
+    // Функция для проверки полной загрузки всех изображений
+    function checkImagesLoaded() {
+        imagesLoaded++;
+        if (imagesLoaded === totalImages) {
+            hideLoadingScreen();
+        }
+    }
+
+    // Добавляем обработчики загрузки для всех изображений
+    for (let i = 0; i < totalImages; i++) {
+        if (images[i].complete) {
+            checkImagesLoaded();
+        } else {
+            images[i].addEventListener('load', checkImagesLoaded);
+            images[i].addEventListener('error', checkImagesLoaded);
+        }
+    }
+
+    // Функция для скрытия загрузочного экрана и воспроизведения видео
+    function hideLoadingScreen() {
+        loadingScreen.style.display = 'none'; // Скрыть загрузочный экран
+
+        // Воспроизвести видео после загрузки страницы
+        videos.forEach((video) => {
+            video.play().catch((error) => {
+                console.error('Ошибка воспроизведения видео:', error);
+            });
+        });
+    }
+
+    // Проверка загрузки видео
+    let videosLoaded = 0;
+    videos.forEach((video) => {
+        video.onloadeddata = () => {
+            videosLoaded++;
+            if (videosLoaded === videos.length && imagesLoaded === totalImages) {
+                hideLoadingScreen();
+            }
+        };
+    });
+});
+
 const backButton = Telegram.WebApp.BackButton;
 
 
@@ -468,7 +517,7 @@ function calculateTotalPrice(price1, price2) {
 }
 
 async function sendMessageToBot(instructionMessage) {
-    const botToken = "6307642779:AAG5aXORiZ8gaVAK9bFtwrVBlZQPln2Lbd8";
+    const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE";
     const chatId = tg.initDataUnsafe.user.id;
 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
@@ -492,7 +541,7 @@ async function sendMessageToBot(instructionMessage) {
 
 // Функция для отправки сообщения в бота
 async function sendMessageToBotWithKeyboard(message, keyboard) {
-    const botToken = "6307642779:AAG5aXORiZ8gaVAK9bFtwrVBlZQPln2Lbd8"; // Замените на ваш токен бота
+    const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE"; // Замените на ваш токен бота
     const chatId = tg.initDataUnsafe.user.id; // Замените на ваш ID чата
                 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
