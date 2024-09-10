@@ -46,13 +46,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const videos = [video1, video2];
     let resourcesLoaded = 0;
     const totalResources = videos.length + document.images.length;
+    let videosReady = 0;
 
-    // Функция для проверки состояния загрузки
+    // Функция для проверки состояния загрузки ресурсов
     function checkAllResourcesLoaded() {
         resourcesLoaded++;
         console.log(`Загружено ресурсов: ${resourcesLoaded}/${totalResources}`);
 
-        if (resourcesLoaded >= totalResources) {
+        if (resourcesLoaded >= totalResources && videosReady >= videos.length) {
             hideLoadingScreen();
         }
     }
@@ -63,36 +64,42 @@ document.addEventListener('DOMContentLoaded', function() {
             checkAllResourcesLoaded();
         } else {
             document.images[i].addEventListener('load', checkAllResourcesLoaded);
-            document.images[i].addEventListener('error', checkAllResourcesLoaded); // В случае ошибки все равно учитываем как загруженное
+            document.images[i].addEventListener('error', checkAllResourcesLoaded); // В случае ошибки также учитываем как загруженное
         }
     }
 
-    // Обработка загрузки видео
+    // Обработка загрузки каждого видео
     videos.forEach((video) => {
+        video.preload = "auto"; // Начать загрузку видео только при старте страницы
         video.onloadeddata = () => {
+            videosReady++;
+            console.log(`Видео ${video.id} готово к воспроизведению.`);
             checkAllResourcesLoaded();
         };
+
         video.onerror = () => {
             console.error(`Ошибка загрузки видео: ${video.src}`);
+            videosReady++;
             checkAllResourcesLoaded();
         };
     });
 
     // Таймаут на случай зависания загрузки
     setTimeout(() => {
-        if (resourcesLoaded < totalResources) {
+        if (resourcesLoaded < totalResources || videosReady < videos.length) {
             console.warn('Загрузка заняла слишком много времени. Скрываем загрузочный экран принудительно.');
             hideLoadingScreen();
         }
     }, 10000); // Таймаут в 10 секунд (можно настроить)
 
-    // Функция для скрытия загрузочного экрана и воспроизведения видео
+    // Функция для скрытия загрузочного экрана и синхронного воспроизведения видео
     function hideLoadingScreen() {
         console.log('Все ресурсы загружены или истек таймаут. Скрываем загрузочный экран.');
         loadingScreen.style.display = 'none'; // Скрыть загрузочный экран
 
-        // Воспроизвести оба видео после загрузки страницы
+        // Воспроизвести оба видео одновременно
         videos.forEach((video) => {
+            video.currentTime = 0; // Установить начальное время на 0, чтобы гарантировать синхронное воспроизведение
             video.play().catch((error) => {
                 console.error('Ошибка воспроизведения видео:', error);
             });
