@@ -1620,7 +1620,8 @@ form {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-}#iphoneModelsWindow6 {
+}
+#iphoneModelsWindow6 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
     top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
     left: 50%; /* Выравнивание по центру по горизонтали */
@@ -1640,6 +1641,282 @@ form {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 }
+#iphoneModelsWindow7 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+#iphoneModelsWindow8 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+#iphoneModelsWindow9 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: 400px; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+#iphoneModelsWindow9::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+}
+
+#iphoneModelsWindow9::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.443); /* Цвет полосы прокрутки */
+    border-radius: 20px; /* Закругленные углы полосы */
+}
+
+#iphoneModelsWindow9::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
+}
+
+#iphoneModelsWindow10 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: 400px; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+#iphoneModelsWindow10::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+}
+
+#iphoneModelsWindow10::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.443); /* Цвет полосы прокрутки */
+    border-radius: 20px; /* Закругленные углы полосы */
+}
+
+#iphoneModelsWindow10::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
+}
+
+#iphoneModelsWindow11 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: 400px; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+#iphoneModelsWindow11::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+}
+
+#iphoneModelsWindow11::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.443); /* Цвет полосы прокрутки */
+    border-radius: 20px; /* Закругленные углы полосы */
+}
+
+#iphoneModelsWindow11::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
+}
+
+#iphoneModelsWindow12 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: 400px; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+#iphoneModelsWindow12::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+}
+
+#iphoneModelsWindow12::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.443); /* Цвет полосы прокрутки */
+    border-radius: 20px; /* Закругленные углы полосы */
+}
+
+#iphoneModelsWindow12::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
+}
+#iphoneModelsWindow13 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: 400px; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+#iphoneModelsWindow13::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+}
+
+#iphoneModelsWindow13::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.443); /* Цвет полосы прокрутки */
+    border-radius: 20px; /* Закругленные углы полосы */
+}
+
+#iphoneModelsWindow13::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
+}
+#iphoneModelsWindow14 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: 400px; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+#iphoneModelsWindow14::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+}
+
+#iphoneModelsWindow14::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.443); /* Цвет полосы прокрутки */
+    border-radius: 20px; /* Закругленные углы полосы */
+}
+
+#iphoneModelsWindow14::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
+}
+#iphoneModelsWindow15 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: 400px; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 350px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+#iphoneModelsWindow15::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+}
+
+#iphoneModelsWindow15::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.443); /* Цвет полосы прокрутки */
+    border-radius: 20px; /* Закругленные углы полосы */
+}
+
+#iphoneModelsWindow15::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.328); /* Цвет фона полосы */
+}
+
 #iphoneModelsWindowAir1 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
     top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
@@ -1700,6 +1977,229 @@ form {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 }
+#iphoneModelsWindowAir4 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 180px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+#iphoneModelsWindowAir5 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 180px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+#iphoneModelsWindowAir6 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 180px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+#iphoneModelsWindowAir7 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 180px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+#iphoneModelsWindowAir8 {
+    position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
+    top: calc(50% - 100px); /* Располагаем по центру страницы, немного выше середины */
+    left: 50%; /* Выравнивание по центру по горизонтали */
+    transform: translate(-50%, -100%); /* Центрирование по оси X и Y относительно кнопки SIZE */
+    width: 300px; /* Ширина окна */
+    max-height: auto; /* Максимальная высота окна */
+    border-radius: 10px; /* Радиус границы для закругления углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    z-index: 100000; /* Поверх всех элементов */
+    overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
+    margin-top: 180px;
+
+    /* From https://css.glass */
+    background: rgba(39, 39, 39, 0.77);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+
+.payment-methods {
+    width: 100%;
+    background-color: #ffffff; /* bg-slate-50 */
+    border-radius: 20px;
+    margin-top: 20px;
+  }
+  
+  .payment-option {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+  }
+  .circle {
+    width: 12px; /* Размер большого кружка */
+    height: 12px;
+    border: 1px solid gray; /* Цвет границы */
+    border-radius: 50%; /* Круглая форма */
+    position: relative; /* Для позиционирования маленького кружка */
+    margin-left: auto;
+}
+
+.inner-circle {
+    width: 10px; /* Размер маленького кружка */
+    height: 10px;
+    background-color: rgb(93, 93, 236); /* Цвет закрашенного кружка */
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Центрирование маленького кружка */
+    display: none; /* Скрываем по умолчанию */
+}
+
+.payment-option.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+  
+  .payment-option:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+  }
+  
+  .payment-option input {
+    display: none; /* Скрыть радиокнопки */
+  }
+  .payment-option.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+  }
+  
+  .payment-option .checkmark {
+    margin-left: 10px;
+    font-weight: 600; /* font-semibold */
+    position: relative;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 0; /* Скрыть текст по умолчанию */
+    transform: translateY(100%);
+    color: black; /* Черный цвет текста */
+    font-size: 14px;
+  }
+  
+  .payment-option input:checked + .checkmark {
+    opacity: 1; /* Показать текст */
+    transform: translateY(0); /* Вернуть на место */
+  }
+  
+  .payment-option input:checked {
+    border-color: #3b82f6; /* border-indigo-500 */
+    color: black; /* Черный цвет текста */
+    font-weight: bold; /* font-bold */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+  }
+
+  .payment-icon {
+    width: 24px; /* Установите ширину иконки */
+    height: 24px; /* Установите высоту иконки */
+    
+  }
+  .payment-option input[type="radio"]:focus + .checkmark {
+    outline: 2px solid blue; /* Синий контур */
+  }
+  .payment-option input[type="radio"] {
+    display: none; /* Скрываем стандартный радиоинпут */
+  }
+  .checkmark {
+    display: inline-block;
+    
+    border: 1px solid transparent; /* Прозрачная рамка по умолчанию */
+  }
+.recommendation {
+    color: gray; /* Серый цвет текста */
+    font-size: 12px; /* Размер шрифта */
+    margin-left: 10px;
+}
+.deliveryprice1 {
+    color: rgb(0, 0, 0); /* Серый цвет текста */
+    font-size: 12px; /* Размер шрифта */
+    margin-left: 10px;
+    font-weight: 500;
+    margin-left: 85px;
+}
+.deliveryprice2 {
+    color: rgb(0, 0, 0); /* Серый цвет текста */
+    font-size: 12px; /* Размер шрифта */
+    margin-left: 10px;
+    font-weight: 500;
+    margin-left: 130px;
+}
+.deliveryprice3 {
+    color: rgb(0, 0, 0); /* Серый цвет текста */
+    font-size: 12px; /* Размер шрифта */
+    margin-left: 10px;
+    font-weight: 500;
+    margin-left: 189px;
+}
+
+
 
 .model1 {
     font-size: 14px; /* Размер шрифта для моделей iPhone */
@@ -1726,6 +2226,13 @@ form {
     height: 1px; /* Высота полоски */
     background-color: #cdcdcd; /* Цвет полоски */
     margin-top: 30px;
+}
+.stripniz {
+    width: 100%;
+    height: 1px; /* Высота полоски */
+    background-color: #cdcdcd; /* Цвет полоски */
+    margin-top: 30px;
+    margin-bottom: 50px;
 }
 
 .del {
