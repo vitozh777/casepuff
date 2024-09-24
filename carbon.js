@@ -163,7 +163,7 @@ const keyboard = {
         [
             {
                 text: "Открыть чат с оператором",
-                url: "https://t.me/operpuff",
+                url: "https://t.me/carbonexpert",
             }
         ]
     ]
@@ -174,47 +174,47 @@ const keyboard = {
 
 const tgoper = document.getElementById("tgoper");
 tgoper.addEventListener("click", () => {
-    window.open("https://t.me/operpuff", "_blank");
+    window.open("https://t.me/carbonexpert", "_blank");
 });
 
 const tgkanal = document.getElementById("tgkanal");
 tgkanal.addEventListener("click", () => {
-    window.open("https://t.me/pufferplanet", "_blank");
+    window.open("https://t.me/carbonru", "_blank");
 });
 
 const tginst = document.getElementById("tginst");
 tginst.addEventListener("click", () => {
-    window.open("https://www.instagram.com/pufferplanet/", "_blank");
+    window.open("https://www.instagram.com/ru.carbon/", "_blank");
 });
 
 const tgoper1 = document.getElementById("tgoper1");
 tgoper1.addEventListener("click", () => {
-    window.open("https://t.me/operpuff", "_blank");
+    window.open("https://t.me/carbonexpert", "_blank");
 });
 
 const tgkanal1 = document.getElementById("tgkanal1");
 tgkanal1.addEventListener("click", () => {
-    window.open("https://t.me/pufferplanet", "_blank");
+    window.open("https://t.me/carbonru", "_blank");
 });
 
 const tginst1 = document.getElementById("tginst1");
 tginst1.addEventListener("click", () => {
-    window.open("https://www.instagram.com/pufferplanet/", "_blank");
+    window.open("https://www.instagram.com/ru.carbon/", "_blank");
 });
 
 const tgoper2 = document.getElementById("tgoper2");
 tgoper2.addEventListener("click", () => {
-    window.open("https://t.me/operpuff", "_blank");
+    window.open("https://t.me/carbonexpert", "_blank");
 });
 
 const tgkanal2 = document.getElementById("tgkanal2");
 tgkanal2.addEventListener("click", () => {
-    window.open("https://t.me/pufferplanet", "_blank");
+    window.open("https://t.me/carbonru", "_blank");
 });
 
 const tginst2 = document.getElementById("tginst2");
 tginst2.addEventListener("click", () => {
-    window.open("https://www.instagram.com/pufferplanet/", "_blank");
+    window.open("https://www.instagram.com/ru.carbon/", "_blank");
 });
 
 
@@ -287,6 +287,13 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+// Функция для расчета общей цены
+function calculateTotalPrice(modelPrice, deliveryPrice) {
+    const priceValue = parseFloat(modelPrice.replace(/[^\d]/g, ''));
+    const deliveryValue = parseFloat(deliveryPrice.replace(/[^\d]/g, ''));
+    return `${priceValue + deliveryValue}₽`;
+}
 
 
 
@@ -603,6 +610,7 @@ pufforder1.addEventListener("click", (event) => {
         });
     }   
 });
+
 
 
 async function sendMessageToBot(instructionMessage) {
@@ -1589,12 +1597,6 @@ order1.addEventListener("click", (event) => {
         });
     }
 });
-// Функция для расчета общей цены
-function calculateTotalPrice(modelPrice, deliveryPrice) {
-    const priceValue = parseFloat(modelPrice.replace(/[^\d]/g, ''));
-    const deliveryValue = parseFloat(deliveryPrice.replace(/[^\d]/g, ''));
-    return `${priceValue + deliveryValue}₽`;
-}
 
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
