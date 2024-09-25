@@ -394,7 +394,7 @@ const modelcomplairInfo6 = {
 
 document.addEventListener('DOMContentLoaded', function() {
     function initializeDeliveryButtons(groupId) {
-        const buttons = document.querySelectorAll(`#${groupId} .delivery-btn, .delivery-btn2`);
+        const buttons = document.querySelectorAll(`#${groupId} .airdelivery-btn1, .airdelivery-btn2, .airdelivery-btn3, .airdelivery-btn4, .airdelivery-btn5, .airdelivery-btn6, .airdelivery-btn7, .airdelivery-btn8`);
         
         buttons.forEach(button => {
             button.addEventListener('click', function(event) {
@@ -411,12 +411,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Устанавливаем начальное состояние: 5post активен
-        document.querySelector(`#${groupId} .delivery-btn, .delivery-btn2`).classList.add('active');
+        document.querySelector(`#${groupId} .airdelivery-btn1, .airdelivery-btn2, .airdelivery-btn3, .airdelivery-btn4, .airdelivery-btn5, .airdelivery-btn6, .airdelivery-btn7, .airdelivery-btn8`).classList.add('active');
     }
 
     // Инициализируем группы кнопок
     initializeDeliveryButtons('delivery-group-1');  // Первая группа на одной странице
     initializeDeliveryButtons('delivery-group-2');  // Вторая группа на другой странице
+    initializeDeliveryButtons('delivery-group-3');
+    initializeDeliveryButtons('delivery-group-4');
+    initializeDeliveryButtons('delivery-group-5');
+    initializeDeliveryButtons('delivery-group-6');
+    initializeDeliveryButtons('delivery-group-7');
+    initializeDeliveryButtons('delivery-group-8');
 });
 
 
@@ -589,7 +595,7 @@ pufforder1.addEventListener("click", (event) => {
         
 
         // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.delivery-btn.active');
+        const selectedDelivery = document.querySelector('.airdelivery-btn1.active');
         let deliveryMethod = "Не выбран метод доставки";
         let deliveryPrice = "0₽";
 
@@ -765,7 +771,7 @@ pufforder2.addEventListener("click", (event) => {
         
 
         // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.delivery-btn2.active');
+        const selectedDelivery = document.querySelector('.airdelivery-btn2.active');
         let deliveryMethod = "Не выбран метод доставки";
         let deliveryPrice = "0₽";
 
@@ -886,9 +892,20 @@ pufforder3.addEventListener("click", (event) => {
         // Получаем выбранную модель и цену
         const selectedModel = document.querySelector(".model4.selected").textContent;
         const selectedPrice = modelInfo4[selectedModel];
+        
+
+        // Получаем выбранный метод доставки и его цену
+        const selectedDelivery = document.querySelector('.airdelivery-btn3.active');
+        let deliveryMethod = "Не выбран метод доставки";
+        let deliveryPrice = "0₽";
+
+        if (selectedDelivery) {
+            deliveryMethod = selectedDelivery.querySelector('.checkmark').textContent;
+            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
+            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
+        }
 
         // Вычисляем общую цену
-        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -996,9 +1013,20 @@ pufforder4.addEventListener("click", (event) => {
         // Получаем выбранную модель и цену
         const selectedModel = document.querySelector(".model4.selected").textContent;
         const selectedPrice = modelInfo4[selectedModel];
+        
+
+        // Получаем выбранный метод доставки и его цену
+        const selectedDelivery = document.querySelector('.airdelivery-btn4.active');
+        let deliveryMethod = "Не выбран метод доставки";
+        let deliveryPrice = "0₽";
+
+        if (selectedDelivery) {
+            deliveryMethod = selectedDelivery.querySelector('.checkmark').textContent;
+            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
+            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
+        }
 
         // Вычисляем общую цену
-        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -1107,8 +1135,18 @@ pufforder5.addEventListener("click", (event) => {
         const selectedModel = document.querySelector(".model4.selected").textContent;
         const selectedPrice = modelInfo4[selectedModel];
 
+        // Получаем выбранный метод доставки и его цену
+        const selectedDelivery = document.querySelector('.airdelivery-btn5.active');
+        let deliveryMethod = "Не выбран метод доставки";
+        let deliveryPrice = "0₽";
+
+        if (selectedDelivery) {
+            deliveryMethod = selectedDelivery.querySelector('.checkmark').textContent;
+            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
+            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
+        }
+
         // Вычисляем общую цену
-        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -1217,8 +1255,18 @@ pufforder6.addEventListener("click", (event) => {
         const selectedModel = document.querySelector(".model4.selected").textContent;
         const selectedPrice = modelInfo4[selectedModel];
 
+        // Получаем выбранный метод доставки и его цену
+        const selectedDelivery = document.querySelector('.airdelivery-btn6.active');
+        let deliveryMethod = "Не выбран метод доставки";
+        let deliveryPrice = "0₽";
+
+        if (selectedDelivery) {
+            deliveryMethod = selectedDelivery.querySelector('.checkmark').textContent;
+            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
+            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
+        }
+
         // Вычисляем общую цену
-        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -1327,8 +1375,18 @@ pufforder7.addEventListener("click", (event) => {
         const selectedModel = document.querySelector(".model4.selected").textContent;
         const selectedPrice = modelInfo4[selectedModel];
 
+        // Получаем выбранный метод доставки и его цену
+        const selectedDelivery = document.querySelector('.airdelivery-btn7.active');
+        let deliveryMethod = "Не выбран метод доставки";
+        let deliveryPrice = "0₽";
+
+        if (selectedDelivery) {
+            deliveryMethod = selectedDelivery.querySelector('.checkmark').textContent;
+            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
+            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
+        }
+
         // Вычисляем общую цену
-        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -1437,8 +1495,18 @@ pufforder8.addEventListener("click", (event) => {
         const selectedModel = document.querySelector(".model4.selected").textContent;
         const selectedPrice = modelInfo4[selectedModel];
 
+        // Получаем выбранный метод доставки и его цену
+        const selectedDelivery = document.querySelector('.airdelivery-btn8.active');
+        let deliveryMethod = "Не выбран метод доставки";
+        let deliveryPrice = "0₽";
+
+        if (selectedDelivery) {
+            deliveryMethod = selectedDelivery.querySelector('.checkmark').textContent;
+            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
+            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
+        }
+
         // Вычисляем общую цену
-        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton

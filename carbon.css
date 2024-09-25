@@ -2085,7 +2085,7 @@ form {
     margin-top: 20px;
 }
 
-.delivery-btn {
+.airdelivery-btn1 {
     display: flex;
     align-items: center;
     width: 100%;
@@ -2099,12 +2099,12 @@ form {
     background-color: #ffffff;
 }
 
-.delivery-btn.active {
+.airdelivery-btn1.active {
     border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
     background-color: #e0f2fe; /* bg-indigo-50 */
 }
 
-.delivery-btn:hover {
+.airdelivery-btn1:hover {
     background-color: #e2e8f0; /* hover:bg-slate-200 */
 }
 
@@ -2135,13 +2135,13 @@ form {
     display: none; /* Скрываем по умолчанию */
 }
 
-.delivery-btn.active .inner-circle {
+.airdelivery-btn1.active .inner-circle {
     display: block; /* Показываем маленький кружок, когда активен класс active */
 }
 
 
 
-.delivery-btn2 {
+.airdelivery-btn2 {
     display: flex;
     align-items: center;
     width: 100%;
@@ -2154,14 +2154,158 @@ form {
     margin-bottom: 5px; /* Отступ снизу */
     background-color: #ffffff;
 }
-.delivery-btn2.active {
+.airdelivery-btn2.active {
     border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
     background-color: #e0f2fe; /* bg-indigo-50 */
 }
-.delivery-btn2:hover {
+.airdelivery-btn2:hover {
     background-color: #e2e8f0; /* hover:bg-slate-200 */
 }
-.delivery-btn2.active .inner-circle {
+.airdelivery-btn2.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.airdelivery-btn3 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.airdelivery-btn3.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.airdelivery-btn3:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.airdelivery-btn3.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.airdelivery-btn4 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.airdelivery-btn4.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.airdelivery-btn4:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.airdelivery-btn4.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.airdelivery-btn5 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.airdelivery-btn5.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.airdelivery-btn5:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.airdelivery-btn5.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.airdelivery-btn6 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.airdelivery-btn6.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.airdelivery-btn6:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.airdelivery-btn6.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.airdelivery-btn7 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.airdelivery-btn7.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.airdelivery-btn7:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.airdelivery-btn7.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+.airdelivery-btn8 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.airdelivery-btn8.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.airdelivery-btn8:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.airdelivery-btn8.active .inner-circle {
     display: block; /* Показываем маленький кружок, когда активен класс active */
 }
 
