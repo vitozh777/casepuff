@@ -2079,25 +2079,42 @@ form {
 }
 
 
-.payment-methods {
+.delivery-options {
     width: 100%;
     background-color: #ffffff; /* bg-slate-50 */
-    border-radius: 20px;
     margin-top: 20px;
-  }
-  
-  .payment-option {
+}
+
+.delivery-btn {
     display: flex;
     align-items: center;
+    width: 100%;
+    height: 50px;
     padding: 10px;
-    border: 1px solid transparent;
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
     border: 1px solid grey; /* Серая граница */
     margin-bottom: 5px; /* Отступ снизу */
-  }
-  .circle {
+    background-color: #ffffff;
+}
+
+.delivery-btn.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+
+.delivery-btn:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+
+.icon {
+    width: 25px;
+    height: 25px; /* Высота иконки */
+    margin-right: 10px;
+}
+
+.circle {
     width: 12px; /* Размер большого кружка */
     height: 12px;
     border: 1px solid gray; /* Цвет границы */
@@ -2118,86 +2135,59 @@ form {
     display: none; /* Скрываем по умолчанию */
 }
 
-.payment-option.active .inner-circle {
+.delivery-btn.active .inner-circle {
     display: block; /* Показываем маленький кружок, когда активен класс active */
 }
-  
-  .payment-option:hover {
-    background-color: #e2e8f0; /* hover:bg-slate-200 */
-  }
-  
-  .payment-option input {
-    display: none; /* Скрыть радиокнопки */
-  }
-  .payment-option.active {
-    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
-  }
-  
-  .payment-option .checkmark {
+
+.checkmark {
     margin-left: 10px;
     font-weight: 600; /* font-semibold */
     position: relative;
     transition: transform 0.3s, opacity 0.3s;
-    opacity: 0; /* Скрыть текст по умолчанию */
-    transform: translateY(100%);
+    opacity: 1; /* По умолчанию текст виден */
+    transform: translateY(0);
     color: black; /* Черный цвет текста */
     font-size: 14px;
-  }
-  
-  .payment-option input:checked + .checkmark {
-    opacity: 1; /* Показать текст */
-    transform: translateY(0); /* Вернуть на место */
-  }
-  
-  .payment-option input:checked {
-    border-color: #3b82f6; /* border-indigo-500 */
-    color: black; /* Черный цвет текста */
-    font-weight: bold; /* font-bold */
-    background-color: #e0f2fe; /* bg-indigo-50 */
-  }
+}
 
-  .payment-icon {
-    width: 24px; /* Установите ширину иконки */
-    height: 24px; /* Установите высоту иконки */
-    
-  }
-  .payment-option input[type="radio"]:focus + .checkmark {
-    outline: 2px solid blue; /* Синий контур */
-  }
-  .payment-option input[type="radio"] {
-    display: none; /* Скрываем стандартный радиоинпут */
-  }
-  .checkmark {
-    display: inline-block;
-    
-    border: 1px solid transparent; /* Прозрачная рамка по умолчанию */
-  }
 .recommendation {
     color: gray; /* Серый цвет текста */
     font-size: 12px; /* Размер шрифта */
     margin-left: 10px;
 }
+
+
 .deliveryprice1 {
     color: rgb(0, 0, 0); /* Серый цвет текста */
-    font-size: 12px; /* Размер шрифта */
+    font-size: 13px; /* Размер шрифта */
+    font-weight: bold;
     margin-left: 10px;
     font-weight: 500;
     margin-left: 85px;
 }
 .deliveryprice2 {
     color: rgb(0, 0, 0); /* Серый цвет текста */
-    font-size: 12px; /* Размер шрифта */
+    font-size: 13px; /* Размер шрифта */
+    font-weight: bold;
     margin-left: 10px;
     font-weight: 500;
     margin-left: 130px;
 }
 .deliveryprice3 {
     color: rgb(0, 0, 0); /* Серый цвет текста */
-    font-size: 12px; /* Размер шрифта */
+    font-size: 13px; /* Размер шрифта */
+    font-weight: bold;
     margin-left: 10px;
     font-weight: 500;
     margin-left: 189px;
 }
+
+
+
+
+
+
+
 
 
 

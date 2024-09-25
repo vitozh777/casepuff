@@ -392,6 +392,35 @@ const modelcomplairInfo6 = {
 
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    function initializeDeliveryButtons(groupId) {
+        const buttons = document.querySelectorAll(`#${groupId} .delivery-btn`);
+        
+        buttons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();  // Предотвращаем стандартное поведение
+
+                // Убираем активный статус у всех кнопок в этой группе
+                buttons.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+
+                // Активируем выбранную кнопку
+                button.classList.add('active');
+            });
+        });
+
+        // Устанавливаем начальное состояние: 5post активен
+        document.querySelector(`#${groupId} .delivery-btn`).classList.add('active');
+    }
+
+    // Инициализируем группы кнопок
+    initializeDeliveryButtons('delivery-group-1');  // Первая группа на одной странице
+    initializeDeliveryButtons('delivery-group-2');  // Вторая группа на другой странице
+});
+
+
+
 
 
 
@@ -543,31 +572,7 @@ model4.forEach(model => {
 
 
 
-window.onload = function() {
-    const delivery1 = document.getElementById('delivery1');
-    selectPayment(delivery1); // Автоматически выбираем и делаем активным delivery1 при загрузке
-};
-function selectPayment(option) {
-    const options = document.querySelectorAll('.payment-option');
-    options.forEach(opt => {
-      opt.classList.remove('active'); // Убираем активное состояние у всех
-    });
-    option.classList.add('active'); // Добавляем активное состояние выбранному
-    const input = option.querySelector('input[type="radio"]');
-    if (input) {
-      input.checked = true; // Устанавливаем выбранный радиоинпут
-    }
-}
 
-function toggleCircle(element) {
-    let innerCircle = element.querySelector('.inner-circle');
-    if (!innerCircle) {
-        innerCircle = document.createElement('div');
-        innerCircle.className = 'inner-circle';
-        element.appendChild(innerCircle);
-    }
-    innerCircle.style.display = innerCircle.style.display === 'block' ? 'none' : 'block';
-}
 
 
 
@@ -581,9 +586,20 @@ pufforder1.addEventListener("click", (event) => {
         // Получаем выбранную модель и цену
         const selectedModel = document.querySelector(".model4.selected").textContent;
         const selectedPrice = modelInfo4[selectedModel];
+        
+
+        // Получаем выбранный метод доставки и его цену
+        const selectedDelivery = document.querySelector('.delivery-btn.active');
+        let deliveryMethod = "Не выбран метод доставки";
+        let deliveryPrice = "0₽";
+
+        if (selectedDelivery) {
+            deliveryMethod = selectedDelivery.querySelector('.checkmark').textContent;
+            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
+            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
+        }
 
         // Вычисляем общую цену
-        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -597,18 +613,19 @@ pufforder1.addEventListener("click", (event) => {
             Заказ: ${itemName}
             Размер: ${selectedModel}
             Цена: ${selectedPrice}
-            Доставка: ${deliveryPrice}
+            Доставка: ${deliveryMethod} - ${deliveryPrice}
             Общая цена: ${totalPrice}
         `;
-        
-        // Добавьте обработчик для кнопки MainButton
+
+        // Добавляем обработчик для MainButton
         tg.MainButton.onClick(async () => {
             await sendMessageToBot(instructionMessage);
             await sendMessageToBotWithKeyboard(message, keyboard);
-            
+
+            // Закрываем WebApp
             tg.close();
         });
-    }   
+    }
 });
 
 
@@ -745,9 +762,20 @@ pufforder2.addEventListener("click", (event) => {
         // Получаем выбранную модель и цену
         const selectedModel = document.querySelector(".model4.selected").textContent;
         const selectedPrice = modelInfo4[selectedModel];
+        
+
+        // Получаем выбранный метод доставки и его цену
+        const selectedDelivery = document.querySelector('.delivery-btn.active');
+        let deliveryMethod = "Не выбран метод доставки";
+        let deliveryPrice = "0₽";
+
+        if (selectedDelivery) {
+            deliveryMethod = selectedDelivery.querySelector('.checkmark').textContent;
+            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
+            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
+        }
 
         // Вычисляем общую цену
-        const deliveryPrice = "199₽";
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
         
         // Обновляем текст и видимость кнопки MainButton
@@ -761,18 +789,19 @@ pufforder2.addEventListener("click", (event) => {
             Заказ: ${itemName}
             Размер: ${selectedModel}
             Цена: ${selectedPrice}
-            Доставка: ${deliveryPrice}
+            Доставка: ${deliveryMethod} - ${deliveryPrice}
             Общая цена: ${totalPrice}
         `;
-        
-        // Добавьте обработчик для кнопки MainButton
+
+        // Добавляем обработчик для MainButton
         tg.MainButton.onClick(async () => {
             await sendMessageToBot(instructionMessage);
             await sendMessageToBotWithKeyboard(message, keyboard);
-            
+
+            // Закрываем WebApp
             tg.close();
         });
-    }   
+    }
 });
 
 
@@ -1559,7 +1588,7 @@ order1.addEventListener("click", (event) => {
         const selectedPrice = selectedModel ? modelInfo1[selectedModel] : "Неизвестная цена";
 
         // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.payment-option.active');
+        const selectedDelivery = document.querySelector('.delivery-btn.active');
         let deliveryMethod = "Не выбран метод доставки";
         let deliveryPrice = "0₽";
 
@@ -1597,6 +1626,7 @@ order1.addEventListener("click", (event) => {
         });
     }
 });
+
 
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
