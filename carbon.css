@@ -2139,6 +2139,38 @@ form {
     display: block; /* Показываем маленький кружок, когда активен класс active */
 }
 
+
+
+.delivery-btn2 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid grey; /* Серая граница */
+    margin-bottom: 5px; /* Отступ снизу */
+    background-color: #ffffff;
+}
+.delivery-btn2.active {
+    border: 1px solid rgb(93, 93, 236); /* Синий контур при выборе */
+    background-color: #e0f2fe; /* bg-indigo-50 */
+}
+.delivery-btn2:hover {
+    background-color: #e2e8f0; /* hover:bg-slate-200 */
+}
+.delivery-btn2.active .inner-circle {
+    display: block; /* Показываем маленький кружок, когда активен класс active */
+}
+
+
+
+
+
+
+
 .checkmark {
     margin-left: 10px;
     font-weight: 600; /* font-semibold */

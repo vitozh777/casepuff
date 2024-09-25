@@ -394,7 +394,7 @@ const modelcomplairInfo6 = {
 
 document.addEventListener('DOMContentLoaded', function() {
     function initializeDeliveryButtons(groupId) {
-        const buttons = document.querySelectorAll(`#${groupId} .delivery-btn`);
+        const buttons = document.querySelectorAll(`#${groupId} .delivery-btn, .delivery-btn2`);
         
         buttons.forEach(button => {
             button.addEventListener('click', function(event) {
@@ -411,7 +411,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Устанавливаем начальное состояние: 5post активен
-        document.querySelector(`#${groupId} .delivery-btn`).classList.add('active');
+        document.querySelector(`#${groupId} .delivery-btn, .delivery-btn2`).classList.add('active');
     }
 
     // Инициализируем группы кнопок
@@ -765,7 +765,7 @@ pufforder2.addEventListener("click", (event) => {
         
 
         // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.delivery-btn.active');
+        const selectedDelivery = document.querySelector('.delivery-btn2.active');
         let deliveryMethod = "Не выбран метод доставки";
         let deliveryPrice = "0₽";
 
