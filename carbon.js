@@ -69,6 +69,9 @@ let priceElementForm7 = document.querySelector(".price7");
 let priceElementForm8 = document.querySelector(".price8");
 let priceElementForm9 = document.querySelector(".price9");
 
+let currentScreen = "home"; // Изначально на главном экране
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const loadingScreen = document.getElementById('loading-screen');
     const video1 = document.getElementById('myVideo');
@@ -231,12 +234,24 @@ casepuffButton.addEventListener("click", () => {
 const pufferplanetButton = document.getElementById("puffplanet");
 
 pufferplanetButton.addEventListener("click", () => {
-    document.getElementById("home").style.display = "none";
-    document.getElementById("pufferplanet").style.display = "block";
-
+    document.getElementById("home").style.display = "none"; // Скрываем главную страницу
+    document.getElementById("pufferplanet").style.display = "block"; // Показываем страницу pufferplanet
     
+    currentScreen = "pufferplanet"; // Обновляем текущее состояние
+    
+    tg.BackButton.show(); // Показать кнопку назад
 });
 
+
+tg.BackButton.onClick(function() {
+    if (currentScreen === "pufferplanet") {
+        document.getElementById("pufferplanet").style.display = "none"; // Скрываем pufferplanet
+        document.getElementById("home").style.display = "block"; // Показываем главную страницу
+        
+        currentScreen = "home"; // Обновляем текущее состояние
+        tg.BackButton.hide(); // Скрыть кнопку назад
+    }
+});
 
 
 
