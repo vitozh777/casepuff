@@ -138,6 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 const backButton = Telegram.WebApp.BackButton;
+const backButton2 = Telegram.WebApp.BackButton;
 
 
 const swiper = new Swiper('.swiper-container', {
@@ -235,11 +236,11 @@ pufferplanetButton.addEventListener("click", () => {
     document.getElementById("pufferplanet").style.display = "block";
 
 
-    backButton.show();
-    backButton.onClick(() => {
+    backButton2.show();
+    backButton2.onClick(() => {
         document.getElementById("home").style.display = "block";
         document.getElementById("pufferplanet").style.display = "none";
-        backButton.hide();
+        backButton2.hide();
     });
 
 });
