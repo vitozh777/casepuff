@@ -69,6 +69,28 @@ let priceElementForm7 = document.querySelector(".price7");
 let priceElementForm8 = document.querySelector(".price8");
 let priceElementForm9 = document.querySelector(".price9");
 
+
+
+
+tg.BackButton.show(); // Показать кнопку назад
+
+tg.BackButton.onClick(function() {
+    document.getElementById("pufferplanet").style.display = "none"; // Скрыть текущую страницу
+    document.getElementById("home").style.display = "block"; // Показать главную страницу
+    tg.BackButton.hide(); // Скрыть кнопку назад
+});
+
+const pufferplanetButton = document.getElementById("puffplanet");
+
+pufferplanetButton.addEventListener("click", () => {
+    document.getElementById("home").style.display = "none"; // Скрыть главную страницу
+    document.getElementById("pufferplanet").style.display = "block"; // Показать страницу pufferplanet
+    tg.BackButton.show(); // Показать кнопку назад
+});
+
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const loadingScreen = document.getElementById('loading-screen');
     const video1 = document.getElementById('myVideo');
@@ -228,21 +250,7 @@ casepuffButton.addEventListener("click", () => {
 
 });
 
-const pufferplanetButton = document.getElementById("puffplanet");
 
-pufferplanetButton.addEventListener("click", () => {
-    document.getElementById("home").style.display = "none";
-    document.getElementById("pufferplanet").style.display = "block";
-
-
-    backButton.show();
-    backButton.onClick(() => {
-        document.getElementById("home").style.display = "block";
-        document.getElementById("pufferplanet").style.display = "none";
-        backButton.hide();
-    });
-
-});
 
 
 
