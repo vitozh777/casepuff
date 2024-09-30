@@ -542,15 +542,22 @@ const iphoneModelsWindow15 = document.getElementById("iphoneModelsWindow15");
     // Делаем кнопку "pufforder1" неактивной
     pufforder1.pufforderinactive = true;
     pufforder1.classList.add("pufforderinactive");
-    backButton.show();
+    currentScreen = "formplanet1"; // Обновляем состояние для другой страницы
+    tg.BackButton.show();
 
-    backButton.onClick(() => {
-        document.getElementById("pufferplanet").style.display = "block";
-        document.getElementById("formplanet1").style.display = "none";
-        tg.MainButton.hide();
-        backButton.hide();
+    tg.BackButton.onClick(function() {
+        if (currentScreen === "anotherPage") {
+            document.getElementById("anotherPage").style.display = "none";
+            document.getElementById("home").style.display = "block";
+            
+            currentScreen = "home"; // Возвращаемся на главную
+            tg.BackButton.hide();
+            tg.MainButton.hide();
+        }
     });
 });
+
+
 
 
 // Обработчик события для кнопки "SIZE"
