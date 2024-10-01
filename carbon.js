@@ -255,6 +255,11 @@ function setupBackButton(callback) {
     tg.BackButton.onClick(callback);
 }
 
+// Изначально показываем только home
+document.getElementById("home").style.display = "block";
+document.getElementById("pufferplanet").style.display = "none";
+document.getElementById("formplanet1").style.display = "none";
+
 // Логика для перехода на pufferplanet с home
 pufferplanetButton.addEventListener("click", () => {
     showPage("home", "pufferplanet");
@@ -555,6 +560,7 @@ const iphoneModelsWindow15 = document.getElementById("iphoneModelsWindow15");
     // Настраиваем кнопку "Назад" для возврата на pufferplanet
     setupBackButton(() => {
         showPage("formplanet1", "pufferplanet");
+        tg.BackButton.show();  // Сохраняем кнопку "Назад" при возврате на pufferplanet
     });
 
     // Делаем кнопку "pufforder1" неактивной
