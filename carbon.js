@@ -219,8 +219,8 @@ tginst2.addEventListener("click", () => {
 
 
 const backButton = Telegram.WebApp.BackButton;
-// Создаем стэк для хранения истории страниц
-let pageStack = [];
+const backButton2 = Telegram.WebApp.BackButton;
+
 
 
 const casepuffButton = document.getElementById("casepuff");
@@ -229,46 +229,25 @@ casepuffButton.addEventListener("click", () => {
     document.getElementById("home").style.display = "none";
     document.getElementById("thepuffercase").style.display = "block";
 
-    tg.BackButton.show();  // Включаем кнопку "Назад" при открытии страницы покупки
-
-    tg.BackButton.onClick(() => {
-        document.getElementById("thepuffercase").style.display = "none";  // Скрываем страницу покупки
-        document.getElementById("home").style.display = "block";  // Возвращаемся на домашнюю страницу
-
-        tg.BackButton.hide();  // Скрываем кнопку "Назад" при возвращении на домашнюю страницу
-    });
-
 
 });
 
 const pufferplanetButton = document.getElementById("puffplanet");
 
-// Функция для управления показом страниц
-function showPage(currentPageId, nextPageId) {
-    document.getElementById(currentPageId).style.display = "none";  // Скрываем текущую страницу
-    document.getElementById(nextPageId).style.display = "block";    // Показываем следующую страницу
-}
-
-// Функция для показа кнопки "Назад"
-function setupBackButton(callback) {
-    tg.BackButton.show();
-    tg.BackButton.onClick(callback);
-}
-
-// Изначально показываем только home
-document.getElementById("home").style.display = "block";
-document.getElementById("pufferplanet").style.display = "none";
-document.getElementById("formplanet1").style.display = "none";
-
-// Логика для перехода на pufferplanet с home
 pufferplanetButton.addEventListener("click", () => {
-    showPage("home", "pufferplanet");
+    document.getElementById("home").style.display = "none";
+    document.getElementById("pufferplanet").style.display = "block";
 
-    // Настраиваем кнопку "Назад" для возврата на home
-    setupBackButton(() => {
-        showPage("pufferplanet", "home");
-        tg.BackButton.hide();  // Скрываем кнопку "Назад" при возврате на home
+    backButton.show();  // Включаем кнопку "Назад" при открытии страницы покупки
+
+    backButton.onClick(() => {
+        document.getElementById("pufferplanet").style.display = "none";  // Скрываем страницу покупки
+        document.getElementById("home").style.display = "block";  // Возвращаемся на домашнюю страницу
+
+        backButton.hide();  // Скрываем кнопку "Назад" при возвращении на домашнюю страницу
     });
+
+    
 });
 
 
@@ -555,20 +534,23 @@ const iphoneModelsWindow15 = document.getElementById("iphoneModelsWindow15");
 
 
 купить1.addEventListener("click", () => {
-    showPage("pufferplanet", "formplanet1");
+    document.getElementById("pufferplanet").style.display = "none"
+    document.getElementById("formplanet1").style.display = "block"
 
-    // Настраиваем кнопку "Назад" для возврата на pufferplanet
-    setupBackButton(() => {
-        showPage("formplanet1", "pufferplanet");
-        tg.BackButton.show();  // Сохраняем кнопку "Назад" при возврате на pufferplanet
+    backButton2.show();  // Включаем кнопку "Назад" при открытии страницы покупки
+
+    backButton2.onClick(() => {
+        document.getElementById("formplanet1").style.display = "none";
+        document.getElementById("home").style.display = "none";  // Скрываем страницу покупки
+        document.getElementById("pufferplanet").style.display = "block";  // Возвращаемся на домашнюю страницу
+
+        backButton2.hide();  // Скрываем кнопку "Назад" при возвращении на домашнюю страницу
     });
 
     // Делаем кнопку "pufforder1" неактивной
     pufforder1.pufforderinactive = true;
     pufforder1.classList.add("pufforderinactive");
 });
-
-
 
 
 // Обработчик события для кнопки "SIZE"
