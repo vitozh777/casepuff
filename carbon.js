@@ -530,7 +530,6 @@ const iphoneModelsWindow15 = document.getElementById("iphoneModelsWindow15");
     backButton.onClick(() => {
         document.getElementById("formplanet1").style.display = "none";
         document.getElementById("pufferplanet").style.display = "block";
-        backButton.hide();
     });
 
     // Делаем кнопку "pufforder1" неактивной
