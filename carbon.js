@@ -545,19 +545,13 @@ const iphoneModelsWindow15 = document.getElementById("iphoneModelsWindow15");
         document.getElementById("pufferplanet").style.display = "block";  // Возвращаемся на домашнюю страницу
 
         backButton2.hide();  // Скрываем кнопку "Назад" при возвращении на домашнюю страницу
-        backButton.show();
     });
 
     // Делаем кнопку "pufforder1" неактивной
     pufforder1.pufforderinactive = true;
     pufforder1.classList.add("pufforderinactive");
 });
-backButton.onClick(() => {
-    document.getElementById("pufferplanet").style.display = "none";  // Скрываем страницу покупки
-    document.getElementById("home").style.display = "block";  // Возвращаемся на домашнюю страницу
 
-    backButton.hide();  // Скрываем кнопку "Назад" при возвращении на домашнюю страницу
-});
 
 // Обработчик события для кнопки "SIZE"
 sizeButtonAir1.addEventListener("click", (event) => {
