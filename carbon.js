@@ -228,9 +228,21 @@ casepuffButton.addEventListener("click", () => {
     tg.BackButton.show();  // Включаем кнопку "Назад" при открытии страницы покупки
 
     tg.BackButton.onClick(() => {
-        document.getElementById("thepuffercase").style.display = "none";  // Скрываем страницу покупки
-        document.getElementById("home").style.display = "block";  // Возвращаемся на домашнюю страницу
+        document.getElementById("thepuffercase").style.display = "none";
+        document.getElementById("home").style.display = "block";
+    
+        // Переназначаем display: flex для правильного центрирования
+        const homeContainer = document.getElementById('home');
+        homeContainer.style.display = 'flex';
+        homeContainer.style.justifyContent = 'center';
+        homeContainer.style.alignItems = 'center';
+        
+        // Можно использовать тайм-аут для гарантии, что стили будут применены после рендера
+        setTimeout(() => {
+            homeContainer.style.display = '';
+        }, 0);
     });
+    
 
 
 });
@@ -244,9 +256,21 @@ pufferplanetButton.addEventListener("click", () => {
     tg.BackButton.show();  // Включаем кнопку "Назад" при открытии страницы покупки
 
     tg.BackButton.onClick(() => {
-        document.getElementById("pufferplanet").style.display = "none";  // Скрываем страницу покупки
-        document.getElementById("home").style.display = "block";  // Возвращаемся на домашнюю страницу
+        document.getElementById("thepuffercase").style.display = "none";
+        document.getElementById("home").style.display = "block";
+    
+        // Переназначаем display: flex для правильного центрирования
+        const homeContainer = document.getElementById('home');
+        homeContainer.style.display = 'flex';
+        homeContainer.style.justifyContent = 'center';
+        homeContainer.style.alignItems = 'center';
+        
+        // Можно использовать тайм-аут для гарантии, что стили будут применены после рендера
+        setTimeout(() => {
+            homeContainer.style.display = '';
+        }, 0);
     });
+    
 
     
 });

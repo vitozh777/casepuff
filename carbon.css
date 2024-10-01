@@ -134,6 +134,7 @@ body {
     justify-content: center; /* Выравнивание по горизонтали по центру */
     align-items: center; /* Выравнивание по вертикали по центру */
     flex-direction: column; /* Добавлено для вертикального выравнивания */
+    min-height: 100vh;
 }
 
 .navigation {
@@ -446,6 +447,7 @@ body {
 
 .button { 
     justify-content: center;
+    display: block;
     font-size: 18px;
     width: 180px;
     height: 50px;
@@ -473,6 +475,7 @@ body {
 
 .butair { 
     justify-content: center;
+    display: block;
     font-size: 18px;
     width: 180px;
     height: 50px;
