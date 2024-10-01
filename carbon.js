@@ -230,6 +230,8 @@ casepuffButton.addEventListener("click", () => {
     tg.BackButton.onClick(() => {
         document.getElementById("thepuffercase").style.display = "none";  // Скрываем страницу покупки
         document.getElementById("home").style.display = "block";  // Возвращаемся на домашнюю страницу
+
+        tg.BackButton.hide();  // Скрываем кнопку "Назад" при возвращении на домашнюю страницу
     });
 
 
@@ -246,6 +248,8 @@ pufferplanetButton.addEventListener("click", () => {
     tg.BackButton.onClick(() => {
         document.getElementById("pufferplanet").style.display = "none";  // Скрываем страницу покупки
         document.getElementById("home").style.display = "block";  // Возвращаемся на домашнюю страницу
+
+        tg.BackButton.hide();  // Скрываем кнопку "Назад" при возвращении на домашнюю страницу
     });
 
     
