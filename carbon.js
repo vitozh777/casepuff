@@ -228,17 +228,30 @@ const pufferplanetButton = document.getElementById("puffplanet");
 pufferplanetButton.addEventListener("click", () => {
     document.getElementById("home").style.display = "none";
     document.getElementById("pufferplanet").style.display = "block";
+});
 
+if (window.location.href.includes('formplanet1')) {
+    backButton.show();
+
+    backButton.onClick(() => {
+        document.getElementById("formplanet1").style.display = "none";
+        document.getElementById("home").style.display = "none";
+        document.getElementById("pufferplanet").style.display = "block";
+        backButton.hide();
+    });
+}
+
+// Проверяем, если мы на странице pufferplanet
+if (window.location.href.includes('pufferplanet')) {
     backButton.show();
 
     backButton.onClick(() => {
         document.getElementById("pufferplanet").style.display = "none";
+        document.getElementById("formplanet1").style.display = "none";
         document.getElementById("home").style.display = "block";
         backButton.hide();
     });
-});
-
-
+}
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -525,28 +538,10 @@ const iphoneModelsWindow15 = document.getElementById("iphoneModelsWindow15");
     document.getElementById("pufferplanet").style.display = "none";
     document.getElementById("formplanet1").style.display = "block";
 
-    backButton.show();
-
-    backButton.onClick(() => {
-        document.getElementById("formplanet1").style.display = "none";
-        document.getElementById("pufferplanet").style.display = "block";
-    });
-
     // Делаем кнопку "pufforder1" неактивной
     pufforder1.pufforderinactive = true;
     pufforder1.classList.add("pufforderinactive");
 });
-
-// Проверяем, если мы на странице pufferplanet
-if (window.location.href.includes('pufferplanet')) {
-    backButton.show();
-
-    backButton.onClick(() => {
-        document.getElementById("pufferplanet").style.display = "none";
-        document.getElementById("home").style.display = "block";
-        backButton.hide();
-    });
-}
 
 
 // Обработчик события для кнопки "SIZE"
