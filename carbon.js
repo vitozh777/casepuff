@@ -243,27 +243,26 @@ casepuffButton.addEventListener("click", () => {
 
 const pufferplanetButton = document.getElementById("puffplanet");
 
-// Переход на страницу pufferplanet
+// Функция для управления показом страниц
+function showPage(currentPageId, nextPageId) {
+    document.getElementById(currentPageId).style.display = "none";  // Скрываем текущую страницу
+    document.getElementById(nextPageId).style.display = "block";    // Показываем следующую страницу
+}
+
+// Функция для показа кнопки "Назад"
+function setupBackButton(callback) {
+    tg.BackButton.show();
+    tg.BackButton.onClick(callback);
+}
+
+// Логика для перехода на pufferplanet с home
 pufferplanetButton.addEventListener("click", () => {
-    document.getElementById("home").style.display = "none";
-    document.getElementById("pufferplanet").style.display = "block";
+    showPage("home", "pufferplanet");
 
-    // Добавляем home в стэк
-    pageStack.push("home");
-
-    tg.BackButton.show();  // Показываем кнопку "Назад"
-
-    // Устанавливаем обработчик кнопки "Назад" для возврата на home
-    tg.BackButton.onClick(() => {
-        // Вернуться на home
-        document.getElementById("pufferplanet").style.display = "none";
-        document.getElementById("home").style.display = "block";
-
-        // Убираем кнопку "Назад"
-        tg.BackButton.hide();
-
-        // Очистим стэк
-        pageStack = [];
+    // Настраиваем кнопку "Назад" для возврата на home
+    setupBackButton(() => {
+        showPage("pufferplanet", "home");
+        tg.BackButton.hide();  // Скрываем кнопку "Назад" при возврате на home
     });
 });
 
@@ -551,28 +550,11 @@ const iphoneModelsWindow15 = document.getElementById("iphoneModelsWindow15");
 
 
 купить1.addEventListener("click", () => {
-    document.getElementById("pufferplanet").style.display = "none";
-    document.getElementById("formplanet1").style.display = "block";
+    showPage("pufferplanet", "formplanet1");
 
-    // Добавляем pufferplanet в стэк
-    pageStack.push("pufferplanet");
-
-    tg.BackButton.show();  // Показываем кнопку "Назад"
-
-    // Устанавливаем обработчик кнопки "Назад" для возврата на pufferplanet
-    tg.BackButton.onClick(() => {
-        document.getElementById("formplanet1").style.display = "none";
-        document.getElementById("pufferplanet").style.display = "block";
-
-        // Возвращаемся на pufferplanet
-        pageStack.pop(); // Удаляем formplanet1 из стэка, так как мы вернулись на pufferplanet
-
-        // Если вернулись на pufferplanet, кнопка "Назад" ведет обратно на home
-        tg.BackButton.onClick(() => {
-            document.getElementById("pufferplanet").style.display = "none";
-            document.getElementById("home").style.display = "block";
-            tg.BackButton.hide();  // Убираем кнопку "Назад" на home
-        });
+    // Настраиваем кнопку "Назад" для возврата на pufferplanet
+    setupBackButton(() => {
+        showPage("formplanet1", "pufferplanet");
     });
 
     // Делаем кнопку "pufforder1" неактивной
