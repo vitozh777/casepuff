@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-const backButton = Telegram.WebApp.BackButton;
+
 
 
 const swiper = new Swiper('.swiper-container', {
@@ -218,6 +218,10 @@ tginst2.addEventListener("click", () => {
 });
 
 
+const backButton = Telegram.WebApp.BackButton;
+// Создаем стэк для хранения истории страниц
+let pageStack = [];
+
 
 const casepuffButton = document.getElementById("casepuff");
 
@@ -243,16 +247,22 @@ pufferplanetButton.addEventListener("click", () => {
     document.getElementById("home").style.display = "none";
     document.getElementById("pufferplanet").style.display = "block";
 
-    tg.BackButton.show();  // Включаем кнопку "Назад" при открытии страницы покупки
+    // Добавляем предыдущую страницу в стэк
+    pageStack.push("home");
 
-    tg.BackButton.onClick(() => {
-        document.getElementById("pufferplanet").style.display = "none";  // Скрываем страницу покупки
-        document.getElementById("home").style.display = "block";  // Возвращаемся на домашнюю страницу
-
-        tg.BackButton.hide();  // Скрываем кнопку "Назад" при возвращении на домашнюю страницу
-    });
-
+    tg.BackButton.show();  // Включаем кнопку "Назад"
     
+    // Обработчик кнопки "Назад" для возврата на страницу home
+    tg.BackButton.onClick(() => {
+        let previousPage = pageStack.pop();  // Достаем предыдущую страницу из стэка
+        document.getElementById("pufferplanet").style.display = "none";
+        document.getElementById(previousPage).style.display = "block";
+
+        // Если это home, скрываем кнопку "Назад"
+        if (previousPage === "home") {
+            tg.BackButton.hide();
+        }
+    });
 });
 
 
@@ -539,8 +549,25 @@ const iphoneModelsWindow15 = document.getElementById("iphoneModelsWindow15");
 
 
 купить1.addEventListener("click", () => {
-    document.getElementById("pufferplanet").style.display = "none"
-    document.getElementById("formplanet1").style.display = "block"
+    document.getElementById("pufferplanet").style.display = "none";
+    document.getElementById("formplanet1").style.display = "block";
+
+    // Добавляем страницу pufferplanet в стэк
+    pageStack.push("pufferplanet");
+
+    tg.BackButton.show();  // Кнопка "Назад" активна
+
+    // Обработчик кнопки "Назад" для возврата с формы на pufferplanet
+    tg.BackButton.onClick(() => {
+        let previousPage = pageStack.pop();  // Достаем предыдущую страницу из стэка
+        document.getElementById("formplanet1").style.display = "none";
+        document.getElementById(previousPage).style.display = "block";
+
+        // Если вернулись к pufferplanet, продолжаем показывать кнопку "Назад"
+        if (previousPage === "pufferplanet") {
+            tg.BackButton.show();  // Кнопка продолжает быть активной
+        }
+    });
 
     // Делаем кнопку "pufforder1" неактивной
     pufforder1.pufforderinactive = true;
