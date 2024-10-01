@@ -223,14 +223,6 @@ const backButton2 = Telegram.WebApp.BackButton;
 
 
 
-const casepuffButton = document.getElementById("casepuff");
-
-casepuffButton.addEventListener("click", () => {
-    document.getElementById("home").style.display = "none";
-    document.getElementById("thepuffercase").style.display = "block";
-
-
-});
 
 const pufferplanetButton = document.getElementById("puffplanet");
 
@@ -551,6 +543,21 @@ const iphoneModelsWindow15 = document.getElementById("iphoneModelsWindow15");
     pufforder1.pufforderinactive = true;
     pufforder1.classList.add("pufforderinactive");
 });
+
+// Проверяем, если мы на странице pufferplanet
+if (window.location.href.includes('pufferplanet')) {
+
+    // Показываем кнопку
+    backButton.show();
+
+    // Обрабатываем нажатие на кнопку
+    backButton.onClick(() => {
+        document.getElementById("pufferplanet").style.display = "none";  // Скрываем страницу покупки
+        document.getElementById("home").style.display = "block";  // Возвращаемся на домашнюю страницу
+
+        backButton.hide();  // Скрываем кнопку "Назад" при возвращении на домашнюю страницу
+    });
+}
 
 
 // Обработчик события для кнопки "SIZE"
