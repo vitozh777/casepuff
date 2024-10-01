@@ -241,6 +241,13 @@ pufferplanetButton.addEventListener("click", () => {
     document.getElementById("home").style.display = "none";
     document.getElementById("pufferplanet").style.display = "block";
 
+    tg.BackButton.show();  // Включаем кнопку "Назад" при открытии страницы покупки
+
+    tg.BackButton.onClick(() => {
+        document.getElementById("pufferplanet").style.display = "none";  // Скрываем страницу покупки
+        document.getElementById("home").style.display = "block";  // Возвращаемся на домашнюю страницу
+    });
+
     
 });
 
