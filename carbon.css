@@ -129,8 +129,7 @@ body {
 /* Стили для контейнера, содержащего кнопки */
 .contain {
     max-width: 400px; /* Максимальная ширина контейнера */
-     /* Обрезаем содержимое, если оно выходит за границы */
-    display: flex; /* Используем flex-контейнер */
+
     justify-content: center; /* Выравнивание по горизонтали по центру */
     align-items: center; /* Выравнивание по вертикали по центру */
     flex-direction: column; /* Добавлено для вертикального выравнивания */
@@ -442,12 +441,19 @@ body {
 
 
 
+.homevideo {
+    width: 110%;
+    margin-left: -5%;
+}
+
 
 
 
 .button { 
     justify-content: center;
+    align-items: center;
     display: block;
+    margin: 0 auto;
     font-size: 18px;
     width: 180px;
     height: 50px;
@@ -476,6 +482,7 @@ body {
 .butair { 
     justify-content: center;
     display: block;
+    margin: 0 auto;
     font-size: 18px;
     width: 180px;
     height: 50px;
