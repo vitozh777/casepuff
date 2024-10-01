@@ -219,7 +219,6 @@ tginst2.addEventListener("click", () => {
 
 
 const backButton = Telegram.WebApp.BackButton;
-const backButton2 = Telegram.WebApp.BackButton;
 
 
 
@@ -230,16 +229,13 @@ pufferplanetButton.addEventListener("click", () => {
     document.getElementById("home").style.display = "none";
     document.getElementById("pufferplanet").style.display = "block";
 
-    backButton.show();  // Включаем кнопку "Назад" при открытии страницы покупки
+    backButton.show();
 
     backButton.onClick(() => {
-        document.getElementById("pufferplanet").style.display = "none";  // Скрываем страницу покупки
-        document.getElementById("home").style.display = "block";  // Возвращаемся на домашнюю страницу
-
-        backButton.hide();  // Скрываем кнопку "Назад" при возвращении на домашнюю страницу
+        document.getElementById("pufferplanet").style.display = "none";
+        document.getElementById("home").style.display = "block";
+        backButton.hide();
     });
-
-    
 });
 
 
@@ -526,17 +522,15 @@ const iphoneModelsWindow15 = document.getElementById("iphoneModelsWindow15");
 
 
 купить1.addEventListener("click", () => {
-    document.getElementById("pufferplanet").style.display = "none"
-    document.getElementById("formplanet1").style.display = "block"
+    document.getElementById("pufferplanet").style.display = "none";
+    document.getElementById("formplanet1").style.display = "block";
 
-    backButton2.show();  // Включаем кнопку "Назад" при открытии страницы покупки
+    backButton.show();
 
-    backButton2.onClick(() => {
+    backButton.onClick(() => {
         document.getElementById("formplanet1").style.display = "none";
-        document.getElementById("home").style.display = "none";  // Скрываем страницу покупки
-        document.getElementById("pufferplanet").style.display = "block";  // Возвращаемся на домашнюю страницу
-
-        backButton2.hide();  // Скрываем кнопку "Назад" при возвращении на домашнюю страницу
+        document.getElementById("pufferplanet").style.display = "block";
+        backButton.hide();
     });
 
     // Делаем кнопку "pufforder1" неактивной
@@ -546,16 +540,12 @@ const iphoneModelsWindow15 = document.getElementById("iphoneModelsWindow15");
 
 // Проверяем, если мы на странице pufferplanet
 if (window.location.href.includes('pufferplanet')) {
-
-    // Показываем кнопку
     backButton.show();
 
-    // Обрабатываем нажатие на кнопку
     backButton.onClick(() => {
-        document.getElementById("pufferplanet").style.display = "none";  // Скрываем страницу покупки
-        document.getElementById("home").style.display = "block";  // Возвращаемся на домашнюю страницу
-
-        backButton.hide();  // Скрываем кнопку "Назад" при возвращении на домашнюю страницу
+        document.getElementById("pufferplanet").style.display = "none";
+        document.getElementById("home").style.display = "block";
+        backButton.hide();
     });
 }
 
