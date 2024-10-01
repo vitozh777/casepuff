@@ -545,6 +545,7 @@ const iphoneModelsWindow15 = document.getElementById("iphoneModelsWindow15");
         document.getElementById("pufferplanet").style.display = "block";  // Возвращаемся на домашнюю страницу
 
         backButton2.hide();  // Скрываем кнопку "Назад" при возвращении на домашнюю страницу
+        backButton.show();
     });
 
     // Делаем кнопку "pufforder1" неактивной
