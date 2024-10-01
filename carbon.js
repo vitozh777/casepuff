@@ -247,21 +247,14 @@ pufferplanetButton.addEventListener("click", () => {
     document.getElementById("home").style.display = "none";
     document.getElementById("pufferplanet").style.display = "block";
 
-    // Добавляем предыдущую страницу в стэк
+    // Добавляем текущую страницу в стэк
     pageStack.push("home");
 
     tg.BackButton.show();  // Включаем кнопку "Назад"
     
-    // Обработчик кнопки "Назад" для возврата на страницу home
+    // Обработчик кнопки "Назад"
     tg.BackButton.onClick(() => {
-        let previousPage = pageStack.pop();  // Достаем предыдущую страницу из стэка
-        document.getElementById("pufferplanet").style.display = "none";
-        document.getElementById(previousPage).style.display = "block";
-
-        // Если это home, скрываем кнопку "Назад"
-        if (previousPage === "home") {
-            tg.BackButton.hide();
-        }
+        handleBackNavigation(); // Вызываем обработчик навигации назад
     });
 });
 
@@ -552,27 +545,38 @@ const iphoneModelsWindow15 = document.getElementById("iphoneModelsWindow15");
     document.getElementById("pufferplanet").style.display = "none";
     document.getElementById("formplanet1").style.display = "block";
 
-    // Добавляем страницу pufferplanet в стэк
+    // Добавляем текущую страницу в стэк
     pageStack.push("pufferplanet");
 
     tg.BackButton.show();  // Кнопка "Назад" активна
-
-    // Обработчик кнопки "Назад" для возврата с формы на pufferplanet
+    
+    // Обработчик кнопки "Назад"
     tg.BackButton.onClick(() => {
-        let previousPage = pageStack.pop();  // Достаем предыдущую страницу из стэка
-        document.getElementById("formplanet1").style.display = "none";
-        document.getElementById(previousPage).style.display = "block";
-
-        // Если вернулись к pufferplanet, продолжаем показывать кнопку "Назад"
-        if (previousPage === "pufferplanet") {
-            tg.BackButton.show();  // Кнопка продолжает быть активной
-        }
+        handleBackNavigation(); // Вызываем обработчик навигации назад
     });
 
     // Делаем кнопку "pufforder1" неактивной
     pufforder1.pufforderinactive = true;
     pufforder1.classList.add("pufforderinactive");
 });
+
+// Обработчик возврата на предыдущую страницу
+function handleBackNavigation() {
+    if (pageStack.length > 0) {
+        let previousPage = pageStack.pop();  // Достаем предыдущую страницу из стэка
+
+        // Скрываем текущую страницу (самую верхнюю)
+        document.querySelectorAll("div, form").forEach(page => page.style.display = "none");
+        
+        // Показываем предыдущую страницу
+        document.getElementById(previousPage).style.display = "block";
+
+        // Если вернулись на главную страницу (home), скрываем кнопку "Назад"
+        if (previousPage === "home") {
+            tg.BackButton.hide();
+        }
+    }
+}
 
 
 // Обработчик события для кнопки "SIZE"
