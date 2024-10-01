@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-
+const backButton = Telegram.WebApp.BackButton;
 
 
 const swiper = new Swiper('.swiper-container', {
@@ -218,40 +218,26 @@ tginst2.addEventListener("click", () => {
 });
 
 
-const backButton = Telegram.WebApp.BackButton;
+
+const casepuffButton = document.getElementById("casepuff");
+
+casepuffButton.addEventListener("click", () => {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("thepuffercase").style.display = "block";
 
 
-
+});
 
 const pufferplanetButton = document.getElementById("puffplanet");
 
 pufferplanetButton.addEventListener("click", () => {
     document.getElementById("home").style.display = "none";
     document.getElementById("pufferplanet").style.display = "block";
+
+    
 });
 
-if (window.location.href.includes('formplanet1')) {
-    backButton.show();
 
-    backButton.onClick(() => {
-        document.getElementById("formplanet1").style.display = "none";
-        document.getElementById("home").style.display = "none";
-        document.getElementById("pufferplanet").style.display = "block";
-        backButton.hide();
-    });
-}
-
-// Проверяем, если мы на странице pufferplanet
-if (window.location.href.includes('pufferplanet')) {
-    backButton.show();
-
-    backButton.onClick(() => {
-        document.getElementById("pufferplanet").style.display = "none";
-        document.getElementById("formplanet1").style.display = "none";
-        document.getElementById("home").style.display = "block";
-        backButton.hide();
-    });
-}
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -535,12 +521,20 @@ const iphoneModelsWindow15 = document.getElementById("iphoneModelsWindow15");
 
 
 купить1.addEventListener("click", () => {
-    document.getElementById("pufferplanet").style.display = "none";
-    document.getElementById("formplanet1").style.display = "block";
+    document.getElementById("pufferplanet").style.display = "none"
+    document.getElementById("formplanet1").style.display = "block"
 
     // Делаем кнопку "pufforder1" неактивной
     pufforder1.pufforderinactive = true;
     pufforder1.classList.add("pufforderinactive");
+    backButton.show();
+
+    backButton.onClick(() => {
+        document.getElementById("pufferplanet").style.display = "block";
+        document.getElementById("formplanet1").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 });
 
 
@@ -715,7 +709,14 @@ async function sendMessageToBotWithKeyboard(message, keyboard) {
     // Делаем кнопку "pufforder2" неактивной
     pufforder2.pufforderinactive = true;
     pufforder2.classList.add("pufforderinactive");
+    backButton.show();
 
+    backButton.onClick(() => {
+        document.getElementById("pufferplanet").style.display = "block";
+        document.getElementById("formplanet2").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 });
 
 // Обработчик события для кнопки "SIZE"
@@ -832,7 +833,14 @@ pufforder2.addEventListener("click", (event) => {
     // Делаем кнопку "pufforder3" неактивной
     pufforder3.pufforderinactive = true;
     pufforder3.classList.add("pufforderinactive");
+    backButton.show();
 
+    backButton.onClick(() => {
+        document.getElementById("pufferplanet").style.display = "block";
+        document.getElementById("formplanet3").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 });
 
 // Обработчик события для кнопки "SIZE"
@@ -947,7 +955,14 @@ pufforder3.addEventListener("click", (event) => {
     // Делаем кнопку "pufforder3" неактивной
     pufforder4.pufforderinactive = true;
     pufforder4.classList.add("pufforderinactive");
- 
+    backButton.show();
+
+    backButton.onClick(() => {
+        document.getElementById("pufferplanet").style.display = "block";
+        document.getElementById("formplanet4").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 });
 
 // Обработчик события для кнопки "SIZE"
@@ -1061,7 +1076,14 @@ pufforder4.addEventListener("click", (event) => {
     // Делаем кнопку "pufforder5" неактивной
     pufforder5.pufforderinactive = true;
     pufforder5.classList.add("pufforderinactive");
+    backButton.show();
 
+    backButton.onClick(() => {
+        document.getElementById("pufferplanet").style.display = "block";
+        document.getElementById("formplanet5").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 });
 
 // Обработчик события для кнопки "SIZE"
@@ -1174,7 +1196,14 @@ pufforder5.addEventListener("click", (event) => {
     // Делаем кнопку "pufforder5" неактивной
     pufforder6.pufforderinactive = true;
     pufforder6.classList.add("pufforderinactive");
+    backButton.show();
 
+    backButton.onClick(() => {
+        document.getElementById("pufferplanet").style.display = "block";
+        document.getElementById("formplanet6").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 });
 
 // Обработчик события для кнопки "SIZE"
@@ -1287,7 +1316,14 @@ pufforder6.addEventListener("click", (event) => {
     // Делаем кнопку "pufforder5" неактивной
     pufforder7.pufforderinactive = true;
     pufforder7.classList.add("pufforderinactive");
+    backButton.show();
 
+    backButton.onClick(() => {
+        document.getElementById("pufferplanet").style.display = "block";
+        document.getElementById("formplanet7").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 });
 
 // Обработчик события для кнопки "SIZE"
@@ -1400,7 +1436,14 @@ pufforder7.addEventListener("click", (event) => {
     // Делаем кнопку "pufforder5" неактивной
     pufforder8.pufforderinactive = true;
     pufforder8.classList.add("pufforderinactive");
+    backButton.show();
 
+    backButton.onClick(() => {
+        document.getElementById("pufferplanet").style.display = "block";
+        document.getElementById("formplanet8").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 });
 
 // Обработчик события для кнопки "SIZE"
@@ -1530,6 +1573,14 @@ btn1.addEventListener("click", () => {
     // Делаем кнопку "order1" неактивной
     order1.orderinactive = true;
     order1.classList.add("orderinactive");
+    backButton.show();
+
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form1").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 
 
 });
@@ -1671,7 +1722,14 @@ btn2.addEventListener("click", () => {
     // Делаем кнопку "order2" неактивной
     order2.orderinactive = true;
     order2.classList.add("orderinactive");
+    backButton.show();
 
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form2").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 
 
 });
@@ -1800,6 +1858,14 @@ btn3.addEventListener("click", () => {
     // Делаем кнопку "order3" неактивной
     order3.orderinactive = true;
     order3.classList.add("orderinactive");
+    backButton.show();
+
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form3").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 
 
 });
@@ -1927,7 +1993,14 @@ btn4.addEventListener("click", () => {
     // Делаем кнопку "order4" неактивной
     order4.orderinactive = true;
     order4.classList.add("orderinactive");
+    backButton.show();
 
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form4").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 
 
 });
@@ -2055,7 +2128,14 @@ btn5.addEventListener("click", () => {
     // Делаем кнопку "order5" неактивной
     order5.orderinactive = true;
     order5.classList.add("orderinactive");
+    backButton.show();
 
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form5").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 
 
 });
@@ -2183,7 +2263,14 @@ btn6.addEventListener("click", () => {
     // Делаем кнопку "order6" неактивной
     order6.orderinactive = true;
     order6.classList.add("orderinactive");
+    backButton.show();
 
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form6").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 
 
 });
@@ -2311,7 +2398,14 @@ btn7.addEventListener("click", () => {
     // Делаем кнопку "order6" неактивной
     order7.orderinactive = true;
     order7.classList.add("orderinactive");
+    backButton.show();
 
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form7").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 
 
 });
@@ -2440,7 +2534,14 @@ btn8.addEventListener("click", () => {
     // Делаем кнопку "order8" неактивной
     order8.orderinactive = true;
     order8.classList.add("orderinactive");
+    backButton.show();
 
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form8").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 
 
 });
@@ -2568,7 +2669,14 @@ btn9.addEventListener("click", () => {
     // Делаем кнопку "order9" неактивной
     order9.orderinactive = true;
     order9.classList.add("orderinactive");
+    backButton.show();
 
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form9").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 
 
 });
@@ -2696,7 +2804,14 @@ btn10.addEventListener("click", () => {
     // Делаем кнопку "order9" неактивной
     order10.orderinactive = true;
     order10.classList.add("orderinactive");
+    backButton.show();
 
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form10").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 
 
 });
@@ -2824,7 +2939,14 @@ btn11.addEventListener("click", () => {
     // Делаем кнопку "order9" неактивной
     order11.orderinactive = true;
     order11.classList.add("orderinactive");
- 
+    backButton.show();
+
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form11").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 
 
 });
@@ -2952,7 +3074,14 @@ btn12.addEventListener("click", () => {
     // Делаем кнопку "order9" неактивной
     order12.orderinactive = true;
     order12.classList.add("orderinactive");
+    backButton.show();
 
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form12").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 
 
 });
@@ -3080,6 +3209,14 @@ btn13.addEventListener("click", () => {
     // Делаем кнопку "order9" неактивной
     order13.orderinactive = true;
     order13.classList.add("orderinactive");
+    backButton.show();
+
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form13").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 
 
 });
@@ -3207,6 +3344,14 @@ btn14.addEventListener("click", () => {
     // Делаем кнопку "order9" неактивной
     order14.orderinactive = true;
     order14.classList.add("orderinactive");
+    backButton.show();
+
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form14").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 
 
 });
@@ -3334,6 +3479,14 @@ btn15.addEventListener("click", () => {
     // Делаем кнопку "order9" неактивной
     order15.orderinactive = true;
     order15.classList.add("orderinactive");
+    backButton.show();
+
+    backButton.onClick(() => {
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form15").style.display = "none";
+        tg.MainButton.hide();
+        backButton.hide();
+    });
 
 
 });
