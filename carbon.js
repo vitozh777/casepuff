@@ -171,51 +171,115 @@ const keyboard = {
 
 
 
-
-const tgoper = document.getElementById("tgoper");
-tgoper.addEventListener("click", () => {
-    window.open("https://t.me/carbonexpert", "_blank");
+var animation = lottie.loadAnimation({
+    container: document.getElementById('cart-icon'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'cart.json' // путь к вашему JSON-файлу
 });
 
-const tgkanal = document.getElementById("tgkanal");
-tgkanal.addEventListener("click", () => {
-    window.open("https://t.me/carbonru", "_blank");
+document.getElementById("cart-button").addEventListener("click", function() {
+    document.getElementById("mycart").classList.remove("hidden");
 });
 
-const tginst = document.getElementById("tginst");
-tginst.addEventListener("click", () => {
-    window.open("https://www.instagram.com/ru.carbon/", "_blank");
+document.getElementById("close-cart").addEventListener("click", function() {
+    document.getElementById("mycart").classList.add("hidden");
 });
 
-const tgoper1 = document.getElementById("tgoper1");
-tgoper1.addEventListener("click", () => {
-    window.open("https://t.me/carbonexpert", "_blank");
+let cartItems = [];
+
+function addToCart(item) {
+    const existingItem = cartItems.find(i => i.id === item.id);
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cartItems.push({ ...item, quantity: 1 });
+    }
+    renderCartItems();
+}
+
+function renderCartItems() {
+    const cartContainer = document.getElementById("cart-items");
+    cartContainer.innerHTML = ""; // Очищаем контейнер
+
+    cartItems.forEach(item => {
+        const cartItem = document.createElement("div");
+        cartItem.classList.add("cart-item");
+
+        cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <div class="item-info">
+                <div>${item.name}</div>
+                <div>${item.price} ₽</div>
+                <div>${item.size}</div>
+            </div>
+            <div class="item-quantity">
+                <button onclick="updateQuantity(${item.id}, -1)">-</button>
+                <input type="text" value="${item.quantity}" readonly>
+                <button onclick="updateQuantity(${item.id}, 1)">+</button>
+            </div>
+        `;
+
+        cartContainer.appendChild(cartItem);
+    });
+}
+
+function updateQuantity(itemId, change) {
+    const item = cartItems.find(i => i.id === itemId);
+    if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+            cartItems = cartItems.filter(i => i.id !== itemId);
+        }
+        renderCartItems();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+// Функция для переключения видимости блока контактов
+function toggleContacts() {
+    var contactsButtons = document.getElementById("contacts-buttons");
+    var arrow = document.getElementById("arrow");
+
+    if (contactsButtons.classList.contains("hidden")) {
+        contactsButtons.classList.remove("hidden");
+        arrow.classList.add("open");
+    } else {
+        contactsButtons.classList.add("hidden");
+        arrow.classList.remove("open");
+    }
+}
+
+// Обработчик клика по документу
+document.addEventListener("click", function(event) {
+    var contactsButtons = document.getElementById("contacts-buttons");
+    var contactsHeader = document.querySelector(".contacts-header");
+    
+    // Проверяем, произошел ли клик внутри кнопки или блока контактов
+    if (!contactsHeader.contains(event.target) && !contactsButtons.contains(event.target)) {
+        // Скрываем блок с контактами и закрываем стрелку
+        if (!contactsButtons.classList.contains("hidden")) {
+            contactsButtons.classList.add("hidden");
+            var arrow = document.getElementById("arrow");
+            arrow.classList.remove("open");
+        }
+    }
 });
 
-const tgkanal1 = document.getElementById("tgkanal1");
-tgkanal1.addEventListener("click", () => {
-    window.open("https://t.me/carbonru", "_blank");
-});
 
-const tginst1 = document.getElementById("tginst1");
-tginst1.addEventListener("click", () => {
-    window.open("https://www.instagram.com/ru.carbon/", "_blank");
-});
 
-const tgoper2 = document.getElementById("tgoper2");
-tgoper2.addEventListener("click", () => {
-    window.open("https://t.me/carbonexpert", "_blank");
-});
 
-const tgkanal2 = document.getElementById("tgkanal2");
-tgkanal2.addEventListener("click", () => {
-    window.open("https://t.me/carbonru", "_blank");
-});
 
-const tginst2 = document.getElementById("tginst2");
-tginst2.addEventListener("click", () => {
-    window.open("https://www.instagram.com/ru.carbon/", "_blank");
-});
+
 
 
 
@@ -225,6 +289,11 @@ casepuffButton.addEventListener("click", () => {
     document.getElementById("home").style.display = "none";
     document.getElementById("thepuffercase").style.display = "block";
 
+    var contactsHeader = document.querySelector(".contacts-header");
+    if (contactsHeader) {
+        contactsHeader.style.display = "none";
+    }
+
 
 });
 
@@ -233,6 +302,11 @@ const pufferplanetButton = document.getElementById("puffplanet");
 pufferplanetButton.addEventListener("click", () => {
     document.getElementById("home").style.display = "none";
     document.getElementById("pufferplanet").style.display = "block";
+
+    var contactsHeader = document.querySelector(".contacts-header");
+    if (contactsHeader) {
+        contactsHeader.style.display = "none";
+    }
 
     
 });
@@ -597,57 +671,218 @@ model4.forEach(model => {
 
 
 
-// Добавьте обработчик события click для кнопки "Add"
-// Добавьте обработчик события click для кнопки "Add"
+
+
+
+
+
+let deliveryPrice = 199; // Цена доставки по умолчанию (5Post)
+let promoApplied = false;
+let stickerIncluded = true;
+
+// Открываем окно промокода при нажатии на кнопку "Применить скидку"
+document.getElementById("apply-discount").addEventListener("click", () => {
+    if (!document.getElementById("apply-discount").disabled) {
+        document.getElementById("promo-popup").classList.remove("hidden");
+    }
+});
+
+// Обрабатываем применение скидки
+document.getElementById("apply-promo-btn").addEventListener("click", () => {
+    const promoCode = document.getElementById("promo-code").value;
+    
+    if (promoCode === "скидка10" && !promoApplied) {
+        promoApplied = true; // Устанавливаем флаг, что скидка применена
+        document.getElementById("promo-popup").classList.add("hidden"); // Закрываем окно
+        updateTotalPrice(); // Пересчитываем общую цену с учетом скидки
+    } else {
+        alert("Неверный промокод или скидка уже применена.");
+    }
+});
+
+// Функция переключения набора наклеек
+function toggleSticker() {
+    stickerIncluded = document.getElementById("toggle-sticker").checked;
+    updateTotalPrice();
+}
+
+function updateTotalPrice() {
+    // Считаем общую цену товаров
+    let totalItemsPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    
+    // Применяем скидку 10%, если промокод введён
+    if (promoApplied) {
+        totalItemsPrice *= 0.9; // Скидка 10%
+    }
+
+    // Проверяем условия для набора наклеек
+    let stickerPrice = stickerIncluded ? 0 : 20; // Если выключен, цена 20₽
+    if (totalItemsPrice > 3000) {
+        stickerPrice = 0; // Бесплатные наклейки, если цена выше 3000₽
+    }
+
+    // Пересчитываем общую цену товаров + доставки + наклеек
+    const totalPrice = totalItemsPrice + deliveryPrice + stickerPrice;
+
+    document.getElementById("total-price").textContent = `${totalPrice.toFixed(2)}₽`;
+    document.getElementById("sticker-price").textContent = `${stickerPrice}₽`; // Обновляем цену набора наклеек
+
+    // Обновляем подсказку по наклейкам
+    updateStickerHint(totalItemsPrice);
+}
+
+// Обновление подсказки по наклейкам
+function updateStickerHint(totalWithoutDiscount) {
+    const hintElement = document.getElementById("sticker-hint");
+
+    // Если общая цена (с доставкой, но без скидки) меньше 3000 рублей, показываем, сколько не хватает
+    if (totalWithoutDiscount < 3000) {
+        const amountLeft = 3000 - totalWithoutDiscount;
+        hintElement.textContent = `Добавьте ещё ${amountLeft.toFixed(2)}₽ для бесплатного набора наклеек`;
+    } else {
+        hintElement.textContent = ''; // Если условие выполнено, убираем подсказку
+    }
+}
+
+
+
+
+
 pufforder1.disabled = false;
+
 pufforder1.addEventListener("click", (event) => {
     if (!pufforder1.disabled) {
         event.preventDefault();
-        
+
         // Получаем выбранную модель и цену
         const selectedModel = document.querySelector(".model4.selected").textContent;
-        const selectedPrice = modelInfo4[selectedModel];
-        
+        const selectedPrice = parseFloat(modelInfo4[selectedModel].replace(/[^\d]/g, ''));
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.airdelivery-btn1.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
-
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.aircheckmark1').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
-
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "FORGED GLOSSY-OBSIDIAN";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-
-        // Добавляем обработчик для MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-
-            // Закрываем WebApp
-            tg.close();
+        // Добавляем товар в корзину
+        addToCart({
+            id: 1, // Уникальный ID товара
+            name: "FORGED GLOSSY-OBSIDIAN",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
         });
     }
 });
+
+// Добавляем товар в корзину
+function addToCart(item) {
+    const existingItem = cartItems.find(i => i.id === item.id && i.model === item.model);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cartItems.push({ ...item });
+    }
+
+    // После добавления товара разблокируем все элементы корзины
+    enableCartControls();
+    
+    renderCartItems();
+    updateTotalPrice();
+}
+
+// Разблокировка кнопок корзины
+function enableCartControls() {
+    document.getElementById("toggle-sticker").disabled = false;
+    document.getElementById("apply-discount").disabled = false;
+    document.getElementById("promo-code").disabled = false;
+    document.getElementById("apply-promo-btn").disabled = false;
+
+    const deliveryButtons = document.querySelectorAll(".airdelivery-btn1");
+    deliveryButtons.forEach(button => button.disabled = false);
+}
+
+
+function renderCartItems() {
+    const cartContainer = document.getElementById("cart-items");
+    cartContainer.innerHTML = "";
+
+    cartItems.forEach(item => {
+        const cartItem = document.createElement("div");
+        cartItem.classList.add("cart-item");
+
+        cartItem.innerHTML = `
+            <img src="airobsid.JPG" alt="${item.name}">
+            <div class="item-info">
+                <div>Название: ${item.name}</div>
+                <div>Модель: ${item.model}</div>
+                <div>Цена за единицу: ${item.price}₽</div>
+            </div>
+            <div class="item-quantity">
+                <button onclick="updateQuantity(${item.id}, '${item.model}', -1)">-</button>
+                <input type="text" value="${item.quantity}" readonly>
+                <button onclick="updateQuantity(${item.id}, '${item.model}', 1)">+</button>
+            </div>
+        `;
+
+        cartContainer.appendChild(cartItem);
+    });
+}
+
+function updateQuantity(itemId, model, change) {
+    const item = cartItems.find(i => i.id === itemId && i.model === model);
+    if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+            cartItems = cartItems.filter(i => i.id !== itemId || i.model !== model);
+        }
+        renderCartItems();
+        updateTotalPrice();
+    }
+}
+
+// Обновление общей цены
+function updateTotalPrice() {
+    // Считаем общую цену товаров
+    let totalItemsPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    
+    // Применяем скидку 10%, если промокод введён
+    let discountedItemsPrice = totalItemsPrice;
+    if (promoApplied) {
+        discountedItemsPrice *= 0.9; // Скидка 10%
+    }
+
+    // Определяем общую цену без учёта скидки (с доставкой)
+    const totalWithoutDiscount = totalItemsPrice + deliveryPrice;
+
+    // Логика расчета для набора наклеек
+    let stickerPrice = 20; // Цена набора наклеек по умолчанию - 20₽
+
+    // Если общая сумма товаров + доставка >= 3000, набор бесплатен
+    if (totalWithoutDiscount >= 3000) {
+        stickerPrice = 0; // Набор становится бесплатным
+    } 
+    // Если общая сумма меньше 3000, набор стоит 20₽, но пользователь может отказаться от его оплаты
+    else if (!stickerIncluded) {
+        stickerPrice = 20; // Набор не включён, но 20₽ вычитаются из общей суммы
+    }
+
+    // Пересчитываем общую цену товаров + доставки + наклеек (с учётом скидки только на товары)
+    const totalPrice = discountedItemsPrice + deliveryPrice - (stickerIncluded ? 0 : 20); // Вычитаем 20₽, если набор выключен
+
+    document.getElementById("total-price").textContent = `${totalPrice.toFixed(2)}₽`;
+    document.getElementById("sticker-price").textContent = `${stickerPrice}₽`; // Обновляем цену набора наклеек
+
+    // Обновляем подсказку по наклейкам
+    updateStickerHint(totalWithoutDiscount);
+}
+
+// Выбор метода доставки
+function selectDeliveryMethod(price) {
+    deliveryPrice = price;
+    updateTotalPrice();
+}
+
+
+
+
+
+
 
 
 

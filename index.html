@@ -29,33 +29,44 @@
             </div>
         </div>
 
+
+
+        <div class="navigation">
+            <div class="contacts-header" onclick="toggleContacts()">
+                <span>Контакты</span>
+                <div id="arrow" class="arrow-4">
+                    <span class="arrow-4-left"></span>
+                    <span class="arrow-4-right"></span>
+                </div>
+                <div id="contacts-buttons" class="contacts-buttons hidden">
+                    <a href="https://t.me/carbonexpert" target="_blank" class="contact-btn">
+                        <img src="expert.png" alt="Поддержка" class="contact-icon"> Поддержка
+                    </a>
+                    <a href="https://t.me/carbonexpert" target="_blank" class="contact-btn">
+                        <img src="tglogo.PNG" alt="Telegram" class="contact-icon"> Telegram-канал
+                    </a>
+                    <a href="https://www.instagram.com/ru.carbon" target="_blank" class="contact-btn">
+                        <img src="instlogo.png" alt="Instagram" class="contact-icon"> Instagram
+                    </a>
+                    <a href="https://vk.com/carbonru" target="_blank" class="contact-btn">
+                        <img src="instlogo.png" alt="Instagram" class="contact-icon"> Вконтакте
+                    </a>
+                </div>
+            </div>
+            <button id="cart-button" class="cart-button">
+                <div id="cart-icon"></div>
+            </button>
+            
+            
+        </div>
+
         
 
         
         <div class="contain" id="home">
-            <div class="navigation">
-                <div class="tgoper" id="tgoper">
-                    <img src="expert.png" alt="Telegram Logo" class="telegram-logo">
-                    <a class="textlogo">
-                        <span id="kanal2">help</span>
-                    </a>
-                </div>
-                <div class="tgkanal" id="tgkanal">
-                    <img src="tglogo.PNG" alt="Telegram Logo" class="telegram-logo">
-                    <a class="textlogos">
-                        <span id="kanal">@carbonru</span>
-                        <span id="kanal2">наш Telegram-канал</span>
-                    </a>
-                </div>
-                <div class="tginst" id="tginst">
-                    <img src="instlogo.png" alt="Telegram Logo" class="telegram-logo">
-                    <a class="textlogo">
-                        <span id="kanal">@ru.carbon</span>
-                        <span id="kanal2">наш Instagram</span>
-                    </a>
-                </div>
-            </div>
-            <video muted playsinline width="110%" height="auto" id="myVideo3" preload="none">
+            
+
+            <video muted playsinline width="110%" height="auto" id="myVideo3" preload="none" style="margin-top: 40px;">
                 <source src="animation2.MOV" type="video/mp4">
                 Ваш браузер не поддерживает тег video.
             </video>
@@ -72,29 +83,88 @@
 
 
 
-        <div class="contplanet" id="pufferplanet">
-            <div class="navigation">
-                <div class="tgoper1" id="tgoper1">
-                    <img src="expert.png" alt="Telegram Logo" class="telegram-logo">
-                    <a class="textlogo">
-                        <span id="kanal2">help</span>
-                    </a>
-                </div>
-                <div class="tgkanal1" id="tgkanal1">
-                    <img src="tglogo.PNG" alt="Telegram Logo" class="telegram-logo">
-                    <a class="textlogos">
-                        <span id="kanal">@carbonru</span>
-                        <span id="kanal2">наш Telegram-канал</span>
-                    </a>
-                </div>
-                <div class="tginst1" id="tginst1">
-                    <img src="instlogo.png" alt="Telegram Logo" class="telegram-logo">
-                    <a class="textlogo">
-                        <span id="kanal">@ru.carbon</span>
-                        <span id="kanal2">наш Instagram</span>
-                    </a>
+        
+
+
+
+
+        <div class="cart hidden" id="mycart">
+            <div class="cart-header">
+                <span class="close-button" id="close-cart">×</span>
+                <h2>Моя корзина</h2>
+            </div>
+            <button id="apply-discount" disabled>Применить скидку</button>
+            <div class="sticker-gift">
+                <span>Набор наклеек</span>
+                <span id="sticker-price">20₽</span>
+                <label class="switch">
+                    <input type="checkbox" id="toggle-sticker" checked onchange="toggleSticker()" disabled>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <!-- Поле для отображения суммы, которая не хватает до 3000 рублей -->
+            <div class="sticker-hint" id="sticker-hint"></div>
+            
+            
+            <div id="cart-items"></div> <!-- Контейнер для товаров -->
+        
+            <!-- Блок выбора метода доставки -->
+            <div class="cart-delivery">
+                <h3>Выберите доставку:</h3>
+                <div class="delivery-options" id="airdelivery-group-1">
+                    <button id="air5post-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(199)" disabled>
+                        <img src="5post.PNG" alt="5Post Icon" class="icon">
+                        <span class="aircheckmark1">5Post</span>
+                        <span class="recommendation">рекомендовано</span>
+                        <span class="deliveryprice1">199₽</span>
+                        <div class="circle">
+                            <div class="inner-circle"></div>
+                        </div>
+                    </button>
+                
+                    <button id="airpochta-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(360)" disabled>
+                        <img src="pochta.PNG" alt="Pochta Icon" class="icon">
+                        <span class="aircheckmark1">Почта России</span>
+                        <span class="deliveryprice2">360₽</span>
+                        <div class="circle">
+                            <div class="inner-circle"></div>
+                        </div>
+                    </button>
+                
+                    <button id="aircdek-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(560)" disabled>
+                        <img src="cdek.PNG" alt="CDEK Icon" class="icon">
+                        <span class="aircheckmark1">CDEK</span>
+                        <span class="deliveryprice3">560₽</span>
+                        <div class="circle">
+                            <div class="inner-circle"></div>
+                        </div>
+                    </button>
                 </div>
             </div>
+        
+            <div class="cart-footer">
+                <div>Общая цена: <span id="total-price">0₽</span></div>
+            </div>
+        </div>
+
+        <div class="promo-popup hidden" id="promo-popup">
+            <div class="promo-content">
+                <h3>Введите промокод</h3>
+                <input type="text" id="promo-code" placeholder="Введите промокод" disabled />
+                <button id="apply-promo-btn" disabled>Применить скидку</button>
+            </div>
+        </div>
+        
+
+
+
+
+
+
+
+
+        <div class="contplanet" id="pufferplanet">
             <div class="inner">
                 <div class="item" id="TPC">
                     <img src="airobsid.JPG" alt="" class="img">
@@ -1009,28 +1079,6 @@
 
 
         <div class="container" id="thepuffercase">
-            <div class="navigationcase">
-                <div class="tgoper2" id="tgoper2">
-                    <img src="expert.png" alt="Telegram Logo" class="telegram-logo">
-                    <a class="textlogo">
-                        <span id="kanal2">help</span>
-                    </a>
-                </div>
-                <div class="tgkanal2" id="tgkanal2">
-                    <img src="tglogo.PNG" alt="Telegram Logo" class="telegram-logo">
-                    <a class="textlogos">
-                        <span id="kanalcase">@carbonru</span>
-                        <span id="kanal2">наш Telegram-канал</span>
-                    </a>
-                </div>
-                <div class="tginst2" id="tginst2">
-                    <img src="instlogo.png" alt="Telegram Logo" class="telegram-logo">
-                    <a class="textlogo">
-                        <span id="kanalcase">@ru.carbon</span>
-                        <span id="kanal2">наш Instagram</span>
-                    </a>
-                </div>
-            </div>
 
             <video class="video2" id="myVideo2" width="100%" muted playsinline>
                 <source src="CARBANIM.MP4" type="video/quicktime">
