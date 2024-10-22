@@ -90,43 +90,63 @@
 
         <div class="cart hidden" id="mycart">
             <div class="cart-header">
-                <span class="close-button" id="close-cart">×</span>
-                <h2>Моя корзина</h2>
+                <span class="cart-title">Моя корзина</span>
+                <span class="close-button" id="close-cart"></span>
             </div>
-            <button id="apply-discount" disabled>Применить скидку</button>
+            <button id="apply-discount" disabled>
+                <span class="apply-title">Применить скидку</span>
+            </button>
+
+            <div class="strip"></div>
+
             <div class="sticker-gift">
-                <span>Набор наклеек</span>
+                <span class="sticker-title">Набор наклеек</span>
                 <span id="sticker-price">20₽</span>
-                <label class="switch">
-                    <input type="checkbox" id="toggle-sticker" checked onchange="toggleSticker()" disabled>
-                    <span class="slider"></span>
+                <label class="containerrr">
+                    <input type="checkbox" id="toggle-sticker" class="checkbox" checked onchange="toggleSticker()" disabled>
+                    <span class="switch">
+                        <span class="slider"></span>
+                    </span>
                 </label>
             </div>
-            
             <!-- Поле для отображения суммы, которая не хватает до 3000 рублей -->
             <div class="sticker-hint" id="sticker-hint"></div>
-            
+
+            <div class="strip"></div>
             
             <div id="cart-items"></div> <!-- Контейнер для товаров -->
+
+            <div class="strippp"></div>
+
+            <div class="del">
+                <div class="svg-container">
+                    <svg xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
+                    </svg>
+                </div>
+                <div class="text-container">
+                    <p style="font-weight: 600;">Доставка:</p>
+                    <p>Наличие уточняйте у оператора</p>
+                </div>
+            </div>
         
             <!-- Блок выбора метода доставки -->
             <div class="cart-delivery">
-                <h3>Выберите доставку:</h3>
                 <div class="delivery-options" id="airdelivery-group-1">
-                    <button id="air5post-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(199)" disabled>
+                    <button id="air5post-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(280)" disabled>
                         <img src="5post.PNG" alt="5Post Icon" class="icon">
                         <span class="aircheckmark1">5Post</span>
                         <span class="recommendation">рекомендовано</span>
-                        <span class="deliveryprice1">199₽</span>
+                        <span class="deliveryprice1">280₽</span>
                         <div class="circle">
                             <div class="inner-circle"></div>
                         </div>
                     </button>
                 
-                    <button id="airpochta-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(360)" disabled>
+                    <button id="airpochta-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(380)" disabled>
                         <img src="pochta.PNG" alt="Pochta Icon" class="icon">
                         <span class="aircheckmark1">Почта России</span>
-                        <span class="deliveryprice2">360₽</span>
+                        <span class="deliveryprice2">380₽</span>
                         <div class="circle">
                             <div class="inner-circle"></div>
                         </div>
@@ -140,18 +160,26 @@
                             <div class="inner-circle"></div>
                         </div>
                     </button>
+
+                    <button id="aircdek-1" class="airdelivery-btn1" type="button" onclick="selectDeliveryMethod(1200)" disabled>
+                        <img src="cdek.PNG" alt="CDEK Icon" class="icon">
+                        <span class="aircheckmark1">CDEK</span>
+                        <span class="deliveryprice3">1200₽</span>
+                        <div class="circle">
+                            <div class="inner-circle"></div>
+                        </div>
+                    </button>
                 </div>
             </div>
         
             <div class="cart-footer">
-                <div>Общая цена: <span id="total-price">0₽</span></div>
+                <div class="totalzena"><span class="obzena">Общая цена:</span> <span id="total-price">0₽</span></div>
             </div>
         </div>
 
         <div class="promo-popup hidden" id="promo-popup">
             <div class="promo-content">
-                <h3>Введите промокод</h3>
-                <input type="text" id="promo-code" placeholder="Введите промокод" disabled />
+                <input class="input" type="text" id="promo-code" placeholder="Введите промокод" disabled />
                 <button id="apply-promo-btn" disabled>Применить скидку</button>
             </div>
         </div>
@@ -270,50 +298,7 @@
             </div>
             <button class="pufforder" id="pufforder1">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
             
-            <div class="delivery-options" id="airdelivery-group-1">
-                <button id="air5post-1" class="airdelivery-btn1 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="aircheckmark1">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="airpochta-1" class="airdelivery-btn1" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="aircheckmark1">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="aircdek-1" class="airdelivery-btn1" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="aircheckmark1">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
 
 
 
@@ -381,50 +366,7 @@
             </div>
             <button class="pufforder" id="pufforder2">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-
-            <div class="delivery-options" id="airdelivery-group-2">
-                <button id="air5post-2" class="airdelivery-btn2 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="aircheckmark2">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="airpochta-2" class="airdelivery-btn2" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="aircheckmark2">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="aircdek-2" class="airdelivery-btn2" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="aircheckmark2">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
 
             <div class="strip"></div>
             <div class="del">
@@ -485,49 +427,7 @@
             </div>
             <button class="pufforder" id="pufforder3">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="airdelivery-group-3">
-                <button id="air5post-3" class="airdelivery-btn3 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="aircheckmark3">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="airpochta-3" class="airdelivery-btn3" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="aircheckmark3">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="aircdek-3" class="airdelivery-btn3" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="aircheckmark3">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
 
             <div class="strip"></div>
             <div class="del">
@@ -586,49 +486,7 @@
             </div>
             <button class="pufforder" id="pufforder4">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="airdelivery-group-4">
-                <button id="air5post-4" class="airdelivery-btn4 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="aircheckmark4">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="airpochta-4" class="airdelivery-btn4" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="aircheckmark4">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="aircdek-4" class="airdelivery-btn4" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="aircheckmark4">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -686,49 +544,7 @@
             </div>
             <button class="pufforder" id="pufforder5">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="airdelivery-group-5">
-                <button id="air5post-5" class="airdelivery-btn5 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="aircheckmark5">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="airpochta-5" class="airdelivery-btn5" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="aircheckmark5">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="aircdek-5" class="airdelivery-btn5" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="aircheckmark5">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -786,49 +602,7 @@
             </div>
             <button class="pufforder" id="pufforder6">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="airdelivery-group-6">
-                <button id="air5post-6" class="airdelivery-btn6 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="aircheckmark6">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="airpochta-6" class="airdelivery-btn6" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="aircheckmark6">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="aircdek-6" class="airdelivery-btn6" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="aircheckmark6">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -886,49 +660,7 @@
             </div>
             <button class="pufforder" id="pufforder7">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="airdelivery-group-7">
-                <button id="air5post-7" class="airdelivery-btn7 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="aircheckmark7">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="airpochta-7" class="airdelivery-btn7" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="aircheckmark7">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="aircdek-7" class="airdelivery-btn7" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="aircheckmark7">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -986,49 +718,7 @@
             </div>
             <button class="pufforder" id="pufforder8">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="airdelivery-group-8">
-                <button id="air5post-8" class="airdelivery-btn8 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="aircheckmark8">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="airpochta-8" class="airdelivery-btn8" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="aircheckmark8">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="aircdek-8" class="airdelivery-btn8" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="aircheckmark8">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -1239,49 +929,7 @@
             </div>
             <button class="order" id="order1">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-1">
-                <button id="5post-1" class="delivery-btn1 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark1">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="pochta-1" class="delivery-btn1" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark1">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-1" class="delivery-btn1" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark1">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             
 
             <div class="strip"></div>
@@ -1354,49 +1002,7 @@
             </div>
             <button class="order" id="order2">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-2">
-                <button id="5post-2" class="delivery-btn2 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark2">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="pochta-2" class="delivery-btn2" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark2">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-2" class="delivery-btn2" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark2">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -1466,49 +1072,7 @@
             </div>
             <button class="order" id="order3">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-3">
-                <button id="5post-3" class="delivery-btn3 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark3">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="pochta-3" class="delivery-btn3" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark3">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-3" class="delivery-btn3" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark3">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -1579,49 +1143,7 @@
             </div>
             <button class="order" id="order4">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-4">
-                <button id="5post-4" class="delivery-btn4 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark4">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="pochta-4" class="delivery-btn4" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark4">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-4" class="delivery-btn4" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark4">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -1691,49 +1213,7 @@
             </div>
             <button class="order" id="order5">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-5">
-                <button id="5post-5" class="delivery-btn5 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark5">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="pochta-5" class="delivery-btn5" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark5">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-5" class="delivery-btn5" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark5">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -1804,49 +1284,7 @@
             </div>
             <button class="order" id="order6">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-6">
-                <button id="5post-6" class="delivery-btn6 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark6">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="pochta-6" class="delivery-btn6" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark6">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-6" class="delivery-btn6" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark6">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -1921,49 +1359,7 @@
             </div>
             <button class="order" id="order7">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-7">
-                <button id="5post-7" class="delivery-btn7 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark7">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="pochta-7" class="delivery-btn7" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark7">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-7" class="delivery-btn7" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark7">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -2038,49 +1434,7 @@
             </div>
             <button class="order" id="order8">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-8">
-                <button id="5post-8" class="delivery-btn8 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark8">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="pochta-8" class="delivery-btn8" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark8">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-8" class="delivery-btn8" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark8">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -2164,49 +1518,7 @@
             </div>
             <button class="order" id="order9">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-9">
-                <button id="5post-9" class="delivery-btn9 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark9">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="pochta-9" class="delivery-btn9" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark9">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-9" class="delivery-btn9" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark9">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -2293,49 +1605,7 @@
             </div>
             <button class="order" id="order10">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-10">
-                <button id="5post-10" class="delivery-btn10 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark10">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="pochta-10" class="delivery-btn10" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark10">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-10" class="delivery-btn10" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark10">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -2422,49 +1692,7 @@
             </div>
             <button class="order" id="order11">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-11">
-                <button id="5post-11" class="delivery-btn11 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark11">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="pochta-11" class="delivery-btn11" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark11">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-11" class="delivery-btn11" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark11">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -2550,49 +1778,7 @@
             </div>
             <button class="order" id="order12">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-12">
-                <button id="5post-12" class="delivery-btn12 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark12">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="pochta-12" class="delivery-btn12" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark12">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-12" class="delivery-btn12" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark12">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -2678,49 +1864,7 @@
             </div>
             <button class="order" id="order13">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-13">
-                <button id="5post-13" class="delivery-btn13 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark13">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="pochta-13" class="delivery-btn13" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark13">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-13" class="delivery-btn13" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark13">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -2806,49 +1950,7 @@
             </div>
             <button class="order" id="order14">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-14">
-                <button id="5post-14" class="delivery-btn14 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark14">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="pochta-14" class="delivery-btn14" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark14">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-14" class="delivery-btn14" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark14">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">
@@ -2937,49 +2039,7 @@
             </div>
             <button class="order" id="order15">КУПИТЬ</button>
 
-            <div class="strip"></div>
-            <div class="del">
-                <div class="svg-container">
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path>
-                    </svg>
-                </div>
-                <div class="text-container">
-                    <p style="font-weight: 600;">Доставка:</p>
-                    <p>Наличие уточняйте у оператора</p>
-                </div>
-            </div>
-
-
-            <div class="delivery-options" id="delivery-group-15">
-                <button id="5post-15" class="delivery-btn15 active" type="button">
-                    <img src="5post.PNG" alt="5Post Icon" class="icon">
-                    <span class="checkmark15">5Post</span>
-                    <span class="recommendation">рекомендовано</span>
-                    <span class="deliveryprice1">199₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
             
-                <button id="pochta-15" class="delivery-btn15" type="button">
-                    <img src="pochta.PNG" alt="Pochta Icon" class="icon">
-                    <span class="checkmark15">Почта России</span>
-                    <span class="deliveryprice2">360₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            
-                <button id="cdek-15" class="delivery-btn15" type="button">
-                    <img src="cdek.PNG" alt="CDEK Icon" class="icon">
-                    <span class="checkmark15">CDEK</span>
-                    <span class="deliveryprice3">560₽</span>
-                    <div class="circle">
-                        <div class="inner-circle"></div>
-                    </div>
-                </button>
-            </div>
             <div class="strip"></div>
             <div class="del">
                 <div class="svg-container">

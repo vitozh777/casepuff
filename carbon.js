@@ -737,8 +737,8 @@ function updateStickerHint(totalWithoutDiscount) {
 
     // Если общая цена (с доставкой, но без скидки) меньше 3000 рублей, показываем, сколько не хватает
     if (totalWithoutDiscount < 3000) {
-        const amountLeft = 3000 - totalWithoutDiscount;
-        hintElement.textContent = `Добавьте ещё ${amountLeft.toFixed(2)}₽ для бесплатного набора наклеек`;
+        const amountLeft = Math.round(3000 - totalWithoutDiscount);
+        hintElement.textContent = `Добавьте ещё ${amountLeft}₽ для бесплатного набора наклеек`;
     } else {
         hintElement.textContent = ''; // Если условие выполнено, убираем подсказку
     }
@@ -853,20 +853,20 @@ function updateTotalPrice() {
     // Логика расчета для набора наклеек
     let stickerPrice = 20; // Цена набора наклеек по умолчанию - 20₽
 
-    // Если общая сумма товаров + доставка >= 3000, набор бесплатен
+    // Если общая сумма товаров + доставка >= 3000, набор бесплатен, и цена не меняется при включении/выключении
     if (totalWithoutDiscount >= 3000) {
         stickerPrice = 0; // Набор становится бесплатным
     } 
-    // Если общая сумма меньше 3000, набор стоит 20₽, но пользователь может отказаться от его оплаты
+    // Если общая сумма меньше 3000, набор стоит 20₽
     else if (!stickerIncluded) {
-        stickerPrice = 20; // Набор не включён, но 20₽ вычитаются из общей суммы
+        stickerPrice = 0; // Пользователь выключает набор, вычитая 20 рублей
     }
 
     // Пересчитываем общую цену товаров + доставки + наклеек (с учётом скидки только на товары)
-    const totalPrice = discountedItemsPrice + deliveryPrice - (stickerIncluded ? 0 : 20); // Вычитаем 20₽, если набор выключен
+    const totalPrice = Math.round(discountedItemsPrice + deliveryPrice + (totalWithoutDiscount >= 3000 ? 0 : stickerPrice));
 
-    document.getElementById("total-price").textContent = `${totalPrice.toFixed(2)}₽`;
-    document.getElementById("sticker-price").textContent = `${stickerPrice}₽`; // Обновляем цену набора наклеек
+    document.getElementById("total-price").textContent = `${totalPrice}₽`;
+    document.getElementById("sticker-price").textContent = `${Math.round(stickerPrice)}₽`; // Обновляем цену набора наклеек
 
     // Обновляем подсказку по наклейкам
     updateStickerHint(totalWithoutDiscount);

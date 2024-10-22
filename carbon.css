@@ -144,7 +144,7 @@ body {
     
     padding: 2px 0; /* Отступы */
     z-index: 1000; /* Убедитесь, что панель выше остальных элементов */
-    width: 400px; /* Ширина на всю страницу */
+    width: 430px; /* Ширина на всю страницу */
     height: 35px;
 
     backdrop-filter: blur(25px) saturate(200%);
@@ -159,7 +159,7 @@ body {
     cursor: pointer; /* Курсор при наведении */
     width: 45px;
     margin-left: auto; /* Отталкиваем элемент в крайний правый угол */
-    margin-right: 10px; /* Отступ справа */
+    margin-right: 15px; /* Отступ справа */
 }
 
 
@@ -170,7 +170,7 @@ body {
 .cart {
     position: fixed;
     top: 0;
-    width: 400px;
+    width: 430px;
     height: 100%;
     z-index: 10000;
     display: flex;
@@ -187,160 +187,236 @@ body {
 
 .cart-header {
     width: 100%;
+    height: 35px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #bfbfbf;
+    background-color: #ffffff;
     color: #000;
 }
 
+
+.cart-title {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
 
 
 .close-button {
-    font-size: 30px;
+    width: 24px;
+    margin-right: 16px;
+    height: 24px;
+    background: none;
+    border: none;
     cursor: pointer;
-    color: #000;
-    background: #000;
+    margin-top: 7px
+}
+  
+.close-button:before, .close-button:after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: #000000;
+    border-radius: 1px;
+}
+  
+.close-button:before {
+    transform: rotate(45deg);
+    top: 50%;
+    left: 0;
+}
+  
+.close-button:after {
+    transform: rotate(-45deg);
+    top: 50%;
+    left: 0;
+}
+  
+.close-button:hover:before, .close-button:hover:after {
+    background-color: #555; /* Цвет крестика при наведении */
 }
 
+
 #apply-discount {
-    margin-top: 20px;
-    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: -10px;
     background-color: #ffffff;
     color: #000000;
     border-radius: 10px;
     cursor: pointer;
-    width: 370px;
+    width: 380px;
     height: 40px;
     border: 1px solid rgb(0, 0, 0);
+}
+
+.apply-title {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .sticker-gift {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 400px;
     padding: 10px;
-    background-color: #f0f0f0;
-    margin: 10px 0;
-}
-
-.sticker-hint {
-    font-size: 14px;
-    color: #f00; /* Красный цвет для заметности */
-    text-align: right;
+    background-color: #ffffff;
     margin-top: 5px;
-    background: #000000;
 }
 
-.switch {
+.sticker-title {
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#sticker-price {
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.containerrr {
+    width: 45px;
+    height: 28px;
     position: relative;
     display: inline-block;
-    width: 34px;
-    height: 20px;
+    margin-right: 10px
 }
 
-.switch input {
+.checkbox {
     opacity: 0;
     width: 0;
     height: 0;
+    position: absolute;
+}
+
+.switch {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-color: #e9e9eb;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-out;
 }
 
 .slider {
+    width: 24px;
+    height: 24px;
     position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: 0.4s;
-    border-radius: 20px;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 12px;
-    width: 12px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: 0.4s;
+    left: 2px;
+    top: 2px;
     border-radius: 50%;
+    background-color: #FFFFFF;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15), 0px 3px 1px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease-out;
 }
 
-input:checked + .slider {
-    background-color: #2196f3;
+.checkbox:checked + .switch {
+    background-color: #1b8536;
 }
 
-input:checked + .slider:before {
-    transform: translateX(14px);
+.checkbox:checked + .switch .slider {
+    left: 19px;
+}
+
+
+.sticker-hint {
+    font-size: 9px;
+    color: rgb(118, 118, 118); /* Красный цвет для заметности */
+    text-align: right;
+    margin-top: -10px;
+    margin-right: auto;
+    margin-left: 25px;
+    margin-bottom: -20px;
 }
 
 .cart-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #fff;
-    width: 90%;
-    margin-bottom: 10px;
+    background-color: #ffffff;
+    width: 100%;
+    height: 100px;
 }
 
 .cart-item img {
-    width: 30px;
-    height: 30px;
+    width: auto;
+    height: 60px;
 }
 
 .cart-item .item-info {
     flex-grow: 1;
-    padding: 0 10px;
+    margin-left: 20px;
 }
 
 .cart-item .item-quantity {
     display: flex;
     align-items: center;
+    margin-top: auto;
+    margin-bottom: 10px;
 }
 
 .cart-item .item-quantity button {
-    padding: 5px;
-    background-color: #000;
-    color: #fff;
+    color: #000000;
     border: none;
     cursor: pointer;
+    font-size: 20px;
+    background-color: #ffffff;
 }
 
 .cart-item .item-quantity input {
-    width: 40px;
+    width: 25px;
+    height: 20px;
     text-align: center;
     margin: 0 5px;
+    background: #dcdcdc;
+    border-radius: 3px;
+    border: 1px solid #dcdcdc;
+    font-weight: bold;
 }
 
 .cart-footer {
-    width: 100%;
-    background-color: #f0f0f0;
+    width: 420px;
+    height: 40px;
+    background-color: #222;
     text-align: right;
     position: absolute;
     bottom: 0;
-    left: 0;
-    border-top: 1px solid #ddd;
+    color: #ffffff;
+    font-size: 15px;
+    border-radius: 10px 10px 0 0;
+    z-index: 200000;
+}
+
+.totalzena {
+    margin-right: 20px;
+    margin-top: 12px;
+}
+
+.obzena {
+    color: #c1c1c1;
 }
 
 .promo-popup {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 200px;
+    margin-top: 170px;
+
+    width: 340px;
     height: 200px;
-    background-color: #fff;
+    background-color: #f8f8f8;
+    border-radius: 6px;
     border: 1px solid #ddd;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 10001;
-    padding: 20px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
 }
 
@@ -348,22 +424,47 @@ input:checked + .slider:before {
     display: none;
 }
 
-.promo-content h3 {
-    margin-bottom: 15px;
-}
 
 .promo-content input {
     margin-bottom: 10px;
-    padding: 5px;
-    width: 100%;
+    display: flex;
+
 }
 
 .promo-content button {
-    padding: 5px 10px;
+    display: flex;
     background-color: #000;
     color: #fff;
     border: none;
     cursor: pointer;
+    width: 320px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+}
+
+.input {
+  width: 310px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 14px;
+  color: #555;
+  box-shadow: inset 8px 8px 8px #cbced1,
+              inset -8px -8px 8px #ffffff;
+  border-radius: 25px;
+  padding-left: 10px;
+}
+
+.input::placeholder {
+  color: #555;
+  transition: all 0.3s ease;
+}
+
+.input:focus::placeholder {
+  color: #999;
 }
 
 
@@ -1152,8 +1253,8 @@ form {
 }
 
 .img2 {
-    width: 90%;
-    margin-top: 10px;
+    width: 80%;
+    margin-top: 25px;
     
 }
 
@@ -2184,6 +2285,10 @@ form {
     -webkit-backdrop-filter: blur(20px);
 }
 
+.cart-delivery {
+    width: 380px;
+    margin-bottom: 100px;
+}
 
 .delivery-options {
     width: 100%;
@@ -3101,6 +3206,11 @@ form {
     background-color: #cdcdcd; /* Цвет полоски */
     margin-top: 30px;
 }
+.strippp {
+    width: 100%;
+    height: 1px; /* Высота полоски */
+    background-color: #cdcdcd; /* Цвет полоски */
+}
 .stripniz {
     width: 100%;
     height: 1px; /* Высота полоски */
@@ -3114,7 +3224,10 @@ form {
     display: flex;
     padding-top: 20px;
     flex-flow: row wrap;
-    margin-bottom: -10px;
+    margin-right: auto;
+    margin-left: 25px;
+    margin-top: auto;
+    margin-bottom: -15px;
 }
 .svg-container {
     height: 25px;
