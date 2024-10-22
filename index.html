@@ -31,7 +31,18 @@
 
 
 
+
         <div class="navigation">
+            <!-- Кнопка "Назад" -->
+            <div class="back-button hidden" id="back-button1">
+                <span class="strelka"></span>
+                <span class="nazad">Назад</span>
+            </div>
+            <div class="back-button hidden" id="back-button2">
+                <span class="strelka"></span>
+                <span class="nazad">Назад</span>
+            </div>
+
             <div class="contacts-header" onclick="toggleContacts()">
                 <span>Контакты</span>
                 <div id="arrow" class="arrow-4">
@@ -64,15 +75,17 @@
 
         
         <div class="contain" id="home">
-            
 
-            <video muted playsinline width="110%" height="auto" id="myVideo3" preload="none" style="margin-top: 40px;">
-                <source src="animation2.MOV" type="video/mp4">
-                Ваш браузер не поддерживает тег video.
-            </video>
+            <div class="videohome">
+                <video muted playsinline width="100%" height="auto" id="myVideo3" preload="none">
+                    <source src="animation2.MOV" type="video/mp4">
+                    Ваш браузер не поддерживает тег video.
+                </video>
+            </div>
+            
             <button class="butair" id="puffplanet"><span>Airpods</span></button>
             
-            <video muted playsinline width="110%" height="auto" id="myVideo" preload="none">
+            <video muted playsinline width="100%" height="auto" id="myVideo" preload="none">
                 <source src="animation.MOV" type="video/mp4">
                 Ваш браузер не поддерживает тег video.
             </video>
@@ -114,7 +127,9 @@
 
             <div class="strip"></div>
             
-            <div id="cart-items"></div> <!-- Контейнер для товаров -->
+            <div class="cart-container">
+                <div id="cart-items"></div> <!-- Контейнер для товаров -->
+            </div>
 
             <div class="strippp"></div>
 

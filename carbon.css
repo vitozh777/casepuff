@@ -126,14 +126,51 @@ body {
     src: url('fonts/nanum-pen-regular.ttf') format('truetype');
 }
 
+
+
+.back-button {
+    background-color: transparent;
+    border: none;
+    color: #000000; /* iOS blue color */
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 10px;
+    display: none;
+    margin-left: 5px;
+    text-align: center;
+}
+
+.strelka {
+    float: left;
+    width: 14px;
+    height: 14px;
+    border-left: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    transform: rotate(45deg);
+    margin-right: 2px;
+    margin-top: 2px;
+}
+
+
+
+
+
 /* Стили для контейнера, содержащего кнопки */
 .contain {
     max-width: 400px; /* Максимальная ширина контейнера */
-    display: flex; /* Используем flex-контейнер */
-    justify-content: center; /* Выравнивание по горизонтали по центру */
-    align-items: center; /* Выравнивание по вертикали по центру */
-    flex-direction: column; /* Добавлено для вертикального выравнивания */
+    text-align: center; /* Центрируем содержимое по горизонтали */
+    margin: 0 auto; /* Центрируем контейнер по горизонтали */
 }
+
+.videohome {
+    margin-top: 40px;
+    width: 400px;
+    text-align: center; /* Центрируем содержимое по горизонтали */
+}
+
+
+
 
 .navigation {
     position: fixed; /* Фиксированное позиционирование */
@@ -181,6 +218,8 @@ body {
     
 }
 
+
+
 .cart.hidden {
     display: none;
 }
@@ -201,6 +240,7 @@ body {
     text-align: center;
     font-size: 18px;
     font-weight: bold;
+    margin-top: 10px;
 }
 
 
@@ -491,11 +531,12 @@ body {
 
 
 .arrow-4 {
+    display: inline-block;
+    vertical-align: middle;
     position: relative;
     width: 10px; /* Уменьшение ширины стрелки */
     height: 5px;  /* Соответственно уменьшение высоты */
-    margin-left: 0px;
-    margin-right: 10px;
+    margin-left: 30px;
 }
 
 .arrow-4-left,
@@ -548,9 +589,7 @@ body {
 }
 
 .contacts-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    position: relative;
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
@@ -564,9 +603,13 @@ body {
     height: 20px;
 }
 
+.contacts-header span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 .contacts-buttons {
-    display: flex;
-    flex-direction: column;
+
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
 
     width: 150px; /* Ширина окна */
@@ -575,8 +618,8 @@ body {
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
 
-    margin-top: 170px;
-    margin-left: -10px;
+    margin-top: 10px;
+    margin-left: -11px;
     background: #ffffff;
     border: 1px solid rgb(200, 200, 200);
     
@@ -624,10 +667,6 @@ body {
     margin-bottom: -50px;
 }
 
-.video {
-    margin-top: -50px;
-    margin-bottom: -50px;
-}
 
 .video2 {
     margin-top: -60px;
@@ -680,6 +719,7 @@ body {
     margin-top: 0px;
     margin-bottom: 30px;
     z-index: 999;
+    margin: 0 auto 30px;
 }
 
 .butair:active {
