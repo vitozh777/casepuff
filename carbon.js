@@ -815,6 +815,8 @@ pufforder1.addEventListener("click", (event) => {
     if (!pufforder1.disabled) {
         event.preventDefault();
 
+        console.log("Кнопка pufforder1 нажата");
+
         // Получаем выбранную модель и цену
         const selectedModel = document.querySelector(".model4.selected").textContent;
         const selectedPrice = parseFloat(modelInfo4[selectedModel].replace(/[^\d]/g, ''));
@@ -834,6 +836,8 @@ pufforder1.addEventListener("click", (event) => {
         // Показываем кнопку tg.mainButton
         tg.MainButton.setText("Оплатить через оператора");
         tg.MainButton.show();
+
+        console.log("Кнопка mainButton отображена");
 
         // Обновляем отображение корзины
         renderCartItems();
@@ -858,9 +862,13 @@ pufforder1.addEventListener("click", (event) => {
             Общая цена заказа: ${totalCartPrice}
         `;
 
+        console.log("Обработчик для mainButton готов к вызову");
+
         // Обработка нажатия mainButton
         tg.MainButton.onClick(async () => {
             try {
+                console.log("Кнопка mainButton нажата, отправка данных");
+
                 // Отправляем инструкцию боту
                 await sendMessageToBot(instructionMessage); 
 
@@ -869,6 +877,8 @@ pufforder1.addEventListener("click", (event) => {
 
                 // Закрываем WebApp
                 tg.close(); 
+
+                console.log("Сообщение отправлено, WebApp закрыт");
             } catch (error) {
                 console.error('Ошибка при отправке сообщения или закрытии WebApp:', error);
             }
