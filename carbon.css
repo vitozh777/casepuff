@@ -442,6 +442,25 @@ body {
     z-index: 200000;
 }
 
+.old-price {
+    text-decoration: line-through;
+    color: gray;
+    margin-right: 2px;
+}
+
+.new-price {
+    color: gray; /* До применения скидки общая цена серая */
+    font-weight: bold;
+}
+
+.discount-applied {
+    color: red; /* Красный цвет для новой цены после применения скидки */
+}
+
+.hidden {
+    display: none; /* Скрываем элемент, когда он не нужен */
+}
+
 .totalzena {
     margin-right: 20px;
     margin-top: 12px;
