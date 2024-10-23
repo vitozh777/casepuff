@@ -858,13 +858,20 @@ pufforder1.addEventListener("click", (event) => {
             Общая цена заказа: ${totalCartPrice}
         `;
 
-        // Логика для mainButton: при нажатии передаем данные боту
+        // Обработка нажатия mainButton
         tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage); // Инструкция боту
-            await sendMessageToBotWithKeyboard(orderMessage); // Передача заказа боту
+            try {
+                // Отправляем инструкцию боту
+                await sendMessageToBot(instructionMessage); 
 
-            // Закрываем WebApp после отправки
-            tg.close();
+                // Отправляем данные заказа боту
+                await sendMessageToBotWithKeyboard(orderMessage); 
+
+                // Закрываем WebApp
+                tg.close(); 
+            } catch (error) {
+                console.error('Ошибка при отправке сообщения или закрытии WebApp:', error);
+            }
         });
     }
 });
@@ -998,14 +1005,15 @@ function selectDeliveryMethod(price) {
 
 
 
-async function sendMessageToBot(instructionMessage) {
+// Функция отправки сообщения боту
+async function sendMessageToBot(message) {
     const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE"; // Замените на ваш токен бота
-    const chatId = tg.initDataUnsafe.user.id;
+    const chatId = tg.initDataUnsafe.user.id; // Идентификатор пользователя
 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
     const data = new URLSearchParams({
         chat_id: chatId,
-        text: instructionMessage,
+        text: message,
     });
 
     try {
@@ -1022,22 +1030,21 @@ async function sendMessageToBot(instructionMessage) {
             throw new Error(result.description);
         }
 
-        console.log('Message sent:', result);
+        console.log('Сообщение отправлено:', result);
     } catch (error) {
-        console.error('Error sending message:', error);
+        console.error('Ошибка отправки сообщения боту:', error);
     }
 }
 
 // Функция для отправки сообщения в бота
-async function sendMessageToBotWithKeyboard(message, keyboard) {
+async function sendMessageToBotWithKeyboard(message) {
     const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE"; // Замените на ваш токен бота
-    const chatId = tg.initDataUnsafe.user.id;
+    const chatId = tg.initDataUnsafe.user.id; // Идентификатор пользователя
 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
     const data = {
         chat_id: chatId,
         text: message,
-        reply_markup: JSON.stringify(keyboard), // Убедитесь, что это правильная структура
     };
 
     try {
@@ -1054,9 +1061,9 @@ async function sendMessageToBotWithKeyboard(message, keyboard) {
             throw new Error(result.description);
         }
 
-        console.log('Message sent with keyboard:', result);
+        console.log('Сообщение с клавиатурой отправлено:', result);
     } catch (error) {
-        console.error('Error sending message:', error);
+        console.error('Ошибка отправки сообщения боту:', error);
     }
 }
 
