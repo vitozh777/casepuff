@@ -244,29 +244,17 @@ function updateCartDisplay() {
 
 // Отправка данных о заказе боту через MainButton
 tg.MainButton.onClick(async () => {
-    const selectedDelivery = document.querySelector(".airdelivery-btn1.active");
-    const deliveryMethod = selectedDelivery ? selectedDelivery.querySelector('.aircheckmark1').textContent : "Доставка не выбрана";
-    const deliveryPrice = selectedDelivery ? selectedDelivery.querySelector(".deliveryprice1, .deliveryprice2, .deliveryprice3, .deliveryprice4").textContent : "0₽";
-    const totalCartPrice = calculateTotalPrice();
-
-    const message = cartItems.map(item => `
-        Название: ${item.name}
-        Модель: ${item.model}
-        Цена: ${item.price}₽
-        Количество: ${item.quantity}
-    `).join('\n');
-
-    const fullMessage = `
-        Заказ:
-        ${message}
-        Доставка: ${deliveryMethod} - ${deliveryPrice}
-        Наклейки: ${stickerIncluded ? 'Включены' : 'Не включены'}
-        Общая цена: ${totalCartPrice}
+    // Сохраняем выбранные данные для передачи боту
+    const itemName = "FORGED GLOSSY-EMERALD";
+    const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
+    const message = `
+        Заказ: ${itemName}
     `;
-
-    await sendMessageToBot(fullMessage);
+    await sendMessageToBot(instructionMessage);
+    await sendMessageToBotWithKeyboard(message, keyboard);
+    
+    tg.close();
 });
-
 
 
 // Функция для подсчета общей цены корзины
