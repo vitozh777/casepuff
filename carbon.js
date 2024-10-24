@@ -242,6 +242,31 @@ function updateCartDisplay() {
     }
 }
 
+// Отправка данных о заказе боту через MainButton
+tg.MainButton.onClick(async () => {
+    const selectedDelivery = document.querySelector(".airdelivery-btn1.active");
+    const deliveryMethod = selectedDelivery ? selectedDelivery.querySelector('.aircheckmark1').textContent : "Доставка не выбрана";
+    const deliveryPrice = selectedDelivery ? selectedDelivery.querySelector(".deliveryprice1, .deliveryprice2, .deliveryprice3, .deliveryprice4").textContent : "0₽";
+    const totalCartPrice = calculateTotalPrice();
+
+    const message = cartItems.map(item => `
+        Название: ${item.name}
+        Модель: ${item.model}
+        Цена: ${item.price}₽
+        Количество: ${item.quantity}
+    `).join('\n');
+
+    const fullMessage = `
+        Заказ:
+        ${message}
+        Доставка: ${deliveryMethod} - ${deliveryPrice}
+
+        Общая цена: ${totalCartPrice}
+    `;
+
+    await sendMessageToBot(fullMessage);
+});
+
 
 
 // Функция для подсчета общей цены корзины
@@ -278,7 +303,6 @@ function addToCart(item) {
     // После добавления товара разблокируем все элементы корзины
     enableCartControls();
     
-    renderCartItems();
     updateTotalPrice();
 }
 
@@ -293,7 +317,6 @@ function updateQuantity(itemId, model, change) {
         if (item.quantity <= 0) {
             cartItems = cartItems.filter(i => i.id !== itemId || i.model !== model);
         }
-        renderCartItems();
         updateTotalPrice();
     }
 }
@@ -856,32 +879,6 @@ function enableCartControls() {
 }
 
 
-function renderCartItems() {
-    const cartContainer = document.getElementById("cart-items");
-    cartContainer.innerHTML = "";
-
-    cartItems.forEach(item => {
-        const cartItem = document.createElement("div");
-        cartItem.classList.add("cart-item");
-
-        cartItem.innerHTML = `
-            <img src="airobsid.JPG" alt="${item.name}">
-            <div class="item-info">
-                <div>Название: ${item.name}</div>
-                <div>Модель: ${item.model}</div>
-                <div>Цена за единицу: ${item.price}₽</div>
-            </div>
-            <div class="item-quantity">
-                <button onclick="updateQuantity(${item.id}, '${item.model}', -1)">-</button>
-                <input type="text" value="${item.quantity}" readonly>
-                <button onclick="updateQuantity(${item.id}, '${item.model}', 1)">+</button>
-            </div>
-        `;
-
-        cartContainer.appendChild(cartItem);
-    });
-}
-
 
 
 function updateTotalPrice() {
@@ -1019,6 +1016,17 @@ async function sendMessageToBotWithKeyboard(message) {
     pufforder2.pufforderinactive = true;
     pufforder2.classList.add("pufforderinactive");
     
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
+
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("pufferplanet").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("formplanet2").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 // Обработчик события для кнопки "SIZE"
@@ -1147,6 +1155,17 @@ pufforder2.addEventListener("click", (event) => {
     pufforder3.pufforderinactive = true;
     pufforder3.classList.add("pufforderinactive");
     
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
+
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("pufferplanet").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("formplanet3").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 // Обработчик события для кнопки "SIZE"
@@ -1262,6 +1281,17 @@ pufforder3.addEventListener("click", (event) => {
     pufforder4.pufforderinactive = true;
     pufforder4.classList.add("pufforderinactive");
     
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
+
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("pufferplanet").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("formplanet4").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 // Обработчик события для кнопки "SIZE"
@@ -1345,6 +1375,17 @@ pufforder4.addEventListener("click", function (event) {
     pufforder5.pufforderinactive = true;
     pufforder5.classList.add("pufforderinactive");
     
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
+
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("pufferplanet").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("formplanet5").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 // Обработчик события для кнопки "SIZE"
@@ -1458,6 +1499,17 @@ pufforder5.addEventListener("click", (event) => {
     pufforder6.pufforderinactive = true;
     pufforder6.classList.add("pufforderinactive");
     
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
+
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("pufferplanet").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("formplanet6").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 // Обработчик события для кнопки "SIZE"
@@ -1571,6 +1623,17 @@ pufforder6.addEventListener("click", (event) => {
     pufforder7.pufforderinactive = true;
     pufforder7.classList.add("pufforderinactive");
     
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
+
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("pufferplanet").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("formplanet7").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 // Обработчик события для кнопки "SIZE"
@@ -1684,6 +1747,17 @@ pufforder7.addEventListener("click", (event) => {
     pufforder8.pufforderinactive = true;
     pufforder8.classList.add("pufforderinactive");
     
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
+
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("pufferplanet").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("formplanet8").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 // Обработчик события для кнопки "SIZE"
