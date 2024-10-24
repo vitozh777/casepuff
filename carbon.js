@@ -356,6 +356,17 @@ function selectDeliveryMethod(price) {
     updateTotalPrice();
 }
 
+function getDeliveryMethodName() {
+    const deliveryMethods = {
+        280: '5Post',
+        380: 'Почта России',
+        560: 'CDEK',
+        1200: 'CDEK (экспресс)'
+    };
+
+    return deliveryMethods[deliveryPrice] || 'Неизвестный метод доставки';
+}
+
 // Разблокировка кнопок корзины
 function enableCartControls() {
     document.getElementById("toggle-sticker").disabled = false;
@@ -918,25 +929,22 @@ pufforder1.addEventListener("click", function (event) {
 
 
 // Функция для отправки данных в Telegram боту
-async function sendMessageToBot(orderData, deliveryPrice, stickerIncluded, totalPrice) {
+async function sendMessageToBot(orderData, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice) {
     const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE"; // Замените на ваш токен бота
     const chatId = tg.initDataUnsafe.user.id; // Идентификатор пользователя
 
-    // Фильтруем товары, у которых количество 2 и более
-    const filteredItems = orderData.filter(item => item.quantity >= 2);
-
-    if (filteredItems.length === 0) {
-        console.log('Нет товаров для отправки.');
-        return; // Если нет товаров для отправки, ничего не делаем
-    }
-
     // Формируем сообщение с данными о товарах
-    let message = filteredItems.map(item => 
-        `Товар: ${item.name}\nМодель: ${item.model}\nЦена: ${item.price}₽\nКоличество: ${item.quantity}`
-    ).join('\n\n');
+    let message = orderData.map(item => {
+        let itemMessage = `Товар: ${item.name}\nМодель: ${item.model}\nЦена: ${item.price}₽`;
+        // Отправляем количество только если оно больше или равно 2
+        if (item.quantity >= 2) {
+            itemMessage += `\nКоличество: ${item.quantity}`;
+        }
+        return itemMessage;
+    }).join('\n\n');
 
-    // Добавляем данные о доставке, наборе наклеек и общей цене
-    message += `\n\nМетод доставки: ${deliveryPrice}₽\n`;
+    // Добавляем данные о методе доставки, стоимости доставки и наборе наклеек
+    message += `\n\nМетод доставки: ${deliveryMethod} (${deliveryPrice}₽)\n`;
     message += `Набор наклеек включен: ${stickerIncluded ? 'Да' : 'Нет'}\n`;
     message += `Общая цена: ${totalPrice}₽`;
 
@@ -971,9 +979,13 @@ tg.MainButton.onClick(() => {
     // Обновляем общую цену перед отправкой
     updateTotalPrice();
 
-    // Передаем данные корзины, цену доставки, информацию о наклейках и итоговую цену
-    const totalPrice = document.getElementById("new-price").textContent; // Получаем общую цену из DOM
-    sendMessageToBot(cartItems, deliveryPrice, stickerIncluded, totalPrice); 
+    // Получаем общую цену из DOM
+    const totalPrice = document.getElementById("new-price").textContent;
+
+    // Получаем данные о методе доставки
+    const deliveryMethod = getDeliveryMethodName(); // Функция для получения названия метода доставки
+    sendMessageToBot(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice);
+
     tg.close(); // Закрываем WebApp
 });
 
