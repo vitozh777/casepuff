@@ -69,6 +69,9 @@ let priceElementForm7 = document.querySelector(".price7");
 let priceElementForm8 = document.querySelector(".price8");
 let priceElementForm9 = document.querySelector(".price9");
 
+const mainButton = tg.MainButton; // MainButton от Telegram
+const cartButton = document.getElementById('cart-button');
+
 
 const backButton1 = document.getElementById("back-button1");
 const backButton2 = document.getElementById("back-button2");
@@ -181,6 +184,7 @@ const keyboard = {
 
 
 
+
 var animation = lottie.loadAnimation({
     container: document.getElementById('cart-icon'), // контейнер для анимации
     renderer: 'svg', // тип рендера (svg, canvas, html)
@@ -189,9 +193,91 @@ var animation = lottie.loadAnimation({
     path: 'cart.json' // путь к вашему JSON-файлу
 });
 
-document.getElementById("cart-button").addEventListener("click", function() {
-    document.getElementById("mycart").classList.remove("hidden");
+
+
+let cartItems = [];
+
+
+
+// Кнопка открытия корзины
+cartButton.addEventListener('click', function () {
+    const cart = document.getElementById('mycart');
+    cart.classList.remove('hidden'); // Открываем корзину
+
+    // Проверяем, есть ли товары в корзине
+    if (cartItems.length > 0) {
+        mainButton.setText('Оплатить через оператора');
+        mainButton.show();
+    } else {
+        mainButton.hide(); // Если корзина пуста, скрываем MainButton
+    }
 });
+
+// Обновление отображения корзины
+function updateCartDisplay() {
+    const cartContainer = document.getElementById("cart-items");
+    cartContainer.innerHTML = "";
+
+    cartItems.forEach(item => {
+        const cartItem = document.createElement("div");
+        cartItem.classList.add("cart-item");
+
+        cartItem.innerHTML = `
+            <div class="item-info">
+                <div>Название: ${item.name}</div>
+                <div>Модель: ${item.model}</div>
+                <div>Цена: ${item.price}₽</div>
+                <div>Количество: ${item.quantity}</div>
+            </div>
+        `;
+
+        cartContainer.appendChild(cartItem);
+    });
+
+    // Проверка товаров в корзине для отображения MainButton
+    if (cartItems.length > 0) {
+        tg.MainButton.setText('Оплатить через оператора');
+        tg.MainButton.show();
+    } else {
+        tg.MainButton.hide();
+    }
+}
+
+// Отправка данных о заказе боту через MainButton
+mainButton.onClick(async () => {
+    const selectedDelivery = document.querySelector(".airdelivery-btn1.active");
+    const deliveryMethod = selectedDelivery ? selectedDelivery.querySelector('.aircheckmark1').textContent : "Доставка не выбрана";
+    const deliveryPrice = selectedDelivery ? selectedDelivery.querySelector(".deliveryprice1, .deliveryprice2, .deliveryprice3").textContent : "0₽";
+    const totalCartPrice = calculateTotalPrice();
+
+    const message = cartItems.map(item => `
+        Название: ${item.name}
+        Модель: ${item.model}
+        Цена: ${item.price}₽
+        Количество: ${item.quantity}
+    `).join('\n');
+
+    const fullMessage = `
+        Заказ:
+        ${message}
+        Доставка: ${deliveryMethod} - ${deliveryPrice}
+        Наклейки: ${stickerIncluded ? 'Включены' : 'Не включены'}
+        Общая цена: ${totalCartPrice}
+    `;
+
+    await sendMessageToBot(fullMessage);
+});
+
+// Функция для подсчета общей цены корзины
+function calculateTotalPrice() {
+    let totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    totalPrice += parseFloat(deliveryPrice.replace(/[^\d]/g, '')); // Добавляем стоимость доставки
+    if (stickerIncluded) {
+        totalPrice += 20; // Добавляем цену наклеек, если они включены
+    }
+    return `${totalPrice}₽`;
+}
+
 
 document.getElementById("close-cart").addEventListener("click", function() {
     document.getElementById("mycart").classList.add("hidden");
@@ -202,16 +288,22 @@ document.getElementById("close-cart").addEventListener("click", function() {
 
 
 
-let cartItems = [];
 
+// Функция добавления товара в корзину
 function addToCart(item) {
-    const existingItem = cartItems.find(i => i.id === item.id);
+    const existingItem = cartItems.find(i => i.id === item.id && i.model === item.model);
+
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
-        cartItems.push({ ...item, quantity: 1 });
+        cartItems.push({ ...item });
     }
+
+    // После добавления товара разблокируем все элементы корзины
+    enableCartControls();
+    
     renderCartItems();
+    updateTotalPrice();
 }
 
 // Функция для отображения товаров в корзине
@@ -419,13 +511,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
-// Функция для расчета общей цены
-function calculateTotalPrice(modelPrice, deliveryPrice) {
-    const priceValue = parseFloat(modelPrice.replace(/[^\d]/g, ''));
-    const deliveryValue = parseFloat(deliveryPrice.replace(/[^\d]/g, ''));
-    return `${priceValue + deliveryValue}₽`;
-}
 
 
 
@@ -813,80 +898,23 @@ function updateStickerHint(totalWithoutDiscount) {
 
 pufforder1.disabled = false;
 
-pufforder1.addEventListener("click", async (event) => {
-    if (!pufforder1.disabled) {
-        event.preventDefault();
+pufforder1.addEventListener("click", function (event) {
+    event.preventDefault(); // Предотвращаем обновление страницы
 
-        // Получаем выбранную модель и цену
-        const selectedModel = document.querySelector(".model4.selected").textContent;
-        const selectedPrice = parseFloat(modelInfo4[selectedModel].replace(/[^\d]/g, ''));
+    const selectedModel = document.querySelector(".model4.selected").textContent;
+    const selectedPrice = parseFloat(modelInfo4[selectedModel].replace(/[^\d]/g, ''));
 
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.setText("Оплатить через оператора");
-        tg.MainButton.show(); 
+    addToCart({
+        id: 1,
+        name: "FORGED GLOSSY-OBSIDIAN",
+        model: selectedModel,
+        price: selectedPrice,
+        quantity: 1,
+    });
 
-        // Добавляем товар в корзину
-        addToCart({
-            id: 1, // Уникальный ID товара
-            name: "FORGED GLOSSY-OBSIDIAN",
-            model: selectedModel,
-            price: selectedPrice,
-            quantity: 1,
-        });
-
-        // Открываем корзину "mycart"
-        document.getElementById("mycart").classList.remove("hidden");
-
-        // Обновляем отображение корзины
-        renderCartItems();
-
-        // Собираем данные для передачи боту
-        const selectedDelivery = document.querySelector(".airdelivery-btn1.active");
-        const deliveryMethod = selectedDelivery ? selectedDelivery.querySelector('.aircheckmark1').textContent : "Доставка не выбрана";
-        const deliveryPrice = selectedDelivery ? selectedDelivery.querySelector(".deliveryprice1, .deliveryprice2, .deliveryprice3").textContent : "0₽";
-        const totalCartPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-
-        const itemName = "FORGED GLOSSY-OBSIDIAN";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-
-
-        // Сообщение для бота
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}₽
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена заказа: ${totalCartPrice}
-        `;
-
-
-        // Добавляем новый обработчик для MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-
-            // Закрываем WebApp
-            tg.close();
-        });
-    }
+    updateCartDisplay();
 });
 
-// Добавляем товар в корзину
-function addToCart(item) {
-    const existingItem = cartItems.find(i => i.id === item.id && i.model === item.model);
-
-    if (existingItem) {
-        existingItem.quantity += 1;
-    } else {
-        cartItems.push({ ...item });
-    }
-
-    // После добавления товара разблокируем все элементы корзины
-    enableCartControls();
-    
-    renderCartItems();
-    updateTotalPrice();
-}
 
 // Разблокировка кнопок корзины
 function enableCartControls() {
@@ -1000,7 +1028,7 @@ function selectDeliveryMethod(price) {
 
 
 
-// Функция отправки сообщения боту
+// Функция для отправки данных в Telegram боту
 async function sendMessageToBot(message) {
     const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE"; // Замените на ваш токен бота
     const chatId = tg.initDataUnsafe.user.id; // Идентификатор пользователя
@@ -1374,52 +1402,21 @@ model4.forEach(model => {
 
 // Добавьте обработчик события click для кнопки "Add"
 pufforder4.disabled = false;
-pufforder4.addEventListener("click", (event) => {
-    if (!pufforder4.disabled) {
-        event.preventDefault();
-        
-        // Получаем выбранную модель и цену
-        const selectedModel = document.querySelector(".model4.selected").textContent;
-        const selectedPrice = modelInfo4[selectedModel];
-        
+pufforder4.addEventListener("click", function (event) {
+    event.preventDefault(); // Предотвращаем обновление страницы
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.airdelivery-btn4.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+    const selectedModel = document.querySelector(".model4.selected").textContent;
+    const selectedPrice = parseFloat(modelInfo4[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.aircheckmark4').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
+    addToCart({
+        id: 2,
+        name: "FORGED MATTE-ONYX",
+        model: selectedModel,
+        price: selectedPrice,
+        quantity: 1,
+    });
 
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "FORGED GLOSSY-SAPHIR";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
-        });
-    }   
+    updateCartDisplay();
 });
 
 купить5.addEventListener("click", () => {
