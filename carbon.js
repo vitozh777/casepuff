@@ -935,7 +935,11 @@ async function sendMessageToBot(orderData, deliveryMethod, deliveryPrice, sticke
 
     // Формируем сообщение с данными о товарах
     let message = orderData.map(item => {
-        let itemMessage = `Товар: ${item.name}\nМодель: ${item.model}\nЦена: ${item.price}₽`;
+        let itemMessage = `
+            Заказ: ${item.name}
+            Размер: ${item.model}
+            Цена: ${item.price}
+        `;
         // Отправляем количество только если оно больше или равно 2
         if (item.quantity >= 2) {
             itemMessage += `\nКоличество: ${item.quantity}`;
@@ -944,8 +948,8 @@ async function sendMessageToBot(orderData, deliveryMethod, deliveryPrice, sticke
     }).join('\n\n');
 
     // Добавляем данные о методе доставки, стоимости доставки и наборе наклеек
-    message += `\n\nМетод доставки: ${deliveryMethod} (${deliveryPrice}₽)\n`;
-    message += `Набор наклеек включен: ${stickerIncluded ? 'Да' : 'Нет'}\n`;
+    message += `\n\nДоставка: ${deliveryMethod} - ${deliveryPrice}₽\n`;
+    message += `Стикерпак: ${stickerIncluded ? 'да' : 'нет'}\n`;
     message += `Общая цена: ${totalPrice}₽`;
 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
