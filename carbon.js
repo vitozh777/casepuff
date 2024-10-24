@@ -255,15 +255,7 @@ function updateCartDisplay() {
 
 
 
-// Функция для подсчета общей цены корзины
-function calculateTotalPrice() {
-    let totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    totalPrice += parseFloat(deliveryPrice.replace(/[^\d]/g, '')); // Добавляем стоимость доставки
-    if (stickerIncluded) {
-        totalPrice += 20; // Добавляем цену наклеек, если они включены
-    }
-    return `${totalPrice}₽`;
-}
+
 
 
 document.getElementById("close-cart").addEventListener("click", function() {
@@ -309,6 +301,122 @@ function updateQuantity(itemId, model, change) {
         updateCartDisplay();  // Обновляем отображение корзины после изменения количества
     }
 }
+
+function updateTotalPrice() {
+    // Считаем общую цену товаров
+    let totalItemsPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    
+    // Применяем скидку 10%, если промокод введён
+    let discountedItemsPrice = totalItemsPrice;
+    if (promoApplied) {
+        discountedItemsPrice *= 0.9; // Применяем скидку 10%
+    }
+
+    // Определяем общую цену без учёта скидки (с доставкой)
+    const totalWithoutDiscount = totalItemsPrice + deliveryPrice;
+
+    // Логика для набора наклеек
+    let stickerPrice = 20; // Цена набора наклеек по умолчанию — 20₽
+
+    // Если общая сумма товаров + доставка >= 3000, набор становится бесплатным
+    if (totalWithoutDiscount >= 3000) {
+        stickerPrice = 0; // Набор бесплатный
+    } else if (!stickerIncluded) {
+        stickerPrice = -20; // Если набор выключен, цена 20₽ сохраняется, но вычитается из общей суммы
+    }
+
+    // Итоговая цена товаров + доставка + наклейки
+    const totalPrice = Math.round(discountedItemsPrice + deliveryPrice + (stickerPrice > 0 ? stickerPrice : 0));
+
+    // Обновляем цену на странице
+    const oldPriceElement = document.getElementById("old-price");
+    const newPriceElement = document.getElementById("new-price");
+
+    if (promoApplied) {
+        oldPriceElement.textContent = `${Math.round(totalItemsPrice + deliveryPrice + 20)}₽`; // Старая цена
+        newPriceElement.textContent = `${totalPrice}₽`; // Новая цена со скидкой
+        oldPriceElement.classList.remove("hidden"); // Показываем старую цену
+        newPriceElement.classList.add("discount-applied"); // Меняем цвет новой цены на красный
+    } else {
+        newPriceElement.textContent = `${Math.round(totalItemsPrice + deliveryPrice + (stickerPrice > 0 ? stickerPrice : 0))}₽`; // Без скидки, цена серого цвета
+        oldPriceElement.classList.add("hidden"); // Скрываем старую цену
+        newPriceElement.classList.remove("discount-applied"); // Убираем красный цвет
+    }
+
+    // Обновляем цену за наклейки
+    document.getElementById("sticker-price").textContent = stickerPrice >= 0 ? `${stickerPrice}₽` : "0₽";
+
+    // Обновляем подсказку по наклейкам
+    updateStickerHint(totalWithoutDiscount);
+}
+
+// Выбор метода доставки
+function selectDeliveryMethod(price) {
+    deliveryPrice = price;
+    updateTotalPrice();
+}
+
+// Разблокировка кнопок корзины
+function enableCartControls() {
+    document.getElementById("toggle-sticker").disabled = false;
+    document.getElementById("apply-discount").disabled = false;
+    document.getElementById("promo-code").disabled = false;
+    document.getElementById("apply-promo-btn").disabled = false;
+
+    const deliveryButtons = document.querySelectorAll(".airdelivery-btn1");
+    deliveryButtons.forEach(button => button.disabled = false);
+}
+
+
+let deliveryPrice = 280; // Цена доставки по умолчанию (5Post)
+let promoApplied = false;
+let stickerIncluded = true;
+
+// Открываем окно промокода при нажатии на кнопку "Применить скидку"
+document.getElementById("apply-discount").addEventListener("click", () => {
+    if (!document.getElementById("apply-discount").disabled) {
+        document.getElementById("promo-popup").classList.remove("hidden");
+    }
+});
+
+// Обрабатываем применение скидки
+document.getElementById("apply-promo-btn").addEventListener("click", () => {
+    const promoCode = document.getElementById("promo-code").value;
+    
+    if (promoCode === "скидка10" && !promoApplied) {
+        promoApplied = true; // Устанавливаем флаг, что скидка применена
+        document.getElementById("promo-popup").classList.add("hidden"); // Закрываем окно
+        updateTotalPrice(); // Пересчитываем общую цену с учетом скидки
+    } else {
+        alert("Неверный промокод или скидка уже применена.");
+    }
+});
+
+// Функция переключения набора наклеек
+function toggleSticker() {
+    stickerIncluded = document.getElementById("toggle-sticker").checked; // Проверяем состояние набора наклеек
+    updateTotalPrice(); // Пересчитываем общую цену
+}
+
+
+
+// Обновление подсказки по наклейкам
+function updateStickerHint(totalWithoutDiscount) {
+    const hintElement = document.getElementById("sticker-hint");
+
+    // Если общая цена (с доставкой) меньше 3000 рублей, показываем, сколько не хватает до бесплатного набора наклеек
+    if (totalWithoutDiscount < 3000) {
+        const amountLeft = Math.round(3000 - totalWithoutDiscount);
+        hintElement.textContent = `Добавьте ещё ${amountLeft}₽ для бесплатного набора наклеек`;
+    } else {
+        hintElement.textContent = ''; // Убираем подсказку, если сумма >= 3000
+    }
+}
+
+
+
+
+
 
 
 
@@ -779,64 +887,6 @@ model4.forEach(model => {
 
 
 
-
-
-
-
-
-
-
-
-
-let deliveryPrice = 280; // Цена доставки по умолчанию (5Post)
-let promoApplied = false;
-let stickerIncluded = true;
-
-// Открываем окно промокода при нажатии на кнопку "Применить скидку"
-document.getElementById("apply-discount").addEventListener("click", () => {
-    if (!document.getElementById("apply-discount").disabled) {
-        document.getElementById("promo-popup").classList.remove("hidden");
-    }
-});
-
-// Обрабатываем применение скидки
-document.getElementById("apply-promo-btn").addEventListener("click", () => {
-    const promoCode = document.getElementById("promo-code").value;
-    
-    if (promoCode === "скидка10" && !promoApplied) {
-        promoApplied = true; // Устанавливаем флаг, что скидка применена
-        document.getElementById("promo-popup").classList.add("hidden"); // Закрываем окно
-        updateTotalPrice(); // Пересчитываем общую цену с учетом скидки
-    } else {
-        alert("Неверный промокод или скидка уже применена.");
-    }
-});
-
-// Функция переключения набора наклеек
-function toggleSticker() {
-    stickerIncluded = document.getElementById("toggle-sticker").checked; // Проверяем состояние набора наклеек
-    updateTotalPrice(); // Пересчитываем общую цену
-}
-
-
-
-// Обновление подсказки по наклейкам
-function updateStickerHint(totalWithoutDiscount) {
-    const hintElement = document.getElementById("sticker-hint");
-
-    // Если общая цена (с доставкой) меньше 3000 рублей, показываем, сколько не хватает до бесплатного набора наклеек
-    if (totalWithoutDiscount < 3000) {
-        const amountLeft = Math.round(3000 - totalWithoutDiscount);
-        hintElement.textContent = `Добавьте ещё ${amountLeft}₽ для бесплатного набора наклеек`;
-    } else {
-        hintElement.textContent = ''; // Убираем подсказку, если сумма >= 3000
-    }
-}
-
-
-
-
-
 pufforder1.disabled = false;
 
 pufforder1.addEventListener("click", function (event) {
@@ -857,73 +907,7 @@ pufforder1.addEventListener("click", function (event) {
 });
 
 
-// Разблокировка кнопок корзины
-function enableCartControls() {
-    document.getElementById("toggle-sticker").disabled = false;
-    document.getElementById("apply-discount").disabled = false;
-    document.getElementById("promo-code").disabled = false;
-    document.getElementById("apply-promo-btn").disabled = false;
 
-    const deliveryButtons = document.querySelectorAll(".airdelivery-btn1");
-    deliveryButtons.forEach(button => button.disabled = false);
-}
-
-
-
-
-function updateTotalPrice() {
-    // Считаем общую цену товаров
-    let totalItemsPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    
-    // Применяем скидку 10%, если промокод введён
-    let discountedItemsPrice = totalItemsPrice;
-    if (promoApplied) {
-        discountedItemsPrice *= 0.9; // Применяем скидку 10%
-    }
-
-    // Определяем общую цену без учёта скидки (с доставкой)
-    const totalWithoutDiscount = totalItemsPrice + deliveryPrice;
-
-    // Логика для набора наклеек
-    let stickerPrice = 20; // Цена набора наклеек по умолчанию — 20₽
-
-    // Если общая сумма товаров + доставка >= 3000, набор становится бесплатным
-    if (totalWithoutDiscount >= 3000) {
-        stickerPrice = 0; // Набор бесплатный
-    } else if (!stickerIncluded) {
-        stickerPrice = -20; // Если набор выключен, цена 20₽ сохраняется, но вычитается из общей суммы
-    }
-
-    // Итоговая цена товаров + доставка + наклейки
-    const totalPrice = Math.round(discountedItemsPrice + deliveryPrice + (stickerPrice > 0 ? stickerPrice : 0));
-
-    // Обновляем цену на странице
-    const oldPriceElement = document.getElementById("old-price");
-    const newPriceElement = document.getElementById("new-price");
-
-    if (promoApplied) {
-        oldPriceElement.textContent = `${Math.round(totalItemsPrice + deliveryPrice + 20)}₽`; // Старая цена
-        newPriceElement.textContent = `${totalPrice}₽`; // Новая цена со скидкой
-        oldPriceElement.classList.remove("hidden"); // Показываем старую цену
-        newPriceElement.classList.add("discount-applied"); // Меняем цвет новой цены на красный
-    } else {
-        newPriceElement.textContent = `${Math.round(totalItemsPrice + deliveryPrice + (stickerPrice > 0 ? stickerPrice : 0))}₽`; // Без скидки, цена серого цвета
-        oldPriceElement.classList.add("hidden"); // Скрываем старую цену
-        newPriceElement.classList.remove("discount-applied"); // Убираем красный цвет
-    }
-
-    // Обновляем цену за наклейки
-    document.getElementById("sticker-price").textContent = stickerPrice >= 0 ? `${stickerPrice}₽` : "0₽";
-
-    // Обновляем подсказку по наклейкам
-    updateStickerHint(totalWithoutDiscount);
-}
-
-// Выбор метода доставки
-function selectDeliveryMethod(price) {
-    deliveryPrice = price;
-    updateTotalPrice();
-}
 
 
 
@@ -934,7 +918,7 @@ function selectDeliveryMethod(price) {
 
 
 // Функция для отправки данных в Telegram боту
-async function sendMessageToBot(orderData) {
+async function sendMessageToBot(orderData, deliveryPrice, stickerIncluded, totalPrice) {
     const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE"; // Замените на ваш токен бота
     const chatId = tg.initDataUnsafe.user.id; // Идентификатор пользователя
 
@@ -946,9 +930,15 @@ async function sendMessageToBot(orderData) {
         return; // Если нет товаров для отправки, ничего не делаем
     }
 
-    const message = filteredItems.map(item => 
+    // Формируем сообщение с данными о товарах
+    let message = filteredItems.map(item => 
         `Товар: ${item.name}\nМодель: ${item.model}\nЦена: ${item.price}₽\nКоличество: ${item.quantity}`
-    ).join('\n\n'); // Формируем сообщение с данными заказа
+    ).join('\n\n');
+
+    // Добавляем данные о доставке, наборе наклеек и общей цене
+    message += `\n\nМетод доставки: ${deliveryPrice}₽\n`;
+    message += `Набор наклеек включен: ${stickerIncluded ? 'Да' : 'Нет'}\n`;
+    message += `Общая цена: ${totalPrice}₽`;
 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
     const data = new URLSearchParams({
@@ -978,15 +968,12 @@ async function sendMessageToBot(orderData) {
 
 // Пример использования при клике на MainButton
 tg.MainButton.onClick(() => {
-    sendMessageToBot(cartItems); // Передаем данные корзины
+    const totalPrice = updateTotalPrice(); // Получаем общую цену
+    sendMessageToBot(cartItems, deliveryPrice, stickerIncluded, totalPrice); // Передаем данные корзины
     tg.close(); // Закрываем WebApp
 });
 
-// Пример использования при клике на MainButton
-tg.MainButton.onClick(() => {
-    sendMessageToBot(cartItems); // Передаем данные корзины
-    tg.close(); // Закрываем WebApp
-});
+
 
 // Функция для отправки сообщения в бота
 async function sendMessageToBotWithKeyboard(message) {
