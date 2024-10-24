@@ -923,13 +923,34 @@ pufforder1.addEventListener("click", function (event) {
 
 
 
-
-
-
-
+const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
 
 // Функция для отправки данных в Telegram боту
-async function sendMessageToBot(orderData, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice) {
+async function sendMessageToBot(instructionMessage) {
+    const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE";
+    const chatId = tg.initDataUnsafe.user.id;
+
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    const data = new URLSearchParams({
+        chat_id: chatId,
+        text: instructionMessage,
+    });
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            body: data,
+        });
+
+        const result = await response.json();
+        console.log('Message sent:', result);
+    } catch (error) {
+        console.error('Error sending message:', error);
+    }
+}
+
+// Функция для отправки данных в Telegram боту
+async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard) {
     const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE"; // Замените на ваш токен бота
     const chatId = tg.initDataUnsafe.user.id; // Идентификатор пользователя
 
@@ -953,6 +974,7 @@ async function sendMessageToBot(orderData, deliveryMethod, deliveryPrice, sticke
     const data = new URLSearchParams({
         chat_id: chatId,
         text: message,
+        reply_markup: JSON.stringify(keyboard),
     });
 
     try {
@@ -985,7 +1007,8 @@ tg.MainButton.onClick(() => {
 
     // Получаем данные о методе доставки
     const deliveryMethod = getDeliveryMethodName(); // Функция для получения названия метода доставки
-    sendMessageToBot(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice);
+    sendMessageToBot(instructionMessage);
+    sendMessageToBotWithKeyboardt(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard);
 
     tg.close(); // Закрываем WebApp
 });
