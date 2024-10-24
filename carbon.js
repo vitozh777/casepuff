@@ -1015,36 +1015,6 @@ tg.MainButton.onClick(() => {
 
 
 
-// Функция для отправки сообщения в бота
-async function sendMessageToBotWithKeyboard(message) {
-    const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE"; // Замените на ваш токен бота
-    const chatId = tg.initDataUnsafe.user.id; // Идентификатор пользователя
-
-    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-    const data = {
-        chat_id: chatId,
-        text: message,
-    };
-
-    try {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data), // Отправляем данные в формате JSON
-        });
-
-        const result = await response.json();
-        if (!response.ok) {
-            throw new Error(result.description);
-        }
-
-        console.log('Сообщение с клавиатурой отправлено:', result);
-    } catch (error) {
-        console.error('Ошибка отправки сообщения боту:', error);
-    }
-}
 
 
 
