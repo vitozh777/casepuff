@@ -859,8 +859,6 @@ pufforder1.addEventListener("click", async (event) => {
             Общая цена заказа: ${totalCartPrice}
         `;
 
-        // Убедимся, что нет конфликта с другими обработчиками MainButton
-        tg.MainButton.offClick(); // Сначала удалим все предыдущие обработчики
 
         // Добавляем новый обработчик для MainButton
         tg.MainButton.onClick(async () => {
@@ -1154,9 +1152,16 @@ pufforder2.addEventListener("click", (event) => {
         // Открываем корзину "mycart"
         document.getElementById("mycart").classList.remove("hidden");
 
-        const selectedDelivery = document.querySelector(".airdelivery-btn1.active");
-        const deliveryMethod = selectedDelivery ? selectedDelivery.querySelector('.aircheckmark1').textContent : "Доставка не выбрана";
-        const deliveryPrice = selectedDelivery ? selectedDelivery.querySelector(".deliveryprice1, .deliveryprice2, .deliveryprice3").textContent : "0₽";
+        // Получаем выбранный метод доставки и его цену
+        const selectedDelivery = document.querySelector('.airdelivery-btn1.active');
+        let deliveryMethod = "Не выбран метод доставки";
+        let deliveryPrice = "0₽";
+
+        if (selectedDelivery) {
+            deliveryMethod = selectedDelivery.querySelector('.aircheckmark1').textContent;
+            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3, .deliveryprice4');
+            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
+        }
 
         // Вычисляем общую цену
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);

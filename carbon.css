@@ -3237,6 +3237,14 @@ form {
     font-weight: 500;
     margin-left: 189px;
 }
+.deliveryprice4 {
+    color: rgb(0, 0, 0); /* Серый цвет текста */
+    font-size: 13px; /* Размер шрифта */
+    font-weight: bold;
+    margin-left: 10px;
+    font-weight: 500;
+    margin-left: 189px;
+}
 
 
 
