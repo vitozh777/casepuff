@@ -907,7 +907,17 @@ pufforder1.addEventListener("click", function (event) {
 });
 
 
-
+// Создаем инлайн клавиатуру с кнопкой "Открыть чат с оператором"
+const keyboard = {
+    inline_keyboard: [
+        [
+            {
+                text: "Открыть чат с оператором",
+                url: "https://t.me/carbonexpert", // Ссылка на чат с оператором
+            }
+        ]
+    ]
+};
 
 
 
@@ -1006,17 +1016,6 @@ tg.MainButton.onClick(() => {
     tg.close(); // Закрываем WebApp
 });
 
-// Создаем инлайн клавиатуру с кнопкой "Открыть чат с оператором"
-const keyboard = {
-    inline_keyboard: [
-        [
-            {
-                text: "Открыть чат с оператором",
-                url: "https://t.me/carbonexpert", // Ссылка на чат с оператором
-            }
-        ]
-    ]
-};
 
 
 
