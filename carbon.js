@@ -938,7 +938,15 @@ async function sendMessageToBot(orderData) {
     const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE"; // Замените на ваш токен бота
     const chatId = tg.initDataUnsafe.user.id; // Идентификатор пользователя
 
-    const message = orderData.map(item => 
+    // Фильтруем товары, у которых количество 2 и более
+    const filteredItems = orderData.filter(item => item.quantity >= 2);
+
+    if (filteredItems.length === 0) {
+        console.log('Нет товаров для отправки.');
+        return; // Если нет товаров для отправки, ничего не делаем
+    }
+
+    const message = filteredItems.map(item => 
         `Товар: ${item.name}\nМодель: ${item.model}\nЦена: ${item.price}₽\nКоличество: ${item.quantity}`
     ).join('\n\n'); // Формируем сообщение с данными заказа
 
@@ -967,6 +975,12 @@ async function sendMessageToBot(orderData) {
         console.error('Ошибка отправки сообщения боту:', error);
     }
 }
+
+// Пример использования при клике на MainButton
+tg.MainButton.onClick(() => {
+    sendMessageToBot(cartItems); // Передаем данные корзины
+    tg.close(); // Закрываем WebApp
+});
 
 // Пример использования при клике на MainButton
 tg.MainButton.onClick(() => {
