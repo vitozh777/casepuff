@@ -306,32 +306,7 @@ function addToCart(item) {
     updateTotalPrice();
 }
 
-// Функция для отображения товаров в корзине
-function renderCartItems() {
-    const cartContainer = document.getElementById("cart-items");
-    cartContainer.innerHTML = "";
 
-    cartItems.forEach(item => {
-        const cartItem = document.createElement("div");
-        cartItem.classList.add("cart-item");
-
-        cartItem.innerHTML = `
-            <img src="airobsid.JPG" alt="${item.name}">
-            <div class="item-info">
-                <div>Название: ${item.name}</div>
-                <div>Модель: ${item.model}</div>
-                <div>Цена за единицу: ${item.price}₽</div>
-            </div>
-            <div class="item-quantity">
-                <button onclick="updateQuantity(${item.id}, '${item.model}', -1)">-</button>
-                <input type="text" value="${item.quantity}" readonly>
-                <button onclick="updateQuantity(${item.id}, '${item.model}', 1)">+</button>
-            </div>
-        `;
-
-        cartContainer.appendChild(cartItem);
-    });
-}
 
 
 // Функция для обновления количества товара
@@ -854,30 +829,7 @@ function toggleSticker() {
     updateTotalPrice(); // Пересчитываем общую цену
 }
 
-function updateTotalPrice() {
-    // Считаем общую цену товаров
-    let totalItemsPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    
-    // Применяем скидку 10%, если промокод введён
-    if (promoApplied) {
-        totalItemsPrice *= 0.9; // Скидка 10%
-    }
 
-    // Проверяем условия для набора наклеек
-    let stickerPrice = stickerIncluded ? 0 : 20; // Если выключен, цена 20₽
-    if (totalItemsPrice > 3000) {
-        stickerPrice = 0; // Бесплатные наклейки, если цена выше 3000₽
-    }
-
-    // Пересчитываем общую цену товаров + доставки + наклеек
-    const totalPrice = totalItemsPrice + deliveryPrice + stickerPrice;
-
-    document.getElementById("total-price").textContent = `${totalPrice.toFixed(2)}₽`;
-    document.getElementById("sticker-price").textContent = `${stickerPrice}₽`; // Обновляем цену набора наклеек
-
-    // Обновляем подсказку по наклейкам
-    updateStickerHint(totalItemsPrice);
-}
 
 // Обновление подсказки по наклейкам
 function updateStickerHint(totalWithoutDiscount) {
@@ -954,17 +906,7 @@ function renderCartItems() {
     });
 }
 
-function updateQuantity(itemId, model, change) {
-    const item = cartItems.find(i => i.id === itemId && i.model === model);
-    if (item) {
-        item.quantity += change;
-        if (item.quantity <= 0) {
-            cartItems = cartItems.filter(i => i.id !== itemId || i.model !== model);
-        }
-        renderCartItems();
-        updateTotalPrice();
-    }
-}
+
 
 function updateTotalPrice() {
     // Считаем общую цену товаров
