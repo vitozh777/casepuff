@@ -811,7 +811,7 @@ function updateStickerHint(totalWithoutDiscount) {
 
 pufforder1.disabled = false;
 
-pufforder1.addEventListener("click", (event) => {
+pufforder1.addEventListener("click", async (event) => {
     if (!pufforder1.disabled) {
         event.preventDefault();
 
@@ -845,8 +845,10 @@ pufforder1.addEventListener("click", (event) => {
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
 
         // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();        
+        tg.MainButton.setText("Оплатить через оператора");
+        tg.MainButton.show(); 
+
+        console.log("Кнопка MainButton отображена с текстом: Оплатить через оператора");
 
         // Сообщение для бота
         const message = `
@@ -858,14 +860,23 @@ pufforder1.addEventListener("click", (event) => {
             Общая цена заказа: ${totalCartPrice}
         `;
 
+        // Убедимся, что нет конфликта с другими обработчиками MainButton
+        tg.MainButton.offClick(); // Сначала удалим все предыдущие обработчики
 
-        // Добавляем обработчик для MainButton
+        // Добавляем новый обработчик для MainButton
         tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
+            console.log("MainButton был нажат");
 
-            // Закрываем WebApp
-            tg.close();
+            try {
+                await sendMessageToBot(instructionMessage);
+                await sendMessageToBotWithKeyboard(message, keyboard); // Убедитесь, что переменная keyboard определена
+
+                // Закрываем WebApp
+                tg.close();
+                console.log("Сообщение отправлено и WebApp закрыт");
+            } catch (error) {
+                console.error("Ошибка при отправке данных боту:", error);
+            }
         });
     }
 });
