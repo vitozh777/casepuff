@@ -1147,7 +1147,7 @@ pufforder2.addEventListener("click", (event) => {
         // Добавляем товар в корзину
         addToCart({
             id: 1, // Уникальный ID товара
-            name: "FORGED GLOSSY-OBSIDIAN",
+            name: "FORGED MATTE-ONYX",
             model: selectedModel,
             price: selectedPrice,
             quantity: 1,
@@ -1155,6 +1155,10 @@ pufforder2.addEventListener("click", (event) => {
 
         // Открываем корзину "mycart"
         document.getElementById("mycart").classList.remove("hidden");
+
+        const selectedDelivery = document.querySelector(".airdelivery-btn1.active");
+        const deliveryMethod = selectedDelivery ? selectedDelivery.querySelector('.aircheckmark1').textContent : "Доставка не выбрана";
+        const deliveryPrice = selectedDelivery ? selectedDelivery.querySelector(".deliveryprice1, .deliveryprice2, .deliveryprice3").textContent : "0₽";
 
         // Вычисляем общую цену
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
@@ -1170,6 +1174,7 @@ pufforder2.addEventListener("click", (event) => {
             Заказ: ${itemName}
             Размер: ${selectedModel}
             Цена: ${selectedPrice}
+            Доставка: ${deliveryMethod} - ${deliveryPrice}
             Общая цена: ${totalPrice}
         `;
 
