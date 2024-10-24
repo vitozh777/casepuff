@@ -169,17 +169,6 @@ function closeOverlayPP() {
 
 
 
-// Создаем инлайн клавиатуру с кнопкой "Открыть чат с оператором"
-const keyboard = {
-    inline_keyboard: [
-        [
-            {
-                text: "Открыть чат с оператором",
-                url: "https://t.me/carbonexpert",
-            }
-        ]
-    ]
-};
 
 
 
@@ -925,7 +914,7 @@ pufforder1.addEventListener("click", function (event) {
 
 const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
 
-// Функция для отправки данных в Telegram боту
+// Функция для отправки инструкций в Telegram боту
 async function sendMessageToBot(instructionMessage) {
     const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE";
     const chatId = tg.initDataUnsafe.user.id;
@@ -943,20 +932,20 @@ async function sendMessageToBot(instructionMessage) {
         });
 
         const result = await response.json();
-        console.log('Message sent:', result);
+        console.log('Сообщение с инструкцией отправлено:', result);
     } catch (error) {
-        console.error('Error sending message:', error);
+        console.error('Ошибка отправки сообщения с инструкцией:', error);
     }
 }
 
-// Функция для отправки данных в Telegram боту
+// Функция для отправки данных о заказе с клавиатурой
 async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard) {
-    const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE"; // Замените на ваш токен бота
-    const chatId = tg.initDataUnsafe.user.id; // Идентификатор пользователя
+    const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE";
+    const chatId = tg.initDataUnsafe.user.id;
 
     // Формируем сообщение с данными о товарах
     let message = orderData.map(item => {
-        let itemMessage = `Заказ: ${item.name}\nРазмер: ${item.model}\nЦена: ${item.price}`;
+        let itemMessage = `Заказ: ${item.name}\nРазмер: ${item.model}\nЦена: ${item.price}₽`;
 
         // Отправляем количество только если оно больше или равно 2
         if (item.quantity >= 2) {
@@ -968,13 +957,13 @@ async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryP
     // Добавляем данные о методе доставки, стоимости доставки и наборе наклеек
     message += `\n\nДоставка: ${deliveryMethod} - ${deliveryPrice}₽\n`;
     message += `Стикерпак: ${stickerIncluded ? 'да' : 'нет'}\n`;
-    message += `Общая цена: ${totalPrice}`;
+    message += `Общая цена: ${totalPrice}₽`;
 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
     const data = new URLSearchParams({
         chat_id: chatId,
         text: message,
-        reply_markup: JSON.stringify(keyboard),
+        reply_markup: JSON.stringify(keyboard), // Преобразуем клавиатуру в JSON
     });
 
     try {
@@ -983,7 +972,7 @@ async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryP
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: data.toString(),
+            body: data.toString(), // Преобразуем данные в строку
         });
 
         const result = await response.json();
@@ -991,9 +980,9 @@ async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryP
             throw new Error(result.description);
         }
 
-        console.log('Сообщение отправлено:', result);
+        console.log('Сообщение с заказом отправлено:', result);
     } catch (error) {
-        console.error('Ошибка отправки сообщения боту:', error);
+        console.error('Ошибка отправки сообщения с заказом:', error);
     }
 }
 
@@ -1006,12 +995,28 @@ tg.MainButton.onClick(() => {
     const totalPrice = document.getElementById("new-price").textContent;
 
     // Получаем данные о методе доставки
-    const deliveryMethod = getDeliveryMethodName(); // Функция для получения названия метода доставки
+    const deliveryMethod = getDeliveryMethodName();
+
+    // Сначала отправляем инструкцию
     sendMessageToBot(instructionMessage);
-    sendMessageToBotWithKeyboardt(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard);
+
+    // Затем отправляем данные о заказе с клавиатурой
+    sendMessageToBotWithKeyboard(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard);
 
     tg.close(); // Закрываем WebApp
 });
+
+// Создаем инлайн клавиатуру с кнопкой "Открыть чат с оператором"
+const keyboard = {
+    inline_keyboard: [
+        [
+            {
+                text: "Открыть чат с оператором",
+                url: "https://t.me/carbonexpert", // Ссылка на чат с оператором
+            }
+        ]
+    ]
+};
 
 
 
