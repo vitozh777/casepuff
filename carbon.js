@@ -205,7 +205,7 @@ cartButton.addEventListener('click', function () {
 
     // Проверяем, есть ли товары в корзине
     if (cartItems.length > 0) {
-        tg.MainButton.setText('Оплатить через оператора');
+        tg.MainButton.text = "Оплатить через оператора";
         tg.MainButton.show();
     } else {
         tg.MainButton.hide(); // Если корзина пуста, скрываем MainButton
@@ -235,37 +235,14 @@ function updateCartDisplay() {
 
     // Проверка товаров в корзине для отображения MainButton
     if (cartItems.length > 0) {
-        tg.MainButton.setText('Оплатить через оператора');
+        tg.MainButton.text = "Оплатить через оператора";
         tg.MainButton.show();
     } else {
         tg.MainButton.hide();
     }
 }
 
-// Отправка данных о заказе боту через MainButton
-tg.MainButton.onClick(async () => {
-    const selectedDelivery = document.querySelector(".airdelivery-btn1.active");
-    const deliveryMethod = selectedDelivery ? selectedDelivery.querySelector('.aircheckmark1').textContent : "Доставка не выбрана";
-    const deliveryPrice = selectedDelivery ? selectedDelivery.querySelector(".deliveryprice1, .deliveryprice2, .deliveryprice3, .deliveryprice4").textContent : "0₽";
-    const totalCartPrice = calculateTotalPrice();
 
-    const message = cartItems.map(item => `
-        Название: ${item.name}
-        Модель: ${item.model}
-        Цена: ${item.price}₽
-        Количество: ${item.quantity}
-    `).join('\n');
-
-    const fullMessage = `
-        Заказ:
-        ${message}
-        Доставка: ${deliveryMethod} - ${deliveryPrice}
-        Наклейки: ${stickerIncluded ? 'Включены' : 'Не включены'}
-        Общая цена: ${totalCartPrice}
-    `;
-
-    await sendMessageToBot(fullMessage);
-});
 
 // Функция для подсчета общей цены корзины
 function calculateTotalPrice() {
