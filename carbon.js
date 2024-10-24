@@ -244,17 +244,7 @@ function updateCartDisplay() {
 
 // Отправка данных о заказе боту через MainButton
 tg.MainButton.onClick(async () => {
-    const message = `
-        Заказ: ${itemName}
-        Размер: ${selectedModel}
-        Цена: ${selectedPrice}₽
-        Количество: ${item.quantity}
-        Доставка: ${deliveryMethod}
-        Общая цена: ${totalCartPrice}
-    `;
-
-    await sendMessageToBot(message); // Отправляем сообщение боту
-
+    
     // Закрываем WebApp после отправки заказа
     tg.close();
 });
