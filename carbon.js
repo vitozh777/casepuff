@@ -195,6 +195,8 @@ document.getElementById("cart-button").addEventListener("click", function() {
 
 document.getElementById("close-cart").addEventListener("click", function() {
     document.getElementById("mycart").classList.add("hidden");
+    // Скрываем кнопку MainButton
+    tg.MainButton.hide();
 });
 
 
@@ -864,18 +866,11 @@ pufforder1.addEventListener("click", async (event) => {
 
         // Добавляем новый обработчик для MainButton
         tg.MainButton.onClick(async () => {
-            console.log("MainButton был нажат");
+            await sendMessageToBot(instructionMessage);
+            await sendMessageToBotWithKeyboard(message, keyboard);
 
-            try {
-                await sendMessageToBot(instructionMessage);
-                await sendMessageToBotWithKeyboard(message, keyboard); // Убедитесь, что переменная keyboard определена
-
-                // Закрываем WebApp
-                tg.close();
-                console.log("Сообщение отправлено и WebApp закрыт");
-            } catch (error) {
-                console.error("Ошибка при отправке данных боту:", error);
-            }
+            // Закрываем WebApp
+            tg.close();
         });
     }
 });
@@ -1149,17 +1144,17 @@ pufforder2.addEventListener("click", (event) => {
         const selectedModel = document.querySelector(".model4.selected").textContent;
         const selectedPrice = modelInfo4[selectedModel];
         
+        // Добавляем товар в корзину
+        addToCart({
+            id: 1, // Уникальный ID товара
+            name: "FORGED GLOSSY-OBSIDIAN",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
+        });
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.airdelivery-btn2.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
-
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.aircheckmark2').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
+        // Открываем корзину "mycart"
+        document.getElementById("mycart").classList.remove("hidden");
 
         // Вычисляем общую цену
         const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
@@ -1175,7 +1170,6 @@ pufforder2.addEventListener("click", (event) => {
             Заказ: ${itemName}
             Размер: ${selectedModel}
             Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
             Общая цена: ${totalPrice}
         `;
 
