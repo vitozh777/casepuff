@@ -819,6 +819,10 @@ pufforder1.addEventListener("click", async (event) => {
         const selectedModel = document.querySelector(".model4.selected").textContent;
         const selectedPrice = parseFloat(modelInfo4[selectedModel].replace(/[^\d]/g, ''));
 
+        // Обновляем текст и видимость кнопки MainButton
+        tg.MainButton.setText("Оплатить через оператора");
+        tg.MainButton.show(); 
+
         // Добавляем товар в корзину
         addToCart({
             id: 1, // Уникальный ID товара
@@ -844,11 +848,6 @@ pufforder1.addEventListener("click", async (event) => {
         const itemName = "FORGED GLOSSY-OBSIDIAN";
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
 
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.setText("Оплатить через оператора");
-        tg.MainButton.show(); 
-
-        console.log("Кнопка MainButton отображена с текстом: Оплатить через оператора");
 
         // Сообщение для бота
         const message = `
