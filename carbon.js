@@ -844,7 +844,6 @@ pufforder1.addEventListener("click", async (event) => {
         const selectedDelivery = document.querySelector(".airdelivery-btn1.active");
         const deliveryMethod = selectedDelivery ? selectedDelivery.querySelector('.aircheckmark1').textContent : "Доставка не выбрана";
         const deliveryPrice = selectedDelivery ? selectedDelivery.querySelector(".deliveryprice1, .deliveryprice2, .deliveryprice3").textContent : "0₽";
-        const stickerStatus = stickerIncluded ? "Набор наклеек включён" : "Набор наклеек выключен";
         const totalCartPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
 
         const itemName = "FORGED GLOSSY-OBSIDIAN";
@@ -857,7 +856,6 @@ pufforder1.addEventListener("click", async (event) => {
             Размер: ${selectedModel}
             Цена: ${selectedPrice}₽
             Доставка: ${deliveryMethod} - ${deliveryPrice}
-            ${stickerStatus}
             Общая цена заказа: ${totalCartPrice}
         `;
 
