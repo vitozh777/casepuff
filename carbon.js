@@ -244,16 +244,7 @@ function updateCartDisplay() {
 
 // Отправка данных о заказе боту через MainButton
 tg.MainButton.onClick(async () => {
-    // Сохраняем выбранные данные для передачи боту
-    const itemName = "FORGED GLOSSY-EMERALD";
-    const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-    const message = `
-        Заказ: ${itemName}
-    `;
-    await sendMessageToBot(instructionMessage);
-    await sendMessageToBotWithKeyboard(message, keyboard);
-    
-    tg.close();
+    tg.MainButton.hide();
 });
 
 
