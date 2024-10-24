@@ -194,6 +194,11 @@ var animation = lottie.loadAnimation({
 
 
 
+
+
+
+
+
 let cartItems = [];
 
 
@@ -215,7 +220,7 @@ cartButton.addEventListener('click', function () {
 // Обновление отображения корзины
 function updateCartDisplay() {
     const cartContainer = document.getElementById("cart-items");
-    cartContainer.innerHTML = "";
+    cartContainer.innerHTML = ""; // Очищаем корзину перед обновлением
 
     cartItems.forEach(item => {
         const cartItem = document.createElement("div");
@@ -225,29 +230,30 @@ function updateCartDisplay() {
             <div class="item-info">
                 <div>Название: ${item.name}</div>
                 <div>Модель: ${item.model}</div>
-                <div>Цена: ${item.price}₽</div>
-                <div>Количество: ${item.quantity}</div>
+                <div>Цена за единицу: ${item.price}₽</div>
+            </div>
+            <div class="item-quantity">
+                <button onclick="updateQuantity(${item.id}, '${item.model}', -1)">-</button>
+                <input type="text" value="${item.quantity}" readonly>
+                <button onclick="updateQuantity(${item.id}, '${item.model}', 1)">+</button>
             </div>
         `;
 
         cartContainer.appendChild(cartItem);
     });
 
-    // Проверка товаров в корзине для отображения MainButton
+    // Проверка, есть ли товары для отображения MainButton
     if (cartItems.length > 0) {
-        tg.MainButton.text = "Оплатить через оператора";
+        tg.MainButton.setText('Оплатить через оператора');
         tg.MainButton.show();
     } else {
         tg.MainButton.hide();
     }
+    updateTotalPrice(); // Обновляем общую стоимость
 }
 
-// Отправка данных о заказе боту через MainButton
-tg.MainButton.onClick(async () => {
-    
-    // Закрываем WebApp после отправки заказа
-    tg.close();
-});
+
+
 
 // Функция для подсчета общей цены корзины
 function calculateTotalPrice() {
@@ -294,12 +300,16 @@ function updateQuantity(itemId, model, change) {
     const item = cartItems.find(i => i.id === itemId && i.model === model);
     if (item) {
         item.quantity += change;
+
+        // Если количество меньше 1, удаляем товар из корзины
         if (item.quantity <= 0) {
             cartItems = cartItems.filter(i => i.id !== itemId || i.model !== model);
         }
-        updateTotalPrice();
+
+        updateCartDisplay();  // Обновляем отображение корзины после изменения количества
     }
 }
+
 
 
 
@@ -924,9 +934,13 @@ function selectDeliveryMethod(price) {
 
 
 // Функция для отправки данных в Telegram боту
-async function sendMessageToBot(message) {
+async function sendMessageToBot(orderData) {
     const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE"; // Замените на ваш токен бота
     const chatId = tg.initDataUnsafe.user.id; // Идентификатор пользователя
+
+    const message = orderData.map(item => 
+        `Товар: ${item.name}\nМодель: ${item.model}\nЦена: ${item.price}₽\nКоличество: ${item.quantity}`
+    ).join('\n\n'); // Формируем сообщение с данными заказа
 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
     const data = new URLSearchParams({
@@ -940,7 +954,7 @@ async function sendMessageToBot(message) {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: data.toString(), // Преобразуем данные в строку
+            body: data.toString(),
         });
 
         const result = await response.json();
@@ -953,6 +967,12 @@ async function sendMessageToBot(message) {
         console.error('Ошибка отправки сообщения боту:', error);
     }
 }
+
+// Пример использования при клике на MainButton
+tg.MainButton.onClick(() => {
+    sendMessageToBot(cartItems); // Передаем данные корзины
+    tg.close(); // Закрываем WebApp
+});
 
 // Функция для отправки сообщения в бота
 async function sendMessageToBotWithKeyboard(message) {
