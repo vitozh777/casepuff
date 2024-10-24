@@ -69,7 +69,6 @@ let priceElementForm7 = document.querySelector(".price7");
 let priceElementForm8 = document.querySelector(".price8");
 let priceElementForm9 = document.querySelector(".price9");
 
-const mainButton = tg.MainButton; // MainButton от Telegram
 const cartButton = document.getElementById('cart-button');
 
 
@@ -206,10 +205,10 @@ cartButton.addEventListener('click', function () {
 
     // Проверяем, есть ли товары в корзине
     if (cartItems.length > 0) {
-        mainButton.setText('Оплатить через оператора');
-        mainButton.show();
+        tg.MainButton.setText('Оплатить через оператора');
+        tg.MainButton.show();
     } else {
-        mainButton.hide(); // Если корзина пуста, скрываем MainButton
+        tg.MainButton.hide(); // Если корзина пуста, скрываем MainButton
     }
 });
 
@@ -244,10 +243,10 @@ function updateCartDisplay() {
 }
 
 // Отправка данных о заказе боту через MainButton
-mainButton.onClick(async () => {
+tg.MainButton.onClick(async () => {
     const selectedDelivery = document.querySelector(".airdelivery-btn1.active");
     const deliveryMethod = selectedDelivery ? selectedDelivery.querySelector('.aircheckmark1').textContent : "Доставка не выбрана";
-    const deliveryPrice = selectedDelivery ? selectedDelivery.querySelector(".deliveryprice1, .deliveryprice2, .deliveryprice3").textContent : "0₽";
+    const deliveryPrice = selectedDelivery ? selectedDelivery.querySelector(".deliveryprice1, .deliveryprice2, .deliveryprice3, .deliveryprice4").textContent : "0₽";
     const totalCartPrice = calculateTotalPrice();
 
     const message = cartItems.map(item => `
@@ -1960,8 +1959,17 @@ btn2.addEventListener("click", () => {
     order2.orderinactive = true;
     order2.classList.add("orderinactive");
     
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
 
-
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("form2").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 
@@ -2089,8 +2097,17 @@ btn3.addEventListener("click", () => {
     order3.orderinactive = true;
     order3.classList.add("orderinactive");
     
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
 
-
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("form3").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 
@@ -2217,8 +2234,17 @@ btn4.addEventListener("click", () => {
     order4.orderinactive = true;
     order4.classList.add("orderinactive");
     
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
 
-
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("form4").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 
@@ -2345,8 +2371,17 @@ btn5.addEventListener("click", () => {
     order5.orderinactive = true;
     order5.classList.add("orderinactive");
     
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
 
-
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("form5").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 
@@ -2473,8 +2508,17 @@ btn6.addEventListener("click", () => {
     order6.orderinactive = true;
     order6.classList.add("orderinactive");
     
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
 
-
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("form6").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 
@@ -2601,8 +2645,17 @@ btn7.addEventListener("click", () => {
     order7.orderinactive = true;
     order7.classList.add("orderinactive");
     
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
 
-
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("form7").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 
@@ -2730,8 +2783,17 @@ btn8.addEventListener("click", () => {
     order8.orderinactive = true;
     order8.classList.add("orderinactive");
     
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
 
-
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("form8").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 
@@ -2858,8 +2920,17 @@ btn9.addEventListener("click", () => {
     order9.orderinactive = true;
     order9.classList.add("orderinactive");
     
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
 
-
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("form9").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 
@@ -2986,8 +3057,17 @@ btn10.addEventListener("click", () => {
     order10.orderinactive = true;
     order10.classList.add("orderinactive");
    
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
 
-
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("form10").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 
@@ -3114,8 +3194,17 @@ btn11.addEventListener("click", () => {
     order11.orderinactive = true;
     order11.classList.add("orderinactive");
     
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
 
-
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("form11").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 
@@ -3242,8 +3331,17 @@ btn12.addEventListener("click", () => {
     order12.orderinactive = true;
     order12.classList.add("orderinactive");
     
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
 
-
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("form12").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 
@@ -3369,9 +3467,17 @@ btn13.addEventListener("click", () => {
     // Делаем кнопку "order9" неактивной
     order13.orderinactive = true;
     order13.classList.add("orderinactive");
-    
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
 
-
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("form13").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 
@@ -3498,8 +3604,17 @@ btn14.addEventListener("click", () => {
     order14.orderinactive = true;
     order14.classList.add("orderinactive");
     
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
 
-
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("form14").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 
@@ -3626,8 +3741,17 @@ btn15.addEventListener("click", () => {
     order15.orderinactive = true;
     order15.classList.add("orderinactive");
     
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
 
-
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("form15").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
 });
 
 
