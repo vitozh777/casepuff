@@ -815,8 +815,6 @@ pufforder1.addEventListener("click", (event) => {
     if (!pufforder1.disabled) {
         event.preventDefault();
 
-        console.log("Кнопка pufforder1 нажата");
-
         // Получаем выбранную модель и цену
         const selectedModel = document.querySelector(".model4.selected").textContent;
         const selectedPrice = parseFloat(modelInfo4[selectedModel].replace(/[^\d]/g, ''));
@@ -833,12 +831,6 @@ pufforder1.addEventListener("click", (event) => {
         // Открываем корзину "mycart"
         document.getElementById("mycart").classList.remove("hidden");
 
-        // Показываем кнопку tg.mainButton
-        tg.MainButton.setText("Оплатить через оператора");
-        tg.MainButton.show();
-
-        console.log("Кнопка mainButton отображена");
-
         // Обновляем отображение корзины
         renderCartItems();
 
@@ -849,39 +841,31 @@ pufforder1.addEventListener("click", (event) => {
         const stickerStatus = stickerIncluded ? "Набор наклеек включён" : "Набор наклеек выключен";
         const totalCartPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
 
-        // Текст инструкции
+        const itemName = "FORGED GLOSSY-OBSIDIAN";
         const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
 
+        // Обновляем текст и видимость кнопки MainButton
+        tg.MainButton.text = "Оплатить через оператора";
+        tg.MainButton.show();        
+
         // Сообщение для бота
-        const orderMessage = `
-            Название товара: FORGED GLOSSY-OBSIDIAN
-            Модель: ${selectedModel}
+        const message = `
+            Заказ: ${itemName}
+            Размер: ${selectedModel}
             Цена: ${selectedPrice}₽
             Доставка: ${deliveryMethod} - ${deliveryPrice}
             ${stickerStatus}
             Общая цена заказа: ${totalCartPrice}
         `;
 
-        console.log("Обработчик для mainButton готов к вызову");
 
-        // Обработка нажатия mainButton
+        // Добавляем обработчик для MainButton
         tg.MainButton.onClick(async () => {
-            try {
-                console.log("Кнопка mainButton нажата, отправка данных");
+            await sendMessageToBot(instructionMessage);
+            await sendMessageToBotWithKeyboard(message, keyboard);
 
-                // Отправляем инструкцию боту
-                await sendMessageToBot(instructionMessage); 
-
-                // Отправляем данные заказа боту
-                await sendMessageToBotWithKeyboard(orderMessage); 
-
-                // Закрываем WebApp
-                tg.close(); 
-
-                console.log("Сообщение отправлено, WebApp закрыт");
-            } catch (error) {
-                console.error('Ошибка при отправке сообщения или закрытии WebApp:', error);
-            }
+            // Закрываем WebApp
+            tg.close();
         });
     }
 });
