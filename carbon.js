@@ -968,8 +968,12 @@ async function sendMessageToBot(orderData, deliveryPrice, stickerIncluded, total
 
 // Пример использования при клике на MainButton
 tg.MainButton.onClick(() => {
-    const totalPrice = updateTotalPrice(); // Получаем общую цену
-    sendMessageToBot(cartItems, deliveryPrice, stickerIncluded, totalPrice); // Передаем данные корзины
+    // Обновляем общую цену перед отправкой
+    updateTotalPrice();
+
+    // Передаем данные корзины, цену доставки, информацию о наклейках и итоговую цену
+    const totalPrice = document.getElementById("new-price").textContent; // Получаем общую цену из DOM
+    sendMessageToBot(cartItems, deliveryPrice, stickerIncluded, totalPrice); 
     tg.close(); // Закрываем WebApp
 });
 
