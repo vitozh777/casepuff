@@ -260,7 +260,7 @@ tg.MainButton.onClick(async () => {
         Заказ:
         ${message}
         Доставка: ${deliveryMethod} - ${deliveryPrice}
-
+        Наклейки: ${stickerIncluded ? 'Включены' : 'Не включены'}
         Общая цена: ${totalCartPrice}
     `;
 
