@@ -907,6 +907,12 @@ pufforder1.addEventListener("click", function (event) {
 });
 
 
+
+
+
+
+
+
 // Создаем инлайн клавиатуру с кнопкой "Открыть чат с оператором"
 const keyboard = {
     inline_keyboard: [
@@ -918,8 +924,6 @@ const keyboard = {
         ]
     ]
 };
-
-
 
 
 const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
@@ -970,6 +974,8 @@ async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryP
     message += `Общая цена: ${totalPrice}₽`;
 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+    // Преобразуем клавиатуру в JSON строку
     const data = new URLSearchParams({
         chat_id: chatId,
         text: message,
@@ -986,13 +992,14 @@ async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryP
         });
 
         const result = await response.json();
+
         if (!response.ok) {
-            throw new Error(result.description);
+            throw new Error(result.description || 'Ошибка отправки сообщения');
         }
 
-        console.log('Сообщение с заказом отправлено:', result);
+        console.log('Сообщение с заказом и клавиатурой отправлено:', result);
     } catch (error) {
-        console.error('Ошибка отправки сообщения с заказом:', error);
+        console.error('Ошибка отправки сообщения с заказом:', error.message, error);
     }
 }
 
@@ -1015,6 +1022,9 @@ tg.MainButton.onClick(() => {
 
     tg.close(); // Закрываем WebApp
 });
+
+
+
 
 
 
