@@ -967,12 +967,12 @@ async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryP
     // Добавляем данные о методе доставки, стоимости доставки и наборе наклеек
     message += `\n\nДоставка: ${deliveryMethod} - ${deliveryPrice}₽\n`;
     message += `Стикерпак: ${stickerIncluded ? 'да' : 'нет'}\n`;
-    // Если скидка применена, добавляем информацию о промокоде
-    if (promoApplied) {
-        message += `\nСкидка: 10% (промокод: ${appliedPromoCode})`;
-    }
     message += `Общая цена: ${totalPrice}₽`;
 
+    // Добавляем информацию о применении скидки, если она была применена
+    if (promoApplied && appliedPromoCode) {
+        message += `\nСкидка: 10% (промокод: ${appliedPromoCode})`;
+    }
 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
@@ -1018,7 +1018,7 @@ tg.MainButton.onClick(() => {
     // Сначала отправляем инструкцию
     sendMessageToBot(instructionMessage);
 
-    // Затем отправляем данные о заказе с клавиатурой, включая промокод
+    // Затем отправляем данные о заказе с клавиатурой, включая промокод, если он был применен
     sendMessageToBotWithKeyboard(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, appliedPromoCode);
 
     tg.close(); // Закрываем WebApp
