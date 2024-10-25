@@ -1018,8 +1018,8 @@ tg.MainButton.onClick(() => {
     // Сначала отправляем инструкцию
     sendMessageToBot(instructionMessage);
 
-    // Затем отправляем данные о заказе с клавиатурой, включая промокод, если он был применен
-    sendMessageToBotWithKeyboard(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, appliedPromoCode);
+    // Отправляем данные о заказе с клавиатурой, включая промокод, если он был применен
+    sendMessageToBotWithKeyboard(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, appliedPromoCode || null);
 
     tg.close(); // Закрываем WebApp
 });
@@ -2119,50 +2119,21 @@ order2.disabled = false;
 order2.addEventListener("click", (event) => {
     if (!order2.disabled) {
         event.preventDefault();
-        
-        // Получаем выбранную модель
-        const selectedModelElement = document.querySelector(".model1.selected");
-        let selectedModel = selectedModelElement ? selectedModelElement.textContent : "Не выбрана";
-        
-        // Получаем цену модели (если модель выбрана)
-        const selectedPrice = selectedModel ? modelInfo1[selectedModel] : "Неизвестная цена";
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.delivery-btn2.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = parseFloat(modelInfo1[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.checkmark2').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
-
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "FORGED GLOSSY-SAPHIR";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
+        // Добавляем товар в корзину
+        addToCart({
+            id: 1, // Уникальный ID товара
+            name: "FORGED GLOSSY-SAPHIR",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
         });
-    }   
+        updateCartDisplay();
+    }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
