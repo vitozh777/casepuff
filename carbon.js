@@ -375,10 +375,12 @@ document.getElementById("apply-discount").addEventListener("click", () => {
 
 // Обрабатываем применение скидки
 document.getElementById("apply-promo-btn").addEventListener("click", () => {
-    const promoCode = document.getElementById("promo-code").value;
-    
-    if (promoCode === "скидка10" && !promoApplied) {
+    const promoCode = document.getElementById("promo-code").value.toLowerCase(); // Промокод переводим в нижний регистр для совместимости
+    const validPromoCodes = ["скидка10", "must10", "carbon10"]; // Список валидных промокодов
+
+    if (validPromoCodes.includes(promoCode) && !promoApplied) {
         promoApplied = true; // Устанавливаем флаг, что скидка применена
+        appliedPromoCode = promoCode; // Сохраняем примененный промокод
         document.getElementById("promo-popup").classList.add("hidden"); // Закрываем окно
         updateTotalPrice(); // Пересчитываем общую цену с учетом скидки
     } else {
@@ -947,7 +949,7 @@ async function sendMessageToBot(instructionMessage) {
 }
 
 // Функция для отправки данных о заказе с клавиатурой
-async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard) {
+async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, appliedPromoCode) {
     const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE";
     const chatId = tg.initDataUnsafe.user.id;
 
@@ -965,7 +967,12 @@ async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryP
     // Добавляем данные о методе доставки, стоимости доставки и наборе наклеек
     message += `\n\nДоставка: ${deliveryMethod} - ${deliveryPrice}₽\n`;
     message += `Стикерпак: ${stickerIncluded ? 'да' : 'нет'}\n`;
+    // Если скидка применена, добавляем информацию о промокоде
+    if (promoApplied) {
+        message += `\nСкидка: 10% (промокод: ${appliedPromoCode})`;
+    }
     message += `Общая цена: ${totalPrice}₽`;
+
 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
@@ -1011,8 +1018,8 @@ tg.MainButton.onClick(() => {
     // Сначала отправляем инструкцию
     sendMessageToBot(instructionMessage);
 
-    // Затем отправляем данные о заказе с клавиатурой
-    sendMessageToBotWithKeyboard(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard);
+    // Затем отправляем данные о заказе с клавиатурой, включая промокод
+    sendMessageToBotWithKeyboard(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, appliedPromoCode);
 
     tg.close(); // Закрываем WebApp
 });
