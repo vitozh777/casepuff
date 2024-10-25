@@ -967,11 +967,14 @@ async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryP
     // Добавляем данные о методе доставки, стоимости доставки и наборе наклеек
     message += `\n\nДоставка: ${deliveryMethod} - ${deliveryPrice}₽\n`;
     message += `Стикерпак: ${stickerIncluded ? 'да' : 'нет'}\n`;
-    if (appliedPromoCode) {
-        message += `\nПромокод: ${appliedPromoCode} (10%)`;
-    }
-    message += `Общая цена: ${totalPrice}`;
+    message += `Общая цена: ${totalPrice}₽`;
 
+    // Добавляем информацию о применении скидки, если она была применена
+    if (appliedPromoCode) {
+        message += `\nСкидка: 10% (промокод: ${appliedPromoCode})`;
+    }
+
+    console.log('Отправляем сообщение: ', message); // Логируем сообщение перед отправкой
 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
@@ -1014,8 +1017,12 @@ tg.MainButton.onClick(() => {
     // Получаем данные о методе доставки
     const deliveryMethod = getDeliveryMethodName();
 
-    // Применяем ли промокод? Если нет, передаем null.
+    // Проверяем, был ли применен промокод и устанавливаем переменную appliedPromoCode
     const appliedPromoCode = promoApplied ? appliedPromoCode : null;
+
+    // Логируем для отладки
+    console.log('Promo Applied:', promoApplied);
+    console.log('Applied Promo Code:', appliedPromoCode);
 
     // Сначала отправляем инструкцию
     sendMessageToBot(instructionMessage);
