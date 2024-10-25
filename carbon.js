@@ -970,7 +970,7 @@ async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryP
     message += `Общая цена: ${totalPrice}₽`;
 
     // Добавляем информацию о применении скидки, если она была применена
-    if (promoApplied && appliedPromoCode) {
+    if (appliedPromoCode) {
         message += `\nСкидка: 10% (промокод: ${appliedPromoCode})`;
     }
 
@@ -1015,11 +1015,14 @@ tg.MainButton.onClick(() => {
     // Получаем данные о методе доставки
     const deliveryMethod = getDeliveryMethodName();
 
+    // Применяем ли промокод? Если нет, передаем null.
+    const appliedPromoCode = promoApplied ? appliedPromoCode : null;
+
     // Сначала отправляем инструкцию
     sendMessageToBot(instructionMessage);
 
-    // Отправляем данные о заказе с клавиатурой, включая промокод, если он был применен
-    sendMessageToBotWithKeyboard(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, appliedPromoCode || null);
+    // Затем отправляем данные о заказе с клавиатурой, включая промокод, если он был применен
+    sendMessageToBotWithKeyboard(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, appliedPromoCode);
 
     tg.close(); // Закрываем WebApp
 });
