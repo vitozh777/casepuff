@@ -2001,6 +2001,7 @@ model1.forEach(model => {
 
 
 
+
 // Добавьте обработчик события click для кнопки "Add"
 order1.disabled = false;
 order1.addEventListener("click", (event) => {
@@ -2019,6 +2020,7 @@ order1.addEventListener("click", (event) => {
             price: selectedPrice,
             quantity: 1,
         });
+        updateCartDisplay();
     }
 });
 
