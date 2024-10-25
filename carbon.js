@@ -231,13 +231,7 @@ function updateCartDisplay() {
         cartContainer.appendChild(cartItem);
     });
 
-    // Проверка, есть ли товары для отображения MainButton
-    if (cartItems.length > 0) {
-        tg.MainButton.setText('Оплатить через оператора');
-        tg.MainButton.show();
-    } else {
-        tg.MainButton.hide();
-    }
+    
     updateTotalPrice(); // Обновляем общую стоимость
 }
 
