@@ -967,12 +967,11 @@ async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryP
     // Добавляем данные о методе доставки, стоимости доставки и наборе наклеек
     message += `\n\nДоставка: ${deliveryMethod} - ${deliveryPrice}₽\n`;
     message += `Стикерпак: ${stickerIncluded ? 'да' : 'нет'}\n`;
-    message += `Общая цена: ${totalPrice}₽`;
-
-    // Добавляем информацию о применении скидки, если она была применена
     if (appliedPromoCode) {
-        message += `\nСкидка: 10% (промокод: ${appliedPromoCode})`;
+        message += `\nПромокод: ${appliedPromoCode} (10%)`;
     }
+    message += `Общая цена: ${totalPrice}`;
+
 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
