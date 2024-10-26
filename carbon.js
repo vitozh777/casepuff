@@ -949,7 +949,7 @@ async function sendMessageToBot(instructionMessage) {
 }
 
 // Функция для отправки данных о заказе с клавиатурой
-async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, promoApplied, appliedPromoCode) {
+async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, appliedPromoCode) {
     const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE";
     const chatId = tg.initDataUnsafe.user.id;
 
@@ -970,7 +970,7 @@ async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryP
     message += `Общая цена: ${totalPrice}₽`;
 
     // Добавляем информацию о применении скидки, если она была применена
-    if (promoApplied) {
+    if (appliedPromoCode) {
         message += `\nСкидка: 10% (промокод: ${appliedPromoCode})`;
     }
 
@@ -1018,10 +1018,18 @@ tg.MainButton.onClick(() => {
     // Получаем данные о методе доставки
     const deliveryMethod = getDeliveryMethodName();
 
-    // Проверяем, был ли применен промокод
-    const appliedPromoCode = promoApplied ? appliedPromoCode : null;
+    // Логирование состояния кнопки для отладки
+    console.log('MainButton Clicked!');
 
-    // Логирование переменных для отладки
+    // Проверяем, был ли применен промокод
+    let appliedPromoCode = null;
+
+    if (promoApplied) {
+        appliedPromoCode = "скидка10";  // Пример применения скидки, замените на реальное значение промокода
+        console.log("Promo Applied: ", appliedPromoCode);  // Логируем примененный промокод
+    }
+
+    // Логирование всех переменных перед отправкой данных
     console.log('Promo Applied:', promoApplied);
     console.log('Applied Promo Code:', appliedPromoCode);
     console.log('Delivery Method:', deliveryMethod);
@@ -1031,7 +1039,7 @@ tg.MainButton.onClick(() => {
     sendMessageToBot(instructionMessage);
 
     // Затем отправляем данные о заказе с клавиатурой
-    sendMessageToBotWithKeyboard(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, promoApplied, appliedPromoCode);
+    sendMessageToBotWithKeyboard(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, appliedPromoCode);
 
     // Закрываем WebApp после отправки данных
     tg.close(); 
