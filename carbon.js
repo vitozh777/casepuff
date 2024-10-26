@@ -1022,12 +1022,15 @@ tg.MainButton.onClick(() => {
         // Логирование состояния кнопки для отладки
         console.log('MainButton Clicked!');
 
-        // Проверяем, был ли применен промокод
-        let appliedPromoCode = null;  // Инициализация
+        // Получаем введенный пользователем промокод
+        const inputPromoCode = document.getElementById("promo-code").value.trim().toLowerCase();
 
-        // Условие проверки промокода
-        if (promoApplied) {
-            appliedPromoCode = "скидка10";  // Пример применения скидки, замените на реальное значение промокода
+        // Проверяем, был ли введен и применен промокод
+        let appliedPromoCode = null;
+
+        // Условие проверки промокода (если промокод применен и допустим)
+        if (promoApplied && (inputPromoCode === "скидка10" || inputPromoCode === "must10" || inputPromoCode === "carbon10")) {
+            appliedPromoCode = inputPromoCode;  // Промокод сохраняется
             console.log("Promo Applied: ", appliedPromoCode);  // Логируем примененный промокод
         }
 
