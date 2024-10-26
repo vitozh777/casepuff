@@ -970,7 +970,7 @@ async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryP
     message += `Общая цена: ${totalPrice}₽`;
 
     // Добавляем информацию о применении скидки, если она была применена
-    if (appliedPromoCode && promoApplied) {
+    if (appliedPromoCode) {
         message += `\nСкидка: 10% (промокод: ${appliedPromoCode})`;
     }
 
@@ -1025,6 +1025,9 @@ tg.MainButton.onClick(() => {
         // Получаем введенный пользователем промокод
         const inputPromoCode = document.getElementById("promo-code").value.trim().toLowerCase();
 
+        // Логируем введенный промокод для отладки
+        console.log('Введенный промокод:', inputPromoCode);
+
         // Проверяем, был ли введен и применен промокод
         let appliedPromoCode = null;
 
@@ -1032,6 +1035,8 @@ tg.MainButton.onClick(() => {
         if (promoApplied && (inputPromoCode === "скидка10" || inputPromoCode === "must10" || inputPromoCode === "carbon10")) {
             appliedPromoCode = inputPromoCode;  // Промокод сохраняется
             console.log("Promo Applied: ", appliedPromoCode);  // Логируем примененный промокод
+        } else {
+            console.log('Промокод не применен или недействителен.');
         }
 
         // Логирование всех переменных перед отправкой данных
