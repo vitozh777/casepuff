@@ -948,7 +948,7 @@ async function sendMessageToBot(instructionMessage) {
     }
 }
 
-/// Функция для отправки данных о заказе с клавиатурой
+// Функция для отправки данных о заказе с клавиатурой
 async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, promoApplied, appliedPromoCode) {
     const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE";
     const chatId = tg.initDataUnsafe.user.id;
@@ -973,6 +973,9 @@ async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryP
     if (promoApplied) {
         message += `\nСкидка: 10% (промокод: ${appliedPromoCode})`;
     }
+
+    // Логирование сообщения для отладки
+    console.log("Отправляем сообщение: ", message);
 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
@@ -1015,20 +1018,23 @@ tg.MainButton.onClick(() => {
     // Получаем данные о методе доставки
     const deliveryMethod = getDeliveryMethodName();
 
-    // Проверяем, был ли применен промокод и устанавливаем переменную appliedPromoCode
+    // Проверяем, был ли применен промокод
     const appliedPromoCode = promoApplied ? appliedPromoCode : null;
 
-    // Логируем переменные для отладки
+    // Логирование переменных для отладки
     console.log('Promo Applied:', promoApplied);
     console.log('Applied Promo Code:', appliedPromoCode);
+    console.log('Delivery Method:', deliveryMethod);
+    console.log('Total Price:', totalPrice);
 
     // Сначала отправляем инструкцию
     sendMessageToBot(instructionMessage);
 
-    // Затем отправляем данные о заказе с клавиатурой, включая информацию о промокоде, если он был применен
+    // Затем отправляем данные о заказе с клавиатурой
     sendMessageToBotWithKeyboard(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, promoApplied, appliedPromoCode);
 
-    tg.close(); // Закрываем WebApp
+    // Закрываем WebApp после отправки данных
+    tg.close(); 
 });
 
 
