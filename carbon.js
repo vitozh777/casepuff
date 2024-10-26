@@ -948,8 +948,8 @@ async function sendMessageToBot(instructionMessage) {
     }
 }
 
-// Функция для отправки данных о заказе с клавиатурой
-async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, appliedPromoCode) {
+/// Функция для отправки данных о заказе с клавиатурой
+async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, promoApplied, appliedPromoCode) {
     const botToken = "7514969997:AAHHKwynx9Zkyy_UOVMeaxUBqYzZFGzpkXE";
     const chatId = tg.initDataUnsafe.user.id;
 
@@ -970,7 +970,7 @@ async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryP
     message += `Общая цена: ${totalPrice}₽`;
 
     // Добавляем информацию о применении скидки, если она была применена
-    if (appliedPromoCode && promoApplied) {
+    if (promoApplied) {
         message += `\nСкидка: 10% (промокод: ${appliedPromoCode})`;
     }
 
@@ -1015,7 +1015,7 @@ tg.MainButton.onClick(() => {
     // Получаем данные о методе доставки
     const deliveryMethod = getDeliveryMethodName();
 
-    // Проверяем, был ли применен промокод
+    // Проверяем, был ли применен промокод и устанавливаем переменную appliedPromoCode
     const appliedPromoCode = promoApplied ? appliedPromoCode : null;
 
     // Логируем переменные для отладки
@@ -1025,11 +1025,10 @@ tg.MainButton.onClick(() => {
     // Сначала отправляем инструкцию
     sendMessageToBot(instructionMessage);
 
-    // Затем отправляем данные о заказе с клавиатурой
-    sendMessageToBotWithKeyboard(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, appliedPromoCode);
+    // Затем отправляем данные о заказе с клавиатурой, включая информацию о промокоде, если он был применен
+    sendMessageToBotWithKeyboard(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, promoApplied, appliedPromoCode);
 
-    // Закрываем WebApp после отправки данных
-    tg.close(); 
+    tg.close(); // Закрываем WebApp
 });
 
 
