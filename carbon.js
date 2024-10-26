@@ -970,7 +970,7 @@ async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryP
     message += `Общая цена: ${totalPrice}₽`;
 
     // Добавляем информацию о применении скидки, если она была применена
-    if (appliedPromoCode) {
+    if (appliedPromoCode && promoApplied) {
         message += `\nСкидка: 10% (промокод: ${appliedPromoCode})`;
     }
 
@@ -1009,40 +1009,46 @@ async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryP
 
 // Пример использования при клике на MainButton
 tg.MainButton.onClick(() => {
-    // Обновляем общую цену перед отправкой
-    updateTotalPrice();
+    try {
+        // Обновляем общую цену перед отправкой
+        updateTotalPrice();
 
-    // Получаем общую цену из DOM
-    const totalPrice = document.getElementById("new-price").textContent;
+        // Получаем общую цену из DOM
+        const totalPrice = document.getElementById("new-price").textContent;
 
-    // Получаем данные о методе доставки
-    const deliveryMethod = getDeliveryMethodName();
+        // Получаем данные о методе доставки
+        const deliveryMethod = getDeliveryMethodName();
 
-    // Логирование состояния кнопки для отладки
-    console.log('MainButton Clicked!');
+        // Логирование состояния кнопки для отладки
+        console.log('MainButton Clicked!');
 
-    // Проверяем, был ли применен промокод
-    let appliedPromoCode = null;
+        // Проверяем, был ли применен промокод
+        let appliedPromoCode = null;  // Инициализация
 
-    if (promoApplied) {
-        appliedPromoCode = "скидка10";  // Пример применения скидки, замените на реальное значение промокода
-        console.log("Promo Applied: ", appliedPromoCode);  // Логируем примененный промокод
+        // Условие проверки промокода
+        if (promoApplied) {
+            appliedPromoCode = "скидка10";  // Пример применения скидки, замените на реальное значение промокода
+            console.log("Promo Applied: ", appliedPromoCode);  // Логируем примененный промокод
+        }
+
+        // Логирование всех переменных перед отправкой данных
+        console.log('Promo Applied:', promoApplied);
+        console.log('Applied Promo Code:', appliedPromoCode);
+        console.log('Delivery Method:', deliveryMethod);
+        console.log('Total Price:', totalPrice);
+
+        // Сначала отправляем инструкцию
+        sendMessageToBot(instructionMessage);
+
+        // Затем отправляем данные о заказе с клавиатурой
+        sendMessageToBotWithKeyboard(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, appliedPromoCode);
+
+        // Закрываем WebApp после отправки данных
+        tg.close();
+    } catch (error) {
+        // Логирование ошибок при работе с MainButton
+        console.error('Ошибка при обработке MainButton:', error);
     }
-
-    // Логирование всех переменных перед отправкой данных
-    console.log('Promo Applied:', promoApplied);
-    console.log('Applied Promo Code:', appliedPromoCode);
-    console.log('Delivery Method:', deliveryMethod);
-    console.log('Total Price:', totalPrice);
-
-    // Сначала отправляем инструкцию
-    sendMessageToBot(instructionMessage);
-
-    // Затем отправляем данные о заказе с клавиатурой
-    sendMessageToBotWithKeyboard(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, appliedPromoCode);
-
-    // Закрываем WebApp после отправки данных
-    tg.close(); 
 });
 
 
