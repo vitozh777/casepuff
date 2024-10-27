@@ -22,6 +22,8 @@ let form12 = document.getElementById("form12");
 let form13 = document.getElementById("form13");
 let form14 = document.getElementById("form14");
 let form15 = document.getElementById("form15");
+let form16 = document.getElementById("form16");
+let form17 = document.getElementById("form17");
 let btn1 = document.getElementById("btn1");
 let btn2 = document.getElementById("btn2");
 let btn3 = document.getElementById("btn3");
@@ -37,6 +39,8 @@ let btn12 = document.getElementById("btn12");
 let btn13 = document.getElementById("btn13");
 let btn14 = document.getElementById("btn14");
 let btn15 = document.getElementById("btn15");
+let btn16 = document.getElementById("btn16");
+let btn17 = document.getElementById("btn17");
 let homeContent = document.getElementById("thepuffercase");
 let order1 = document.getElementById("order1");
 let order2 = document.getElementById("order2");
@@ -53,6 +57,8 @@ let order12 = document.getElementById("order12");
 let order13 = document.getElementById("order13");
 let order14 = document.getElementById("order14");
 let order15 = document.getElementById("order15");
+let order16 = document.getElementById("order16");
+let order17 = document.getElementById("order17");
 let selectedModel = ""; // Для хранения выбранной модели
 let selectedRazmer = ""; // Для хранения выбранной модели
 let selectedPrice = ""; // Для хранения выбранной цены
@@ -732,28 +738,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Инициализируем группы кнопок
     initializeDeliveryButtons('airdelivery-group-1');  // Первая группа на одной странице
-    initializeDeliveryButtons('airdelivery-group-2');  // Вторая группа на другой странице
-    initializeDeliveryButtons('airdelivery-group-3');
-    initializeDeliveryButtons('airdelivery-group-4');
-    initializeDeliveryButtons('airdelivery-group-5');
-    initializeDeliveryButtons('airdelivery-group-6');
-    initializeDeliveryButtons('airdelivery-group-7');
-    initializeDeliveryButtons('airdelivery-group-8');
-    initializeDeliveryButtons('delivery-group-1');
-    initializeDeliveryButtons('delivery-group-2');
-    initializeDeliveryButtons('delivery-group-3');
-    initializeDeliveryButtons('delivery-group-4');
-    initializeDeliveryButtons('delivery-group-5');
-    initializeDeliveryButtons('delivery-group-6');
-    initializeDeliveryButtons('delivery-group-7');
-    initializeDeliveryButtons('delivery-group-8');
-    initializeDeliveryButtons('delivery-group-9');
-    initializeDeliveryButtons('delivery-group-10');
-    initializeDeliveryButtons('delivery-group-11');
-    initializeDeliveryButtons('delivery-group-12');
-    initializeDeliveryButtons('delivery-group-13');
-    initializeDeliveryButtons('delivery-group-14');
-    initializeDeliveryButtons('delivery-group-15');
 });
 
 
@@ -806,6 +790,8 @@ const sizeButton12 = document.getElementById("sizeButton12");
 const sizeButton13 = document.getElementById("sizeButton13");
 const sizeButton14 = document.getElementById("sizeButton14");
 const sizeButton15 = document.getElementById("sizeButton15");
+const sizeButton16 = document.getElementById("sizeButton16");
+const sizeButton17 = document.getElementById("sizeButton17");
 const iphoneModelsWindowAir1 = document.getElementById("iphoneModelsWindowAir1");
 const iphoneModelsWindowAir2 = document.getElementById("iphoneModelsWindowAir2");
 const iphoneModelsWindowAir3 = document.getElementById("iphoneModelsWindowAir3");
@@ -829,6 +815,8 @@ const iphoneModelsWindow12 = document.getElementById("iphoneModelsWindow12");
 const iphoneModelsWindow13 = document.getElementById("iphoneModelsWindow13");
 const iphoneModelsWindow14 = document.getElementById("iphoneModelsWindow14");
 const iphoneModelsWindow15 = document.getElementById("iphoneModelsWindow15");
+const iphoneModelsWindow16 = document.getElementById("iphoneModelsWindow16");
+const iphoneModelsWindow17 = document.getElementById("iphoneModelsWindow17");
 
 
 
@@ -928,6 +916,7 @@ pufforder1.addEventListener("click", function (event) {
         model: selectedModel,
         price: selectedPrice,
         quantity: 1,
+        imageUrl: "air1.JPG",
     });
 
     updateCartDisplay();
@@ -1177,64 +1166,22 @@ model4.forEach(model => {
 // Добавьте обработчик события click для кнопки "Add"
 // Добавьте обработчик события click для кнопки "Add"
 pufforder2.disabled = false;
-pufforder2.addEventListener("click", (event) => {
-    if (!pufforder2.disabled) {
-        event.preventDefault();
-        
-        // Получаем выбранную модель и цену
-        const selectedModel = document.querySelector(".model4.selected").textContent;
-        const selectedPrice = modelInfo4[selectedModel];
-        
-        // Добавляем товар в корзину
-        addToCart({
-            id: 1, // Уникальный ID товара
-            name: "FORGED MATTE-ONYX",
-            model: selectedModel,
-            price: selectedPrice,
-            quantity: 1,
-        });
+pufforder2.addEventListener("click", function (event) {
+    event.preventDefault(); // Предотвращаем обновление страницы
 
-        // Открываем корзину "mycart"
-        document.getElementById("mycart").classList.remove("hidden");
+    const selectedModel = document.querySelector(".model4.selected").textContent;
+    const selectedPrice = parseFloat(modelInfo4[selectedModel].replace(/[^\d]/g, ''));
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.airdelivery-btn1.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+    addToCart({
+        id: 2,
+        name: "FORGED GLOSSY-SAPHIR",
+        model: selectedModel,
+        price: selectedPrice,
+        quantity: 1,
+        imageUrl: "air2.jpg",
+    });
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.aircheckmark1').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3, .deliveryprice4');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
-
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "FORGED MATTE-ONYX";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-
-        // Добавляем обработчик для MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-
-            // Закрываем WebApp
-            tg.close();
-        });
-    }
+    updateCartDisplay();
 });
 
 
@@ -1316,52 +1263,22 @@ model4.forEach(model => {
 // Добавьте обработчик события click для кнопки "Add"
 // Добавьте обработчик события click для кнопки "Add"
 pufforder3.disabled = false;
-pufforder3.addEventListener("click", (event) => {
-    if (!pufforder3.disabled) {
-        event.preventDefault();
-        
-        // Получаем выбранную модель и цену
-        const selectedModel = document.querySelector(".model4.selected").textContent;
-        const selectedPrice = modelInfo4[selectedModel];
-        
+pufforder3.addEventListener("click", function (event) {
+    event.preventDefault(); // Предотвращаем обновление страницы
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.airdelivery-btn3.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+    const selectedModel = document.querySelector(".model4.selected").textContent;
+    const selectedPrice = parseFloat(modelInfo4[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.aircheckmark3').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
+    addToCart({
+        id: 3,
+        name: "FORGED GLOSSY-RUBIN",
+        model: selectedModel,
+        price: selectedPrice,
+        quantity: 1,
+        imageUrl: "air3.jpg",
+    });
 
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "WOVEN GLOSSY-CLASSIC";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
-        });
-    }   
+    updateCartDisplay();
 });
 
 купить4.addEventListener("click", () => {
@@ -1448,11 +1365,12 @@ pufforder4.addEventListener("click", function (event) {
     const selectedPrice = parseFloat(modelInfo4[selectedModel].replace(/[^\d]/g, ''));
 
     addToCart({
-        id: 2,
-        name: "FORGED MATTE-ONYX",
+        id: 4,
+        name: "FORGED GLOSSY-EMERALD",
         model: selectedModel,
         price: selectedPrice,
         quantity: 1,
+        imageUrl: "air4.jpg",
     });
 
     updateCartDisplay();
@@ -1535,51 +1453,22 @@ model4.forEach(model => {
 
 // Добавьте обработчик события click для кнопки "Add"
 pufforder5.disabled = false;
-pufforder5.addEventListener("click", (event) => {
-    if (!pufforder5.disabled) {
-        event.preventDefault();
-        
-        // Получаем выбранную модель и цену
-        const selectedModel = document.querySelector(".model4.selected").textContent;
-        const selectedPrice = modelInfo4[selectedModel];
+pufforder5.addEventListener("click", function (event) {
+    event.preventDefault(); // Предотвращаем обновление страницы
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.airdelivery-btn5.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+    const selectedModel = document.querySelector(".model4.selected").textContent;
+    const selectedPrice = parseFloat(modelInfo4[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.aircheckmark5').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
+    addToCart({
+        id: 5,
+        name: "FORGED GLOSSY-GOLD",
+        model: selectedModel,
+        price: selectedPrice,
+        quantity: 1,
+        imageUrl: "air5.jpg",
+    });
 
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "FORGED GLOSSY-RUBIN";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
-        });
-    }   
+    updateCartDisplay();
 });
 
 купить6.addEventListener("click", () => {
@@ -1659,51 +1548,22 @@ model4.forEach(model => {
 
 // Добавьте обработчик события click для кнопки "Add"
 pufforder6.disabled = false;
-pufforder6.addEventListener("click", (event) => {
-    if (!pufforder6.disabled) {
-        event.preventDefault();
-        
-        // Получаем выбранную модель и цену
-        const selectedModel = document.querySelector(".model4.selected").textContent;
-        const selectedPrice = modelInfo4[selectedModel];
+pufforder6.addEventListener("click", function (event) {
+    event.preventDefault(); // Предотвращаем обновление страницы
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.airdelivery-btn6.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+    const selectedModel = document.querySelector(".model4.selected").textContent;
+    const selectedPrice = parseFloat(modelInfo4[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.aircheckmark6').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
+    addToCart({
+        id: 6,
+        name: "FORGED GLOSSY-OPAL",
+        model: selectedModel,
+        price: selectedPrice,
+        quantity: 1,
+        imageUrl: "air6.jpg",
+    });
 
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "FORGED GLOSSY-EMERALD";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
-        });
-    }   
+    updateCartDisplay();
 });
 
 купить7.addEventListener("click", () => {
@@ -1783,51 +1643,22 @@ model4.forEach(model => {
 
 // Добавьте обработчик события click для кнопки "Add"
 pufforder7.disabled = false;
-pufforder7.addEventListener("click", (event) => {
-    if (!pufforder7.disabled) {
-        event.preventDefault();
-        
-        // Получаем выбранную модель и цену
-        const selectedModel = document.querySelector(".model4.selected").textContent;
-        const selectedPrice = modelInfo4[selectedModel];
+pufforder7.addEventListener("click", function (event) {
+    event.preventDefault(); // Предотвращаем обновление страницы
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.airdelivery-btn7.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+    const selectedModel = document.querySelector(".model4.selected").textContent;
+    const selectedPrice = parseFloat(modelInfo4[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.aircheckmark7').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
+    addToCart({
+        id: 7,
+        name: "FORGED MATTE-ONYX",
+        model: selectedModel,
+        price: selectedPrice,
+        quantity: 1,
+        imageUrl: "air7.JPG",
+    });
 
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "FORGED GLOSSY-GOLD";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
-        });
-    }   
+    updateCartDisplay();
 });
 
 купить8.addEventListener("click", () => {
@@ -1907,51 +1738,22 @@ model4.forEach(model => {
 
 // Добавьте обработчик события click для кнопки "Add"
 pufforder8.disabled = false;
-pufforder8.addEventListener("click", (event) => {
-    if (!pufforder8.disabled) {
-        event.preventDefault();
-        
-        // Получаем выбранную модель и цену
-        const selectedModel = document.querySelector(".model4.selected").textContent;
-        const selectedPrice = modelInfo4[selectedModel];
+pufforder8.addEventListener("click", function (event) {
+    event.preventDefault(); // Предотвращаем обновление страницы
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.airdelivery-btn8.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+    const selectedModel = document.querySelector(".model4.selected").textContent;
+    const selectedPrice = parseFloat(modelInfo4[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.aircheckmark8').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
+    addToCart({
+        id: 8,
+        name: "WOVEN GLOSSY-CLASSIC",
+        model: selectedModel,
+        price: selectedPrice,
+        quantity: 1,
+        imageUrl: "air8.JPG",
+    });
 
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "FORGED GLOSSY-OPAL";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
-        });
-    }   
+    updateCartDisplay();
 });
 
 
@@ -2080,7 +1882,7 @@ order1.addEventListener("click", (event) => {
 
         // Добавляем товар в корзину
         addToCart({
-            id: 1, // Уникальный ID товара
+            id: 11, // Уникальный ID товара
             name: "FORGED GLOSSY-OBSIDIAN",
             model: selectedModel,
             price: selectedPrice,
@@ -2192,11 +1994,12 @@ order2.addEventListener("click", (event) => {
 
         // Добавляем товар в корзину
         addToCart({
-            id: 1, // Уникальный ID товара
+            id: 12, // Уникальный ID товара
             name: "FORGED GLOSSY-SAPHIR",
             model: selectedModel,
             price: selectedPrice,
             quantity: 1,
+            imageUrl: "SAPHIR.JPG",
         });
         updateCartDisplay();
     }
@@ -2293,50 +2096,22 @@ order3.disabled = false;
 order3.addEventListener("click", (event) => {
     if (!order3.disabled) {
         event.preventDefault();
-        
-        // Получаем выбранную модель
-        const selectedModelElement = document.querySelector(".model1.selected");
-        let selectedModel = selectedModelElement ? selectedModelElement.textContent : "Не выбрана";
-        
-        // Получаем цену модели (если модель выбрана)
-        const selectedPrice = selectedModel ? modelInfo1[selectedModel] : "Неизвестная цена";
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.delivery-btn3.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = parseFloat(modelInfo1[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.checkmark3').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
-
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "FORGED GLOSSY-RUBIN";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
+        // Добавляем товар в корзину
+        addToCart({
+            id: 13, // Уникальный ID товара
+            name: "FORGED GLOSSY-RUBIN",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
+            imageUrl: "RUBIN.JPG",
         });
-    }   
+        updateCartDisplay();
+    }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
@@ -2430,50 +2205,22 @@ order4.disabled = false;
 order4.addEventListener("click", (event) => {
     if (!order4.disabled) {
         event.preventDefault();
-        
-        // Получаем выбранную модель
-        const selectedModelElement = document.querySelector(".model1.selected");
-        let selectedModel = selectedModelElement ? selectedModelElement.textContent : "Не выбрана";
-        
-        // Получаем цену модели (если модель выбрана)
-        const selectedPrice = selectedModel ? modelInfo1[selectedModel] : "Неизвестная цена";
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.delivery-btn4.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = parseFloat(modelInfo1[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.checkmark4').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
-
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "FORGED GLOSSY-EMERALD";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
+        // Добавляем товар в корзину
+        addToCart({
+            id: 14, // Уникальный ID товара
+            name: "FORGED GLOSSY-EMERALD",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
+            imageUrl: "EMERALD.JPG",
         });
-    }   
+        updateCartDisplay();
+    }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
@@ -2567,50 +2314,22 @@ order5.disabled = false;
 order5.addEventListener("click", (event) => {
     if (!order5.disabled) {
         event.preventDefault();
-        
-        // Получаем выбранную модель
-        const selectedModelElement = document.querySelector(".model1.selected");
-        let selectedModel = selectedModelElement ? selectedModelElement.textContent : "Не выбрана";
-        
-        // Получаем цену модели (если модель выбрана)
-        const selectedPrice = selectedModel ? modelInfo1[selectedModel] : "Неизвестная цена";
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.delivery-btn5.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = parseFloat(modelInfo1[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.checkmark5').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
-
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "FORGED GLOSSY-GOLD";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
+        // Добавляем товар в корзину
+        addToCart({
+            id: 15, // Уникальный ID товара
+            name: "FORGED GLOSSY-GOLD",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
+            imageUrl: "GOLD.JPG",
         });
-    }   
+        updateCartDisplay();
+    }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
@@ -2704,52 +2423,243 @@ order6.disabled = false;
 order6.addEventListener("click", (event) => {
     if (!order6.disabled) {
         event.preventDefault();
-        
-        // Получаем выбранную модель
-        const selectedModelElement = document.querySelector(".model1.selected");
-        let selectedModel = selectedModelElement ? selectedModelElement.textContent : "Не выбрана";
-        
-        // Получаем цену модели (если модель выбрана)
-        const selectedPrice = selectedModel ? modelInfo1[selectedModel] : "Неизвестная цена";
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.delivery-btn6.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = parseFloat(modelInfo1[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.checkmark6').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
-
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "FORGED GLOSSY-OPAL";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
+        // Добавляем товар в корзину
+        addToCart({
+            id: 16, // Уникальный ID товара
+            name: "FORGED GLOSSY-AMETHYST",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
+            imageUrl: "FGAMETH.JPG",
         });
-    }   
+        updateCartDisplay();
+    }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+
+//товар16zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+btn16.addEventListener("click", () => {
+    document.getElementById("thepuffercase").style.display = "none"
+    document.getElementById("form16").style.display = "block"
+
+
+    // Делаем кнопку "order6" неактивной
+    order16.orderinactive = true;
+    order16.classList.add("orderinactive");
+    
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
+
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("form16").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
+});
+
+
+
+// Обработчик события для кнопки "SIZE"
+sizeButton16.addEventListener("click", (event) => {
+    event.preventDefault(); // Предотвращаем действие по умолчанию (обновление страницы)
+    
+    // Показываем окно выбора модели iPhone
+    iphoneModelsWindow16.style.display = "block";
+});
+
+// Добавляем обработчик события на каждую модель iPhone
+document.querySelectorAll(".model1").forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        // Сохраняем выбранную модель
+        selectedModel = model.textContent;
+        
+        // Скрываем окно после выбора модели
+        iphoneModelsWindow16.style.display = "none";
+
+        // Изменяем текст кнопки "SIZE" на выбранную модель
+        sizeButton16.textContent = `Размер: ${selectedModel}`;
+    });
+});
+var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon16'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
+});
+
+model1.forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault(); // Предотвращаем действие по умолчанию (например, переход по ссылке)
+                    
+        selectedModel = model.textContent;
+        selectedPrice = modelInfo1[selectedModel];
+
+        // Удаляем границу у всех кнопок
+        model1.forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
+        // Добавляем класс selected к выбранной кнопке
+        model.classList.add("selected");
+
+
+        order16.orderinactive = false;
+        order16.classList.remove("orderinactive");
+
+        priceElement.textContent = selectedPrice;
+        priceElementForm16.textContent = selectedPrice;
+        
+        selectedModel = model.textContent;
+    });
+});
+
+
+
+
+// Добавьте обработчик события click для кнопки "Add"
+order16.disabled = false;
+order16.addEventListener("click", (event) => {
+    if (!order16.disabled) {
+        event.preventDefault();
+
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = parseFloat(modelInfo1[selectedModel].replace(/[^\d]/g, ''));
+
+        // Добавляем товар в корзину
+        addToCart({
+            id: 26, // Уникальный ID товара
+            name: "FORGED GLOSSY-CLASSIC",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
+            imageUrl: "FGB.JPG",
+        });
+        updateCartDisplay();
+    }
+});
+//zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+
+//товар17zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+btn17.addEventListener("click", () => {
+    document.getElementById("thepuffercase").style.display = "none"
+    document.getElementById("form17").style.display = "block"
+
+
+    // Делаем кнопку "order6" неактивной
+    order17.orderinactive = true;
+    order17.classList.add("orderinactive");
+    
+    // Показываем кнопку "Назад"
+    backButton1.style.display = "none";
+    backButton2.style.display = "block";
+
+    // Логика для кнопки "Назад", возвращающая на "home"
+    backButton2.onclick = () => {
+        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
+        document.getElementById("form17").style.display = "none"; // Показываем "home"
+        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";
+    };
+});
+
+
+
+// Обработчик события для кнопки "SIZE"
+sizeButton17.addEventListener("click", (event) => {
+    event.preventDefault(); // Предотвращаем действие по умолчанию (обновление страницы)
+    
+    // Показываем окно выбора модели iPhone
+    iphoneModelsWindow17.style.display = "block";
+});
+
+// Добавляем обработчик события на каждую модель iPhone
+document.querySelectorAll(".model1").forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        // Сохраняем выбранную модель
+        selectedModel = model.textContent;
+        
+        // Скрываем окно после выбора модели
+        iphoneModelsWindow17.style.display = "none";
+
+        // Изменяем текст кнопки "SIZE" на выбранную модель
+        sizeButton17.textContent = `Размер: ${selectedModel}`;
+    });
+});
+var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-icon17'), // контейнер для анимации
+    renderer: 'svg', // тип рендера (svg, canvas, html)
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматическое воспроизведение
+    path: 'magsafe.json' // путь к вашему JSON-файлу
+});
+
+model1.forEach(model => {
+    model.addEventListener("click", (event) => {
+        event.preventDefault(); // Предотвращаем действие по умолчанию (например, переход по ссылке)
+                    
+        selectedModel = model.textContent;
+        selectedPrice = modelInfo1[selectedModel];
+
+        // Удаляем границу у всех кнопок
+        model1.forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
+        // Добавляем класс selected к выбранной кнопке
+        model.classList.add("selected");
+
+
+        order17.orderinactive = false;
+        order17.classList.remove("orderinactive");
+
+        priceElement.textContent = selectedPrice;
+        priceElementForm17.textContent = selectedPrice;
+        
+        selectedModel = model.textContent;
+    });
+});
+
+
+
+
+// Добавьте обработчик события click для кнопки "Add"
+order17.disabled = false;
+order17.addEventListener("click", (event) => {
+    if (!order17.disabled) {
+        event.preventDefault();
+
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = parseFloat(modelInfo1[selectedModel].replace(/[^\d]/g, ''));
+
+        // Добавляем товар в корзину
+        addToCart({
+            id: 27, // Уникальный ID товара
+            name: "FORGED MATTE-CLASSIC",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
+            imageUrl: "FGB.JPG",
+        });
+        updateCartDisplay();
+    }
+});
+//zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+
 
 //товар7zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 btn7.addEventListener("click", () => {
@@ -2841,50 +2751,22 @@ order7.disabled = false;
 order7.addEventListener("click", (event) => {
     if (!order7.disabled) {
         event.preventDefault();
-        
-        // Получаем выбранную модель
-        const selectedModelElement = document.querySelector(".model1.selected");
-        let selectedModel = selectedModelElement ? selectedModelElement.textContent : "Не выбрана";
-        
-        // Получаем цену модели (если модель выбрана)
-        const selectedPrice = selectedModel ? modelInfo2[selectedModel] : "Неизвестная цена";
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.delivery-btn7.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = parseFloat(modelInfo2[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.checkmark7').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
-
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "WOVEN GLOSSY-CLASSIC (с защитой камеры)";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
+        // Добавляем товар в корзину
+        addToCart({
+            id: 17, // Уникальный ID товара
+            name: "WOVEN GLOSSY-CLASSIC (Z)",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
+            imageUrl: "classic1.PNG",
         });
-    }   
+        updateCartDisplay();
+    }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
@@ -2979,50 +2861,22 @@ order8.disabled = false;
 order8.addEventListener("click", (event) => {
     if (!order8.disabled) {
         event.preventDefault();
-        
-        // Получаем выбранную модель
-        const selectedModelElement = document.querySelector(".model1.selected");
-        let selectedModel = selectedModelElement ? selectedModelElement.textContent : "Не выбрана";
-        
-        // Получаем цену модели (если модель выбрана)
-        const selectedPrice = selectedModel ? modelInfo2[selectedModel] : "Неизвестная цена";
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.delivery-btn8.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = parseFloat(modelInfo2[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.checkmark8').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
-
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "WOVEN GLOSSY-CLASSIC (без защиты камеры)";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
+        // Добавляем товар в корзину
+        addToCart({
+            id: 18, // Уникальный ID товара
+            name: "WOVEN GLOSSY-CLASSIC",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
+            imageUrl: "classic0.PNG",
         });
-    }   
+        updateCartDisplay();
+    }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
@@ -3116,50 +2970,22 @@ order9.disabled = false;
 order9.addEventListener("click", (event) => {
     if (!order9.disabled) {
         event.preventDefault();
-        
-        // Получаем выбранную модель
-        const selectedModelElement = document.querySelector(".model1.selected");
-        let selectedModel = selectedModelElement ? selectedModelElement.textContent : "Не выбрана";
-        
-        // Получаем цену модели (если модель выбрана)
-        const selectedPrice = selectedModel ? modelInfo3[selectedModel] : "Неизвестная цена";
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.delivery-btn9.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = parseFloat(modelInfo3[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.checkmark9').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
-
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "FORGED HYBRID-QUARTZ";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
+        // Добавляем товар в корзину
+        addToCart({
+            id: 19, // Уникальный ID товара
+            name: "FORGED HYBRID-QUARTZ",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
+            imageUrl: "QUARTZ.JPG",
         });
-    }   
+        updateCartDisplay();
+    }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
@@ -3253,50 +3079,22 @@ order10.disabled = false;
 order10.addEventListener("click", (event) => {
     if (!order10.disabled) {
         event.preventDefault();
-        
-        // Получаем выбранную модель
-        const selectedModelElement = document.querySelector(".model1.selected");
-        let selectedModel = selectedModelElement ? selectedModelElement.textContent : "Не выбрана";
-        
-        // Получаем цену модели (если модель выбрана)
-        const selectedPrice = selectedModel ? modelInfo3[selectedModel] : "Неизвестная цена";
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.delivery-btn10.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = parseFloat(modelInfo3[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.checkmark10').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
-
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "FORGED HYBRID-SILBER";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
+        // Добавляем товар в корзину
+        addToCart({
+            id: 20, // Уникальный ID товара
+            name: "FORGED HYBRID-SILBER",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
+            imageUrl: "SILBER.JPG",
         });
-    }   
+        updateCartDisplay();
+    }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
@@ -3390,50 +3188,22 @@ order11.disabled = false;
 order11.addEventListener("click", (event) => {
     if (!order11.disabled) {
         event.preventDefault();
-        
-        // Получаем выбранную модель
-        const selectedModelElement = document.querySelector(".model1.selected");
-        let selectedModel = selectedModelElement ? selectedModelElement.textContent : "Не выбрана";
-        
-        // Получаем цену модели (если модель выбрана)
-        const selectedPrice = selectedModel ? modelInfo3[selectedModel] : "Неизвестная цена";
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.delivery-btn11.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = parseFloat(modelInfo3[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.checkmark11').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
-
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "FORGED HYBRID-SAPHIR";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
+        // Добавляем товар в корзину
+        addToCart({
+            id: 21, // Уникальный ID товара
+            name: "FORGED HYBRID-SAPHIR",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
+            imageUrl: "SAPHIRhybrid.JPG",
         });
-    }   
+        updateCartDisplay();
+    }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
@@ -3527,50 +3297,22 @@ order12.disabled = false;
 order12.addEventListener("click", (event) => {
     if (!order12.disabled) {
         event.preventDefault();
-        
-        // Получаем выбранную модель
-        const selectedModelElement = document.querySelector(".model1.selected");
-        let selectedModel = selectedModelElement ? selectedModelElement.textContent : "Не выбрана";
-        
-        // Получаем цену модели (если модель выбрана)
-        const selectedPrice = selectedModel ? modelInfo3[selectedModel] : "Неизвестная цена";
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.delivery-btn12.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = parseFloat(modelInfo3[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.checkmark12').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
-
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "FORGED HYBRID-AMETHYST";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
+        // Добавляем товар в корзину
+        addToCart({
+            id: 22, // Уникальный ID товара
+            name: "FORGED HYBRID-AMETHYST",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
+            imageUrl: "AMETHYST.JPG",
         });
-    }   
+        updateCartDisplay();
+    }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
@@ -3663,50 +3405,22 @@ order13.disabled = false;
 order13.addEventListener("click", (event) => {
     if (!order13.disabled) {
         event.preventDefault();
-        
-        // Получаем выбранную модель
-        const selectedModelElement = document.querySelector(".model1.selected");
-        let selectedModel = selectedModelElement ? selectedModelElement.textContent : "Не выбрана";
-        
-        // Получаем цену модели (если модель выбрана)
-        const selectedPrice = selectedModel ? modelInfo3[selectedModel] : "Неизвестная цена";
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.delivery-btn13.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = parseFloat(modelInfo3[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.checkmark13').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
-
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "FORGED HYBRID-RUBIN";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
+        // Добавляем товар в корзину
+        addToCart({
+            id: 23, // Уникальный ID товара
+            name: "FORGED HYBRID-RUBIN",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
+            imageUrl: "RUBINhybrid.JPG",
         });
-    }   
+        updateCartDisplay();
+    }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
@@ -3800,50 +3514,22 @@ order14.disabled = false;
 order14.addEventListener("click", (event) => {
     if (!order14.disabled) {
         event.preventDefault();
-        
-        // Получаем выбранную модель
-        const selectedModelElement = document.querySelector(".model1.selected");
-        let selectedModel = selectedModelElement ? selectedModelElement.textContent : "Не выбрана";
-        
-        // Получаем цену модели (если модель выбрана)
-        const selectedPrice = selectedModel ? modelInfo3[selectedModel] : "Неизвестная цена";
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.delivery-btn14.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = parseFloat(modelInfo3[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.checkmark14').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
-
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "FORGED HYBRID-EMERALD";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
+        // Добавляем товар в корзину
+        addToCart({
+            id: 24, // Уникальный ID товара
+            name: "FORGED HYBRID-EMERALD",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
+            imageUrl: "EMERALDhybrid.JPG",
         });
-    }   
+        updateCartDisplay();
+    }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
@@ -3937,50 +3623,22 @@ order15.disabled = false;
 order15.addEventListener("click", (event) => {
     if (!order15.disabled) {
         event.preventDefault();
-        
-        // Получаем выбранную модель
-        const selectedModelElement = document.querySelector(".model1.selected");
-        let selectedModel = selectedModelElement ? selectedModelElement.textContent : "Не выбрана";
-        
-        // Получаем цену модели (если модель выбрана)
-        const selectedPrice = selectedModel ? modelInfo3[selectedModel] : "Неизвестная цена";
 
-        // Получаем выбранный метод доставки и его цену
-        const selectedDelivery = document.querySelector('.delivery-btn15.active');
-        let deliveryMethod = "Не выбран метод доставки";
-        let deliveryPrice = "0₽";
+        // Получаем выбранную модель и цену
+        const selectedModel = document.querySelector(".model1.selected").textContent;
+        const selectedPrice = parseFloat(modelInfo3[selectedModel].replace(/[^\d]/g, ''));
 
-        if (selectedDelivery) {
-            deliveryMethod = selectedDelivery.querySelector('.checkmark15').textContent;
-            const deliveryPriceElement = selectedDelivery.querySelector('.deliveryprice1, .deliveryprice2, .deliveryprice3');
-            deliveryPrice = deliveryPriceElement ? deliveryPriceElement.textContent : "Неизвестная цена";
-        }
-
-        // Вычисляем общую цену
-        const totalPrice = calculateTotalPrice(selectedPrice, deliveryPrice);
-        
-        // Обновляем текст и видимость кнопки MainButton
-        tg.MainButton.text = "Оплатить через оператора";
-        tg.MainButton.show();
-        
-        // Сохраняем выбранные данные для передачи боту
-        const itemName = "FORGED HYBRID-GOLD";
-        const instructionMessage = 'Скопируйте ваш заказ ниже и отправьте в чат с оператором';
-        const message = `
-            Заказ: ${itemName}
-            Размер: ${selectedModel}
-            Цена: ${selectedPrice}
-            Доставка: ${deliveryMethod} - ${deliveryPrice}
-            Общая цена: ${totalPrice}
-        `;
-        // Добавьте обработчик для кнопки MainButton
-        tg.MainButton.onClick(async () => {
-            await sendMessageToBot(instructionMessage);
-            await sendMessageToBotWithKeyboard(message, keyboard);
-            
-            tg.close();
+        // Добавляем товар в корзину
+        addToCart({
+            id: 25, // Уникальный ID товара
+            name: "FORGED HYBRID-GOLD",
+            model: selectedModel,
+            price: selectedPrice,
+            quantity: 1,
+            imageUrl: "GOLDhybrid.JPG",
         });
-    }   
+        updateCartDisplay();
+    }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
