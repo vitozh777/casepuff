@@ -216,10 +216,13 @@ function updateCartDisplay() {
         cartItem.classList.add("cart-item");
 
         cartItem.innerHTML = `
+            <div class="item-img">
+                <img src="${item.imageUrl}" alt="${item.name}" class="item-image"> <!-- Фото товара -->
+            </div>
             <div class="item-info">
-                <div>Название: ${item.name}</div>
-                <div>Модель: ${item.model}</div>
-                <div>Цена за единицу: ${item.price}₽</div>
+                <div class="item-name">${item.name}</div> <!-- Модель товара -->
+                <div class="item-model">${item.model}</div> <!-- Размер товара -->
+                <div class="item-price">${item.price}₽</div> <!-- Цена товара -->
             </div>
             <div class="item-quantity">
                 <button onclick="updateQuantity(${item.id}, '${item.model}', -1)">-</button>
@@ -231,7 +234,6 @@ function updateCartDisplay() {
         cartContainer.appendChild(cartItem);
     });
 
-    
     updateTotalPrice(); // Обновляем общую стоимость
 }
 
@@ -367,9 +369,34 @@ let promoApplied = false;
 let stickerIncluded = true;
 
 // Открываем окно промокода при нажатии на кнопку "Применить скидку"
-document.getElementById("apply-discount").addEventListener("click", () => {
+document.getElementById("apply-discount").addEventListener("click", (event) => {
     if (!document.getElementById("apply-discount").disabled) {
+        event.stopPropagation(); // Останавливаем всплытие события
         document.getElementById("promo-popup").classList.remove("hidden");
+        document.getElementById("blur-overlay").classList.remove("hidden");
+    }
+});
+
+// Инициализируем анимацию скидки
+const discountAnimation = lottie.loadAnimation({
+    container: document.getElementById('discount-icon'), // контейнер для анимации
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'skidka.json' // Замените на путь к вашему JSON файлу
+});
+
+// Закрытие всплывающего окна при клике вне его
+document.addEventListener("click", function(event) {
+    const promoPopup = document.getElementById("promo-popup");
+    const promoContent = document.querySelector(".promo-content");
+    const applyDiscountBtn = document.getElementById("apply-discount");
+    const blurOverlay = document.getElementById("blur-overlay");
+
+    // Проверяем, открыт ли popup и произошел ли клик вне его содержимого и вне кнопки "Применить скидку"
+    if (!promoPopup.classList.contains("hidden") && !promoContent.contains(event.target) && event.target !== applyDiscountBtn) {
+        promoPopup.classList.add("hidden"); // Скрываем окно
+        blurOverlay.classList.add("hidden");
     }
 });
 
@@ -382,6 +409,7 @@ document.getElementById("apply-promo-btn").addEventListener("click", () => {
         promoApplied = true; // Устанавливаем флаг, что скидка применена
         appliedPromoCode = promoCode; // Сохраняем примененный промокод
         document.getElementById("promo-popup").classList.add("hidden"); // Закрываем окно
+        document.getElementById("blur-overlay").classList.add("hidden"); // Закрываем окно
         updateTotalPrice(); // Пересчитываем общую цену с учетом скидки
     } else {
         alert("Неверный промокод или скидка уже применена.");
@@ -967,12 +995,11 @@ async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryP
     // Добавляем данные о методе доставки, стоимости доставки и наборе наклеек
     message += `\n\nДоставка: ${deliveryMethod} - ${deliveryPrice}₽\n`;
     message += `Стикерпак: ${stickerIncluded ? 'да' : 'нет'}\n`;
-    message += `Общая цена: ${totalPrice}₽`;
-
-    // Добавляем информацию о применении скидки, если она была применена
     if (appliedPromoCode) {
-        message += `\nСкидка: 10% (промокод: ${appliedPromoCode})`;
+        message += `\nСкидка: 10% (промокод - ${appliedPromoCode})`;
     }
+    message += `Общая цена: ${totalPrice}`;
+
 
     // Логирование сообщения для отладки
     console.log("Отправляем сообщение: ", message);
@@ -2055,6 +2082,7 @@ order1.addEventListener("click", (event) => {
             model: selectedModel,
             price: selectedPrice,
             quantity: 1,
+            imageUrl: "FGB.JPG",
         });
         updateCartDisplay();
     }
