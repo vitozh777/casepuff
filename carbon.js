@@ -374,6 +374,7 @@ document.getElementById("apply-discount").addEventListener("click", (event) => {
         event.stopPropagation(); // Останавливаем всплытие события
         document.getElementById("promo-popup").classList.remove("hidden");
         document.getElementById("blur-overlay").classList.remove("hidden");
+        tg.MainButton.hide();
     }
 });
 
@@ -397,6 +398,7 @@ document.addEventListener("click", function(event) {
     if (!promoPopup.classList.contains("hidden") && !promoContent.contains(event.target) && event.target !== applyDiscountBtn) {
         promoPopup.classList.add("hidden"); // Скрываем окно
         blurOverlay.classList.add("hidden");
+        tg.MainButton.show();
     }
 });
 
