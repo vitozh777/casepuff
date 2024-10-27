@@ -405,7 +405,7 @@ document.addEventListener("click", function(event) {
 // Обрабатываем применение скидки
 document.getElementById("apply-promo-btn").addEventListener("click", () => {
     const promoCode = document.getElementById("promo-code").value.toLowerCase(); // Промокод переводим в нижний регистр для совместимости
-    const validPromoCodes = ["скидка10", "must10", "carbon10"]; // Список валидных промокодов
+    const validPromoCodes = ["must10", "carbon10"]; // Список валидных промокодов
 
     if (validPromoCodes.includes(promoCode) && !promoApplied) {
         promoApplied = true; // Устанавливаем флаг, что скидка применена
@@ -413,6 +413,7 @@ document.getElementById("apply-promo-btn").addEventListener("click", () => {
         document.getElementById("promo-popup").classList.add("hidden"); // Закрываем окно
         document.getElementById("blur-overlay").classList.add("hidden"); // Закрываем окно
         updateTotalPrice(); // Пересчитываем общую цену с учетом скидки
+        tg.MainButton.show();
     } else {
         alert("Неверный промокод или скидка уже применена.");
     }
@@ -1061,7 +1062,7 @@ tg.MainButton.onClick(() => {
         let appliedPromoCode = null;
 
         // Условие проверки промокода (если промокод применен и допустим)
-        if (promoApplied && (inputPromoCode === "скидка10" || inputPromoCode === "must10" || inputPromoCode === "carbon10")) {
+        if (promoApplied && (inputPromoCode === "must10" || inputPromoCode === "carbon10")) {
             appliedPromoCode = inputPromoCode;  // Промокод сохраняется
             console.log("Promo Applied: ", appliedPromoCode);  // Логируем примененный промокод
         } else {
