@@ -206,10 +206,6 @@ body {
     margin-right: 25px
 }
 
-.cart-icon {
-    width: 100%;
-    height: 100%;
-}
 
 .cart-counter {
     position: absolute;
@@ -466,8 +462,9 @@ body {
 
 .cart-item .item-info {
     flex-grow: 1;
-    margin-right: auto;
+    text-align: left;
     margin-bottom: auto;
+    width: 200px;
 }
 
 .cart-item .item-name {
@@ -498,6 +495,7 @@ body {
     margin-left: auto;
     margin-right: 20px;
     margin-bottom: 5px;
+    width: 60px;
 }
 
 .cart-item .item-quantity button {
@@ -522,15 +520,15 @@ body {
 
 
 .cart-footer {
-    width: 100%;
+    width: 97%;
     height: 40px;
     background-color: #202020;
     text-align: right;
     position: absolute;
-    bottom: 0;
+    bottom: 20px;
     color: #ffffff;
     font-size: 15px;
-    border-radius: 10px 10px 0 0;
+    border-radius: 15px 15px 0 0;
     z-index: 200000;
 }
 
@@ -2509,7 +2507,7 @@ form {
 .cart-delivery {
     width: 90%;
     margin-top: auto;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
 .delivery-options {
