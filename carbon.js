@@ -241,6 +241,7 @@ function updateCartDisplay() {
     });
 
     updateTotalPrice(); // Обновляем общую стоимость
+    
 }
 
 
@@ -253,6 +254,8 @@ document.getElementById("close-cart").addEventListener("click", function() {
     document.getElementById("mycart").classList.add("hidden");
     // Скрываем кнопку MainButton
     tg.MainButton.hide();
+    // Обновляем отображение количества товаров
+    updateCartCounter();
 });
 
 
@@ -292,6 +295,35 @@ function updateQuantity(itemId, model, change) {
         updateCartDisplay();  // Обновляем отображение корзины после изменения количества
     }
 }
+
+const cartCounter = document.getElementById("cart-counter");
+const cartMessage = document.createElement('div');
+cartMessage.classList.add('cart-message');
+document.body.appendChild(cartMessage);
+
+function showCartMessage() {
+    cartMessage.textContent = 'Добавлено';
+    cartMessage.style.display = 'block';
+    setTimeout(() => {
+        cartMessage.style.display = 'none';
+    }, 4000); // Окно будет отображаться 4 секунды
+}
+
+function updateCartCounter() {
+    const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+    
+    if (totalItems > 0) {
+        cartCounter.textContent = totalItems;
+        cartCounter.classList.remove('hidden');
+    } else {
+        cartCounter.classList.add('hidden');
+    }
+}
+
+
+
+
+
 
 function updateTotalPrice() {
     // Считаем общую цену товаров
@@ -920,6 +952,11 @@ pufforder1.addEventListener("click", function (event) {
     });
 
     updateCartDisplay();
+    // Обновляем отображение количества товаров
+    updateCartCounter();
+        
+    // Показываем сообщение "Добавлено в корзину"
+    showCartMessage();
 });
 
 
@@ -1182,6 +1219,11 @@ pufforder2.addEventListener("click", function (event) {
     });
 
     updateCartDisplay();
+    // Обновляем отображение количества товаров
+    updateCartCounter();
+        
+    // Показываем сообщение "Добавлено в корзину"
+    showCartMessage();
 });
 
 
@@ -1279,6 +1321,11 @@ pufforder3.addEventListener("click", function (event) {
     });
 
     updateCartDisplay();
+    // Обновляем отображение количества товаров
+    updateCartCounter();
+        
+    // Показываем сообщение "Добавлено в корзину"
+    showCartMessage();
 });
 
 купить4.addEventListener("click", () => {
@@ -1374,6 +1421,11 @@ pufforder4.addEventListener("click", function (event) {
     });
 
     updateCartDisplay();
+    // Обновляем отображение количества товаров
+    updateCartCounter();
+        
+    // Показываем сообщение "Добавлено в корзину"
+    showCartMessage();
 });
 
 купить5.addEventListener("click", () => {
@@ -1469,6 +1521,11 @@ pufforder5.addEventListener("click", function (event) {
     });
 
     updateCartDisplay();
+    // Обновляем отображение количества товаров
+    updateCartCounter();
+        
+    // Показываем сообщение "Добавлено в корзину"
+    showCartMessage();
 });
 
 купить6.addEventListener("click", () => {
@@ -1564,6 +1621,11 @@ pufforder6.addEventListener("click", function (event) {
     });
 
     updateCartDisplay();
+    // Обновляем отображение количества товаров
+    updateCartCounter();
+        
+    // Показываем сообщение "Добавлено в корзину"
+    showCartMessage();
 });
 
 купить7.addEventListener("click", () => {
@@ -1659,6 +1721,11 @@ pufforder7.addEventListener("click", function (event) {
     });
 
     updateCartDisplay();
+    // Обновляем отображение количества товаров
+    updateCartCounter();
+        
+    // Показываем сообщение "Добавлено в корзину"
+    showCartMessage();
 });
 
 купить8.addEventListener("click", () => {
@@ -1754,6 +1821,11 @@ pufforder8.addEventListener("click", function (event) {
     });
 
     updateCartDisplay();
+    // Обновляем отображение количества товаров
+    updateCartCounter();
+        
+    // Показываем сообщение "Добавлено в корзину"
+    showCartMessage();
 });
 
 
@@ -1890,6 +1962,11 @@ order1.addEventListener("click", (event) => {
             imageUrl: "FGB.JPG",
         });
         updateCartDisplay();
+        // Обновляем отображение количества товаров
+        updateCartCounter();
+        
+        // Показываем сообщение "Добавлено в корзину"
+        showCartMessage();
     }
 });
 
@@ -2002,6 +2079,11 @@ order2.addEventListener("click", (event) => {
             imageUrl: "SAPHIR.JPG",
         });
         updateCartDisplay();
+        // Обновляем отображение количества товаров
+        updateCartCounter();
+        
+        // Показываем сообщение "Добавлено в корзину"
+        showCartMessage();
     }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -2111,6 +2193,11 @@ order3.addEventListener("click", (event) => {
             imageUrl: "RUBIN.JPG",
         });
         updateCartDisplay();
+        // Обновляем отображение количества товаров
+        updateCartCounter();
+        
+        // Показываем сообщение "Добавлено в корзину"
+        showCartMessage();
     }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -2220,6 +2307,11 @@ order4.addEventListener("click", (event) => {
             imageUrl: "EMERALD.JPG",
         });
         updateCartDisplay();
+        // Обновляем отображение количества товаров
+        updateCartCounter();
+        
+        // Показываем сообщение "Добавлено в корзину"
+        showCartMessage();
     }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -2329,6 +2421,11 @@ order5.addEventListener("click", (event) => {
             imageUrl: "GOLD.JPG",
         });
         updateCartDisplay();
+        // Обновляем отображение количества товаров
+        updateCartCounter();
+        
+        // Показываем сообщение "Добавлено в корзину"
+        showCartMessage();
     }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -2438,6 +2535,11 @@ order6.addEventListener("click", (event) => {
             imageUrl: "FGAMETH.JPG",
         });
         updateCartDisplay();
+        // Обновляем отображение количества товаров
+        updateCartCounter();
+        
+        // Показываем сообщение "Добавлено в корзину"
+        showCartMessage();
     }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -2547,6 +2649,11 @@ order16.addEventListener("click", (event) => {
             imageUrl: "FGB.JPG",
         });
         updateCartDisplay();
+        // Обновляем отображение количества товаров
+        updateCartCounter();
+        
+        // Показываем сообщение "Добавлено в корзину"
+        showCartMessage();
     }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -2656,6 +2763,11 @@ order17.addEventListener("click", (event) => {
             imageUrl: "FGB.JPG",
         });
         updateCartDisplay();
+        // Обновляем отображение количества товаров
+        updateCartCounter();
+        
+        // Показываем сообщение "Добавлено в корзину"
+        showCartMessage();
     }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -2766,6 +2878,11 @@ order7.addEventListener("click", (event) => {
             imageUrl: "classic1.PNG",
         });
         updateCartDisplay();
+        // Обновляем отображение количества товаров
+        updateCartCounter();
+        
+        // Показываем сообщение "Добавлено в корзину"
+        showCartMessage();
     }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -2876,6 +2993,11 @@ order8.addEventListener("click", (event) => {
             imageUrl: "classic0.PNG",
         });
         updateCartDisplay();
+        // Обновляем отображение количества товаров
+        updateCartCounter();
+        
+        // Показываем сообщение "Добавлено в корзину"
+        showCartMessage();
     }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -2985,6 +3107,11 @@ order9.addEventListener("click", (event) => {
             imageUrl: "QUARTZ.JPG",
         });
         updateCartDisplay();
+        // Обновляем отображение количества товаров
+        updateCartCounter();
+        
+        // Показываем сообщение "Добавлено в корзину"
+        showCartMessage();
     }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -3094,6 +3221,11 @@ order10.addEventListener("click", (event) => {
             imageUrl: "SILBER.JPG",
         });
         updateCartDisplay();
+        // Обновляем отображение количества товаров
+        updateCartCounter();
+        
+        // Показываем сообщение "Добавлено в корзину"
+        showCartMessage();
     }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -3203,6 +3335,11 @@ order11.addEventListener("click", (event) => {
             imageUrl: "SAPHIRhybrid.JPG",
         });
         updateCartDisplay();
+        // Обновляем отображение количества товаров
+        updateCartCounter();
+        
+        // Показываем сообщение "Добавлено в корзину"
+        showCartMessage();
     }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -3312,6 +3449,11 @@ order12.addEventListener("click", (event) => {
             imageUrl: "AMETHYST.JPG",
         });
         updateCartDisplay();
+        // Обновляем отображение количества товаров
+        updateCartCounter();
+        
+        // Показываем сообщение "Добавлено в корзину"
+        showCartMessage();
     }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -3420,6 +3562,11 @@ order13.addEventListener("click", (event) => {
             imageUrl: "RUBINhybrid.JPG",
         });
         updateCartDisplay();
+        // Обновляем отображение количества товаров
+        updateCartCounter();
+        
+        // Показываем сообщение "Добавлено в корзину"
+        showCartMessage();
     }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -3529,6 +3676,11 @@ order14.addEventListener("click", (event) => {
             imageUrl: "EMERALDhybrid.JPG",
         });
         updateCartDisplay();
+        // Обновляем отображение количества товаров
+        updateCartCounter();
+        
+        // Показываем сообщение "Добавлено в корзину"
+        showCartMessage();
     }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
@@ -3638,6 +3790,11 @@ order15.addEventListener("click", (event) => {
             imageUrl: "GOLDhybrid.JPG",
         });
         updateCartDisplay();
+        // Обновляем отображение количества товаров
+        updateCartCounter();
+        
+        // Показываем сообщение "Добавлено в корзину"
+        showCartMessage();
     }
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
