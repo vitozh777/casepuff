@@ -1,6 +1,7 @@
 body {
-    margin: 0;
-    width: 400px;
+    margin: 0 auto;
+    max-width: 500px;
+    width: 100%;
     padding: 0;
     font-size: 10px;
     color: white;
@@ -159,7 +160,7 @@ body {
 
 /* Стили для контейнера, содержащего кнопки */
 .contain {
-    max-width: 400px; /* Максимальная ширина контейнера */
+    width: 100%; /* Максимальная ширина контейнера */
     text-align: center; /* Центрируем содержимое по горизонтали */
     margin: 0 auto; /* Центрируем контейнер по горизонтали */
     overflow: hidden;
@@ -167,7 +168,7 @@ body {
 
 .videohome {
     margin-top: 40px;
-    width: 400px;
+    width: 100%;
     text-align: center; /* Центрируем содержимое по горизонтали */
 }
 
@@ -184,7 +185,7 @@ body {
     
 
     z-index: 1000; /* Убедитесь, что панель выше остальных элементов */
-    width: 400px; /* Ширина на всю страницу */
+    width: 500px; /* Ширина на всю страницу */
     height: 45px;
 
     backdrop-filter: blur(25px) saturate(200%);
@@ -261,7 +262,7 @@ body {
 .cart {
     position: fixed;
     top: 0;
-    width: 400px;
+    width: 500px;
     height: 100%;
     z-index: 10000;
     display: flex;
@@ -360,7 +361,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 400px;
+    width: 100%;
     padding: 10px;
     background-color: #ffffff;
     margin-top: 5px;
@@ -370,7 +371,7 @@ body {
     text-align: center;
     font-size: 12px;
     font-weight: bold;
-    margin-left: 10px;
+    margin-left: 25px;
 }
 
 #sticker-price {
@@ -438,7 +439,7 @@ body {
 
 
 .cart-items {
-    width: 400px;
+    width: 100%;
     justify-content: center;
     max-height: 260px;
     overflow-y: scroll;
@@ -449,8 +450,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100px;
-    width: 380px;
-    margin-top: 10px;
+    width: 90%;
+    padding: 10px;
 }
 
 .cart-item .item-img {
@@ -524,7 +525,7 @@ body {
 
 
 .cart-footer {
-    width: 400px;
+    width: 100%;
     height: 40px;
     background-color: #202020;
     text-align: right;
@@ -568,7 +569,7 @@ body {
     position: fixed;
     margin-top: 150px;
 
-    width: 340px;
+    width: 80%;
     background-color: #f8f8f8;
     border-radius: 6px;
     z-index: 10001;
