@@ -202,6 +202,7 @@ let cartItems = [];
 cartButton.addEventListener('click', function () {
     const cart = document.getElementById('mycart');
     cart.classList.remove('hidden'); // Открываем корзину
+    cartMessage.style.display = 'none';
 
     // Проверяем, есть ли товары в корзине
     if (cartItems.length > 0) {
@@ -860,6 +861,15 @@ const iphoneModelsWindow17 = document.getElementById("iphoneModelsWindow17");
     document.getElementById("pufferplanet").style.display = "none"
     document.getElementById("formplanet1").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model4").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButtonAir1.textContent = "Выберите размер";
+
     // Делаем кнопку "pufforder1" неактивной
     pufforder1.pufforderinactive = true;
     pufforder1.classList.add("pufforderinactive");
@@ -870,10 +880,23 @@ const iphoneModelsWindow17 = document.getElementById("iphoneModelsWindow17");
 
     // Логика для кнопки "Назад", возвращающая на "home"
     backButton2.onclick = () => {
-        document.getElementById("pufferplanet").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("formplanet1").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
-        backButton1.style.display = "block";
+        document.getElementById("pufferplanet").style.display = "block"; // Показываем "pufferplanet"
+        document.getElementById("formplanet1").style.display = "none";   // Скрываем форму выбора модели
+        backButton2.style.display = "none";   // Скрываем кнопку "Назад"
+        backButton1.style.display = "block";  // Показываем кнопку "Назад" для первого экрана
+        cartMessage.style.display = 'none';   // Скрываем сообщение
+    
+        // Скрываем окно выбора модели
+        iphoneModelsWindowAir1.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model4").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButtonAir1.textContent = "Выберите размер";
     };
     
 });
@@ -1129,6 +1152,15 @@ tg.MainButton.onClick(() => {
     document.getElementById("pufferplanet").style.display = "none"
     document.getElementById("formplanet2").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model4").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButtonAir2.textContent = "Выберите размер";
+
     // Делаем кнопку "pufforder2" неактивной
     pufforder2.pufforderinactive = true;
     pufforder2.classList.add("pufforderinactive");
@@ -1143,6 +1175,19 @@ tg.MainButton.onClick(() => {
         document.getElementById("formplanet2").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindowAir2.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model4").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButtonAir2.textContent = "Выберите размер";
     };
 });
 
@@ -1231,6 +1276,15 @@ pufforder2.addEventListener("click", function (event) {
     document.getElementById("pufferplanet").style.display = "none"
     document.getElementById("formplanet3").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model4").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButtonAir3.textContent = "Выберите размер";
+
     // Делаем кнопку "pufforder3" неактивной
     pufforder3.pufforderinactive = true;
     pufforder3.classList.add("pufforderinactive");
@@ -1245,6 +1299,19 @@ pufforder2.addEventListener("click", function (event) {
         document.getElementById("formplanet3").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindowAir3.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model4").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButtonAir3.textContent = "Выберите размер";
     };
 });
 
@@ -1332,6 +1399,15 @@ pufforder3.addEventListener("click", function (event) {
     document.getElementById("pufferplanet").style.display = "none"
     document.getElementById("formplanet4").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model4").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButtonAir4.textContent = "Выберите размер";
+
     // Делаем кнопку "pufforder3" неактивной
     pufforder4.pufforderinactive = true;
     pufforder4.classList.add("pufforderinactive");
@@ -1346,6 +1422,19 @@ pufforder3.addEventListener("click", function (event) {
         document.getElementById("formplanet4").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindowAir4.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model4").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButtonAir4.textContent = "Выберите размер";
     };
 });
 
@@ -1432,6 +1521,15 @@ pufforder4.addEventListener("click", function (event) {
     document.getElementById("pufferplanet").style.display = "none"
     document.getElementById("formplanet5").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model4").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButtonAir5.textContent = "Выберите размер";
+
     // Делаем кнопку "pufforder5" неактивной
     pufforder5.pufforderinactive = true;
     pufforder5.classList.add("pufforderinactive");
@@ -1446,6 +1544,19 @@ pufforder4.addEventListener("click", function (event) {
         document.getElementById("formplanet5").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindowAir5.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model4").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButtonAir5.textContent = "Выберите размер";
     };
 });
 
@@ -1532,6 +1643,15 @@ pufforder5.addEventListener("click", function (event) {
     document.getElementById("pufferplanet").style.display = "none"
     document.getElementById("formplanet6").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model4").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButtonAir6.textContent = "Выберите размер";
+
     // Делаем кнопку "pufforder5" неактивной
     pufforder6.pufforderinactive = true;
     pufforder6.classList.add("pufforderinactive");
@@ -1546,6 +1666,19 @@ pufforder5.addEventListener("click", function (event) {
         document.getElementById("formplanet6").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindowAir6.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model4").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButtonAir6.textContent = "Выберите размер";
     };
 });
 
@@ -1631,6 +1764,15 @@ pufforder6.addEventListener("click", function (event) {
 купить7.addEventListener("click", () => {
     document.getElementById("pufferplanet").style.display = "none"
     document.getElementById("formplanet7").style.display = "block"
+    
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model4").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButtonAir7.textContent = "Выберите размер";
 
     // Делаем кнопку "pufforder5" неактивной
     pufforder7.pufforderinactive = true;
@@ -1646,6 +1788,19 @@ pufforder6.addEventListener("click", function (event) {
         document.getElementById("formplanet7").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindowAir7.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model4").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButtonAir7.textContent = "Выберите размер";
     };
 });
 
@@ -1732,6 +1887,15 @@ pufforder7.addEventListener("click", function (event) {
     document.getElementById("pufferplanet").style.display = "none"
     document.getElementById("formplanet8").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model4").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButtonAir8.textContent = "Выберите размер";
+
     // Делаем кнопку "pufforder5" неактивной
     pufforder8.pufforderinactive = true;
     pufforder8.classList.add("pufforderinactive");
@@ -1746,6 +1910,19 @@ pufforder7.addEventListener("click", function (event) {
         document.getElementById("formplanet8").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindowAir8.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model4").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButtonAir8.textContent = "Выберите размер";
     };
 });
 
@@ -1847,6 +2024,15 @@ pufforder8.addEventListener("click", function (event) {
 btn1.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form1").style.display = "block"
+    
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model1").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButton.textContent = "Выберите размер";
 
 
     // Делаем кнопку "order1" неактивной
@@ -1863,6 +2049,19 @@ btn1.addEventListener("click", () => {
         document.getElementById("form1").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindow.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model1").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButton.textContent = "Выберите размер";
     };
     
 
@@ -1978,6 +2177,15 @@ btn2.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form2").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model1").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButton2.textContent = "Выберите размер";
+
 
     // Делаем кнопку "order2" неактивной
     order2.orderinactive = true;
@@ -1993,6 +2201,19 @@ btn2.addEventListener("click", () => {
         document.getElementById("form2").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindow2.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model1").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButton2.textContent = "Выберите размер";
     };
 });
 
@@ -2093,6 +2314,15 @@ btn3.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form3").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model1").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButton3.textContent = "Выберите размер";
+
 
     // Делаем кнопку "order3" неактивной
     order3.orderinactive = true;
@@ -2108,6 +2338,19 @@ btn3.addEventListener("click", () => {
         document.getElementById("form3").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindow3.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model1").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButton3.textContent = "Выберите размер";
     };
 });
 
@@ -2207,6 +2450,15 @@ btn4.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form4").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model1").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButton4.textContent = "Выберите размер";
+
 
     // Делаем кнопку "order4" неактивной
     order4.orderinactive = true;
@@ -2222,6 +2474,19 @@ btn4.addEventListener("click", () => {
         document.getElementById("form4").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindow4.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model1").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButton4.textContent = "Выберите размер";
     };
 });
 
@@ -2321,6 +2586,15 @@ btn5.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form5").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model1").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButton5.textContent = "Выберите размер";
+
 
     // Делаем кнопку "order5" неактивной
     order5.orderinactive = true;
@@ -2336,6 +2610,19 @@ btn5.addEventListener("click", () => {
         document.getElementById("form5").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindow5.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model1").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButton5.textContent = "Выберите размер";
     };
 });
 
@@ -2435,6 +2722,15 @@ btn6.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form6").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model1").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButton6.textContent = "Выберите размер";
+
 
     // Делаем кнопку "order6" неактивной
     order6.orderinactive = true;
@@ -2450,6 +2746,19 @@ btn6.addEventListener("click", () => {
         document.getElementById("form6").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindow6.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model1").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButton6.textContent = "Выберите размер";
     };
 });
 
@@ -2549,6 +2858,15 @@ btn16.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form16").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model1").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButton16.textContent = "Выберите размер";
+
 
     // Делаем кнопку "order6" неактивной
     order16.orderinactive = true;
@@ -2564,6 +2882,19 @@ btn16.addEventListener("click", () => {
         document.getElementById("form16").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindow16.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model1").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButton16.textContent = "Выберите размер";
     };
 });
 
@@ -2663,6 +2994,15 @@ btn17.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form17").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model1").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButton17.textContent = "Выберите размер";
+
 
     // Делаем кнопку "order6" неактивной
     order17.orderinactive = true;
@@ -2678,6 +3018,19 @@ btn17.addEventListener("click", () => {
         document.getElementById("form17").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindow17.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model1").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButton17.textContent = "Выберите размер";
     };
 });
 
@@ -2778,6 +3131,15 @@ btn7.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form7").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model1").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButton7.textContent = "Выберите размер";
+
 
     // Делаем кнопку "order6" неактивной
     order7.orderinactive = true;
@@ -2793,6 +3155,19 @@ btn7.addEventListener("click", () => {
         document.getElementById("form7").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindow7.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model1").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButton7.textContent = "Выберите размер";
     };
 });
 
@@ -2893,6 +3268,15 @@ btn8.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form8").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model1").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButton8.textContent = "Выберите размер";
+
 
     // Делаем кнопку "order8" неактивной
     order8.orderinactive = true;
@@ -2908,6 +3292,19 @@ btn8.addEventListener("click", () => {
         document.getElementById("form8").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindow8.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model1").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButton8.textContent = "Выберите размер";
     };
 });
 
@@ -3007,6 +3404,15 @@ btn9.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form9").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model1").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButton9.textContent = "Выберите размер";
+
 
     // Делаем кнопку "order9" неактивной
     order9.orderinactive = true;
@@ -3022,6 +3428,19 @@ btn9.addEventListener("click", () => {
         document.getElementById("form9").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindow9.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model1").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButton9.textContent = "Выберите размер";
     };
 });
 
@@ -3121,6 +3540,15 @@ btn10.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form10").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model1").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButton10.textContent = "Выберите размер";
+
 
     // Делаем кнопку "order9" неактивной
     order10.orderinactive = true;
@@ -3136,6 +3564,19 @@ btn10.addEventListener("click", () => {
         document.getElementById("form10").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindow10.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model1").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButton10.textContent = "Выберите размер";
     };
 });
 
@@ -3235,6 +3676,15 @@ btn11.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form11").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model1").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButton11.textContent = "Выберите размер";
+
 
     // Делаем кнопку "order9" неактивной
     order11.orderinactive = true;
@@ -3250,6 +3700,19 @@ btn11.addEventListener("click", () => {
         document.getElementById("form11").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindow11.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model1").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButton11.textContent = "Выберите размер";
     };
 });
 
@@ -3349,6 +3812,15 @@ btn12.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form12").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model1").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButton12.textContent = "Выберите размер";
+
 
     // Делаем кнопку "order9" неактивной
     order12.orderinactive = true;
@@ -3364,6 +3836,19 @@ btn12.addEventListener("click", () => {
         document.getElementById("form12").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindow12.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model1").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButton12.textContent = "Выберите размер";
     };
 });
 
@@ -3463,6 +3948,15 @@ btn13.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form13").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model1").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButton13.textContent = "Выберите размер";
+
 
     // Делаем кнопку "order9" неактивной
     order13.orderinactive = true;
@@ -3477,6 +3971,19 @@ btn13.addEventListener("click", () => {
         document.getElementById("form13").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindow13.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model1").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButton13.textContent = "Выберите размер";
     };
 });
 
@@ -3576,6 +4083,15 @@ btn14.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form14").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model1").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButton14.textContent = "Выберите размер";
+
 
     // Делаем кнопку "order9" неактивной
     order14.orderinactive = true;
@@ -3591,6 +4107,19 @@ btn14.addEventListener("click", () => {
         document.getElementById("form14").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindow14.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model1").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButton14.textContent = "Выберите размер";
     };
 });
 
@@ -3690,6 +4219,15 @@ btn15.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form15").style.display = "block"
 
+    // Удаляем класс 'selected' у всех моделей
+    document.querySelectorAll(".model1").forEach(model => {
+        model.classList.remove("selected");
+        model.style.border = "none";
+    });
+
+    // Сбрасываем текст кнопки выбора размера
+    sizeButton15.textContent = "Выберите размер";
+
 
     // Делаем кнопку "order9" неактивной
     order15.orderinactive = true;
@@ -3705,6 +4243,19 @@ btn15.addEventListener("click", () => {
         document.getElementById("form15").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
+        // Скрываем окно выбора модели
+        iphoneModelsWindow15.style.display = "none";
+    
+        // Удаляем класс 'selected' у всех моделей
+        document.querySelectorAll(".model1").forEach(model => {
+            model.classList.remove("selected");
+            model.style.border = "none";
+        });
+    
+        // Сбрасываем текст кнопки выбора размера
+        sizeButton15.textContent = "Выберите размер";
     };
 });
 

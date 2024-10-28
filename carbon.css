@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    width: 400px;
     padding: 0;
     font-size: 10px;
     color: white;
@@ -161,6 +162,7 @@ body {
     max-width: 400px; /* Максимальная ширина контейнера */
     text-align: center; /* Центрируем содержимое по горизонтали */
     margin: 0 auto; /* Центрируем контейнер по горизонтали */
+    overflow: hidden;
 }
 
 .videohome {
@@ -182,7 +184,7 @@ body {
     
 
     z-index: 1000; /* Убедитесь, что панель выше остальных элементов */
-    width: 430px; /* Ширина на всю страницу */
+    width: 400px; /* Ширина на всю страницу */
     height: 45px;
 
     backdrop-filter: blur(25px) saturate(200%);
@@ -228,7 +230,7 @@ body {
 .cart-message {
     position: fixed;
     top: 48px;
-    right: 80px;
+    right: 10px;
     background-color: gray;
     color: white;
     padding: 5px 10px;
@@ -259,7 +261,7 @@ body {
 .cart {
     position: fixed;
     top: 0;
-    width: 430px;
+    width: 400px;
     height: 100%;
     z-index: 10000;
     display: flex;
@@ -296,9 +298,11 @@ body {
 }
 
 
+
 .close-button {
     width: 30px;
-    margin-right: 8px;
+    position: absolute;
+    right: 25px;
     height: 30px;
     background: none;
     border: none;
@@ -434,9 +438,9 @@ body {
 
 
 .cart-items {
-    width: 100%;
+    width: 400px;
     justify-content: center;
-    max-height: 245px;
+    max-height: 260px;
     overflow-y: scroll;
 }
 
@@ -444,16 +448,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
     height: 100px;
-    width: 390px;
+    width: 380px;
+    margin-top: 10px;
 }
 
 .cart-item .item-img {
     width: 80px;
     height: 80px;
-    margin-left: 20px;
-    margin-right: 5px;
+    margin-left: 25px;
 }
 
 .cart-item .item-img img {
@@ -496,6 +499,7 @@ body {
     background-color: #ffffff;
     margin-left: auto;
     margin-right: 10px;
+    margin-bottom: 5px;
 }
 
 .cart-item .item-quantity button {
@@ -520,7 +524,7 @@ body {
 
 
 .cart-footer {
-    width: 430px;
+    width: 400px;
     height: 40px;
     background-color: #202020;
     text-align: right;
@@ -1158,14 +1162,6 @@ body {
     width: 100%;
 }
 
-.close-button {
-    color: rgb(255, 255, 255);
-    position: absolute;
-    top: 1px;
-    right: 8px;
-    font-size: 30px;
-    cursor: pointer;
-}
 
 
 
@@ -1801,7 +1797,7 @@ form {
     background-color: #ffffff;
     border-radius: 20px;
     
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .swiper-slide {
@@ -2552,7 +2548,7 @@ form {
     width: 380px;
     background-color: #ffffff; /* bg-slate-50 */
     margin-top: 10px;
-    margin-left: 25px;
+    margin-left: 10px;
 }
 
 .airdelivery-btn1 {
