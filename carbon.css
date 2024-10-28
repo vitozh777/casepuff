@@ -139,7 +139,7 @@ body {
     cursor: pointer;
     padding: 10px;
     display: none;
-    margin-left: 5px;
+    margin-left: 15px;
     text-align: center;
 }
 
@@ -185,8 +185,10 @@ body {
     
 
     z-index: 1000; /* Убедитесь, что панель выше остальных элементов */
-    width: 500px; /* Ширина на всю страницу */
-    height: 45px;
+    width: 100%; /* Ширина на всю страницу */
+    height: 40px;
+    padding-left: 25px;
+    padding-right: 25px;
 
     backdrop-filter: blur(25px) saturate(200%);
     -webkit-backdrop-filter: blur(25px) saturate(200%);
@@ -201,7 +203,7 @@ body {
     width: 45px;
     height: 45px;
     margin-left: auto; /* Отталкиваем элемент в крайний правый угол */
-    margin-right: 20px; /* Отступ справа */
+    margin-right: 25px
 }
 
 .cart-icon {
@@ -212,7 +214,7 @@ body {
 .cart-counter {
     position: absolute;
     top: 22px;
-    right: 25px;
+    margin-right: 25px;
     background-color: black;
     color: white;
     width: 15px;
@@ -261,8 +263,7 @@ body {
 
 .cart {
     position: fixed;
-    top: 0;
-    width: 500px;
+    width: 100%;
     height: 100%;
     z-index: 10000;
     display: flex;
@@ -270,6 +271,7 @@ body {
     align-items: center;
     background: #ffffff;
     color: #000;
+    padding: 10px;
     
 }
 
@@ -295,7 +297,6 @@ body {
     text-align: center;
     font-size: 24px;
     font-weight: bold;
-    margin-top: 10px;
 }
 
 
@@ -308,7 +309,6 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    margin-top: 8px
 }
   
 .close-button:before, .close-button:after {
@@ -346,7 +346,7 @@ body {
     color: #000000;
     border-radius: 10px;
     cursor: pointer;
-    width: 380px;
+    width: 90%;
     height: 40px;
     border: 1px solid rgb(0, 0, 0);
 }
@@ -361,17 +361,16 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    padding: 10px;
+    width: 90%;
     background-color: #ffffff;
-    margin-top: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .sticker-title {
     text-align: center;
     font-size: 12px;
     font-weight: bold;
-    margin-left: 25px;
 }
 
 #sticker-price {
@@ -385,7 +384,6 @@ body {
     height: 28px;
     position: relative;
     display: inline-block;
-    margin-right: 10px
 }
 
 .checkbox {
@@ -427,12 +425,11 @@ body {
 
 
 .sticker-hint {
+    width: 90%;
     font-size: 9px;
     color: rgb(118, 118, 118); /* Красный цвет для заметности */
-    text-align: right;
+    text-align: left;
     margin-top: -10px;
-    margin-right: auto;
-    margin-left: 25px;
     margin-bottom: -20px;
 }
 
@@ -440,9 +437,10 @@ body {
 
 .cart-items {
     width: 100%;
+    height: 260px;
     justify-content: center;
-    max-height: 260px;
     overflow-y: scroll;
+    border-bottom: 1px solid #cdcdcd;
 }
 
 .cart-item {
@@ -450,7 +448,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100px;
-    width: 90%;
+    width: 95%;
     padding: 10px;
 }
 
@@ -496,10 +494,9 @@ body {
     display: flex;
     align-items: center;
     margin-top: auto;
-    width: 80px;
     background-color: #ffffff;
     margin-left: auto;
-    margin-right: 10px;
+    margin-right: 20px;
     margin-bottom: 5px;
 }
 
@@ -611,7 +608,7 @@ body {
 }
 
 .input {
-  width: 96%;
+  width: 97%;
   height: 40px;
   border: none;
   outline: none;
@@ -890,12 +887,13 @@ body {
 
 
 .contplanet {
-    max-width: 400px;
+    width: 100%;
     display: none;
     justify-content: center; /* Выравнивание по горизонтали */
     align-items: center;
     text-align: center;
     background: #ffffff;
+    padding: 10px;
 }
 
 .clothes {
@@ -999,14 +997,6 @@ body {
 
 
 
-
-.window {
-    display: none;
-    text-align: center;
-    width: 400px;
-    justify-content: center;
-    align-items: center;
-}
 .img3 {
     width: 95%;
 }
@@ -1136,28 +1126,6 @@ body {
     z-index: 999;
 }
 
-.setka {
-    width: 400px;
-    
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    position: fixed;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-    background: rgba(95, 95, 95, 0.52);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.29);
-}
-
-.imgsetka {
-    width: 100%;
-    margin-bottom: 20px;
-}
 
 .imgl {
     width: 100%;
@@ -1286,7 +1254,7 @@ body {
 }
 
 #overlayPP img {
-    width: 400px;
+    width: 100%;
     border-radius: 20px;
 }
 
@@ -1314,11 +1282,12 @@ body {
 
 
 .container {
-    max-width: 400px;
+    width: 100%;
     display: none;
     justify-content: center; /* Выравнивание по горизонтали */
     align-items: center;
     background: #ffffff;
+    padding: 10px;
 }
 
 .inner {
@@ -1419,12 +1388,12 @@ body {
 form {
     display: none;
     text-align: center;
-    width: 400px;
+    width: 100%;
     
     justify-content: center;
     align-items: center;
     background: #ffffff;
-    padding: 10px;
+    padding: 20px;
 }
 
 .product-details {
@@ -2534,22 +2503,19 @@ form {
     align-items: flex-start;
     display: flex;
     flex-flow: row wrap;
-    margin-left: 25px;
-    margin-right: 25px;
     margin-top: 8px;
 }
 
 .cart-delivery {
-    width: 100%;
+    width: 90%;
     margin-top: auto;
     margin-bottom: 50px;
 }
 
 .delivery-options {
-    width: 380px;
+    width: 100%;
     background-color: #ffffff; /* bg-slate-50 */
     margin-top: 10px;
-    margin-left: 10px;
 }
 
 .airdelivery-btn1 {
