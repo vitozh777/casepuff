@@ -444,7 +444,7 @@ document.addEventListener("click", function(event) {
 // Обрабатываем применение скидки
 document.getElementById("apply-promo-btn").addEventListener("click", () => {
     const promoCode = document.getElementById("promo-code").value.toLowerCase(); // Промокод переводим в нижний регистр для совместимости
-    const validPromoCodes = ["must10", "carbon10"]; // Список валидных промокодов
+    const validPromoCodes = ["must10", "carbon10", "puffplan"]; // Список валидных промокодов
 
     if (validPromoCodes.includes(promoCode) && !promoApplied) {
         promoApplied = true; // Устанавливаем флаг, что скидка применена
@@ -1045,12 +1045,12 @@ async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryP
     }).join('\n\n');
 
     // Добавляем данные о методе доставки, стоимости доставки и наборе наклеек
-    message += `\n\nДоставка: ${deliveryMethod} - ${deliveryPrice}₽\n`;
-    message += `Стикерпак: ${stickerIncluded ? 'да' : 'нет'}\n`;
+    message += `\n\nДоставка: ${deliveryMethod} - ${deliveryPrice}₽`;
+    message += `\nСтикерпак: ${stickerIncluded ? 'да' : 'нет'}`;
     if (appliedPromoCode) {
         message += `\nСкидка: 10% (промокод - ${appliedPromoCode})`;
     }
-    message += `Общая цена: ${totalPrice}`;
+    message += `\nОбщая цена: ${totalPrice}`;
 
 
     // Логирование сообщения для отладки
@@ -1111,7 +1111,7 @@ tg.MainButton.onClick(() => {
         let appliedPromoCode = null;
 
         // Условие проверки промокода (если промокод применен и допустим)
-        if (promoApplied && (inputPromoCode === "must10" || inputPromoCode === "carbon10")) {
+        if (promoApplied && (inputPromoCode === "must10" || inputPromoCode === "carbon10" || inputPromoCode === "puffplan")) {
             appliedPromoCode = inputPromoCode;  // Промокод сохраняется
             console.log("Promo Applied: ", appliedPromoCode);  // Логируем примененный промокод
         } else {
