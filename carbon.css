@@ -436,6 +436,7 @@ body {
     height: 260px;
     justify-content: center;
     overflow-y: scroll;
+    overflow-x: hidden;
     border-bottom: 1px solid #cdcdcd;
 }
 
@@ -446,12 +447,13 @@ body {
     height: 100px;
     width: 400px;
     padding: 10px;
+    overflow-x: hidden;
 }
 
 .cart-item .item-img {
     width: 80px;
     height: 80px;
-    margin-left: 25px;
+    margin-left: 20px;
 }
 
 .cart-item .item-img img {
@@ -495,7 +497,7 @@ body {
     margin-left: auto;
     margin-right: 20px;
     margin-bottom: 5px;
-    width: 60px;
+    width: 50px;
 }
 
 .cart-item .item-quantity button {
