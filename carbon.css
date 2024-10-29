@@ -432,7 +432,7 @@ body {
 
 
 .cart-items {
-    display: flex;
+    display: block;
     width: 100%;
     height: 260px;
     justify-content: center;
