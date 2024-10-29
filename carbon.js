@@ -1050,8 +1050,10 @@ async function sendMessageToBotWithKeyboard(orderData, deliveryMethod, deliveryP
     if (appliedPromoCode) {
         message += `\nСкидка: 10% (промокод - ${appliedPromoCode})`;
     }
-    message += `\nОбщая цена: ${totalPrice}`;
+    message += `\nОбщая цена: ${totalPrice}₽`;
 
+    // Оборачиваем сообщение в тройные обратные кавычки для моноширинного шрифта
+    message = `\`\`\`\n${message}\n\`\`\``;
 
     // Логирование сообщения для отладки
     console.log("Отправляем сообщение: ", message);
