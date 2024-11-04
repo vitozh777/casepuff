@@ -75,17 +75,11 @@ let priceElementForm8 = document.querySelector(".price8");
 let priceElementForm9 = document.querySelector(".price9");
 
 const cartButton = document.getElementById('cart-button');
-
-
 const backButton1 = document.getElementById("back-button1");
 const backButton2 = document.getElementById("back-button2");
 
-// Получаем ссылки на видео
 const video1 = document.getElementById("myVideo3");
 const video2 = document.getElementById("myVideo");
-
-
-
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -97,7 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalResources = videos.length + document.images.length;
     let videosReady = 0;
 
-    // Функция для скрытия загрузочного экрана без задержек для MainButton
     function hideLoadingScreen() {
         loadingScreen.style.display = 'none';
         videos.forEach(video => {
@@ -106,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Функция для проверки загрузки ресурсов
     function checkAllResourcesLoaded() {
         resourcesLoaded++;
         if (resourcesLoaded >= totalResources && videosReady >= videos.length) {
@@ -114,7 +106,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Обработка загрузки изображений и видео
     for (let img of document.images) {
         img.complete ? checkAllResourcesLoaded() : img.addEventListener('load', checkAllResourcesLoaded);
         img.addEventListener('error', checkAllResourcesLoaded);
@@ -126,8 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
         video.onerror = () => { videosReady++; checkAllResourcesLoaded(); };
     });
 
-    // Устанавливаем таймаут на 5 секунд для скрытия экрана загрузки
-    setTimeout(hideLoadingScreen, 5000); // Таймаут можно настроить
+    setTimeout(hideLoadingScreen, 5000);
 });
 
 
@@ -147,49 +137,33 @@ function closeOverlayPP() {
 }
 
 
-
-
-
-
-
 var animation = lottie.loadAnimation({
-    container: document.getElementById('cart-icon'), // контейнер для анимации
-    renderer: 'svg', // тип рендера (svg, canvas, html)
-    loop: true, // зацикливание анимации
-    autoplay: true, // автоматическое воспроизведение
-    path: 'cart.json' // путь к вашему JSON-файлу
+    container: document.getElementById('cart-icon'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'cart.json'
 });
-
-
-
-
-
-
 
 
 let cartItems = [];
 
-
-
-// Кнопка открытия корзины
 cartButton.addEventListener('click', function () {
     const cart = document.getElementById('mycart');
-    cart.classList.remove('hidden'); // Открываем корзину
+    cart.classList.remove('hidden');
     cartMessage.style.display = 'none';
 
-    // Проверяем, есть ли товары в корзине
     if (cartItems.length > 0) {
         tg.MainButton.text = "Оплатить через оператора";
         tg.MainButton.show();
     } else {
-        tg.MainButton.hide(); // Если корзина пуста, скрываем MainButton
+        tg.MainButton.hide();
     }
 });
 
-// Обновление отображения корзины
 function updateCartDisplay() {
     const cartContainer = document.getElementById("cart-items");
-    cartContainer.innerHTML = ""; // Очищаем корзину перед обновлением
+    cartContainer.innerHTML = "";
 
     cartItems.forEach(item => {
         const cartItem = document.createElement("div");
@@ -214,29 +188,17 @@ function updateCartDisplay() {
         cartContainer.appendChild(cartItem);
     });
 
-    updateTotalPrice(); // Обновляем общую стоимость
-    
+    updateTotalPrice();  
 }
-
-
-
-
-
 
 
 document.getElementById("close-cart").addEventListener("click", function() {
     document.getElementById("mycart").classList.add("hidden");
-    // Скрываем кнопку MainButton
     tg.MainButton.hide();
-    // Обновляем отображение количества товаров
     updateCartCounter();
 });
 
 
-
-
-
-// Функция добавления товара в корзину
 function addToCart(item) {
     const existingItem = cartItems.find(i => i.id === item.id && i.model === item.model);
 
@@ -246,27 +208,21 @@ function addToCart(item) {
         cartItems.push({ ...item });
     }
 
-    // После добавления товара разблокируем все элементы корзины
     enableCartControls();
-    
     updateTotalPrice();
 }
 
 
-
-
-// Функция для обновления количества товара
 function updateQuantity(itemId, model, change) {
     const item = cartItems.find(i => i.id === itemId && i.model === model);
     if (item) {
         item.quantity += change;
 
-        // Если количество меньше 1, удаляем товар из корзины
         if (item.quantity <= 0) {
             cartItems = cartItems.filter(i => i.id !== itemId || i.model !== model);
         }
 
-        updateCartDisplay();  // Обновляем отображение корзины после изменения количества
+        updateCartDisplay();
     }
 }
 
@@ -280,7 +236,7 @@ function showCartMessage() {
     cartMessage.style.display = 'block';
     setTimeout(() => {
         cartMessage.style.display = 'none';
-    }, 4000); // Окно будет отображаться 4 секунды
+    }, 4000);
 }
 
 function updateCartCounter() {
@@ -295,59 +251,45 @@ function updateCartCounter() {
 }
 
 
-
-
-
-
 function updateTotalPrice() {
-    // Считаем общую цену товаров
     let totalItemsPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    
-    // Применяем скидку 10%, если промокод введён
+
     let discountedItemsPrice = totalItemsPrice;
     if (promoApplied) {
-        discountedItemsPrice *= 0.9; // Применяем скидку 10%
+        discountedItemsPrice *= 0.9;
     }
 
-    // Определяем общую цену без учёта скидки (с доставкой)
     const totalWithoutDiscount = totalItemsPrice + deliveryPrice;
+    let stickerPrice = 20;
 
-    // Логика для набора наклеек
-    let stickerPrice = 20; // Цена набора наклеек по умолчанию — 20₽
-
-    // Если общая сумма товаров + доставка >= 3000, набор становится бесплатным
     if (totalWithoutDiscount >= 3000) {
-        stickerPrice = 0; // Набор бесплатный
+        stickerPrice = 0;
     } else if (!stickerIncluded) {
-        stickerPrice = -20; // Если набор выключен, цена 20₽ сохраняется, но вычитается из общей суммы
+        stickerPrice = -20;
     }
 
-    // Итоговая цена товаров + доставка + наклейки
     const totalPrice = Math.round(discountedItemsPrice + deliveryPrice + (stickerPrice > 0 ? stickerPrice : 0));
 
-    // Обновляем цену на странице
     const oldPriceElement = document.getElementById("old-price");
     const newPriceElement = document.getElementById("new-price");
 
     if (promoApplied) {
-        oldPriceElement.textContent = `${Math.round(totalItemsPrice + deliveryPrice + 20)}₽`; // Старая цена
-        newPriceElement.textContent = `${totalPrice}₽`; // Новая цена со скидкой
-        oldPriceElement.classList.remove("hidden"); // Показываем старую цену
-        newPriceElement.classList.add("discount-applied"); // Меняем цвет новой цены на красный
+        oldPriceElement.textContent = `${Math.round(totalItemsPrice + deliveryPrice + 20)}₽`;
+        newPriceElement.textContent = `${totalPrice}₽`;
+        oldPriceElement.classList.remove("hidden");
+        newPriceElement.classList.add("discount-applied");
     } else {
         newPriceElement.textContent = `${Math.round(totalItemsPrice + deliveryPrice + (stickerPrice > 0 ? stickerPrice : 0))}₽`; // Без скидки, цена серого цвета
-        oldPriceElement.classList.add("hidden"); // Скрываем старую цену
-        newPriceElement.classList.remove("discount-applied"); // Убираем красный цвет
+        oldPriceElement.classList.add("hidden");
+        newPriceElement.classList.remove("discount-applied");
     }
 
-    // Обновляем цену за наклейки
     document.getElementById("sticker-price").textContent = stickerPrice >= 0 ? `${stickerPrice}₽` : "0₽";
 
-    // Обновляем подсказку по наклейкам
     updateStickerHint(totalWithoutDiscount);
 }
 
-// Выбор метода доставки
+
 function selectDeliveryMethod(price) {
     deliveryPrice = price;
     updateTotalPrice();
@@ -364,7 +306,7 @@ function getDeliveryMethodName() {
     return deliveryMethods[deliveryPrice] || 'Неизвестный метод доставки';
 }
 
-// Разблокировка кнопок корзины
+
 function enableCartControls() {
     document.getElementById("toggle-sticker").disabled = false;
     document.getElementById("apply-discount").disabled = false;
@@ -376,98 +318,73 @@ function enableCartControls() {
 }
 
 
-let deliveryPrice = 280; // Цена доставки по умолчанию (5Post)
+let deliveryPrice = 280;
 let promoApplied = false;
 let stickerIncluded = true;
 
-// Открываем окно промокода при нажатии на кнопку "Применить скидку"
 document.getElementById("apply-discount").addEventListener("click", (event) => {
     if (!document.getElementById("apply-discount").disabled) {
-        event.stopPropagation(); // Останавливаем всплытие события
+        event.stopPropagation();
         document.getElementById("promo-popup").classList.remove("hidden");
         document.getElementById("blur-overlay").classList.remove("hidden");
         tg.MainButton.hide();
     }
 });
 
-// Инициализируем анимацию скидки
 const discountAnimation = lottie.loadAnimation({
-    container: document.getElementById('discount-icon'), // контейнер для анимации
+    container: document.getElementById('discount-icon'),
     renderer: 'svg',
     loop: true,
     autoplay: true,
-    path: 'skidka.json' // Замените на путь к вашему JSON файлу
+    path: 'skidka.json'
 });
 
-// Закрытие всплывающего окна при клике вне его
 document.addEventListener("click", function(event) {
     const promoPopup = document.getElementById("promo-popup");
     const promoContent = document.querySelector(".promo-content");
     const applyDiscountBtn = document.getElementById("apply-discount");
     const blurOverlay = document.getElementById("blur-overlay");
 
-    // Проверяем, открыт ли popup и произошел ли клик вне его содержимого и вне кнопки "Применить скидку"
     if (!promoPopup.classList.contains("hidden") && !promoContent.contains(event.target) && event.target !== applyDiscountBtn) {
-        promoPopup.classList.add("hidden"); // Скрываем окно
+        promoPopup.classList.add("hidden");
         blurOverlay.classList.add("hidden");
         tg.MainButton.show();
     }
 });
 
-// Обрабатываем применение скидки
 document.getElementById("apply-promo-btn").addEventListener("click", () => {
-    const promoCode = document.getElementById("promo-code").value.toLowerCase(); // Промокод переводим в нижний регистр для совместимости
-    const validPromoCodes = ["must10", "carbon10", "puffplan"]; // Список валидных промокодов
+    const promoCode = document.getElementById("promo-code").value.toLowerCase();
+    const validPromoCodes = ["must10", "carbon10", "puffplan"];
 
     if (validPromoCodes.includes(promoCode) && !promoApplied) {
-        promoApplied = true; // Устанавливаем флаг, что скидка применена
-        appliedPromoCode = promoCode; // Сохраняем примененный промокод
-        document.getElementById("promo-popup").classList.add("hidden"); // Закрываем окно
-        document.getElementById("blur-overlay").classList.add("hidden"); // Закрываем окно
-        updateTotalPrice(); // Пересчитываем общую цену с учетом скидки
+        promoApplied = true;
+        appliedPromoCode = promoCode;
+        document.getElementById("promo-popup").classList.add("hidden");
+        document.getElementById("blur-overlay").classList.add("hidden");
+        updateTotalPrice();
         tg.MainButton.show();
     } else {
         alert("Неверный промокод или скидка уже применена.");
     }
 });
 
-// Функция переключения набора наклеек
 function toggleSticker() {
-    stickerIncluded = document.getElementById("toggle-sticker").checked; // Проверяем состояние набора наклеек
-    updateTotalPrice(); // Пересчитываем общую цену
+    stickerIncluded = document.getElementById("toggle-sticker").checked;
+    updateTotalPrice();
 }
 
-
-
-// Обновление подсказки по наклейкам
 function updateStickerHint(totalWithoutDiscount) {
     const hintElement = document.getElementById("sticker-hint");
 
-    // Если общая цена (с доставкой) меньше 3000 рублей, показываем, сколько не хватает до бесплатного набора наклеек
     if (totalWithoutDiscount < 3000) {
         const amountLeft = Math.round(3000 - totalWithoutDiscount);
         hintElement.textContent = `Добавьте ещё ${amountLeft}₽ для бесплатного набора наклеек`;
     } else {
-        hintElement.textContent = ''; // Убираем подсказку, если сумма >= 3000
+        hintElement.textContent = '';
     }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Функция для переключения видимости блока контактов
 function toggleContacts() {
     var contactsButtons = document.getElementById("contacts-buttons");
     var arrow = document.getElementById("arrow");
@@ -481,14 +398,11 @@ function toggleContacts() {
     }
 }
 
-// Обработчик клика по документу
 document.addEventListener("click", function(event) {
     var contactsButtons = document.getElementById("contacts-buttons");
     var contactsHeader = document.querySelector(".contacts-header");
-    
-    // Проверяем, произошел ли клик внутри кнопки или блока контактов
+
     if (!contactsHeader.contains(event.target) && !contactsButtons.contains(event.target)) {
-        // Скрываем блок с контактами и закрываем стрелку
         if (!contactsButtons.classList.contains("hidden")) {
             contactsButtons.classList.add("hidden");
             var arrow = document.getElementById("arrow");
@@ -496,12 +410,6 @@ document.addEventListener("click", function(event) {
         }
     }
 });
-
-
-
-
-
-
 
 
 const casepuffButton = document.getElementById("casepuff");
@@ -515,24 +423,21 @@ casepuffButton.addEventListener("click", () => {
         contactsHeader.style.display = "none";
     }
 
-    // Показываем кнопку "Назад"
     backButton1.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
     backButton1.onclick = () => {
-        document.getElementById("thepuffercase").style.display = "none"; // Скрываем "pufferplanet"
-        document.getElementById("home").style.display = "block"; // Показываем "home"
-        backButton1.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("thepuffercase").style.display = "none";
+        document.getElementById("home").style.display = "block";
+        backButton1.style.display = "none";
 
-        // Показываем contacts-header при возврате на "home"
         if (contactsHeader) {
-            contactsHeader.style.display = "block"; // Показываем элемент снова
+            contactsHeader.style.display = "block";
         }
 
-        video1.currentTime = 0; // Сбрасываем видео на начало
-        video1.play(); // Начинаем воспроизведение
-        video2.currentTime = 0; // Сбрасываем второе видео на начало
-        video2.play(); // Начинаем воспроизведение
+        video1.currentTime = 0;
+        video1.play();
+        video2.currentTime = 0;
+        video2.play();
     };
 
 
@@ -549,30 +454,23 @@ pufferplanetButton.addEventListener("click", () => {
         contactsHeader.style.display = "none";
     }
 
-    // Показываем кнопку "Назад"
     backButton1.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
     backButton1.onclick = () => {
-        document.getElementById("pufferplanet").style.display = "none"; // Скрываем "pufferplanet"
-        document.getElementById("home").style.display = "block"; // Показываем "home"
-        backButton1.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("pufferplanet").style.display = "none";
+        document.getElementById("home").style.display = "block";
+        backButton1.style.display = "none";
 
-        // Показываем contacts-header при возврате на "home"
         if (contactsHeader) {
-            contactsHeader.style.display = "block"; // Показываем элемент снова
+            contactsHeader.style.display = "block";
         }
 
-        video1.currentTime = 0; // Сбрасываем видео на начало
-        video1.play(); // Начинаем воспроизведение
-        video2.currentTime = 0; // Сбрасываем второе видео на начало
-        video2.play(); // Начинаем воспроизведение
+        video1.currentTime = 0;
+        video1.play();
+        video2.currentTime = 0;
+        video2.play();
     };
-
-    
 });
-
-
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -581,52 +479,32 @@ document.addEventListener('DOMContentLoaded', function() {
     var secondVideo = document.getElementById('myVideo2');
     var isVideoPlayed = false;
 
-    // Показываем первое видео сразу
     video.style.display = 'block';
     video3.style.display = 'block';
 
-    // Задержка в 1 секунду перед воспроизведением первого видео
     setTimeout(function() {
-        // Проверяем, что видео не было воспроизведено ранее
         if (!isVideoPlayed) {
             video.play().then(function() {
-                // Видео успешно воспроизведено
                 isVideoPlayed = true;
             }).catch(function(error) {
-                // Воспроизведение может вызвать ошибку, если видео уже воспроизводится.
-                // Игнорируем эту ошибку.
             });
             video3.play().then(function() {
-                // Видео успешно воспроизведено
                 isVideoPlayed = true;
             }).catch(function(error) {
-                // Воспроизведение может вызвать ошибку, если видео уже воспроизводится.
-                // Игнорируем эту ошибку.
             });
         }
     }, 1000);
 
-    // Обработчик события при появлении контейнера
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {
-                // Воспроизводим второе видео, когда контейнер становится видимым
                 secondVideo.play().catch(function(error) {
-                    // Воспроизведение может вызвать ошибку, если видео уже воспроизводится.
-                    // Игнорируем эту ошибку.
                 });
             }
         });
     });
     observer.observe(document.getElementById('thepuffercase'));
 });
-
-
-
-
-
-
-
 
 
 
@@ -643,7 +521,6 @@ const modelInfo1 = {
     "iPhone 13": "3699₽",
 };
 
-
 const modelInfo2 = {
     "iPhone 15 Pro Max": "3299₽",
     "iPhone 15 Pro": "3299₽",
@@ -657,7 +534,6 @@ const modelInfo2 = {
     "iPhone 12 Pro Max": "3299₽",
     "iPhone 12/12 Pro": "3299₽",
 };
-
 
 const modelInfo3 = {
     "iPhone 16 Pro Max": "2099₽",
@@ -679,13 +555,11 @@ const modelInfo3 = {
     "iPhone 11": "2099₽",
 };
 
-
 const modelInfo4 = {
     "AirPods 1/2": "2299₽",
     "AirPods Pro/Pro(2)": "2299₽",
     "AirPods 3": "2299₽",
 };
-
 
 const modelcomplInfo5 = {
     "iPhone 15 Pro Max": "1890₽",
@@ -712,13 +586,6 @@ const modelcomplInfo5 = {
     "iPhone 8 Plus/7 Plus": "1530₽",
     "iPhone 6/7/8/SE20": "1530₽",
 };
-const modelcomplairInfo6 = {
-    "AirPods 1/2": "899₽",
-    "AirPods Pro/Pro(2)": "899₽",
-    "AirPods 3": "899₽",
-};
-
-
 
 
 
@@ -728,32 +595,21 @@ document.addEventListener('DOMContentLoaded', function() {
         
         buttons.forEach(button => {
             button.addEventListener('click', function(event) {
-                event.preventDefault();  // Предотвращаем стандартное поведение
+                event.preventDefault();
 
-                // Убираем активный статус у всех кнопок в этой группе
                 buttons.forEach(btn => {
                     btn.classList.remove('active');
                 });
 
-                // Активируем выбранную кнопку
                 button.classList.add('active');
             });
         });
 
-        // Устанавливаем начальное состояние: 5post активен
         document.querySelector(`#${groupId} .airdelivery-btn1, .airdelivery-btn2, .airdelivery-btn3, .airdelivery-btn4, .airdelivery-btn5, .airdelivery-btn6, .airdelivery-btn7, .airdelivery-btn8, .delivery-btn1, .delivery-btn2, .delivery-btn3, .delivery-btn4, .delivery-btn5, .delivery-btn6, .delivery-btn7, .delivery-btn8, .delivery-btn9, .delivery-btn10, .delivery-btn11, .delivery-btn12, .delivery-btn13, .delivery-btn14, .delivery-btn15`).classList.add('active');
     }
 
-    // Инициализируем группы кнопок
-    initializeDeliveryButtons('airdelivery-group-1');  // Первая группа на одной странице
+    initializeDeliveryButtons('airdelivery-group-1');
 });
-
-
-
-
-
-
-
 
 
 
@@ -773,8 +629,6 @@ const pufforder5 = document.getElementById("pufforder5");
 const pufforder6 = document.getElementById("pufforder6");
 const pufforder7 = document.getElementById("pufforder7");
 const pufforder8 = document.getElementById("pufforder8");
-
-// Получаем элементы кнопки "SIZE" и окна выбора моделей iPhone
 const sizeButtonAir1 = document.getElementById("sizeButtonAir1");
 const sizeButtonAir2 = document.getElementById("sizeButtonAir2");
 const sizeButtonAir3 = document.getElementById("sizeButtonAir3");
@@ -828,49 +682,38 @@ const iphoneModelsWindow17 = document.getElementById("iphoneModelsWindow17");
 
 
 
-
-
-
-
 купить1.addEventListener("click", () => {
     document.getElementById("pufferplanet").style.display = "none"
     document.getElementById("formplanet1").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model4").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButtonAir1.textContent = "Выберите размер";
 
-    // Делаем кнопку "pufforder1" неактивной
     pufforder1.pufforderinactive = true;
     pufforder1.classList.add("pufforderinactive");
 
-    // Показываем кнопку "Назад"
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
     backButton2.onclick = () => {
-        document.getElementById("pufferplanet").style.display = "block"; // Показываем "pufferplanet"
-        document.getElementById("formplanet1").style.display = "none";   // Скрываем форму выбора модели
-        backButton2.style.display = "none";   // Скрываем кнопку "Назад"
-        backButton1.style.display = "block";  // Показываем кнопку "Назад" для первого экрана
-        cartMessage.style.display = 'none';   // Скрываем сообщение
-    
-        // Скрываем окно выбора модели
+        document.getElementById("pufferplanet").style.display = "block";
+        document.getElementById("formplanet1").style.display = "none";
+        backButton2.style.display = "none";  
+        backButton1.style.display = "block";
+        cartMessage.style.display = 'none';
+
         iphoneModelsWindowAir1.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
         document.querySelectorAll(".model4").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
         });
-    
-        // Сбрасываем текст кнопки выбора размера
+
         sizeButtonAir1.textContent = "Выберите размер";
     };
     
@@ -1127,35 +970,34 @@ tg.MainButton.onClick(() => {
     document.getElementById("pufferplanet").style.display = "none"
     document.getElementById("formplanet2").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model4").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButtonAir2.textContent = "Выберите размер";
 
     // Делаем кнопку "pufforder2" неактивной
     pufforder2.pufforderinactive = true;
     pufforder2.classList.add("pufforderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("pufferplanet").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("formplanet2").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("pufferplanet").style.display = "block";
+        document.getElementById("formplanet2").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindowAir2.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model4").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -1251,35 +1093,34 @@ pufforder2.addEventListener("click", function (event) {
     document.getElementById("pufferplanet").style.display = "none"
     document.getElementById("formplanet3").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model4").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButtonAir3.textContent = "Выберите размер";
 
     // Делаем кнопку "pufforder3" неактивной
     pufforder3.pufforderinactive = true;
     pufforder3.classList.add("pufforderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("pufferplanet").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("formplanet3").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("pufferplanet").style.display = "block";
+        document.getElementById("formplanet3").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindowAir3.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model4").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -1374,35 +1215,34 @@ pufforder3.addEventListener("click", function (event) {
     document.getElementById("pufferplanet").style.display = "none"
     document.getElementById("formplanet4").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model4").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButtonAir4.textContent = "Выберите размер";
 
     // Делаем кнопку "pufforder3" неактивной
     pufforder4.pufforderinactive = true;
     pufforder4.classList.add("pufforderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("pufferplanet").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("formplanet4").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("pufferplanet").style.display = "block";
+        document.getElementById("formplanet4").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindowAir4.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model4").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -1496,35 +1336,34 @@ pufforder4.addEventListener("click", function (event) {
     document.getElementById("pufferplanet").style.display = "none"
     document.getElementById("formplanet5").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model4").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButtonAir5.textContent = "Выберите размер";
 
     // Делаем кнопку "pufforder5" неактивной
     pufforder5.pufforderinactive = true;
     pufforder5.classList.add("pufforderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("pufferplanet").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("formplanet5").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("pufferplanet").style.display = "block";
+        document.getElementById("formplanet5").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindowAir5.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model4").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -1618,35 +1457,34 @@ pufforder5.addEventListener("click", function (event) {
     document.getElementById("pufferplanet").style.display = "none"
     document.getElementById("formplanet6").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model4").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButtonAir6.textContent = "Выберите размер";
 
     // Делаем кнопку "pufforder5" неактивной
     pufforder6.pufforderinactive = true;
     pufforder6.classList.add("pufforderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("pufferplanet").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("formplanet6").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("pufferplanet").style.display = "block";
+        document.getElementById("formplanet6").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindowAir6.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model4").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -1740,35 +1578,34 @@ pufforder6.addEventListener("click", function (event) {
     document.getElementById("pufferplanet").style.display = "none"
     document.getElementById("formplanet7").style.display = "block"
     
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model4").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButtonAir7.textContent = "Выберите размер";
 
     // Делаем кнопку "pufforder5" неактивной
     pufforder7.pufforderinactive = true;
     pufforder7.classList.add("pufforderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("pufferplanet").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("formplanet7").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("pufferplanet").style.display = "block";
+        document.getElementById("formplanet7").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindowAir7.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model4").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -1862,35 +1699,34 @@ pufforder7.addEventListener("click", function (event) {
     document.getElementById("pufferplanet").style.display = "none"
     document.getElementById("formplanet8").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model4").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButtonAir8.textContent = "Выберите размер";
 
     // Делаем кнопку "pufforder5" неактивной
     pufforder8.pufforderinactive = true;
     pufforder8.classList.add("pufforderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("pufferplanet").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("formplanet8").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("pufferplanet").style.display = "block";
+        document.getElementById("formplanet8").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindowAir8.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model4").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -2000,13 +1836,12 @@ btn1.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form1").style.display = "block"
     
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model1").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButton.textContent = "Выберите размер";
 
 
@@ -2014,22 +1849,22 @@ btn1.addEventListener("click", () => {
     order1.orderinactive = true;
     order1.classList.add("orderinactive");
 
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("form1").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form1").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindow.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model1").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -2152,13 +1987,12 @@ btn2.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form2").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model1").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButton2.textContent = "Выберите размер";
 
 
@@ -2166,22 +2000,22 @@ btn2.addEventListener("click", () => {
     order2.orderinactive = true;
     order2.classList.add("orderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("form2").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form2").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindow2.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model1").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -2289,13 +2123,12 @@ btn3.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form3").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model1").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButton3.textContent = "Выберите размер";
 
 
@@ -2303,22 +2136,22 @@ btn3.addEventListener("click", () => {
     order3.orderinactive = true;
     order3.classList.add("orderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("form3").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form3").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindow3.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model1").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -2425,13 +2258,12 @@ btn4.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form4").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model1").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButton4.textContent = "Выберите размер";
 
 
@@ -2439,22 +2271,22 @@ btn4.addEventListener("click", () => {
     order4.orderinactive = true;
     order4.classList.add("orderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("form4").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form4").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindow4.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model1").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -2561,13 +2393,12 @@ btn5.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form5").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model1").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButton5.textContent = "Выберите размер";
 
 
@@ -2575,22 +2406,22 @@ btn5.addEventListener("click", () => {
     order5.orderinactive = true;
     order5.classList.add("orderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("form5").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form5").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindow5.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model1").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -2697,13 +2528,12 @@ btn6.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form6").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model1").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButton6.textContent = "Выберите размер";
 
 
@@ -2711,22 +2541,22 @@ btn6.addEventListener("click", () => {
     order6.orderinactive = true;
     order6.classList.add("orderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("form6").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form6").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindow6.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model1").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -2833,13 +2663,12 @@ btn16.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form16").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model1").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButton16.textContent = "Выберите размер";
 
 
@@ -2847,22 +2676,22 @@ btn16.addEventListener("click", () => {
     order16.orderinactive = true;
     order16.classList.add("orderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("form16").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form16").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindow16.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model1").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -2969,13 +2798,12 @@ btn17.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form17").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model1").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButton17.textContent = "Выберите размер";
 
 
@@ -2983,22 +2811,22 @@ btn17.addEventListener("click", () => {
     order17.orderinactive = true;
     order17.classList.add("orderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("form17").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form17").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindow17.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model1").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -3106,13 +2934,12 @@ btn7.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form7").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model1").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButton7.textContent = "Выберите размер";
 
 
@@ -3120,22 +2947,22 @@ btn7.addEventListener("click", () => {
     order7.orderinactive = true;
     order7.classList.add("orderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("form7").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form7").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindow7.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model1").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -3243,13 +3070,12 @@ btn8.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form8").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model1").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButton8.textContent = "Выберите размер";
 
 
@@ -3257,22 +3083,22 @@ btn8.addEventListener("click", () => {
     order8.orderinactive = true;
     order8.classList.add("orderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("form8").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form8").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindow8.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model1").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -3379,13 +3205,12 @@ btn9.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form9").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model1").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButton9.textContent = "Выберите размер";
 
 
@@ -3393,22 +3218,22 @@ btn9.addEventListener("click", () => {
     order9.orderinactive = true;
     order9.classList.add("orderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("form9").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form9").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindow9.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model1").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -3515,13 +3340,12 @@ btn10.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form10").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model1").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButton10.textContent = "Выберите размер";
 
 
@@ -3529,22 +3353,22 @@ btn10.addEventListener("click", () => {
     order10.orderinactive = true;
     order10.classList.add("orderinactive");
    
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("form10").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form10").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindow10.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model1").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -3651,13 +3475,12 @@ btn11.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form11").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model1").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButton11.textContent = "Выберите размер";
 
 
@@ -3665,22 +3488,22 @@ btn11.addEventListener("click", () => {
     order11.orderinactive = true;
     order11.classList.add("orderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("form11").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form11").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindow11.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model1").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -3787,13 +3610,12 @@ btn12.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form12").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model1").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButton12.textContent = "Выберите размер";
 
 
@@ -3801,22 +3623,22 @@ btn12.addEventListener("click", () => {
     order12.orderinactive = true;
     order12.classList.add("orderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("form12").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form12").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindow12.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model1").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -3923,35 +3745,34 @@ btn13.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form13").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model1").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButton13.textContent = "Выберите размер";
 
 
     // Делаем кнопку "order9" неактивной
     order13.orderinactive = true;
     order13.classList.add("orderinactive");
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("form13").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form13").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindow13.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model1").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -4058,13 +3879,12 @@ btn14.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form14").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model1").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButton14.textContent = "Выберите размер";
 
 
@@ -4072,22 +3892,22 @@ btn14.addEventListener("click", () => {
     order14.orderinactive = true;
     order14.classList.add("orderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("form14").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form14").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindow14.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model1").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
@@ -4194,13 +4014,12 @@ btn15.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
     document.getElementById("form15").style.display = "block"
 
-    // Удаляем класс 'selected' у всех моделей
+    
     document.querySelectorAll(".model1").forEach(model => {
         model.classList.remove("selected");
         model.style.border = "none";
     });
 
-    // Сбрасываем текст кнопки выбора размера
     sizeButton15.textContent = "Выберите размер";
 
 
@@ -4208,22 +4027,22 @@ btn15.addEventListener("click", () => {
     order15.orderinactive = true;
     order15.classList.add("orderinactive");
     
-    // Показываем кнопку "Назад"
+    
     backButton1.style.display = "none";
     backButton2.style.display = "block";
 
-    // Логика для кнопки "Назад", возвращающая на "home"
+    
     backButton2.onclick = () => {
-        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("form15").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
+        document.getElementById("thepuffercase").style.display = "block";
+        document.getElementById("form15").style.display = "none";
+        backButton2.style.display = "none";
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
         iphoneModelsWindow15.style.display = "none";
     
-        // Удаляем класс 'selected' у всех моделей
+        
         document.querySelectorAll(".model1").forEach(model => {
             model.classList.remove("selected");
             model.style.border = "none";
