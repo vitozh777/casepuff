@@ -411,7 +411,7 @@ function updateStickerHint(totalWithoutDiscount) {
     // Если общая цена (с доставкой) меньше 3000 рублей, показываем, сколько не хватает до бесплатного набора наклеек
     if (totalWithoutDiscount < 3000) {
         const amountLeft = Math.round(3000 - totalWithoutDiscount);
-        hintElement.textContent = `Добавьте ещё ${amountLeft}₽ для бесплатного набора наклеек`;
+        hintElement.textContent = `Добавьте ещё на ${amountLeft}₽ для бесплатного стикерпака`;
     } else {
         hintElement.textContent = ''; // Убираем подсказку, если сумма >= 3000
     }
