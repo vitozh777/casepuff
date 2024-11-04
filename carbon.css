@@ -1890,14 +1890,14 @@ form {
 
 #iphoneModelsWindowAir1 {
     position: absolute; /* Абсолютное позиционирование для размещения поверх других элементов */
-    width: 300px; /* Ширина окна */
+    width: 50%; /* Ширина окна */
     max-height: auto; /* Максимальная высота окна */
     border-radius: 10px; /* Радиус границы для закругления углов */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
     z-index: 100000; /* Поверх всех элементов */
     overflow-y: auto; /* Скролл, если контент превышает максимальную высоту */
     margin-bottom: 70px;
-    margin-left: 100px;
+    margin-left: 25%;
 
     /* From https://css.glass */
     background: rgba(39, 39, 39, 0.77);
