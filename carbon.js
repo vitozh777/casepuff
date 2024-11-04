@@ -960,7 +960,7 @@ tg.MainButton.onClick(async () => {
         // Лог для отладки
         console.log('MainButton Clicked! Промокод:', appliedPromoCode, 'Метод доставки:', deliveryMethod, 'Итоговая цена:', totalPrice);
 
-        // Отправляем сообщение с инструкцией и заказом
+        // Сначала отправляем сообщение с инструкцией, затем сообщение с заказом
         await sendInstructionMessage();
         await sendOrderMessage(cartItems, deliveryMethod, deliveryPrice, stickerIncluded, totalPrice, keyboard, appliedPromoCode);
 
