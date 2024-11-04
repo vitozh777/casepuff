@@ -1,5 +1,4 @@
 let tg = window.Telegram.WebApp;
-let sizes = document.querySelectorAll(".size");
 let model1 = document.querySelectorAll(".model1");
 let model2 = document.querySelectorAll(".model2");
 let model3 = document.querySelectorAll(".model3");
@@ -59,9 +58,9 @@ let order14 = document.getElementById("order14");
 let order15 = document.getElementById("order15");
 let order16 = document.getElementById("order16");
 let order17 = document.getElementById("order17");
-let selectedModel = ""; // Для хранения выбранной модели
-let selectedRazmer = ""; // Для хранения выбранной модели
-let selectedPrice = ""; // Для хранения выбранной цены
+let selectedModel = "";
+let selectedRazmer = "";
+let selectedPrice = "";
 let priceElementFormplan1 = document.querySelector(".price1");
 let priceElementFormplan2 = document.querySelector(".price2");
 let priceElementFormplan3 = document.querySelector(".price3");
@@ -98,63 +97,37 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalResources = videos.length + document.images.length;
     let videosReady = 0;
 
-    // Функция для проверки состояния загрузки ресурсов
+    // Функция для скрытия загрузочного экрана без задержек для MainButton
+    function hideLoadingScreen() {
+        loadingScreen.style.display = 'none';
+        videos.forEach(video => {
+            video.currentTime = 0;
+            video.play().catch(error => console.error('Ошибка воспроизведения видео:', error));
+        });
+    }
+
+    // Функция для проверки загрузки ресурсов
     function checkAllResourcesLoaded() {
         resourcesLoaded++;
-        console.log(`Загружено ресурсов: ${resourcesLoaded}/${totalResources}`);
-
         if (resourcesLoaded >= totalResources && videosReady >= videos.length) {
             hideLoadingScreen();
         }
     }
 
-    // Обработка загрузки всех изображений
-    for (let i = 0; i < document.images.length; i++) {
-        if (document.images[i].complete) {
-            checkAllResourcesLoaded();
-        } else {
-            document.images[i].addEventListener('load', checkAllResourcesLoaded);
-            document.images[i].addEventListener('error', checkAllResourcesLoaded); // В случае ошибки также учитываем как загруженное
-        }
+    // Обработка загрузки изображений и видео
+    for (let img of document.images) {
+        img.complete ? checkAllResourcesLoaded() : img.addEventListener('load', checkAllResourcesLoaded);
+        img.addEventListener('error', checkAllResourcesLoaded);
     }
 
-    // Обработка загрузки каждого видео
-    videos.forEach((video) => {
-        video.preload = "auto"; // Начать загрузку видео только при старте страницы
-        video.onloadeddata = () => {
-            videosReady++;
-            console.log(`Видео ${video.id} готово к воспроизведению.`);
-            checkAllResourcesLoaded();
-        };
-
-        video.onerror = () => {
-            console.error(`Ошибка загрузки видео: ${video.src}`);
-            videosReady++;
-            checkAllResourcesLoaded();
-        };
+    videos.forEach(video => {
+        video.preload = "auto";
+        video.onloadeddata = () => { videosReady++; checkAllResourcesLoaded(); };
+        video.onerror = () => { videosReady++; checkAllResourcesLoaded(); };
     });
 
-    // Таймаут на случай зависания загрузки
-    setTimeout(() => {
-        if (resourcesLoaded < totalResources || videosReady < videos.length) {
-            console.warn('Загрузка заняла слишком много времени. Скрываем загрузочный экран принудительно.');
-            hideLoadingScreen();
-        }
-    }, 10000); // Таймаут в 10 секунд (можно настроить)
-
-    // Функция для скрытия загрузочного экрана и синхронного воспроизведения видео
-    function hideLoadingScreen() {
-        console.log('Все ресурсы загружены или истек таймаут. Скрываем загрузочный экран.');
-        loadingScreen.style.display = 'none'; // Скрыть загрузочный экран
-
-        // Воспроизвести оба видео одновременно
-        videos.forEach((video) => {
-            video.currentTime = 0; // Установить начальное время на 0, чтобы гарантировать синхронное воспроизведение
-            video.play().catch((error) => {
-                console.error('Ошибка воспроизведения видео:', error);
-            });
-        });
-    }
+    // Устанавливаем таймаут на 5 секунд для скрытия экрана загрузки
+    setTimeout(hideLoadingScreen, 5000); // Таймаут можно настроить
 });
 
 
