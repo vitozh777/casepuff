@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Таймаут на случай зависания загрузки
     setTimeout(() => {
         if (!isVideoPlayed) hideLoadingScreen();
-    }, 5000);
+    }, 4000);
 });
 
 
