@@ -78,10 +78,6 @@ const cartButton = document.getElementById('cart-button');
 const backButton1 = document.getElementById("back-button1");
 const backButton2 = document.getElementById("back-button2");
 
-const video1 = document.getElementById("myVideo3");
-const video2 = document.getElementById("myVideo");
-
-
 document.addEventListener('DOMContentLoaded', function() {
     const loadingScreen = document.getElementById('loading-screen');
     const video1 = document.getElementById('myVideo');
@@ -89,35 +85,44 @@ document.addEventListener('DOMContentLoaded', function() {
     const videos = [video1, video2];
     let resourcesLoaded = 0;
     const totalResources = videos.length + document.images.length;
-    let videosReady = 0;
+    let isVideoPlayed = false;
 
+    // Функция скрытия экрана загрузки и начала воспроизведения видео
     function hideLoadingScreen() {
         loadingScreen.style.display = 'none';
         videos.forEach(video => {
             video.currentTime = 0;
             video.play().catch(error => console.error('Ошибка воспроизведения видео:', error));
         });
+        isVideoPlayed = true;
     }
 
+    // Проверка загрузки всех ресурсов
     function checkAllResourcesLoaded() {
         resourcesLoaded++;
-        if (resourcesLoaded >= totalResources && videosReady >= videos.length) {
+        if (resourcesLoaded >= totalResources && videos.every(video => video.readyState >= 3)) {
             hideLoadingScreen();
         }
     }
 
+    // Обработка загрузки изображений
     for (let img of document.images) {
         img.complete ? checkAllResourcesLoaded() : img.addEventListener('load', checkAllResourcesLoaded);
         img.addEventListener('error', checkAllResourcesLoaded);
     }
 
+    // Настройка видео
     videos.forEach(video => {
+        video.style.display = 'block'; // Показываем видео сразу
         video.preload = "auto";
-        video.onloadeddata = () => { videosReady++; checkAllResourcesLoaded(); };
-        video.onerror = () => { videosReady++; checkAllResourcesLoaded(); };
+        video.onloadeddata = checkAllResourcesLoaded;
+        video.onerror = checkAllResourcesLoaded;
     });
 
-    setTimeout(hideLoadingScreen, 5000);
+    // Таймаут на случай зависания загрузки
+    setTimeout(() => {
+        if (!isVideoPlayed) hideLoadingScreen();
+    }, 5000);
 });
 
 
@@ -530,55 +535,6 @@ pufferplanetButton.addEventListener("click", () => {
     };
 
     
-});
-
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    var video = document.getElementById('myVideo');
-    var video3 = document.getElementById('myVideo3');
-    var secondVideo = document.getElementById('myVideo2');
-    var isVideoPlayed = false;
-
-    // Показываем первое видео сразу
-    video.style.display = 'block';
-    video3.style.display = 'block';
-
-    // Задержка в 1 секунду перед воспроизведением первого видео
-    setTimeout(function() {
-        // Проверяем, что видео не было воспроизведено ранее
-        if (!isVideoPlayed) {
-            video.play().then(function() {
-                // Видео успешно воспроизведено
-                isVideoPlayed = true;
-            }).catch(function(error) {
-                // Воспроизведение может вызвать ошибку, если видео уже воспроизводится.
-                // Игнорируем эту ошибку.
-            });
-            video3.play().then(function() {
-                // Видео успешно воспроизведено
-                isVideoPlayed = true;
-            }).catch(function(error) {
-                // Воспроизведение может вызвать ошибку, если видео уже воспроизводится.
-                // Игнорируем эту ошибку.
-            });
-        }
-    }, 1000);
-
-    // Обработчик события при появлении контейнера
-    var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                // Воспроизводим второе видео, когда контейнер становится видимым
-                secondVideo.play().catch(function(error) {
-                    // Воспроизведение может вызвать ошибку, если видео уже воспроизводится.
-                    // Игнорируем эту ошибку.
-                });
-            }
-        });
-    });
-    observer.observe(document.getElementById('thepuffercase'));
 });
 
 
