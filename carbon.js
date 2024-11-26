@@ -12,8 +12,6 @@ let form3 = document.getElementById("form3");
 let form4 = document.getElementById("form4");
 let form5 = document.getElementById("form5");
 let form6 = document.getElementById("form6");
-let form7 = document.getElementById("form7");
-let form8 = document.getElementById("form8");
 let form9 = document.getElementById("form9");
 let form10 = document.getElementById("form10");
 let form11 = document.getElementById("form11");
@@ -23,14 +21,13 @@ let form14 = document.getElementById("form14");
 let form15 = document.getElementById("form15");
 let form16 = document.getElementById("form16");
 let form17 = document.getElementById("form17");
+let form18 = document.getElementById("form18");
 let btn1 = document.getElementById("btn1");
 let btn2 = document.getElementById("btn2");
 let btn3 = document.getElementById("btn3");
 let btn4 = document.getElementById("btn4");
 let btn5 = document.getElementById("btn5");
 let btn6 = document.getElementById("btn6");
-let btn7 = document.getElementById("btn7");
-let btn8 = document.getElementById("btn8");
 let btn9 = document.getElementById("btn9");
 let btn10 = document.getElementById("btn10");
 let btn11 = document.getElementById("btn11");
@@ -40,6 +37,7 @@ let btn14 = document.getElementById("btn14");
 let btn15 = document.getElementById("btn15");
 let btn16 = document.getElementById("btn16");
 let btn17 = document.getElementById("btn17");
+let btn18 = document.getElementById("btn18");
 let homeContent = document.getElementById("thepuffercase");
 let order1 = document.getElementById("order1");
 let order2 = document.getElementById("order2");
@@ -47,8 +45,6 @@ let order3 = document.getElementById("order3");
 let order4 = document.getElementById("order4");
 let order5 = document.getElementById("order5");
 let order6 = document.getElementById("order6");
-let order7 = document.getElementById("order7");
-let order8 = document.getElementById("order8");
 let order9 = document.getElementById("order9");
 let order10 = document.getElementById("order10");
 let order11 = document.getElementById("order11");
@@ -58,6 +54,7 @@ let order14 = document.getElementById("order14");
 let order15 = document.getElementById("order15");
 let order16 = document.getElementById("order16");
 let order17 = document.getElementById("order17");
+let order18 = document.getElementById("order18");
 let selectedModel = "";
 let selectedRazmer = "";
 let selectedPrice = "";
@@ -70,8 +67,6 @@ let priceElementForm3 = document.querySelector(".price3");
 let priceElementForm4 = document.querySelector(".price4");
 let priceElementForm5 = document.querySelector(".price5");
 let priceElementForm6 = document.querySelector(".price6");
-let priceElementForm7 = document.querySelector(".price7");
-let priceElementForm8 = document.querySelector(".price8");
 let priceElementForm9 = document.querySelector(".price9");
 
 const cartButton = document.getElementById('cart-button');
@@ -150,6 +145,37 @@ var animation = lottie.loadAnimation({
     path: 'cart.json'
 });
 
+var animation = lottie.loadAnimation({
+    container: document.getElementById('chr-sale-icon'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'chr-sale.json'
+});
+
+var animation = lottie.loadAnimation({
+    container: document.getElementById('del-icon'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'del.json'
+});
+
+// Инициализация анимации для всех candy-icon
+document.addEventListener('DOMContentLoaded', () => {
+    const candyIcons = document.querySelectorAll('.candy-icon');
+    candyIcons.forEach(icon => {
+        lottie.loadAnimation({
+            container: icon, // Контейнер текущей иконки
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'candy.json', // Убедитесь, что путь к файлу правильный
+        });
+    });
+});
+
+
 
 let cartItems = [];
 
@@ -174,6 +200,9 @@ function updateCartDisplay() {
         const cartItem = document.createElement("div");
         cartItem.classList.add("cart-item");
 
+        // Рассчитываем цену со скидкой
+        const discountedPrice = Math.round(item.price * 0.85);
+
         cartItem.innerHTML = `
             <div class="item-img">
                 <img src="${item.imageUrl}" alt="${item.name}" class="item-image"> <!-- Фото товара -->
@@ -181,7 +210,10 @@ function updateCartDisplay() {
             <div class="item-info">
                 <div class="item-name">${item.name}</div> <!-- Модель товара -->
                 <div class="item-model">${item.model}</div> <!-- Размер товара -->
-                <div class="item-price">${item.price}₽</div> <!-- Цена товара -->
+                <div class="item-cont-price">
+                    <div class="item-price">${item.price}₽</div> <!-- Цена товара -->
+                    <div class="item-skidprice">${discountedPrice}₽</div> <!-- Цена со скидкой -->
+                </div>
             </div>
             <div class="item-quantity">
                 <button onclick="updateQuantity(${item.id}, '${item.model}', -1)">-</button>
@@ -195,6 +227,7 @@ function updateCartDisplay() {
 
     updateTotalPrice();  
 }
+
 
 
 document.getElementById("close-cart").addEventListener("click", function() {
@@ -267,12 +300,9 @@ function updateCartCounter() {
 function updateTotalPrice() {
     // Считаем общую цену товаров
     let totalItemsPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    
-    // Применяем скидку 10%, если промокод введён
-    let discountedItemsPrice = totalItemsPrice;
-    if (promoApplied) {
-        discountedItemsPrice *= 0.9; // Применяем скидку 10%
-    }
+
+    // Применяем скидку 15% для всех покупателей
+    let discountedItemsPrice = totalItemsPrice * 0.85; // Скидка 15%
 
     // Определяем общую цену без учёта скидки (с доставкой)
     const totalWithoutDiscount = totalItemsPrice + deliveryPrice;
@@ -294,16 +324,11 @@ function updateTotalPrice() {
     const oldPriceElement = document.getElementById("old-price");
     const newPriceElement = document.getElementById("new-price");
 
-    if (promoApplied) {
-        oldPriceElement.textContent = `${Math.round(totalItemsPrice + deliveryPrice + 20)}₽`; // Старая цена
-        newPriceElement.textContent = `${totalPrice}₽`; // Новая цена со скидкой
-        oldPriceElement.classList.remove("hidden"); // Показываем старую цену
-        newPriceElement.classList.add("discount-applied"); // Меняем цвет новой цены на красный
-    } else {
-        newPriceElement.textContent = `${Math.round(totalItemsPrice + deliveryPrice + (stickerPrice > 0 ? stickerPrice : 0))}₽`; // Без скидки, цена серого цвета
-        oldPriceElement.classList.add("hidden"); // Скрываем старую цену
-        newPriceElement.classList.remove("discount-applied"); // Убираем красный цвет
-    }
+    // Отображаем старую и новую цену с учётом скидки
+    oldPriceElement.textContent = `${Math.round(totalItemsPrice + deliveryPrice + (stickerPrice > 0 ? stickerPrice : 0))}₽`; // Старая цена
+    newPriceElement.textContent = `${totalPrice}₽`; // Новая цена со скидкой
+    oldPriceElement.classList.remove("hidden"); // Показываем старую цену
+    newPriceElement.classList.add("discount-applied"); // Меняем цвет новой цены на красный
 
     // Обновляем цену за наклейки
     document.getElementById("sticker-price").textContent = stickerPrice >= 0 ? `${stickerPrice}₽` : "0₽";
@@ -311,6 +336,28 @@ function updateTotalPrice() {
     // Обновляем подсказку по наклейкам
     updateStickerHint(totalWithoutDiscount);
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Делаем кнопку "Применить скидку" неактивной
+    const applyDiscountButton = document.getElementById("apply-discount");
+    if (applyDiscountButton) {
+        applyDiscountButton.disabled = true; // Устанавливаем атрибут disabled
+        applyDiscountButton.style.cursor = "not-allowed"; // Меняем курсор на "запрещён"
+        applyDiscountButton.style.opacity = "0.5"; // Меняем прозрачность для визуального эффекта
+    }
+
+    // Если всплывающее окно промокода всё ещё используется, скрываем его
+    const promoPopup = document.getElementById("promo-popup");
+    if (promoPopup) {
+        promoPopup.classList.add("hidden");
+    }
+
+    const blurOverlay = document.getElementById("blur-overlay");
+    if (blurOverlay) {
+        blurOverlay.classList.add("hidden");
+    }
+});
+
 
 // Выбор метода доставки
 function selectDeliveryMethod(price) {
@@ -332,7 +379,6 @@ function getDeliveryMethodName() {
 // Разблокировка кнопок корзины
 function enableCartControls() {
     document.getElementById("toggle-sticker").disabled = false;
-    document.getElementById("apply-discount").disabled = false;
     document.getElementById("promo-code").disabled = false;
     document.getElementById("apply-promo-btn").disabled = false;
 
@@ -382,7 +428,7 @@ document.addEventListener("click", function(event) {
 // Обрабатываем применение скидки
 document.getElementById("apply-promo-btn").addEventListener("click", () => {
     const promoCode = document.getElementById("promo-code").value.toLowerCase(); // Промокод переводим в нижний регистр для совместимости
-    const validPromoCodes = ["must10", "carbon10", "puffplan"]; // Список валидных промокодов
+    const validPromoCodes = ["must10", "nesnimi26", "димон", "carbon10", "puffplan", "lexus10"]; // Список валидных промокодов
 
     if (validPromoCodes.includes(promoCode) && !promoApplied) {
         promoApplied = true; // Устанавливаем флаг, что скидка применена
@@ -716,6 +762,7 @@ const sizeButton14 = document.getElementById("sizeButton14");
 const sizeButton15 = document.getElementById("sizeButton15");
 const sizeButton16 = document.getElementById("sizeButton16");
 const sizeButton17 = document.getElementById("sizeButton17");
+const sizeButton18 = document.getElementById("sizeButton18");
 const iphoneModelsWindowAir1 = document.getElementById("iphoneModelsWindowAir1");
 const iphoneModelsWindowAir2 = document.getElementById("iphoneModelsWindowAir2");
 const iphoneModelsWindowAir3 = document.getElementById("iphoneModelsWindowAir3");
@@ -730,8 +777,6 @@ const iphoneModelsWindow3 = document.getElementById("iphoneModelsWindow3");
 const iphoneModelsWindow4 = document.getElementById("iphoneModelsWindow4");
 const iphoneModelsWindow5 = document.getElementById("iphoneModelsWindow5");
 const iphoneModelsWindow6 = document.getElementById("iphoneModelsWindow6");
-const iphoneModelsWindow7 = document.getElementById("iphoneModelsWindow7");
-const iphoneModelsWindow8 = document.getElementById("iphoneModelsWindow8");
 const iphoneModelsWindow9 = document.getElementById("iphoneModelsWindow9");
 const iphoneModelsWindow10 = document.getElementById("iphoneModelsWindow10");
 const iphoneModelsWindow11 = document.getElementById("iphoneModelsWindow11");
@@ -741,6 +786,7 @@ const iphoneModelsWindow14 = document.getElementById("iphoneModelsWindow14");
 const iphoneModelsWindow15 = document.getElementById("iphoneModelsWindow15");
 const iphoneModelsWindow16 = document.getElementById("iphoneModelsWindow16");
 const iphoneModelsWindow17 = document.getElementById("iphoneModelsWindow17");
+const iphoneModelsWindow18 = document.getElementById("iphoneModelsWindow18");
 
 
 
@@ -955,7 +1001,7 @@ tg.MainButton.onClick(async () => {
         const totalPrice = document.getElementById("new-price").textContent;
         const deliveryMethod = getDeliveryMethodName();
         const inputPromoCode = document.getElementById("promo-code").value.trim().toLowerCase();
-        let appliedPromoCode = promoApplied && ["must10", "carbon10", "puffplan"].includes(inputPromoCode) ? inputPromoCode : null;
+        let appliedPromoCode = promoApplied && ["must10", "nesnimi26", "димон", "carbon10", "puffplan", "lexus10"].includes(inputPromoCode) ? inputPromoCode : null;
 
         // Лог для отладки
         console.log('MainButton Clicked! Промокод:', appliedPromoCode, 'Метод доставки:', deliveryMethod, 'Итоговая цена:', totalPrice);
@@ -1092,7 +1138,7 @@ pufforder2.addEventListener("click", function (event) {
         model: selectedModel,
         price: selectedPrice,
         quantity: 1,
-        imageUrl: "air2.jpg",
+        imageUrl: "air2.JPG",
     });
 
     updateCartDisplay();
@@ -1216,7 +1262,7 @@ pufforder3.addEventListener("click", function (event) {
         model: selectedModel,
         price: selectedPrice,
         quantity: 1,
-        imageUrl: "air3.jpg",
+        imageUrl: "air3.JPG",
     });
 
     updateCartDisplay();
@@ -1338,7 +1384,7 @@ pufforder4.addEventListener("click", function (event) {
         model: selectedModel,
         price: selectedPrice,
         quantity: 1,
-        imageUrl: "air4.jpg",
+        imageUrl: "air4.JPG",
     });
 
     updateCartDisplay();
@@ -1460,7 +1506,7 @@ pufforder5.addEventListener("click", function (event) {
         model: selectedModel,
         price: selectedPrice,
         quantity: 1,
-        imageUrl: "air5.jpg",
+        imageUrl: "air5.JPG",
     });
 
     updateCartDisplay();
@@ -1582,7 +1628,7 @@ pufforder6.addEventListener("click", function (event) {
         model: selectedModel,
         price: selectedPrice,
         quantity: 1,
-        imageUrl: "air6.jpg",
+        imageUrl: "air6.JPG",
     });
 
     updateCartDisplay();
@@ -2809,7 +2855,7 @@ order16.addEventListener("click", (event) => {
             model: selectedModel,
             price: selectedPrice,
             quantity: 1,
-            imageUrl: "FGB.JPG",
+            imageUrl: "fgCLASSIC.JPG",
         });
         updateCartDisplay();
         // Обновляем отображение количества товаров
@@ -2945,7 +2991,7 @@ order17.addEventListener("click", (event) => {
             model: selectedModel,
             price: selectedPrice,
             quantity: 1,
-            imageUrl: "FGB.JPG",
+            imageUrl: "fMATCLASSIC.JPG",
         });
         updateCartDisplay();
         // Обновляем отображение количества товаров
@@ -2957,11 +3003,10 @@ order17.addEventListener("click", (event) => {
 });
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
-
-//товар7zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
-btn7.addEventListener("click", () => {
+//товар18zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
+btn18.addEventListener("click", () => {
     document.getElementById("thepuffercase").style.display = "none"
-    document.getElementById("form7").style.display = "block"
+    document.getElementById("form18").style.display = "block"
 
     // Удаляем класс 'selected' у всех моделей
     document.querySelectorAll(".model1").forEach(model => {
@@ -2970,12 +3015,12 @@ btn7.addEventListener("click", () => {
     });
 
     // Сбрасываем текст кнопки выбора размера
-    sizeButton7.textContent = "Выберите размер";
+    sizeButton18.textContent = "Выберите размер";
 
 
-    // Делаем кнопку "order6" неактивной
-    order7.orderinactive = true;
-    order7.classList.add("orderinactive");
+    // Делаем кнопку "order2" неактивной
+    order18.orderinactive = true;
+    order18.classList.add("orderinactive");
     
     // Показываем кнопку "Назад"
     backButton1.style.display = "none";
@@ -2984,13 +3029,13 @@ btn7.addEventListener("click", () => {
     // Логика для кнопки "Назад", возвращающая на "home"
     backButton2.onclick = () => {
         document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("form7").style.display = "none"; // Показываем "home"
+        document.getElementById("form18").style.display = "none"; // Показываем "home"
         backButton2.style.display = "none"; // Скрываем кнопку "Назад"
         backButton1.style.display = "block";
         cartMessage.style.display = 'none';
 
         // Скрываем окно выбора модели
-        iphoneModelsWindow7.style.display = "none";
+        iphoneModelsWindow18.style.display = "none";
     
         // Удаляем класс 'selected' у всех моделей
         document.querySelectorAll(".model1").forEach(model => {
@@ -2999,18 +3044,19 @@ btn7.addEventListener("click", () => {
         });
     
         // Сбрасываем текст кнопки выбора размера
-        sizeButton7.textContent = "Выберите размер";
+        sizeButton18.textContent = "Выберите размер";
     };
 });
 
 
 
+
 // Обработчик события для кнопки "SIZE"
-sizeButton7.addEventListener("click", (event) => {
+sizeButton18.addEventListener("click", (event) => {
     event.preventDefault(); // Предотвращаем действие по умолчанию (обновление страницы)
     
     // Показываем окно выбора модели iPhone
-    iphoneModelsWindow7.style.display = "block";
+    iphoneModelsWindow18.style.display = "block";
 });
 
 // Добавляем обработчик события на каждую модель iPhone
@@ -3022,14 +3068,14 @@ document.querySelectorAll(".model1").forEach(model => {
         selectedModel = model.textContent;
         
         // Скрываем окно после выбора модели
-        iphoneModelsWindow7.style.display = "none";
+        iphoneModelsWindow18.style.display = "none";
 
         // Изменяем текст кнопки "SIZE" на выбранную модель
-        sizeButton7.textContent = `Размер: ${selectedModel}`;
+        sizeButton18.textContent = `Размер: ${selectedModel}`;
     });
 });
 var animation = lottie.loadAnimation({
-    container: document.getElementById('lottie-icon7'), // контейнер для анимации
+    container: document.getElementById('lottie-icon18'), // контейнер для анимации
     renderer: 'svg', // тип рендера (svg, canvas, html)
     loop: true, // зацикливание анимации
     autoplay: true, // автоматическое воспроизведение
@@ -3041,7 +3087,7 @@ model1.forEach(model => {
         event.preventDefault(); // Предотвращаем действие по умолчанию (например, переход по ссылке)
                     
         selectedModel = model.textContent;
-        selectedPrice = modelInfo2[selectedModel];
+        selectedPrice = modelInfo1[selectedModel];
 
         // Удаляем границу у всех кнопок
         model1.forEach(btn => {
@@ -3052,11 +3098,11 @@ model1.forEach(model => {
         model.classList.add("selected");
 
 
-        order7.orderinactive = false;
-        order7.classList.remove("orderinactive");
+        order18.orderinactive = false;
+        order18.classList.remove("orderinactive");
 
         priceElement.textContent = selectedPrice;
-        priceElementForm7.textContent = selectedPrice;
+        priceElementForm18.textContent = selectedPrice;
         
         selectedModel = model.textContent;
     });
@@ -3066,23 +3112,23 @@ model1.forEach(model => {
 
 
 // Добавьте обработчик события click для кнопки "Add"
-order7.disabled = false;
-order7.addEventListener("click", (event) => {
-    if (!order7.disabled) {
+order18.disabled = false;
+order18.addEventListener("click", (event) => {
+    if (!order18.disabled) {
         event.preventDefault();
 
         // Получаем выбранную модель и цену
         const selectedModel = document.querySelector(".model1.selected").textContent;
-        const selectedPrice = parseFloat(modelInfo2[selectedModel].replace(/[^\d]/g, ''));
+        const selectedPrice = parseFloat(modelInfo1[selectedModel].replace(/[^\d]/g, ''));
 
         // Добавляем товар в корзину
         addToCart({
-            id: 17, // Уникальный ID товара
-            name: "WOVEN GLOSSY-CLASSIC (Z)",
+            id: 28, // Уникальный ID товара
+            name: "FORGED MATTE-OBSIDIAN",
             model: selectedModel,
             price: selectedPrice,
             quantity: 1,
-            imageUrl: "classic1.PNG",
+            imageUrl: "FMobsidian.JPG",
         });
         updateCartDisplay();
         // Обновляем отображение количества товаров
@@ -3095,141 +3141,6 @@ order7.addEventListener("click", (event) => {
 //zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
 
-//товар8zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
-btn8.addEventListener("click", () => {
-    document.getElementById("thepuffercase").style.display = "none"
-    document.getElementById("form8").style.display = "block"
-
-    // Удаляем класс 'selected' у всех моделей
-    document.querySelectorAll(".model1").forEach(model => {
-        model.classList.remove("selected");
-        model.style.border = "none";
-    });
-
-    // Сбрасываем текст кнопки выбора размера
-    sizeButton8.textContent = "Выберите размер";
-
-
-    // Делаем кнопку "order8" неактивной
-    order8.orderinactive = true;
-    order8.classList.add("orderinactive");
-    
-    // Показываем кнопку "Назад"
-    backButton1.style.display = "none";
-    backButton2.style.display = "block";
-
-    // Логика для кнопки "Назад", возвращающая на "home"
-    backButton2.onclick = () => {
-        document.getElementById("thepuffercase").style.display = "block"; // Скрываем "pufferplanet"
-        document.getElementById("form8").style.display = "none"; // Показываем "home"
-        backButton2.style.display = "none"; // Скрываем кнопку "Назад"
-        backButton1.style.display = "block";
-        cartMessage.style.display = 'none';
-
-        // Скрываем окно выбора модели
-        iphoneModelsWindow8.style.display = "none";
-    
-        // Удаляем класс 'selected' у всех моделей
-        document.querySelectorAll(".model1").forEach(model => {
-            model.classList.remove("selected");
-            model.style.border = "none";
-        });
-    
-        // Сбрасываем текст кнопки выбора размера
-        sizeButton8.textContent = "Выберите размер";
-    };
-});
-
-
-
-// Обработчик события для кнопки "SIZE"
-sizeButton8.addEventListener("click", (event) => {
-    event.preventDefault(); // Предотвращаем действие по умолчанию (обновление страницы)
-    
-    // Показываем окно выбора модели iPhone
-    iphoneModelsWindow8.style.display = "block";
-});
-
-// Добавляем обработчик события на каждую модель iPhone
-document.querySelectorAll(".model1").forEach(model => {
-    model.addEventListener("click", (event) => {
-        event.preventDefault();
-
-        // Сохраняем выбранную модель
-        selectedModel = model.textContent;
-        
-        // Скрываем окно после выбора модели
-        iphoneModelsWindow8.style.display = "none";
-
-        // Изменяем текст кнопки "SIZE" на выбранную модель
-        sizeButton8.textContent = `Размер: ${selectedModel}`;
-    });
-});
-var animation = lottie.loadAnimation({
-    container: document.getElementById('lottie-icon8'), // контейнер для анимации
-    renderer: 'svg', // тип рендера (svg, canvas, html)
-    loop: true, // зацикливание анимации
-    autoplay: true, // автоматическое воспроизведение
-    path: 'magsafe.json' // путь к вашему JSON-файлу
-});
-
-model1.forEach(model => {
-    model.addEventListener("click", (event) => {
-        event.preventDefault(); // Предотвращаем действие по умолчанию (например, переход по ссылке)
-                    
-        selectedModel = model.textContent;
-        selectedPrice = modelInfo2[selectedModel];
-
-        // Удаляем границу у всех кнопок
-        model1.forEach(btn => {
-            btn.classList.remove("selected");
-        });
-
-        // Добавляем класс selected к выбранной кнопке
-        model.classList.add("selected");
-
-
-        order8.orderinactive = false;
-        order8.classList.remove("orderinactive");
-
-        priceElement.textContent = selectedPrice;
-        priceElementForm8.textContent = selectedPrice;
-        
-        selectedModel = model.textContent;
-    });
-});
-
-
-
-
-// Добавьте обработчик события click для кнопки "Add"
-order8.disabled = false;
-order8.addEventListener("click", (event) => {
-    if (!order8.disabled) {
-        event.preventDefault();
-
-        // Получаем выбранную модель и цену
-        const selectedModel = document.querySelector(".model1.selected").textContent;
-        const selectedPrice = parseFloat(modelInfo2[selectedModel].replace(/[^\d]/g, ''));
-
-        // Добавляем товар в корзину
-        addToCart({
-            id: 18, // Уникальный ID товара
-            name: "WOVEN GLOSSY-CLASSIC",
-            model: selectedModel,
-            price: selectedPrice,
-            quantity: 1,
-            imageUrl: "classic0.PNG",
-        });
-        updateCartDisplay();
-        // Обновляем отображение количества товаров
-        updateCartCounter();
-        
-        // Показываем сообщение "Добавлено в корзину"
-        showCartMessage();
-    }
-});
-//zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 
 //товар9zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz//
 btn9.addEventListener("click", () => {
